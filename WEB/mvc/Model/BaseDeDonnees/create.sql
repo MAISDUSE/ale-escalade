@@ -1,55 +1,63 @@
 CREATE TABLE Adherent(
-  numAdherent INTEGER PRIMARY KEY,
-  nom TEXT,
-	prenom TEXT,
-	role TEXT,
-  naissance DATE
+  numAdherent INTEGER NOT NULL PRIMARY KEY,
+  motdepasse TEXT NOT NULL,
+  nom TEXT NOT NULL,
+	prenom TEXT NOT NULL,
+	role TEXT DEFAULT NULL,
+  naissance DATE NOT NULL,
+  telephone TEXT NOT NULL,
+  email TEXT NOT NULL,
+  addrCourrier TEXT NOT NULL,
+  passport_escalade TEXT DEFAULT NULL,
+  passport_skialpinisme TEXT DEFAULT NULL,
+  passport_alpinisme TEXT DEFAULT NULL,
+  passport_canyon TEXT DEFAULT NULL,
+  passport_montagne TEXT DEFAULT NULL
 );
 
 CREATE TABLE CompteRendu(
+  id INTEGER NOT NULL PRIMARY KEY,
   numAuteur INTEGER REFERENCES Adherent(numAdherent),
-  titre TEXT,
-	date DATE,
-	contenu TEXT,
-  PRIMARY KEY (titre, date)
+  titre TEXT NOT NULL,
+	date DATE NOT NULL,
+	contenu TEXT NOT NULL
 );
 
 CREATE TABLE Message(
-  date DATE,
+  id INTEGER NOT NULL PRIMARY KEY,
+  date DATE NOT NULL,
   numExpediteur INTEGER,
   numDestinataire INTEGER,
-	contenu TEXT,
-  PRIMARY KEY (date, numExpediteur),
+	contenu TEXT NOT NULL,
   FOREIGN KEY (numExpediteur, numDestinataire) REFERENCES Adherent(numAdherent, numAdherent)
 );
 
 CREATE TABLE Lieu(
-  adresse TEXT PRIMARY KEY,
-  nom TEXT
+  adresse TEXT NOT NULL PRIMARY KEY,
+  nom TEXT NOT NULL
 );
 
 CREATE TABLE Sortie(
-  nom TEXT,
+  id INTEGER NOT NULL PRIMARY KEY,
+  nom TEXT NOT NULL,
   numOrganisateur INTEGER REFERENCES Adherent(numAdherent),
   addrLieu TEXT REFERENCES Lieu(adresse),
-  date DATE,
-  valide BOOLEAN,
-  pratique TEXT,
-  image BLOP,
-  PRIMARY KEY (nom, date)
+  date DATE NOT NULL,
+  valide BOOLEAN DEFAULT 0,
+  pratique TEXT NOT NULL
 );
 
 CREATE TABLE Vehicule(
-  matricule TEXT PRIMARY KEY,
+  matricule TEXT NOT NULL PRIMARY KEY,
   numProprietaire TEXT REFERENCES Adherent(numAdherent),
   nomSortie TEXT REFERENCES Sortie(nom),
-  nbplaces INTEGER
+  nbplaces INTEGER NOT NULL
 );
 
 CREATE TABLE Commentaire(
-  date DATE,
+  id INTEGER NOT NULL PRIMARY KEY,
+  date DATE NOT NULL,
   numAuteur INTEGER REFERENCES Adherent(numAdherent),
   nomSortie TEXT REFERENCES Sortie(nom),
-  contenu TEXT,
-  PRIMARY KEY (date, numAuteur)
+  contenu TEXT NOT NULL
 );
