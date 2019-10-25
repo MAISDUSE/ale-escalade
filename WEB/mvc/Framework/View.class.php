@@ -1,6 +1,6 @@
 <?php
 
-  class ClassName{
+  class C{
     private $path;
 
     function __construct($path){
@@ -17,6 +17,10 @@
       if(strpos($p,"view.php")){
         $p = $p . ".view.php";
       }
+      foreach ($this as $key => $value) {
+        $$key = $this->$key;
+      }
+
       include($p);
     }
   }
