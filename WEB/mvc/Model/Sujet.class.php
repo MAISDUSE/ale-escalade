@@ -16,6 +16,7 @@ class Sujet{
     $this->description = $description;
     $this->nomUtilisateur = $nomUtilisateur;
     $this->date = $date;
+    $this->evenement = $evenement;
   }
 
   function getTitre(){
