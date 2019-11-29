@@ -20,15 +20,16 @@
     <div class="listeSujet">
 
 
-      <article>
-        <aside>
-          <h4><?=$sujet->getTitre()?></h4>
-          <p class="desc"><?=$miseEnAmont?></p>
-        </aside>
 
-         <p class="date">Posté le <?=$sujet->getDate()?></p>
+        <a href="../Controler/a">
+          <aside>
+            <h4><?=$sujet->getTitre()?></h4>
+            <p class="desc"><?=$miseEnAmont?></p>
+          </aside>
 
-      </article>
+          <p class="date">Posté le <?=$sujet->getDate()?></p>
+
+        </a>
 
     </div>
   </body>

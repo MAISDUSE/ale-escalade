@@ -1,13 +1,38 @@
+h1{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5%;
+}
 .listeSujet{
   border: solid black 1px;
+  width: 60%;
+
 }
 
-article{
-  border-top: solid blue 1px;
-  border-bottom: solid blue 1px;
+a{
+  border-top: solid black 1px;
+  border-bottom: solid black 1px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+}
+
+
+
+a:visited{
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a:link{
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a:hover{
+  background-color: lightgray;
+  color: blue;
 }
 
 
