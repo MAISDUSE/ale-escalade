@@ -1,8 +1,16 @@
 body{
   background: linear-gradient(#92a8d1,#deeaee,#618685);
   font-family: sans-serif;
+  min-height: 100%;
+  /*background: url("../../Ressources/escaladeCover.jpg");
+  background-size: cover;*/
 }
 
+html,body{
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+}
 /*Header*/
 
 header{
@@ -24,30 +32,21 @@ header h1{
 section{
   display: flex;
   justify-content: center;
-  height: 10%;
-}
-.Article{
-  width: 500px;
-}
-.Image,.Texte,.LirePlus{
-  width: 500px;
-  padding:0%
-}
-
-.Image{
-  text-align: center;
+  height: 100%;
+  width: 100%;
 
 }
 
-.LirePlus{
-  text-align: right;
+
+.champs{
+    justify-content: space-between;
+    width: 60%;
+    margin: .5rem;
+}
+label{
+  color: black;
 }
 
-.Titre{
-  width: 25px;
-  height: 10%;
-  text-align: left;
-}
 
 ul {
   list-style-type: none;
