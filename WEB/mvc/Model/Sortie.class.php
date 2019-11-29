@@ -19,7 +19,6 @@ require_once("../Model/Utilisateur.class.php");
       $this->pratique = $pratique;
       $this->valide = $valide;
     }
-  }
 
   function getNom(){
     return $this->nom;
@@ -57,4 +56,5 @@ require_once("../Model/Utilisateur.class.php");
     $this->valide = $valide;
   }
 
+}
  ?>
