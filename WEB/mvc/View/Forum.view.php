@@ -21,7 +21,7 @@
 
 
 
-        <a href="../Controler/a">
+        <a href="../Controler/SujetForum.ctrl.php?sujet="<?=$sujet->getTitre()?>>
           <aside>
             <h4><?=$sujet->getTitre()?></h4>
             <p class="desc"><?=$miseEnAmont?></p>
