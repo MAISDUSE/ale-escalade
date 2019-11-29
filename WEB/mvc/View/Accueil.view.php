@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Site web de l'Ale-Escalade</title>
     <script>
-    var looper;
+    /*var looper;
     var degrees = 0;
     var pos = 0;
     function rotateAnimation(el,speed){
@@ -24,7 +24,7 @@
   }
 
     	//document.getElementById("status").innerHTML = "rotate("+degrees+"deg)";
-
+      */
     </script>
     <link rel="stylesheet" href="../View/Design/Accueil.css">
   </head>
