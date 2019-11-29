@@ -1,9 +1,3 @@
-<?php
-  require_once("../Model/Sujet.class.php");
-  $sujet = new Sujet("Test","Un petit s'est fait gommer il y aurait pas de message bande de fils de pute ça va bande","Darkos", date("d/m/Y"));
-  $miseEnAmont = substr($sujet->getDescription(),0,20) . "...";
- ?>
-
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -20,16 +14,25 @@
     <div class="listeSujet">
 
 
+<?php foreach ($listeSujet as $value){
+  $tmp = $value[0]->getTitre();
+  ?>
 
-        <a href="../Controler/SujetForum.ctrl.php?sujet="<?=$sujet->getTitre()?>>
-          <aside>
-            <h4><?=$sujet->getTitre()?></h4>
-            <p class="desc"><?=$miseEnAmont?></p>
-          </aside>
 
-          <p class="date">Posté le <?=$sujet->getDate()?></p>
+  <a href="../Controler/SujetForum.ctrl.php?sujet=<?=$titre?>">
+    <aside>
+      <h4><?=$titre?></h4>
+      <p class="desc"><?=$value[1]?></p>
+    </aside>
 
-        </a>
+    <p class="date">Posté le <?=$value[0]->getDate()?></p>
+
+  </a>
+
+<?php
+} ?>
+
+
 
     </div>
   </body>
