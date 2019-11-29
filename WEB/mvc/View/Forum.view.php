@@ -8,6 +8,7 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../View/Design/Forum.css">
     <title>Forum ALE Escalade</title>
   </head>
   <body>
@@ -15,12 +16,17 @@
       <h1>Bienvenue sur le forum</h1>
     </header>
 
-    <div class="">
-      <h2>Liste des sujets de discussions</h2>
+    <h2>Liste des sujets de discussions</h2>
+    <div class="listeSujet">
 
-      <article class="">
-        <h3><?=$sujet->getTitre()?></h3>
-        <p><?=$miseEnAmont?> le <?=$sujet->getDate()?></p>
+
+      <article>
+        <aside>
+          <h4><?=$sujet->getTitre()?></h4>
+          <p class="desc"><?=$miseEnAmont?></p>
+        </aside>
+
+         <p class="date">Posté le <?=$sujet->getDate()?></p>
 
       </article>
 

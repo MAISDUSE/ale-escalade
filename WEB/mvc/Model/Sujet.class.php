@@ -12,7 +12,7 @@ class Sujet{
   private $evenement;
 
   function __construct($titre, $description, $nomUtilisateur, $date, $evenement=NULL){
-    $this->$titre = $titre;
+    $this->titre = $titre;
     $this->description = $description;
     $this->nomUtilisateur = $nomUtilisateur;
     $this->date = $date;
