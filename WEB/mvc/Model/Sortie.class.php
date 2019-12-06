@@ -5,7 +5,7 @@ require_once("../Model/Utilisateur.class.php");
     private $nom;         //Nom
     private $dateDebut;   //DateDebut
     private $dateFin;     //DateFin
-    private Utilisateur $utilisateur;
+    private  $utilisateur;
     private $adresse;     //select adresse FROM Event E, Lieu L where E.NomLieu = L.Nom
     private $image;       //Pas (encore) intégrer a la BD
     private $pratique;    //Select TypePrat FROM Sujet S, PratiqueEvent P WHERE S.ID = P.IDEvent;
