@@ -3,6 +3,7 @@
 require_once("../Model/Utilisateur.class.php");
   class Sortie{
     private $nom;
+    private $contenue;
     private $date;
     private $utilisateur;
     private $adresse;
