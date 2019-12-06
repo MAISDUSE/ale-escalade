@@ -35,7 +35,7 @@ function getAllUsers(){
 
 function getCommentaires($id){
   //$id est l'id d'un sujet
-  $req = "SELECT * FROM Commentaire WHERE IDSujet = $id";
+  $req = "SELECT * FROM Commentaire WHERE IDSujet = $id ORDER BY Date";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Commentaire');
   return array($lancement);
