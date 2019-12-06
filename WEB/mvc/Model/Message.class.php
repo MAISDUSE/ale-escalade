@@ -8,7 +8,7 @@
     private $dateEnvoi;
     private $contenue;
 
-    function __construct(Utilisateur $Expediteur, Utilisateur $Destinataire, Date $dateEnvoi, string $contenue){
+    function __construct(Utilisateur $Expediteur, Utilisateur $Destinataire, string $dateEnvoi, string $contenue){
       $this->Expediteur = $Expediteur;
       $this->Destinataire = $Destinataire;
       $this->dateEnvoi = $dateEnvoi;

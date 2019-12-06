@@ -26,7 +26,7 @@ class Utilisateur{                  //Dans la base de données
   function __construct(int $numero, string $licence, int $typeLicence,
     string $nom, string $prenom, int $genre, string $dateNaissance,
     string $adresse, string $numTel, string $numFix, string $adresseMail,
-    int $role, string $codeUtilisateur, int $passeport, Contact $contact){
+    int $role, string $codeUtilisateur, int $passeport, Contact $contact = null){
 
       /*if(isset($numero)){
         $this->numero=$numero;
@@ -44,6 +44,7 @@ class Utilisateur{                  //Dans la base de données
       $this->adresseMail=$adresseMail;
       $this->role=$role;
       $this->passeport=$passeport;
+      $this->contact = $contact;
 
       //On vérifie si toutes les données nécéssaires sont rentrées.
       assert(isset($this->numero));
