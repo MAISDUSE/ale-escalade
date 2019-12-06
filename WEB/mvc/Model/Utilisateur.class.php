@@ -6,22 +6,22 @@ include ("../Model/Enum/Passeport.enum.php");
 include ("../Model/Enum/Contact.enum.php");
 
 
-class Utilisateur{
-  private int $numero;
-  private string $licence;
-  private TypeLicence $typeLicence;
-  private string $nom;
-  private string $prenom;
-  private Genre $genre;
-  private string $dateNaissance;
-  private string $adresse;
-  private string $numTel;
-  private string $numFix;
-  private string $adresseMail;
-  private Role $role;
-  private string $codeUtilisateur;
-  private Passeport $passeport;
-  private Contact $contact;
+class Utilisateur{                  //Dans la base de données
+  private int $numero;              //ID
+  private string $licence;          //NumLicence
+  private TypeLicence $typeLicence; //TypeLicence
+  private string $nom;              //Nom
+  private string $prenom;           //Prenom
+  private Genre $genre;             //Sex
+  private string $dateNaissance;    //Naissance
+  private string $adresse;          //Adresse
+  private string $numTel;           //NumTel
+  private string $numFix;           //NumFix
+  private string $adresseMail;      //Mail
+  private Role $role;               //Role
+  private string $codeUtilisateur;  //CodeUtilisateur
+  private Passeport $passeport;     //Passeport
+  private Contact $contact;         //Contact
 
 
   function __construct(int $numero, string $licence, TypeLicence $typeLicence, string $nom, string $prenom, Genre $genre, string $dateNaissance,
