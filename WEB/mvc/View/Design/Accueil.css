@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 body{
   background: linear-gradient(#92a8d1,#deeaee,#618685);
   font-family: sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Roboto',sans-serif;
 }
 
 /*Header*/
@@ -13,12 +22,39 @@ header .LogoTitre{
 header img {
   height: 100px;
   width: 100px;
+
 }
 header h1{
   margin-right:42.5%;
   padding:0%;
   padding-top:25px;
 
+}
+header{
+background-color : rgba(72,74,92,0.8);
+
+}
+header,ul {
+  list-style-type: none;
+  padding: 0;
+  margin:0%;
+  overflow: hidden;
+  height: 100%;
+  width:100%;
+  position: sticky;
+  top: 0px;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 section{
@@ -47,28 +83,6 @@ section{
   width: 25px;
   height: 10%;
   text-align: left;
-}
-
-header,ul {
-  list-style-type: none;
-  padding: 0;
-  margin:0%;
-  overflow: hidden;
-  background-color: #74992e;
-  height: 100%;
-  width:100%;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
 }
 
 /* Change the link color to #111 (black) on hover */

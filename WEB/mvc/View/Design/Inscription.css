@@ -1,19 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 body{
-  background: linear-gradient(#92a8d1,#deeaee,#618685);
-  font-family: sans-serif;
-  min-height: 100%;
-  /*background: url("../../Ressources/escaladeCover.jpg");
-  background-size: cover;*/
+
+  background : url('../../Ressources/escaladeCover.jpg') no-repeat fixed;
+  background-size: cover;
+
+
 }
 
-html,body{
-  margin: 0px;
-  height: 100%;
-  width: 100%;
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'Roboto',sans-serif;
 }
+
 /*Header*/
 
-header{
+header .LogoTitre{
   display: flex;
   justify-content: space-between;
 
@@ -21,6 +25,7 @@ header{
 header img {
   height: 100px;
   width: 100px;
+
 }
 header h1{
   margin-right:42.5%;
@@ -28,33 +33,19 @@ header h1{
   padding-top:25px;
 
 }
-
-section{
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+header{
+background-color : rgba(72,74,92,0.8);
 
 }
-
-
-.champs{
-    justify-content: space-between;
-    width: 60%;
-    margin: .5rem;
-}
-label{
-  color: black;
-}
-
-
-ul {
+header,ul {
   list-style-type: none;
-  margin-right: -20px;
-  margin-left: -10px;
   padding: 0;
+  margin:0%;
   overflow: hidden;
-  background-color: #50394c;
+  height: 100%;
+  width:100%;
+  position: sticky;
+  top: 0px;
 }
 
 li {
@@ -69,8 +60,74 @@ li a {
   text-decoration: none;
 }
 
+section{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+}
+
+
+.wrapper{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width: 100%;
+  padding:0 20px;
+
+}
+
+.contact-form{
+  max-width: 75%;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.8);
+  padding: 30px;
+  border-radius: 5px;
+  display: flex;
+  box-shadow : 0 0 10px rgba(0,0,0,0.13);
+
+
+}
+.input-fields{
+  display: flex;
+  flex-direction: column;
+  margin-right:10%;
+}
+
+.input-fields,.message{
+  width:48%;
+}
+
+.input,.message textarea{
+  margin: 10px 0;
+  background: transparent;
+  border:0;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  color : #c5ecfd;
+  width: 100%;
+}
+
+label,p{
+  color : #c5ecfd
+}
+.message textarea{
+  height:212px;
+}
+
+::-webkit-input-placeholder{
+  color : #c5ecfd;
+}
+::-moz-input-placeholder{
+  color : #c5ecfd;
+}
 /* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: WhiteSmoke;
   color:black;
+}
+
+textarea{
+  resize: none;
 }

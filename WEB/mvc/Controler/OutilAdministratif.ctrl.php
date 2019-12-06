@@ -8,9 +8,6 @@ if( isset($_FILES['fichier'])){
     echo "Upload raté";
   }
 
-  if(isset($_POST['contenu'])){
-    var_dump($_POST['contenu']);
-  }
 
 }
 

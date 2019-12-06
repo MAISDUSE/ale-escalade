@@ -26,6 +26,7 @@ header .LogoTitre{
 header img {
   height: 100px;
   width: 100px;
+  
 }
 header h1{
   margin-right:42.5%;
@@ -111,4 +112,8 @@ li a {
 li a:hover {
   background-color: WhiteSmoke;
   color:black;
+}
+
+textarea{
+  resize: none;
 }
