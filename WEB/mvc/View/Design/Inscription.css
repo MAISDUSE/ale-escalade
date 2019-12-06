@@ -89,17 +89,19 @@ section{
 
 
 }
-.input-fields{
+.input-fields .message{
   display: flex;
   flex-direction: column;
   margin-right:10%;
 }
 
-.input-fields,.message{
-  width:48%;
+form{
+  display: flex;
 }
 
-.input,.message textarea{
+
+
+.input, .message{
   margin: 10px 0;
   background: transparent;
   border:0;

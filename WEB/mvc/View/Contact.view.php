@@ -24,7 +24,9 @@
     </header>
       <div class="wrapper">
         <div class="contact-form">
+          <form class="post" action="index.html" method="post">
           <div class="input-fields">
+
             <input type="text" class="input" placeholder="Nom">
             <input type="text" class="input" placeholder="Prenom">
             <input type="text" class="input" placeholder="Email">
@@ -32,8 +34,11 @@
           </div>
           <div class="message">
             <textarea placeholder="Votre message"></textarea>
+            <input type="submit" name="Valider" value="Valider" class="input" >
           </div>
+          </form>
         </div>
       </div>
+
   </body>
 </html>

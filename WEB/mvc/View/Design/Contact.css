@@ -26,7 +26,7 @@ header .LogoTitre{
 header img {
   height: 100px;
   width: 100px;
-  
+
 }
 header h1{
   margin-right:42.5%;
@@ -81,7 +81,7 @@ li a {
 }
 .input-fields{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-right:10%;
 }
 
@@ -101,6 +101,7 @@ li a {
 .message textarea{
   height:212px;
 }
+
 
 ::-webkit-input-placeholder{
   color : #c5ecfd;
