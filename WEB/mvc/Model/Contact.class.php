@@ -1,13 +1,15 @@
 <?php
-class Contact {
-  private string $nom;
-  private string $prenom;
-  private string $adresse;
-  private string $numTel;
-  private string $adresseMail;
+class Contact {                 //Dans la BD
+  private int $id;              //ID
+  private string $nom;          //Nom
+  private string $prenom;       //Prenom
+  private string $adresse;      //Adresse
+  private string $numTel;       //NumTel
+  private string $adresseMail;  //Mail
 
-  function __construct(string $nom, string $prenom, string $adresse, string $numTel, string $adresseMail){
+  function __construct(int $id, string $nom, string $prenom, string $adresse, string $numTel, string $adresseMail){
 
+      $this->id = $id;
       $this->nom=$nom;
       $this->prenom=$prenom;
       $this->adresse=$adresse;
@@ -15,11 +17,16 @@ class Contact {
       $this->adresseMail=$adresseMail;
 
       //On vérifie si toutes les données nécéssaires sont rentrées.
+      assert(isset($this->id));
       assert(isset($this->nom));
       assert(isset($this->prenom));
       assert(isset($this->adresse));
       assert(isset($this->numTel)||isset($this->adresseMail);
-      
+
+  }
+
+  function getID(){
+    return $this->id;
   }
 
   function getNom(){
