@@ -1,4 +1,6 @@
 <?php
+include ("../Model/Enum/TypeCertificat.enum.php");
+
 class Certificat{
   private int $id;
   private int $numAdh;
