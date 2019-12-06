@@ -39,10 +39,10 @@
 
     <nav>
       <ul>
-        <li><a href="../View/Accueil.view.php">Accueil</a></li>
+        <li><a href="../../View/Design/Accueil.view.php">Accueil</a></li>
         <li><a href="#">Planning</a></li>
-        <li><a href="../View/Inscription.view.php">Inscription</a></li>
-        <li><a href="#">Connexion</a></li>
+        <li><a href="../../View/Design/Inscription.view.php">Inscription</a></li>
+        <li><a href="../../View/Design/Connexion.view.php">Connexion</a></li>
         <li><a href="#">Forum</a></li>
         <li><a href="#">Contact</a></li>
 

@@ -1,6 +1,7 @@
 <?php
 
 require_once("../Model/Utilisateur.class.php");
+<<<<<<< HEAD
   class Sortie{           //Bese De Données
     private $nom;         //Nom
     private $dateDebut;   //DateDebut
@@ -12,6 +13,19 @@ require_once("../Model/Utilisateur.class.php");
     private $valide;      //Officiel
 
     function __construct($nom, $dateDebut, $dateFin, $utilisateur, $adresse, $image, $pratique=NULL, $valide =NULL){
+=======
+  class Sortie{
+    private $nom;
+    private $contenue;
+    private $date;
+    private $utilisateur;
+    private $adresse;
+    private $image;
+    private $pratique;
+    private $valide;
+
+    function __construct($nom, $date, $utilisateur, $adresse, $image, $pratique=NULL, $valide =NULL){
+>>>>>>> 2e93ae473d9486eafa4a621ada96554247f9dfdf
       $this->nom = $nom;
       $this->dateDebut = $dateDebut;
       $this->dateFin = $dateFin;
