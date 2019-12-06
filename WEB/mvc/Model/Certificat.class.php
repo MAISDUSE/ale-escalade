@@ -2,12 +2,12 @@
 include ("../Model/Enum/TypeCertificat.enum.php");
 
 class Certificat{
-  private int $id;
-  private int $numAdh;
-  private TypeCertificat $type;
-  private string $nomMedecin;
-  private string $dateSaisie;
-  private bool $alpi;
+  private  $id;
+  private  $numAdh;
+  private  $type;
+  private  $nomMedecin;
+  private  $dateSaisie;
+  private  $alpi;
 
 
   function __construct(int $id, int $numAdh, TypeCertificat $type, string $nomMedecin, string $dateSaisie, bool $alpi=false){
