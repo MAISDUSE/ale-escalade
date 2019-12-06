@@ -28,7 +28,7 @@ class Utilisateur{                  //Dans la base de données
     string $adresse, string $numTel, string $numFix, string $adresseMail,
     int $role, string $codeUtilisateur, int $passeport, Contact $contact){
 
-      if(isset($numero)){
+      /*if(isset($numero)){
         $this->numero=$numero;
       }*/
       $this->numero=$numero;
