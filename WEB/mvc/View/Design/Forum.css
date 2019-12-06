@@ -6,6 +6,7 @@ h1{
 .listeSujet{
   border: solid black 1px;
   width: 60%;
+  margin: auto;
 
 }
 
@@ -14,11 +15,9 @@ a{
   border-bottom: solid black 1px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content:space-between;
 
 }
-
-
 
 a:visited{
   text-decoration: inherit;

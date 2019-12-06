@@ -1,6 +1,6 @@
 <?php
 
-  class C{
+  class View{
     private $path;
 
     function __construct($path){
@@ -14,7 +14,7 @@
         $p = "../View/".$p;
       }
 
-      if(strpos($p,"view.php")){
+      if(!strpos($p,"view.php")){
         $p = $p . ".view.php";
       }
       foreach ($this as $key => $value) {
