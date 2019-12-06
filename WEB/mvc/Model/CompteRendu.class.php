@@ -7,7 +7,7 @@
     private $contenue;
     private $Auteur;
 
-    function __construct(string $titre, Date $datePub, string $contenue, int $Auteur){
+    function __construct(string $titre, Date $datePub, string $contenue, Utilisateur $Auteur){
       $this->titre = $titre;
       $this->datePub = $datePub;
       $this->contenue = $contenue;
