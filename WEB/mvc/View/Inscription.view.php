@@ -77,10 +77,21 @@
            <input type="mail" name="mail" placeholder="Email" required>
          <br>
            <label for="base">Assurance</label>
-           <input type="radio" name="base"  value="base" >
-           <input type="radio" name="base+" value="base+">
-           <input type="radio" name="base++" value="base++">
+           <div>
+             <input type="radio" id="base" name="drone" value="base"
+          checked>
+          <label for="huey">Base</label>
+        </div>
 
+        <div>
+          <input type="radio" id="base+" name="drone" value="base+">
+          <label for="dewey">Base+</label>
+        </div>
+
+        <div>
+          <input type="radio" id="base++" name="drone" value="base++">
+          <label for="louie">Base++</label>
+        </div>
 
          <br>
          <input type="submit" name="valider" value="Valider">
