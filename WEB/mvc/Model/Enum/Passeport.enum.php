@@ -1,5 +1,7 @@
 <?php
-class TypeLicence extends SplEnum{
+require_once("../Model/Enum/BasicEnum.enum.php");
+
+abstract class Passeport extends BasicEnum{
   const Blanc = 1;
   const Jaune = 2;
   const Orange = 3;
