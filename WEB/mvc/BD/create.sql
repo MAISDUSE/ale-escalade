@@ -1,4 +1,4 @@
-CREATE TABLE Contacts(
+CREATE TABLE IF NOT EXISTS Contacts(
   ID SERIAL PRIMARY KEY,
   Nom TEXT,
   Prenom TEXT,
@@ -123,11 +123,13 @@ CREATE TABLE Commentaire(
   FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
   FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
 );
+CREATE VIEW IDEventPratique AS
+(select ID FROM Event) UNION (SELECT ID FROM Cours);
 
 CREATE TABLE PratiqueEvent(
   ID INT,
   Type TypePratique REFERENCES Pratique(Type),
   PRIMARY KEY (ID,Type),
-  FOREIGN KEY (ID) REFERENCES (Event(ID) OR Cours(ID))
+  FOREIGN KEY (ID) REFERENCES IDEventPratique(ID)
 --Creer une vue ou l'on récup tout les IDs
 );
