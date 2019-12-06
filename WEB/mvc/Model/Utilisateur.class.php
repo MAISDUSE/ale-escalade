@@ -3,7 +3,6 @@ require_once("../Model/Enum/TypeLicence.enum.php");
 require_once("../Model/Enum/Genre.enum.php");
 require_once("../Model/Enum/Role.enum.php");
 require_once("../Model/Enum/Passeport.enum.php");
-require_once("../Model/Enum/Contact.enum.php");
 
 
 class Utilisateur{                  //Dans la base de données
@@ -24,13 +23,15 @@ class Utilisateur{                  //Dans la base de données
   private  $contact;         //Contact
 
 
-  function __construct(int $numero, string $licence, TypeLicence $typeLicence, string $nom, string $prenom, Genre $genre, string $dateNaissance,
-    string $adresse, string $numTel, string $numFix, string $adresseMail, Role $role, string $codeUtilisateur, Passeport $passeport, Contact $contact){
+  function __construct(int $numero, string $licence, int $typeLicence,
+    string $nom, string $prenom, int $genre, string $dateNaissance,
+    string $adresse, string $numTel, string $numFix, string $adresseMail,
+    int $role, string $codeUtilisateur, int $passeport, Contact $contact){
 
       if(isset($numero)){
         $this->numero=$numero;
-      }
-
+      }*/
+      $this->numero=$numero;
       $this->licence=$licence;
       $this->typeLicence=$typeLicence;
       $this->nom=$nom;
@@ -42,7 +43,6 @@ class Utilisateur{                  //Dans la base de données
       $this->numFix=$numFix;
       $this->adresseMail=$adresseMail;
       $this->role=$role;
-      $this->codeUtilisateur=$codeutilisateur;
       $this->passeport=$passeport;
 
       //On vérifie si toutes les données nécéssaires sont rentrées.
@@ -56,7 +56,6 @@ class Utilisateur{                  //Dans la base de données
       assert(isset($this->adresse));
       assert(isset($this->numTel)||isset($this->adresseMail));
       assert(isset($this->role));
-      assert(isset($this->codeUtilisateur));
       assert(isset($this->passeport));
       assert(isset($this->contact));
   }

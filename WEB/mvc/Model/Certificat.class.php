@@ -10,7 +10,7 @@ class Certificat{
   private  $alpi;
 
 
-  function __construct(int $id, int $numAdh, TypeCertificat $type, string $nomMedecin, string $dateSaisie, bool $alpi=false){
+  function __construct(int $id, int $numAdh, int $type, string $nomMedecin, string $dateSaisie, bool $alpi=false){
     if(isset($id)){
       $this->id=$id;
     }
