@@ -26,11 +26,11 @@ class Utilisateur{                  //Dans la base de données
 
   function __construct(int $numero, string $licence, TypeLicence $typeLicence, string $nom, string $prenom, Genre $genre, string $dateNaissance,
     string $adresse, string $numTel, string $numFix, string $adresseMail, Role $role, string $codeUtilisateur, Passeport $passeport, Contact $contact){
-
+/*
       if(isset($numero)){
         $this->numero=$numero;
-      }
-
+      }*/
+      $this->numero=$numero;
       $this->licence=$licence;
       $this->typeLicence=$typeLicence;
       $this->nom=$nom;
