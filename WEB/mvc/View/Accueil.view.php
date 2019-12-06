@@ -38,9 +38,6 @@
       <script>
         rotateAnimation("1",20);
       </script>
-
-
-
       <nav>
         <ul>
           <li><a href="../View/Accueil.view.php">Accueil</a></li>

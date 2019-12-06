@@ -1,8 +1,20 @@
 <?php
 
 require_once("../Model/Utilisateur.class.php");
+  class Sortie{           //Bese De Données
+    private $nom;         //Nom
+    private $dateDebut;   //DateDebut
+    private $dateFin;     //DateFin
+    private Utilisateur $utilisateur;
+    private $adresse;     //select adresse FROM Event E, Lieu L where E.NomLieu = L.Nom
+    private $image;       //Pas (encore) intégrer a la BD
+    private $pratique;    //Select TypePrat FROM Sujet S, PratiqueEvent P WHERE S.ID = P.IDEvent;
+    private $valide;      //Officiel
+
+    function __construct($nom, $dateDebut, $dateFin, $utilisateur, $adresse, $image, $pratique=NULL, $valide =NULL){
   class Sortie{
     private $nom;
+    private $contenue;
     private $date;
     private $utilisateur;
     private $adresse;
@@ -12,7 +24,8 @@ require_once("../Model/Utilisateur.class.php");
 
     function __construct($nom, $date, $utilisateur, $adresse, $image, $pratique=NULL, $valide =NULL){
       $this->nom = $nom;
-      $this->date = $date;
+      $this->dateDebut = $dateDebut;
+      $this->dateFin = $dateFin;
       $this->utilisateur = $utilisateur;
       $this->adresse = $adresse;
       $this->image = $image;
@@ -24,8 +37,14 @@ require_once("../Model/Utilisateur.class.php");
     return $this->nom;
   }
 
-  function getDate(){
-    return $this->date;
+  function getDateDebut(){
+    return $this->$dateDebut;
+  }
+  function getDateFin(){
+    return $this->$dateFin;
+  }
+  function getDuree(){
+    return $this->dateFin - $this->dateDebut;
   }
 
   function getUtilisateur(){

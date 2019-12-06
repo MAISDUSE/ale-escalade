@@ -1,4 +1,4 @@
-CREATE TABLE Contacts(
+CREATE TABLE IF NOT EXISTS Contacts(
   ID SERIAL PRIMARY KEY,
   Nom TEXT,
   Prenom TEXT,
@@ -62,7 +62,12 @@ CREATE TABLE Event(
   Nom TEXT,
   DateDebut TIMESTAMP,
   DateFin TIMESTAMP CHECK (DateFin > DateDebut),
-  Officiel BOOLEAN
+  Description TEXT,
+  Officiel BOOLEAN,
+  NumCrea INT,
+  NomLieu TEXT,
+  FOREIGN KEY (NumCrea) REFERENCES Utilisateur(ID),
+  FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
 );
 
 CREATE TABLE Sujet(
@@ -71,7 +76,9 @@ CREATE TABLE Sujet(
   DatePub DATE,
   Contenue TEXT,
   IDAuteur INT,
-  FOREIGN KEY (IDAuteur) REFERENCES Utilisateur(ID)
+  IDEvent INT default null,
+  FOREIGN KEY (IDAuteur) REFERENCES Utilisateur(ID),
+  FOREIGN KEY (IDEvent) REFERENCES Event(ID)
 );
 
 CREATE TYPE TypeAssure AS ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++');
@@ -93,4 +100,42 @@ CREATE TABLE Certificat(
   DateSaisie Date,
   Alpi BOOLEAN,
   FOREIGN KEY (NumLic) REFERENCES Utilisateur(ID)
+);
+
+CREATE TYPE TypePratique AS ENUM ('Difficulte', 'Bloc', 'Vitesse');
+CREATE TABLE Pratique (
+  Type TypePratique PRIMARY KEY
+);
+
+CREATE TYPE TypeJour AS ENUM('L','M','Me','J','V','S','D');
+CREATE TABLE Cours(
+  ID SERIAL PRIMARY KEY,
+  Nom TEXT,
+  HeureDebut TIME,
+  HeureFin TIME CHECK (HeureFin > HeureDebut),
+  Jour TypeJour,
+  NbPlace INT,
+  NomLieu TEXT,
+  NumEntraineur INT,
+  FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom),
+  FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
+);
+
+CREATE TABLE Commentaire(
+  NumAuteur INT,
+  IDSujet INT,
+  Date DATE,
+  Contenue TEXT,
+  PRIMARY KEY (NumAuteur, IDSujet, Date),
+  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
+  FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
+);
+
+CREATE TABLE PratiqueEvent(
+  ID SERIAL,
+  IDEvent INT default null,
+  IDCours INT default null,
+  Type TypePratique REFERENCES Pratique(Type),
+  PRIMARY KEY (ID,Type),
+  CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
 );
