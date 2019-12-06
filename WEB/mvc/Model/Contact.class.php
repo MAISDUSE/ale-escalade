@@ -1,11 +1,11 @@
 <?php
 class Contact {                 //Dans la BD
-  private int $id;              //ID
-  private string $nom;          //Nom
-  private string $prenom;       //Prenom
-  private string $adresse;      //Adresse
-  private string $numTel;       //NumTel
-  private string $adresseMail;  //Mail
+  private  $id;              //ID
+  private  $nom;          //Nom
+  private  $prenom;       //Prenom
+  private  $adresse;      //Adresse
+  private  $numTel;       //NumTel
+  private  $adresseMail;  //Mail
 
   function __construct(int $id, string $nom, string $prenom, string $adresse, string $numTel, string $adresseMail){
 
@@ -21,7 +21,7 @@ class Contact {                 //Dans la BD
       assert(isset($this->nom));
       assert(isset($this->prenom));
       assert(isset($this->adresse));
-      assert(isset($this->numTel)||isset($this->adresseMail);
+      assert(isset($this->numTel));
 
   }
 

@@ -11,17 +11,6 @@ require_once("../Model/Utilisateur.class.php");
     private $pratique;    //Select TypePrat FROM Sujet S, PratiqueEvent P WHERE S.ID = P.IDEvent;
     private $valide;      //Officiel
 
-    function __construct($nom, $dateDebut, $dateFin, $utilisateur, $adresse, $image, $pratique=NULL, $valide =NULL){
-  class Sortie{
-    private $nom;
-    private $contenue;
-    private $date;
-    private $utilisateur;
-    private $adresse;
-    private $image;
-    private $pratique;
-    private $valide;
-
     function __construct($nom, $date, $utilisateur, $adresse, $image, $pratique=NULL, $valide =NULL){
       $this->nom = $nom;
       $this->dateDebut = $dateDebut;

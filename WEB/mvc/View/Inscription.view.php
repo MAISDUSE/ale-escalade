@@ -8,26 +8,26 @@
   </head>
   <body>
     <header>
-      <div class="LogoTitre">
-        <img src="../Ressources/Ale_black.png" alt="TEST" id="1">
-        <h1>ALE-ESCALADE</h1>
+      <div class="menu-toggle" id="hamburger">
+          <i class="fas fa-bars"></i>
       </div>
-
-      <script>
-        rotateAnimation("1",20);
-      </script>
-      <nav>
-        <ul>
-          <li><a href="../View/Accueil.view.php">Accueil</a></li>
-          <li><a href="#">Planning</a></li>
-          <li><a href="../View/Inscription.view.php">Inscription</a></li>
-          <li><a href="#">Connexion</a></li>
-          <li><a href="#">Forum</a></li>
-          <li><a href="../View/Contact.view.php">Contact</a></li>
-        </ul>
-      </nav>
+      <div class="overlay"></div>
+      <div class="container">
+          <nav>
+              <h1 class="brand"><a href="../Controler/Accueil.ctrl.php"><img src="../Ressources/Ale_black.png" alt="Logo Ale"></h1>
+              <ul>
+                  <li><a href="../Controler/Accueil.ctrl.php">Accueil</a></li>
+                  <li><a href="../Controler/Accueil.ctrl.php">Planning</a></li>
+                  <li><a href="../Controler/Inscription.ctrl.php">Inscription</a></li>
+                  <li><a href="../Controler/Connexion.ctrl.php">Connexion</a></li>
+                  <li><a href="../Controler/Forum.ctrl.php">Forum</a></li>
+                  <li><a href="../Controler/Contact.ctrl.php">Contact</a></li>
+              </ul>
+          </nav>
+      </div>
     </header>
     <section>
+      <h2>Inscription </h2>
       <div class="wrapper">
         <div class="contact-form">
             <form class="" action="index.html" method="post">
@@ -37,7 +37,6 @@
               <input type="text" name="prenom" placeholder="Votre Prenom" class="input"  required>
 
               <input type="password" name="password" placeholder="Votre Mot de passe" class="input" required>
-
               <p>Date de naissance</p>
               <input type="date" name="age" placeholder="jj/mm/aa" class="input" required>
 

@@ -3,53 +3,40 @@
   <head>
     <meta charset="utf-8">
     <title>Site web de l'Ale-Escalade</title>
-    <script>
-    /*var looper;
-    var degrees = 0;
-    var pos = 0;
-    function rotateAnimation(el,speed){
-    	var elem = document.getElementById(el);
-    	elem.style.MozTransform = "rotate("+degrees+"deg)";
-    	looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
-    	degrees++;
-    	if(degrees >= 180){
-    		degrees = 180;
-          if (pos == 300) {
-            elem.style.top = pos + 2*window.scrollY + 'px';
-          } else {
-            pos++;
-            elem.style.top = pos + 'px';
-          }
-    }
-  }
 
-    	//document.getElementById("status").innerHTML = "rotate("+degrees+"deg)";
-      */
-    </script>
     <link rel="stylesheet" href="../View/Design/Accueil.css">
   </head>
   <body>
     <header>
-      <div class="LogoTitre">
-        <img src="../Ressources/Ale_black.png" alt="TEST" id="1">
-        <h1>ALE-ESCALADE</h1>
+      <div class="menu-toggle" id="hamburger">
+          <i class="fas fa-bars"></i>
       </div>
+      <div class="overlay"></div>
+      <div class="container">
+          <nav>
+              <h1 class="brand"><a href="../Controler/Accueil.ctrl.php"><img src="../Ressources/Ale_black.png" alt="Logo Ale"></h1>
+              <ul>
+                  <li><a href="../Controler/Accueil.ctrl.php">Accueil</a></li>
+                  <li><a href="../Controler/Accueil.ctrl.php">Planning</a></li>
+                  <li><a href="../Controler/Inscription.ctrl.php">Inscription</a></li>
+                  <li><a href="../Controler/Connexion.ctrl.php">Connexion</a></li>
+                  <li><a href="../Controler/Forum.ctrl.php">Forum</a></li>
+                  <li><a href="../Controler/Contact.ctrl.php">Contact</a></li>
+              </ul>
+          </nav>
+      </div>
+      <!-- Bouton de scrolling animé via CSS (NE PAS TOUCHER) -->
+      <div class="box">
+        <a href="#SectionArticle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+      <!--FIN DE LA SECTION DU BOUTON DE SCROLLING-->
 
-      <script>
-        rotateAnimation("1",20);
-      </script>
-      <nav>
-        <ul>
-          <li><a href="../View/Accueil.view.php">Accueil</a></li>
-          <li><a href="#">Planning</a></li>
-          <li><a href="../View/Inscription.view.php">Inscription</a></li>
-          <li><a href="#">Connexion</a></li>
-          <li><a href="#">Forum</a></li>
-          <li><a href="../View/Contact.view.php">Contact</a></li>
-        </ul>
-      </nav>
     </header>
-    <section>
+    <section id="SectionArticle">
       <div class="Article">
         <div class="Titre">
           <h2>Titre article</h2>

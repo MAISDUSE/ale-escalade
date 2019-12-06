@@ -1,3 +1,3 @@
 <?php
-  include("../Controler/Acceuil.ctrl.php");
+  include("../Controler/Accueil.ctrl.php");
  ?>
