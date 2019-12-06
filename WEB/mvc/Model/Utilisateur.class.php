@@ -23,17 +23,11 @@ class Utilisateur{                  //Dans la base de données
   private  $contact;         //Contact
 
 
-<<<<<<< HEAD
   function __construct(int $numero, string $licence, int $typeLicence,
     string $nom, string $prenom, int $genre, string $dateNaissance,
     string $adresse, string $numTel, string $numFix, string $adresseMail,
     int $role, string $codeUtilisateur, int $passeport, Contact $contact){
 
-=======
-  function __construct(int $numero, string $licence, TypeLicence $typeLicence, string $nom, string $prenom, Genre $genre, string $dateNaissance,
-    string $adresse, string $numTel, string $numFix, string $adresseMail, Role $role, string $codeUtilisateur, Passeport $passeport, Contact $contact){
-/*
->>>>>>> 484b3badec56a9d475094825b90995d4b90759c3
       if(isset($numero)){
         $this->numero=$numero;
       }*/
