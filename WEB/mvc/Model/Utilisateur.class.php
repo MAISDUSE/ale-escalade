@@ -1,5 +1,10 @@
 <?php
 include ("../Model/Enum/TypeLicence.enum.php");
+include ("../Model/Enum/Genre.enum.php");
+include ("../Model/Enum/Role.enum.php");
+include ("../Model/Enum/Passeport.enum.php");
+include ("../Model/Enum/Contact.enum.php");
+
 
 class Utilisateur{
   private int $numero;
