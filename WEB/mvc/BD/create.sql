@@ -1,4 +1,4 @@
-CREATE TABLE Contacts(
+CREATE TABLE IF NOT EXISTS Contacts(
   ID SERIAL PRIMARY KEY,
   Nom TEXT,
   Prenom TEXT,
@@ -93,4 +93,43 @@ CREATE TABLE Certificat(
   DateSaisie Date,
   Alpi BOOLEAN,
   FOREIGN KEY (NumLic) REFERENCES Utilisateur(ID)
+);
+
+CREATE TYPE TypePratique AS ENUM ('Difficulte', 'Bloc', 'Vitesse');
+CREATE TABLE Pratique (
+  Type TypePratique PRIMARY KEY
+);
+
+CREATE TYPE TypeJour AS ENUM('L','M','Me','J','V','S','D');
+CREATE TABLE Cours(
+  ID SERIAL PRIMARY KEY,
+  Nom TEXT,
+  HeureDebut TIME,
+  HeureFin TIME CHECK (HeureFin > HeureDebut),
+  Jour TypeJour,
+  NbPlace INT,
+  NomLieu TEXT,
+  NumEntraineur INT,
+  FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom),
+  FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
+);
+
+CREATE TABLE Commentaire(
+  NumAuteur INT,
+  IDSujet INT,
+  Date DATE,
+  Contenue TEXT,
+  PRIMARY KEY (NumAuteur, IDSujet, Date),
+  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
+  FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
+);
+CREATE VIEW IDEventPratique AS
+(select ID FROM Event) UNION (SELECT ID FROM Cours);
+
+CREATE TABLE PratiqueEvent(
+  ID INT,
+  Type TypePratique REFERENCES Pratique(Type),
+  PRIMARY KEY (ID,Type),
+  FOREIGN KEY (ID) REFERENCES IDEventPratique(ID)
+--Creer une vue ou l'on récup tout les IDs
 );
