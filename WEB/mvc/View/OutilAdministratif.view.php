@@ -17,8 +17,12 @@
 
       <div class="">
         <h2>Nouvel article</h2>
-        <form action="OutilAdministratif.ctrl.php" method="post">
-          
+        <form action="../Controler/OutilAdministratif.ctrl.php" method="post" enctype="multipart/form-data">
+
+          <label for="fichier">Fichier : </label>
+          <input type="file" name="fichier">
+
+          <input type="submit" name="Confirmer">
         </form>
       </div>
 

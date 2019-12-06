@@ -62,7 +62,12 @@ CREATE TABLE Event(
   Nom TEXT,
   DateDebut TIMESTAMP,
   DateFin TIMESTAMP CHECK (DateFin > DateDebut),
-  Officiel BOOLEAN
+  Description TEXT,
+  Officiel BOOLEAN,
+  NumCrea INT,
+  NomLieu TEXT,
+  FOREIGN KEY (NumCrea) REFERENCES Utilisateur(ID),
+  FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
 );
 
 CREATE TABLE Sujet(
@@ -71,7 +76,9 @@ CREATE TABLE Sujet(
   DatePub DATE,
   Contenue TEXT,
   IDAuteur INT,
-  FOREIGN KEY (IDAuteur) REFERENCES Utilisateur(ID)
+  IDEvent INT default null,
+  FOREIGN KEY (IDAuteur) REFERENCES Utilisateur(ID),
+  FOREIGN KEY (IDEvent) REFERENCES Event(ID)
 );
 
 CREATE TYPE TypeAssure AS ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++');
@@ -123,13 +130,12 @@ CREATE TABLE Commentaire(
   FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
   FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
 );
-CREATE VIEW IDEventPratique AS
-(select ID FROM Event) UNION (SELECT ID FROM Cours);
 
 CREATE TABLE PratiqueEvent(
-  ID INT,
+  ID SERIAL,
+  IDEvent INT default null,
+  IDCours INT default null,
   Type TypePratique REFERENCES Pratique(Type),
   PRIMARY KEY (ID,Type),
-  FOREIGN KEY (ID) REFERENCES IDEventPratique(ID)
---Creer une vue ou l'on récup tout les IDs
+  CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
 );

@@ -1,27 +1,27 @@
 <?php
-include ("../Model/Enum/TypeLicence.enum.php");
-include ("../Model/Enum/Genre.enum.php");
-include ("../Model/Enum/Role.enum.php");
-include ("../Model/Enum/Passeport.enum.php");
-include ("../Model/Enum/Contact.enum.php");
+require_once("../Model/Enum/TypeLicence.enum.php");
+require_once("../Model/Enum/Genre.enum.php");
+require_once("../Model/Enum/Role.enum.php");
+require_once("../Model/Enum/Passeport.enum.php");
+require_once("../Model/Enum/Contact.enum.php");
 
 
-class Utilisateur{
-  private int $numero;
-  private string $licence;
-  private TypeLicence $typeLicence;
-  private string $nom;
-  private string $prenom;
-  private Genre $genre;
-  private string $dateNaissance;
-  private string $adresse;
-  private string $numTel;
-  private string $numFix;
-  private string $adresseMail;
-  private Role $role;
-  private string $codeUtilisateur;
-  private Passeport $passeport;
-  private Contact $contact;
+class Utilisateur{                  //Dans la base de données
+  private  $numero;              //ID
+  private  $licence;          //NumLicence
+  private  $typeLicence; //TypeLicence
+  private  $nom;              //Nom
+  private  $prenom;           //Prenom
+  private  $genre;             //Sex
+  private  $dateNaissance;    //Naissance
+  private  $adresse;          //Adresse
+  private  $numTel;           //NumTel
+  private  $numFix;           //NumFix
+  private  $adresseMail;      //Mail
+  private  $role;               //Role
+  private  $codeUtilisateur;  //CodeUtilisateur
+  private  $passeport;     //Passeport
+  private  $contact;         //Contact
 
 
   function __construct(int $numero, string $licence, TypeLicence $typeLicence, string $nom, string $prenom, Genre $genre, string $dateNaissance,

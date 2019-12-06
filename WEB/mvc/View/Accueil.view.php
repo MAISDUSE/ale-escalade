@@ -30,25 +30,25 @@
   </head>
   <body>
     <header>
-      <img src="../Ressources/Ale_black.png" alt="TEST" id="1">
+      <div class="LogoTitre">
+        <img src="../Ressources/Ale_black.png" alt="TEST" id="1">
+        <h1>ALE-ESCALADE</h1>
+      </div>
+
       <script>
         rotateAnimation("1",20);
       </script>
-      <h1>ALE-ESCALADE</h1>
+      <nav>
+        <ul>
+          <li><a href="../View/Accueil.view.php">Accueil</a></li>
+          <li><a href="#">Planning</a></li>
+          <li><a href="../View/Inscription.view.php">Inscription</a></li>
+          <li><a href="#">Connexion</a></li>
+          <li><a href="#">Forum</a></li>
+          <li><a href="../View/Contact.view.php">Contact</a></li>
+        </ul>
+      </nav>
     </header>
-
-    <nav>
-      <ul>
-        <li><a href="../../View/Design/Accueil.view.php">Accueil</a></li>
-        <li><a href="#">Planning</a></li>
-        <li><a href="../../View/Design/Inscription.view.php">Inscription</a></li>
-        <li><a href="../../View/Design/Connexion.view.php">Connexion</a></li>
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Contact</a></li>
-
-      </ul>
-    </nav>
-
     <section>
       <div class="Article">
         <div class="Titre">

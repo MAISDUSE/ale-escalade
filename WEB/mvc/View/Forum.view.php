@@ -19,9 +19,9 @@
   ?>
 
 
-  <a href="../Controler/SujetForum.ctrl.php?sujet=<?=$titre?>">
+  <a href="../Controler/SujetForum.ctrl.php?sujet=<?=$value[0]->getId()?>">
     <aside>
-      <h4><?=$titre?></h4>
+      <h4><?=$value[0]->getTitre()?></h4>
       <p class="desc"><?=$value[1]?></p>
     </aside>
 
