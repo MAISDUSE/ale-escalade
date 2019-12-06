@@ -9,15 +9,37 @@
 
 
 
-class ClassName{
-  private $path;
+class DAO{
+  private $db;
 
+  private $database = "";
   function __construct(){
+    try {
+      $this->db = new PDO($this->database);
+    } catch (PDOException $e) {
+      die("Erreur de connexion : ".$e->getMessage());
+    }
 
   }
 }
 
+// Utilisateur
+function getAllUsers(){
+  $req = "SELECT * FROM Utilisateur";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+  return array($lancement);
+}
 
+//Commentaires
+
+function getCommentaires($id){
+  //$id est l'id d'un sujet
+  $req = "SELECT * FROM Commentaire WHERE IDSujet = $id";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Commentaire');
+  return array($lancement);
+}
 
 
 
