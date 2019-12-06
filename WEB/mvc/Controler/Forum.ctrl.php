@@ -19,7 +19,7 @@ $miseEnAmont2 = substr($sujet2->getDescription(),0,20) . "...";
 $all = array (array($sujet1,$miseEnAmont1), array($sujet2,$miseEnAmont2));
 //mettremethode extrait from BDD
 
-var_dump($all);
+//var_dump($all);
 
 
 
