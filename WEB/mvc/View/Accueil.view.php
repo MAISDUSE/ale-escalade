@@ -42,7 +42,7 @@
         <li><a href="../View/Accueil.view.php">Accueil</a></li>
         <li><a href="#">Planning</a></li>
         <li><a href="../View/Inscription.view.php">Inscription</a></li>
-        <li><a href="#">Connexion</a></li>
+        <li><a href="../View/Connexion.view.php">Connexion</a></li>
         <li><a href="#">Forum</a></li>
         <li><a href="#">Contact</a></li>
 
