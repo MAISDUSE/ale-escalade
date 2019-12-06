@@ -30,52 +30,49 @@
   </head>
   <body>
     <header>
-      <img src="../Ressources/Ale_black.png" alt="TEST" id="1">
+      <div class="LogoTitre">
+        <img src="../Ressources/Ale_black.png" alt="TEST" id="1">
+        <h1>ALE-ESCALADE</h1>
+      </div>
+
       <script>
         rotateAnimation("1",20);
       </script>
-      <h1>ALE-ESCALADE</h1>
-    </header>
+      <nav>
+        <ul>
+          <li><a href="../View/Accueil.view.php">Accueil</a></li>
+          <li><a href="#">Planning</a></li>
+          <li><a href="../View/Inscription.view.php">Inscription</a></li>
+          <li><a href="#">Connexion</a></li>
+          <li><a href="#">Forum</a></li>
+          <li><a href="../View/Contact.view.php">Contact</a></li>
+        </ul>
+      </nav>
+    </header>  <section>
+      <div class="wrapper">
+        <div class="input-fields">
+          <div class="contact-form">
 
-    <nav>
-      <ul>
-        <li><a href="../View/Accueil.view.php">Accueil</a></li>
-        <li><a href="#">Planning</a></li>
-        <li><a href="../View/Inscription.view.php">Inscription</a></li>
-        <li><a href="#">Connexion</a></li>
-        <li><a href="#">Forum</a></li>
-        <li><a href="../View/Contact.view.php">Contact</a></li>
-
-      </ul>
-    </nav>
-
-
-    <section>
       <form class="" action="index.html" method="post">
-        <div class="champs">
-          <div class="nom">
-            <label for="nom">Nom</label>
+
+
             <input type="text" name="nom" placeholder="Votre Nom" required>
-          </div>
+
          <br>
-            <label for="nom">Prenom</label>
             <input type="text" name="prenom" placeholder="Votre Prenom" required>
          <br>
-            <label for="nom">Mot de passe</label>
             <input type="password" name="password" placeholder="Votre Mot de passe" required>
          <br>
-           <label for="nom">Date de naissance</label>
+         <p>Date de naissance</p>
            <input type="date" name="age" placeholder="jj/mm/aa" required>
          <br>
-            <label for="nom">Adresse</label>
             <input type="text" name="adresse" placeholder="Adresse" required>
          <br>
-          <label for="nom">Code Postal</label>
           <input type="text" name="codepostal" placeholder="Ex: 75000" required>
          <br>
-           <label for="nom">Email</label>
            <input type="mail" name="mail" placeholder="Email" required>
          <br>
+         <div class="message">
            <label for="base">Assurance</label>
            <div>
              <input type="radio" id="base" name="drone" value="base"
@@ -95,7 +92,11 @@
 
          <br>
          <input type="submit" name="valider" value="Valider">
-        </div>
+ 
+         </div>
+                   </div>
+      </div>
+    </div>
 
 
 
