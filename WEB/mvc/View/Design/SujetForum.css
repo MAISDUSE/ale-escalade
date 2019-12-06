@@ -3,52 +3,9 @@ h1{
   text-align: center;
   margin-bottom: 5%;
 }
-.listeSujet{
-  border: solid black 1px;
-  width: 60%;
-  margin: auto;
-
-}
-
-a{
-  border-top: solid black 1px;
-  border-bottom: solid black 1px;
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-
-}
-
-a:visited{
-  text-decoration: inherit;
-  color: inherit;
-}
-
-a:link{
-  text-decoration: inherit;
-  color: inherit;
-}
-
-a:hover{
-  background-color: lightgray;
-  color: blue;
-}
-
-
-aside{
-  display: flex;
-  flex-direction: column;
-
-}
 h4{
   margin: auto;
-
 }
-
-.desc{
-  margin: 5px 0px 5px 20px;
-}
-.date{
-
-
+p{
+  margin: auto;
 }
