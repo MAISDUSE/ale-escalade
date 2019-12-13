@@ -33,17 +33,25 @@ class Utilisateur{            //Dans la base de données
       }*/
       $this->id=$id;
       $this->licence=$licence;
-      $this->typeLicence=$typeLicence;
+      if($typeLicence=="J" || $typeLicence=="A" || $typeLicence=="F"){
+        $this->typeLicence=$typeLicence;
+      }
       $this->nom=$nom;
       $this->prenom=$prenom;
-      $this->genre=$genre;
+      if($genre=="H" || $genre=="F"){
+          $this->genre=$genre;
+      }
       $this->dateNaissance=$dateNaissance;
       $this->adresse=$adresse;
       $this->numTel=$numTel;
       $this->numFix=$numFix;
       $this->adresseMail=$adresseMail;
-      $this->role=$role;
-      $this->passeport=$passeport;
+      if($role=="Bureau" || $role=="Entraineur" || $role=="Administrateur" || $role=="Adherent" || $role=="Mineur" || $role=="Benevole"){
+        $this->role=$role;
+      }
+      if($passeport=="Blanc" || $passeport=="Jaune" || $passeport=="Orange" || $passeport=="Vert" || $passeport=="Bleu" || $passeport=="RougePerf" || $passeport=="RougeExt" || $passeport=="Noir"){
+        $this->passeport=$passeport;
+      }
       $this->contact = $contact;
 
       //On vérifie si toutes les données nécéssaires sont rentrées.
