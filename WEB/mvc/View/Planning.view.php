@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Site web de l'Ale-Escalade</title>
-
-    <link rel="stylesheet" href="../View/Design/Accueil.css">
+    <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
+    <link rel="stylesheet" href="../View/Design/Planning.css">
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
