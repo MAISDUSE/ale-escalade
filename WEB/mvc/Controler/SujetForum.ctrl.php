@@ -17,7 +17,7 @@
 
 
   //methode pour recup le Sujet a partir de son id passé en get
-  $sujet1 = new Sujet(1,"Test","Un petit s'est fait gommer il y aurait pas de message bande de fils ","Darkos", date("d/m/Y"));
+  $sujet1 = new Sujet(1,"Test",date("d/m/Y"),"Un petit s'est fait gommer il y aurait pas de message bande de fils ",15);
 ///////////////////////////////////////////////////////
 
   //recup tout les commentairers depuis id trié par date, plus recent d'abord
@@ -40,8 +40,8 @@
   <div class="sujet">
     <h4><?=$sujet1->getTitre()?></h4>
     <p class="date">Posté le : <?=$sujet1->getdatePub()?></p>
-    <p class="description">Créateur : <?=$sujet1->getNomUtilisateur()?></p>
-    <p class="description">Description : <?=$sujet1->getDescription()?></p>
+    <p class="description">Créateur : <?=$sujet1->getIdAuteur()?></p>
+    <p class="description">Contenu : <?=$sujet1->getContenu()?></p>
 
   </div>
 <br>
@@ -54,9 +54,9 @@
   <div class="commentaires">
     <?php foreach ($liste as $value) {
       ?>
-      <p><?=$value->getDate()?></p>
-      <p><?=$value->getNumAuteur()?></p>
-      <p><?=$value->getContenu()?></p>
+      <p>Date : <?=$value->getDate()?></p>
+      <p>Auuteur : <?=$value->getNumAuteur()?></p>
+      <p>Contenu : <?=$value->getContenu()?></p>
       <br>
 
       <?php  } ?>
