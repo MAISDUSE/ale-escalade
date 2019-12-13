@@ -6,10 +6,7 @@
     <title>Forum ALE Escalade</title>
   </head>
   <body>
-    <header>
-      <h1>Bienvenue sur le forum</h1>
-    </header>
-
+<?php include "Design/Header.view.php"; ?>
     <h2>Liste des sujets de discussions</h2>
     <div class="listeSujet">
 
@@ -25,7 +22,7 @@
       <p class="desc"><?=$value[1]?></p>
     </aside>
 
-    <p class="date">Posté le <?=$value[0]->getDate()?></p>
+    <p class="date">Posté le <?=$value[0]->getdatePub()?></p>
 
   </a>
 
@@ -35,5 +32,6 @@
 
 
     </div>
+    <?php include "Design/Footer.view.php"; ?>
   </body>
 </html>

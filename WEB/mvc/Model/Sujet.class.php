@@ -5,23 +5,20 @@
  */
 class Sujet{
 
-  private $id;
-  private $titre;         //Titre
-  private $description;   //Contenue
-  private $nomUtilisateur;//Select nom from utilisateur, sujet where sujet.IDAuteur = utilisateur.ID
-  private $date;          //DatePub
-  private $evenement;     //IDEvent
+  private $id;        //Id
+  private $titre;     //Titre
+  private $datePub;   //datePub
+  private $contenu;   //Contenu
+  private $idAuteur;  //IDAuteur
+  private $idEvent;   //IDEvent
 
-
-
-
-  function __construct($id,$titre, $description, $nomUtilisateur, $date, $evenement=NULL){
+  function __construct(int $id, string $titre, string $datePub, string $contenu, int $idAuteur, int $idEvent){
     $this->id = $id;
     $this->titre = $titre;
-    $this->description = $description;
-    $this->nomUtilisateur = $nomUtilisateur;
-    $this->date = $date;
-    $this->evenement = $evenement;
+    $this->contenu = $contenu;
+    $this->datePub = $datePub;
+    $this->idAuteur = $idAuteur;
+    $this->idEvent = $idEvent;
   }
 
   function getTitre(){
@@ -32,24 +29,25 @@ class Sujet{
     return $this->description;
   }
 
-  function getNomUtilisateur(){
-    return $this->nomUtilisateur;
+  function getIdAuteur(){
+    return $this->idAuteur;
   }
 
-  function getDate(){
-    return $this->date;
+  function getdatePub(){
+    return $this->datePub;
   }
 
-  function getEvenement(){
-    return $this->evenement;
+  function getIdEvent(){
+    return $this->idEvent;
   }
   function getId(){
     return $this->id;
   }
 
-  function setEvenement($evenement){
-    $this->evenement = $evenement;
+  function setIdEvent($idEvent){
+    $this->idEvent = $idEvent;
   }
+
 }
 
 

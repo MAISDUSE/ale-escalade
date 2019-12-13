@@ -74,7 +74,7 @@ CREATE TABLE Sujet(
   ID SERIAL PRIMARY KEY,
   Titre VARCHAR(50),
   DatePub DATE,
-  Contenue TEXT,
+  Contenu TEXT,
   IDAuteur INT,
   IDEvent INT default null,
   FOREIGN KEY (IDAuteur) REFERENCES Utilisateur(ID),
