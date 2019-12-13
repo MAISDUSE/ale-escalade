@@ -3,34 +3,34 @@
 
 
   class Message{
-    private $Expediteur;
-    private $Destinataire;
+    private $expediteur;
+    private $destinataire;
     private $dateEnvoi;
-    private $contenue;
+    private $contenu;
 
-    function __construct(Utilisateur $Expediteur, Utilisateur $Destinataire, string $dateEnvoi, string $contenue){
-      $this->Expediteur = $Expediteur;
-      $this->Destinataire = $Destinataire;
+    function __construct(Utilisateur $expediteur, Utilisateur $destinataire, string $dateEnvoi, string $contenu){
+      $this->expediteur = $expediteur;
+      $this->destinataire = $destinataire;
       $this->dateEnvoi = $dateEnvoi;
-      $this->contenue = $contenue;
+      $this->contenu = $contenu;
 
-      assert(isset($this->Expediteur));
-      assert(isset($this->Destinataire));
+      assert(isset($this->expediteur));
+      assert(isset($this->destinataire));
       assert(isset($this->dateEnvoi));
-      assert(isset($this->contenue));
+      assert(isset($this->contenu));
     }
 
     function getExpediteur(){
-      return $this->Expediteur;
+      return $this->expediteur;
     }
     function getDestinataire(){
-      return $this->Destinataire;
+      return $this->destinataire;
     }
     function getDateEnvoi(){
       return $this->dateEnvoi;
     }
-    function getContenue(){
-      return $this->contenue;
+    function getContenu(){
+      return $this->contenu;
     }
 
     function getActeurs(){
