@@ -1,3 +1,30 @@
+<!-- Bouton de scrolling animé via CSS (NE PAS TOUCHER) -->
+<div class="box">
+  <a href="#menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </a>
+</div>
+<!--FIN DE LA SECTION DU BOUTON DE SCROLLING-->
+
+<script>
+function myMove() {
+  var elem = document.getElementById("myAnimation");
+  var pos = 0;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (pos == 180) {
+      clearInterval(id);
+    } else {
+      pos++;
+      elem.style.top = pos + 'px';
+
+    }
+  }
+}
+</script>
+
 <footer id="footer" class="footer-1">
   <div class="main-footer widgets-dark typo-light">
     <div class="container">

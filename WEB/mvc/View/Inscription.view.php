@@ -5,6 +5,8 @@
     <title>Site web de l'Ale-Escalade</title>
 
     <link rel="stylesheet" href="../View/Design/Inscription.css">
+    <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
+
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
