@@ -6,8 +6,7 @@
     <title>Forum ALE Escalade</title>
   </head>
   <body>
-    <?php include "Design/Header.view.php"; ?>
-
+<?php include "Design/Header.view.php"; ?>
     <h2>Liste des sujets de discussions</h2>
     <div class="listeSujet">
 
