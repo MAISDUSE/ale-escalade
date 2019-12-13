@@ -5,22 +5,22 @@
  */
 class Sujet{
 
-  private $id;
-  private $titre;         //Titre
-  private $description;   //Contenue
-  private $nomUtilisateur;//Select nom from utilisateur, sujet where sujet.IDAuteur = utilisateur.ID
-  private $date;          //DatePub
-  private $evenement;     //IDEvent
+  private $id;              //Id
+  private $titre;           //Titre
+  private $description;     //Contenue
+  private $nomUtilisateur;  //Select nom from utilisateur, sujet where sujet.IDAuteur = utilisateur.ID
+  private $datePub;         //datePub
+  private $evenement;       //IDEvent
 
 
 
 
-  function __construct($id,$titre, $description, $nomUtilisateur, $date, $evenement=NULL){
+  function __construct($id,$titre, $description, $nomUtilisateur, $datePub, $evenement=NULL){
     $this->id = $id;
     $this->titre = $titre;
     $this->description = $description;
     $this->nomUtilisateur = $nomUtilisateur;
-    $this->date = $date;
+    $this->datePub = $datePub;
     $this->evenement = $evenement;
   }
 
@@ -36,8 +36,8 @@ class Sujet{
     return $this->nomUtilisateur;
   }
 
-  function getDate(){
-    return $this->date;
+  function getdatePub(){
+    return $this->datePub;
   }
 
   function getEvenement(){

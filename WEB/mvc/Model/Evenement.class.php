@@ -7,7 +7,7 @@ require_once("../Model/Utilisateur.class.php");
     private $dateDebut; //DateDebut
     private $dateFin;   //DateFin
     private $numCrea;   //NumCrea
-    private $nomLieu;    //NomLieu
+    private $nomLieu;   //NomLieu
     private $officiel;  //Officiel
 
     function __construct(int $id, string $nom, string $dateDebut, string $dateFin, int $numCrea, boolean $officiel){
