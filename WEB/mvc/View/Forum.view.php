@@ -2,7 +2,7 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../View/Design/Accueil.css">
+    <link rel="stylesheet" href="../View/Design/Forum.css">
     <title>Forum ALE Escalade</title>
   </head>
   <body>

@@ -15,14 +15,6 @@
 
       </article>
 
-      <article class="">
-        <h2>Générer un compte utilisateur</h2>
-
-        <form action="../Contoler/OutilAdministratif.ctrl.php" method="post">
-          
-        </form>
-      </article>
-
       <article class="addArticle">
         <h2>Nouvel article</h2>
         <form action="../Controler/OutilAdministratif.ctrl.php" method="post" enctype="multipart/form-data">
