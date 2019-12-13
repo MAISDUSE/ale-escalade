@@ -39,7 +39,7 @@
   ?>
   <div class="sujet">
     <h4><?=$sujet1->getTitre()?></h4>
-    <p class="date">Posté le : <?=$sujet1->getDate()?></p>
+    <p class="date">Posté le : <?=$sujet1->getdatePub()?></p>
     <p class="description">Créateur : <?=$sujet1->getNomUtilisateur()?></p>
     <p class="description">Description : <?=$sujet1->getDescription()?></p>
 

@@ -22,7 +22,7 @@
       <p class="desc"><?=$value[1]?></p>
     </aside>
 
-    <p class="date">Posté le <?=$value[0]->getDate()?></p>
+    <p class="date">Posté le <?=$value[0]->getdatePub()?></p>
 
   </a>
 
