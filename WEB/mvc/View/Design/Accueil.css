@@ -281,6 +281,13 @@ section{
   text-align: left;
 }
 
+/*========================
+	Définition de l'agenda
+========================*/
+
+.agenda {
+	text-align: center;
+}
 
 /*====================
 	Footer
