@@ -5,6 +5,7 @@
     <title>Site web de l'Ale-Escalade</title>
 
     <link rel="stylesheet" href="../View/Design/Accueil.css">
+    <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
@@ -55,38 +56,7 @@
 
     </section>
 
-    <!-- Bouton de scrolling animé via CSS (NE PAS TOUCHER) -->
-    <div class="box">
-      <a href="#menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </a>
-    </div>
-    <!--FIN DE LA SECTION DU BOUTON DE SCROLLING-->
 
-      </div>
-    </section>
-
-
-    <br><br><br><br><br>
-
-    <script>
-    function myMove() {
-      var elem = document.getElementById("myAnimation");
-      var pos = 0;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (pos == 180) {
-          clearInterval(id);
-        } else {
-          pos++;
-          elem.style.top = pos + 'px';
-
-        }
-      }
-    }
-    </script>
     <?php include "Design/Footer.view.php"; ?>
   </body>
 

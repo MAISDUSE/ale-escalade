@@ -4,9 +4,12 @@
     <meta charset="utf-8">
     <title>Site web de l'Ale-Escalade</title>
     <link rel="stylesheet" href="../View/Design/Contact.css">
+    <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
+
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
+
       <div class="wrapper">
         <div class="contact-form">
           <form class="post" action="index.html" method="post">
