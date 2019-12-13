@@ -10,11 +10,7 @@
 html{
 	font-size: 10px;
 	font-family: "Roboto Cn", sans-serif;
-<<<<<<< HEAD
-  background: linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.5)), url("../../Ressources/escaladeCover.jpg") center no-repeat fixed ;
-=======
   background: linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.3)), url("../../Ressources/escaladeCover.jpg") center no-repeat fixed ;
->>>>>>> 61a66dc765b6404266e3a2a620b663422bfbdce9
 	background-size: cover;
 	scroll-behavior: smooth;
 }
@@ -308,8 +304,6 @@ position: absolute;
 
 
 
-<<<<<<< HEAD
-=======
 /* LE RESTE */
 
 section{
@@ -347,7 +341,6 @@ section{
 .agenda {
 	text-align: center;
 }
->>>>>>> 61a66dc765b6404266e3a2a620b663422bfbdce9
 
 /*====================
 	Footer
