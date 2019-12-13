@@ -7,7 +7,9 @@ class Lieu{
   public function __construct(string $nom, string $adresse, string $categorie){
     $this->nom = $nom;
     $this->adresse = $adresse;
-    $this->categorie = $categorie;
+    if($categorie="Interieur" || $categorie="Exterieur"){
+      $this->categorie = $categorie;
+    }
 
     assert(isset($this->nom));
     assert(isset($this->adresse));
