@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Site web de l'Ale-Escalade</title>
 
-    <link rel="stylesheet" href="../View/Design/Inscription.css">
+    <link rel="stylesheet" href="../View/Design/OutilAdministratif.css">
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
@@ -17,6 +17,10 @@
 
       <article class="">
         <h2>Générer un compte utilisateur</h2>
+
+        <form action="../Contoler/OutilAdministratif.ctrl.php" method="post">
+          
+        </form>
       </article>
 
       <article class="addArticle">
@@ -30,6 +34,9 @@
         </form>
       </article>
 
+
+
     </div>
+    <?php include "Design/Footer.view.php"; ?>
   </body>
 </html>

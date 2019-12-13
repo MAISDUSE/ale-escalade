@@ -33,5 +33,6 @@
 
 
     </div>
+    <?php include "Design/Footer.view.php"; ?>
   </body>
 </html>

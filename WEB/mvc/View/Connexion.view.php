@@ -5,6 +5,8 @@
     <title>Site web de l'Ale-Escalade</title>
   </head>
   <body>
-    <?php include "Design/Header.view.php"; ?>  
+    <?php include "Design/Header.view.php"; ?>
+    <?php include "Design/Footer.view.php"; ?>
   </body>
+
 </html>
