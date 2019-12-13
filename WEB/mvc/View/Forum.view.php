@@ -2,13 +2,11 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../View/Design/Forum.css">
+    <link rel="stylesheet" href="../View/Design/Accueil.css">
     <title>Forum ALE Escalade</title>
   </head>
   <body>
-    <header>
-      <h1>Bienvenue sur le forum</h1>
-    </header>
+    <?php include "Design/Header.view.php"; ?>
 
     <h2>Liste des sujets de discussions</h2>
     <div class="listeSujet">
@@ -35,5 +33,6 @@
 
 
     </div>
+    <?php include "Design/Footer.view.php"; ?>
   </body>
 </html>
