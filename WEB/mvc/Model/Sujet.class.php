@@ -12,7 +12,7 @@ class Sujet{
   private $idAuteur;  //IDAuteur
   private $idEvent;   //IDEvent
 
-  function __construct(int $id, string $titre, string $datePub, string $contenu, int $idAuteur, int $idEvent){
+  function __construct(int $id, string $titre, string $datePub, string $contenu, int $idAuteur, int $idEvent=null){
     $this->id = $id;
     $this->titre = $titre;
     $this->contenu = $contenu;
