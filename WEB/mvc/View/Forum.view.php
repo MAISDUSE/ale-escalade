@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../View/Design/Forum.css">
+    <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
+
     <title>Forum ALE Escalade</title>
   </head>
   <body>
