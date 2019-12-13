@@ -7,37 +7,12 @@
     <link rel="stylesheet" href="../View/Design/Accueil.css">
   </head>
   <body>
-<<<<<<< HEAD
-    <header id="menu">
-      <div class="menu-toggle" id="hamburger">
-          <i class="fas fa-bars"></i>
-      </div>
-      <div class="overlay"></div>
-      <div class="container">
-          <nav>
-              <h1 class="brand"><a href="../Controler/Accueil.ctrl.php"><img src="../Ressources/Ale_black.png" alt="Logo Ale"></h1>
-              <ul>
-                  <li><a href="../Controler/Accueil.ctrl.php">Accueil</a></li>
-                  <li><a href="../Controler/Accueil.ctrl.php">Planning</a></li>
-                  <li><a href="../Controler/Inscription.ctrl.php">Inscription</a></li>
-                  <li><a href="../Controler/Connexion.ctrl.php">Connexion</a></li>
-                  <li><a href="../Controler/Forum.ctrl.php">Forum</a></li>
-                  <li><a href="../Controler/Contact.ctrl.php">Contact</a></li>
-              </ul>
-          </nav>
-      </div>
-
-
-    </header>
-    <section class="actualite">
-=======
     <?php include "Design/Header.view.php"; ?>
     <section id="SectionArticle">
       <div class="Article">
         <div class="Titre">
           <h2>Titre article</h2>
         </div>
->>>>>>> e74b600310b8505dc9fbb30a3f09b413d66cb100
 
 		  <div class="actualiteZ3">
   			<div class="txt">
