@@ -4,19 +4,19 @@
   class CompteRendu{
     private $titre;
     private $datePub;
-    private $contenue;
-    private $Auteur;
+    private $contenu;
+    private $auteur;
 
-    function __construct(string $titre, Date $datePub, string $contenue, Utilisateur $Auteur){
+    function __construct(string $titre, Date $datePub, string $contenu, Utilisateur $auteur){
       $this->titre = $titre;
       $this->datePub = $datePub;
-      $this->contenue = $contenue;
-      $this->$Auteur = $Auteur;
+      $this->contenu = $contenu;
+      $this->auteur = $auteur;
 
       assert(isset($this->titre));
       assert(isset($this->datePub));
-      assert(isset($this->contenue));
-      assert(isset($this->Auteur));
+      assert(isset($this->contenu));
+      assert(isset($this->auteur));
     }
 
     function getTitre(){
@@ -27,12 +27,12 @@
       return $this->datePub;
     }
 
-    function getContenue(){
-      return $this->contenue;
+    function getContenu(){
+      return $this->contenu;
     }
 
     function getAuteur(){
-      return $this->Auteur;
+      return $this->auteur;
     }
   }
 

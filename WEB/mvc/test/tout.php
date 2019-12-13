@@ -4,10 +4,12 @@ require_once("../../mvc/Model/Utilisateur.class.php");
 require_once("../../mvc/Model/Contact.class.php");
 
   echo "test";
-   $contactAll = new Contact("AAAA","AAAA","01 RUE AAAA","6600000000","AAAA@AAAA.com");
+   $contactAll = new Contact(1,"AAAA","AAAA","01 RUE AAAA","6600000000","AAAA@AAAA.com");
   echo "test";
-  $j = TypeLicence::J;
 
+  $test = Genre::1;
+  echo "$test";
+echo "$j";
   $util1 = new Utilisateur(1,"00001",TypeLicence::J,"nom1","prenom1",Genre::H,"01/01/2000","01 Rue du gouffre, 38000 GRENOBLE","0600000001"
                                   ,"0400000001","mail1@gmail.com",Role::Adherent,"1111",Passeport::Blanc,$contactAll);
 

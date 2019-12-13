@@ -4,13 +4,13 @@
     private $numAuteur; //NumAuteur
     private $idSujet;   //IDSujet
     private $date;      //Date
-    private $contenue;  //Contenue
+    private $contenu;  //Contenu
 
-    function __construct(int $numAuteur, int $idSujet, Date $date, string $contenue){
+    function __construct(int $numAuteur, int $idSujet, string $date, string $contenu){
       $this->numAuteur = $numAuteur;
       $this->idSujet = $idSujet;
       $this->date = $date;
-      $this->contenue = $contenue;
+      $this->contenu = $contenu;
     }
 
     function getNumAuteur(){
@@ -24,8 +24,8 @@
     function getDate(){
       return $this->date;
     }
-    function getContenue(){
-      return $this->contenue;
+    function getContenu(){
+      return $this->contenu;
     }
   }
 
