@@ -25,8 +25,8 @@ class Sujet{
     return $this->titre;
   }
 
-  function getDescription(){
-    return $this->description;
+  function getContenu(){
+    return $this->contenu;
   }
 
   function getIdAuteur(){
