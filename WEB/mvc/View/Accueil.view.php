@@ -8,43 +8,62 @@
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
-    <section id="SectionArticle">
-      <div class="Article">
-        <div class="Titre">
-          <h2>Titre article</h2>
-        </div>
+    
+    <section class="actualite">
 
-        <div class="Image">
-          <img src="../Ressources/Ale_black.png" alt="TEST">
-        </div>
+		  <div class="actualiteZ3">
+  			<div class="txt">
+          <!--Ici dans le h3 (titre) on devra limiter le text !!!-->
+  			  <h3>Actualite Actualite Actualite</h1>
+  			  <p>Posté le 19 Aout 2019</p>
 
-        <div class="Texte">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+          <!--Ici dans le p on devra limiter le text !!!-->
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+           </p>
+  			  <a href="#">Voir les infomations...</a>
+  			</div>
+		  </div>
 
-        <div class="LirePlus">
-          <a href="#">Lire Plus...</a>
-        </div>
+		  <div class="actualiteZ2">  </div>
 
-      </div>
+		  <img class="actualiteZ1" src="../../prototype/testEve/img1.jpg" alt="imageDeFonds" >
+
     </section>
 
-    <section>
-      <div class="Article">
-        <div class="Titre">
-          <h2>Titre article</h2>
-        </div>
-        <div class="Image">
-          <img src="../Ressources/Ale_black.png" alt="TEST">
-        </div>
+    <section class="actualite">
 
-        <div class="Texte">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+		  <div class="actualiteZ3">
+  			<div class="txt">
+          <!--Ici dans le h3 (titre) on devra limiter le text !!!-->
+  			  <h3>Actualite Actualite Actualite</h1>
+  			  <p>Posté le 19 Aout 2019</p>
 
-        <div class="LirePlus">
-          <a href="#">Lire Plus...</a>
-        </div>
+          <!--Ici dans le p on devra limiter le text !!!-->
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+           </p>
+  			  <a href="#">Voir les infomations...</a>
+  			</div>
+		  </div>
+
+		  <div class="actualiteZ2">  </div>
+
+		  <img class="actualiteZ1" src="../../prototype/testEve/img1.jpg" alt="imageDeFonds" >
+
+    </section>
+
+    <!-- Bouton de scrolling animé via CSS (NE PAS TOUCHER) -->
+    <div class="box">
+      <a href="#menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+    <!--FIN DE LA SECTION DU BOUTON DE SCROLLING-->
 
       </div>
     </section>
