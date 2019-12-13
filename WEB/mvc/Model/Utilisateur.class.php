@@ -1,12 +1,12 @@
 <?php
 require_once("../Model/Enum/TypeLicence.enum.php");
-require_once("../Model/Enum/Genre.enum.php");
+require_once("../Model/Enum/Genre.enum.php"); //Y aura surement besoin d'aucun enum
 require_once("../Model/Enum/Role.enum.php");
 require_once("../Model/Enum/Passeport.enum.php");
 
 
 class Utilisateur{            //Dans la base de données
-  private  $id;           //id
+  private  $id;               //id
   private  $licence;          //Licence
   private  $typeLicence;      //TypeLicence
   private  $nom;              //Nom
@@ -23,10 +23,10 @@ class Utilisateur{            //Dans la base de données
   private  $contact;          //Contact
 
 
-  function __construct(int $id, string $licence, int $typeLicence,
-    string $nom, string $prenom, int $genre, string $dateNaissance,
+  function __construct(int $id, string $licence, string $typeLicence,
+    string $nom, string $prenom, string $genre, string $dateNaissance,
     string $adresse, string $numTel, string $numFix, string $adresseMail,
-    int $role, string $codeUtilisateur, int $passeport, Contact $contact = null){
+    string $role, string $codeUtilisateur, string $passeport, Contact $contact = null){
 
       /*if(isset($id)){
         $this->id=$id;

@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS Contacts(
 CREATE TYPE TypeLic AS ENUM ('J','A','F');
 CREATE TYPE TypeRole AS ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole');
 CREATE TYPE TypePasseport AS ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir');
-CREATE TYPE TypeSex AS ENUM('H','F');
+CREATE TYPE TypeGenre AS ENUM('H','F');
 
 CREATE TABLE Utilisateur(
   ID SERIAL PRIMARY KEY,
@@ -18,7 +18,7 @@ CREATE TABLE Utilisateur(
   TypeLicence TypeLic,
   Nom varchar(100),
   Prenom varchar(100),
-  Genre TypeSex,
+  Genre TypeGenre,
   dateNaissance DATE,
   Adresse TEXT,
   NumTel TEXT,
@@ -34,7 +34,7 @@ CREATE TABLE Utilisateur(
 CREATE TABLE CompteRendu(
   Titre varchar(50),
   DatePub DATE,
-  Contenue TEXT,
+  Contenu TEXT,
   NumAuteur INT,
   FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
   PRIMARY KEY (Titre, DatePub)

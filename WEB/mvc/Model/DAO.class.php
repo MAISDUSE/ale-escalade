@@ -1,6 +1,6 @@
 <?php
 
-  require_once("../Model/Article.class.php");
+  //require_once("../Model/Article.class.php");
   require_once("../Model/Certificat.class.php");
   require_once("../Model/Contact.class.php");
   require_once("../Model/Sortie.class.php");

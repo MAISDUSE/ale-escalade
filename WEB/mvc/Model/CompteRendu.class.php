@@ -4,7 +4,7 @@
   class CompteRendu{
     private $titre;
     private $datePub;
-    private $contenue;
+    private $contenu;
     private $Auteur;
 
     function __construct(string $titre, Date $datePub, string $contenue, Utilisateur $Auteur){
