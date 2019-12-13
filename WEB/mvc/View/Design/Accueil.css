@@ -304,35 +304,7 @@ position: absolute;
 
 
 
-/* LE RESTE */
 
-section{
-  display: flex;
-  justify-content: center;
-  height: 10%;
-}
-.Article{
-  width: 500px;
-	background-color: rgb(72,74,92,0.8);
-	margin: 20px auto;
-	padding: 20px;
-}
-.Image,.Texte,.LirePlus{
-  width: 500px;
-  padding:0 auto;
-}
-
-.Image{
-  text-align: center;
-
-}
-
-
-.Titre{
-  width: 25px;
-  height: 10%;
-  text-align: left;
-}
 
 /*========================
 	Définition de l'agenda

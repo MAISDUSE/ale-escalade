@@ -8,11 +8,8 @@
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
-    <section id="SectionArticle">
-      <div class="Article">
-        <div class="Titre">
-          <h2>Titre article</h2>
-        </div>
+    
+    <section class="actualite">
 
 		  <div class="actualiteZ3">
   			<div class="txt">
