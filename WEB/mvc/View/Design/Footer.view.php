@@ -60,7 +60,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <p>Copyright ALE-ESCALADE © 1986. All rights reserved.</p>
+            <p>Copyright ALE-ESCALADE © 2019. All rights reserved.</p>
           </div>
         </div>
       </div>
