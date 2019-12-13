@@ -3,7 +3,7 @@
       <i class="fas fa-bars"></i>
   </div>
   <div class="overlay"></div>
-  <div class="container">
+  <div id="menu" class="container">
       <nav>
           <h1 class="brand"><a href="../Controler/Accueil.ctrl.php"><img src="../Ressources/Ale_black.png" alt="Logo Ale"></h1>
           <ul>
@@ -16,10 +16,6 @@
           </ul>
       </nav>
   </div>
-  <!-- Bouton de scrolling animé via CSS (NE PAS TOUCHER) -->
-  <div class="box">
 
-  </div>
-  <!--FIN DE LA SECTION DU BOUTON DE SCROLLING-->
 
 </header>

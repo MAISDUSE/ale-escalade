@@ -8,7 +8,7 @@
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
-    
+
     <section class="actualite">
 
 		  <div class="actualiteZ3">
@@ -87,6 +87,7 @@
       }
     }
     </script>
+    <?php include "Design/Footer.view.php"; ?>
   </body>
-  <?php include "Design/Footer.view.php"; ?>
+
 </html>
