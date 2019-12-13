@@ -19,7 +19,7 @@ CREATE TABLE Utilisateur(
   Nom varchar(100),
   Prenom varchar(100),
   Genre TypeGenre,
-  dateNaissance DATE,
+  DateNaissance DATE,
   Adresse TEXT,
   NumTel TEXT,
   NumFix TEXT,
