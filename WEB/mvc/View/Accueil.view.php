@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../View/Design/Accueil.css">
   </head>
   <body>
+<<<<<<< HEAD
     <header id="menu">
       <div class="menu-toggle" id="hamburger">
           <i class="fas fa-bars"></i>
@@ -29,6 +30,14 @@
 
     </header>
     <section class="actualite">
+=======
+    <?php include "Design/Header.view.php"; ?>
+    <section id="SectionArticle">
+      <div class="Article">
+        <div class="Titre">
+          <h2>Titre article</h2>
+        </div>
+>>>>>>> e74b600310b8505dc9fbb30a3f09b413d66cb100
 
 		  <div class="actualiteZ3">
   			<div class="txt">
