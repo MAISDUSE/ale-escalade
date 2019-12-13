@@ -272,3 +272,55 @@ label,p{
 textarea{
   resize: none;
 }
+
+.elements{
+	background: rgba(0,0,0,0.8);
+	box-shadow : 0 0 10px rgba(0,0,0,0.13);
+	padding: 30px;
+	border-radius: 5px;
+	color : #c5ecfd;
+	margin : 0 auto;
+	width: 60%;
+	height: auto;
+	text-align: center;
+}
+
+
+
+.addArticle form{
+	color: white;
+	display: inline-block;
+	margin: auto;
+}
+
+.addArticle form label{
+	color: white;
+	font-size: 2em;
+}
+
+
+article{
+	margin-bottom: 20px;
+}
+
+h2{
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+input[type=submit]{
+	border-color: #c5ecfd;
+	border-width: 1px;
+	padding: 2px;
+	color : #c5ecfd;
+	background: transparent;
+	width: 20%;
+}
+
+textarea{
+	background: transparent;
+  border:0;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  color : #c5ecfd;
+}
