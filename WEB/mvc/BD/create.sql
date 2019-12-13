@@ -125,7 +125,7 @@ CREATE TABLE Commentaire(
   NumAuteur INT,
   IDSujet INT,
   Date DATE,
-  Contenue TEXT,
+  Contenu TEXT,
   PRIMARY KEY (NumAuteur, IDSujet, Date),
   FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
   FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
