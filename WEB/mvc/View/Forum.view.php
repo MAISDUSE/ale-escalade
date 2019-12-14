@@ -9,8 +9,8 @@
   </head>
   <body>
 <?php include "Design/Header.view.php"; ?>
-    <h2>Liste des sujets de discussions</h2>
     <div class="listeSujet">
+      <h2>Liste des sujets de discussions</h2>
 
 
 <?php foreach ($listeSujet as $value){
