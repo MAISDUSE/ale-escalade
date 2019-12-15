@@ -22,8 +22,8 @@
       			  <p>Posté le <?=$actualite->getDateCreation()?></p>
 
               <!--Ici dans le p on devra limiter le text !!!-->
-              <p><?= substr($actualite->getDescription(), 0, 120) ?></p>
-      			  <a href="#">Afficher l'actualite</a>
+              <p><?= substr($actualite->getDescription(), 0, 120) ?>[...]</p>
+      			  <a href="../Controler/Actualite.ctrl.php?id=<?=$actualite->getId()?>">Afficher l'actualitée</a>
       			</div>
     		  </div>
 

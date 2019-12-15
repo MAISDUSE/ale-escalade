@@ -20,6 +20,8 @@
   }*/
 
 
+/*ICI ON VA CREER UNE FONCTION QUI NOUS PERMET DE RECUPERER L'ACTUALITE
+GRACE A UNE DAOCLASS*/
 
   $a1 = array("act1_2.jpg","act1_3.jpg");
   $a2 = array("act2_2.jpg","act2_3.jpg");
@@ -42,11 +44,10 @@
                      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
                      occaecat cupidatat non proident, sunt in culpa qui officia
                      deserunt mollit anim id est laborum.",$a2);
-  $actualites = array($ac1,$ac2);
 
-  $view = new View("Accueil");
+
+  $view = new View("Actualite");
   //$view->page = $page;
-  $view->actualites = $actualites;
   $view->afficher();
 
  ?>

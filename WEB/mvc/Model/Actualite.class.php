@@ -1,6 +1,6 @@
 <?php
 
-require_once("../Model/Utilisateur.class.php");
+require_once("../Model/Actualite.class.php");
   class Actualite{      //Base De Données
     private $id;        //Id
     private $titre;       //Titre
@@ -47,6 +47,11 @@ require_once("../Model/Utilisateur.class.php");
 
   function getNumCrea(){
     return $this->numCrea;
+  }
+
+  function getNomCrea(){
+    /*Ici on return le nom et prenom d'un créateur grace a la bd*/
+    return "test ".$this->numCrea;
   }
 
   function getDescription(){
