@@ -24,7 +24,7 @@ font-size: 2.5em;
 	margin: auto;
 	margin-bottom: 20px;
   position: relative;
-	  border-radius: 8px;
+	border-radius: 8px;
 }
 
 .actualite .actualiteZ3{
@@ -42,21 +42,25 @@ font-size: 2.5em;
 	bottom: 8px;
 }
 
+.txt{
+  width: 75%;
+}
+
 
 .actualite .actualiteZ2{
   width: 720px;
   height: 480px;
 	border-radius: 3px;
 
-  background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 73%);
+background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 73%);
  position: absolute;
  z-index: 2;
 
 }
 
 .actualite .actualiteZ1{
-  max-height: 100%;
-	max-width: 100%;
+  max-height: 480px;
+	max-width: 720px;
 	top: 50%; left: 50%;
 	transform: translate(-50%, -50%);
   position: absolute;
@@ -66,3 +70,56 @@ font-size: 2.5em;
 /****************************************************************************************************************
 *****************************************************************************************************************
 *****************************************************************************************************************/
+
+@media screen and (max-width: 1367px){
+
+  .actualite{
+    width: 100%;
+    height: 480px;
+  	margin: auto;
+  	margin-bottom: 20px;
+    position: relative;
+  	border-radius: 8px;
+  }
+
+  .actualite .actualiteZ3{
+    width: 100%;
+    height: 480px;
+  	font-size: 2em;
+    position: absolute;
+    z-index: 3;
+  	border-radius: 3px;
+  	bottom: 5px;
+  }
+
+  .actualite .actualiteZ3 .txt{
+  	position: absolute;
+  	bottom: 8px;
+  }
+
+  .txt{
+    width: 75%;
+  }
+
+
+  .actualite .actualiteZ2{
+    width: 100%;
+    height: 480px;
+  	border-radius: 3px;
+
+  background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 73%);
+   position: absolute;
+   z-index: 2;
+
+  }
+
+  .actualite .actualiteZ1{
+    max-height: 100%;
+  	max-width: 100%;
+  	top: 50%; left: 50%;
+  	transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 1;
+
+  }
+}
