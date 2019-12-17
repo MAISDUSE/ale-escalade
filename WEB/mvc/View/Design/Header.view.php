@@ -12,7 +12,7 @@
     <input type="checkbox" id="toggle">
     <div id="menu" class="container">
         <nav>
-            <h1 class="brand"><a href="../Controler/Accueil.ctrl.php"><img src="../Ressources/Ale_black.png" alt="Logo Ale"></h1>
+            <h1 class="brand"><a href="../Controler/Accueil.ctrl.php"><img src="../Ressources/Ale_black.png" alt="Logo Ale"></a></h1>
             <ul>
                 <li><a href="../Controler/Accueil.ctrl.php">Accueil</a></li>
                 <li><a href="../Controler/Planning.ctrl.php">Planning</a></li>

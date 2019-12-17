@@ -9,17 +9,23 @@ section{
   border-radius: 5px;
   color:#c5ecfd;
 }
+section img{
+  max-width: 100%;
+
+}
 .fichiers{
   display: flex;
+  flex-wrap: wrap;
 }
 .fichiers .fichier{
 display: block;
+margin: 10px;
 
 }
 
 .fichiers .fichier img{
-height: 200px;
-width: auto;
+  height: 200px;
+
 }
 .fichiers .fichier p{
 text-align: center;
