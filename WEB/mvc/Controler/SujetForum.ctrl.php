@@ -55,7 +55,7 @@
     <?php foreach ($liste as $value) {
       ?>
       <p>Date : <?=$value->getDate()?></p>
-      <p>Auuteur : <?=$value->getNumAuteur()?></p>
+      <p>Auteur : <?=$value->getNumAuteur()?></p>
       <p>Contenu : <?=$value->getContenu()?></p>
       <br>
 
