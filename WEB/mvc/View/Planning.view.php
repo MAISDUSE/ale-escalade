@@ -14,7 +14,8 @@
     </div>
 
     <div class="agenda">
-      //mettre un agenda PUBLIC afin de permettre la mise à jour par les utilisateurs
+      <!--mettre un agenda PUBLIC afin de permettre la mise à jour par les utilisateurs-->
+      
     </div>
 
     <?php include "Design/Footer.view.php"; ?>
