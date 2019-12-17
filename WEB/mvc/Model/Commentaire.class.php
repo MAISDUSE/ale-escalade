@@ -11,6 +11,11 @@
       $this->idSujet = $idSujet;
       $this->date = $date;
       $this->contenu = $contenu;
+
+      assert(isset($this->numAuteur));
+      assert(isset($this->idSujet));
+      assert(isset($this->date));
+      assert(isset($this->contenu));
     }
 
     function getNumAuteur(){
