@@ -44,7 +44,7 @@ CREATE TABLE Message(
   NumExp INT,
   NumDest INT,
   DateEnv TIMESTAMP,
-  Contenue TEXT,
+  Contenu TEXT,
   PRIMARY KEY (NumExp, NumDest, DateEnv),
   FOREIGN KEY (NumExp) REFERENCES Utilisateur(ID),
   FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)

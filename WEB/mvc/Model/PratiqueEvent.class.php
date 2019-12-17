@@ -9,7 +9,9 @@ class PratiqueEvent{
     $this->id = $id;
     $this->idEvent = $idEvent;
     $this->idCours = $idCours;
-    $this->type = $type;
+    if($type=="Difficulte" || $type=="Bloc" || $type=="Vitesse"){
+      $this->type = $type;
+    }
   }
 
   function getId(){
