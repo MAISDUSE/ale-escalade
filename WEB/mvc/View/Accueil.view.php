@@ -10,7 +10,7 @@
   <body>
     <?php include "Design/Header.view.php"; ?>
       <section class="listeActualite">
-        <h1>Actualitées :</h2>
+        <h1>Actualitées :</h1>
 
             <?php foreach ($actualites as $actualite){ ?>
               <section class="actualite">
@@ -18,18 +18,16 @@
 
       			<div class="txt">
               <!--Ici dans le h3 (titre) on devra limiter le text !!!-->
-      			  <h3><?=$actualite->getTitre()?></h1>
+      			  <h3><?=$actualite->getTitre()?></h3>
       			  <p>Posté le <?=$actualite->getDateCreation()?></p>
 
-              <!--Ici dans le p on devra limiter le text !!!-->
-              <p><?= substr($actualite->getDescription(), 0, 120) ?>[...]</p>
       			  <a href="../Controler/Actualite.ctrl.php?id=<?=$actualite->getId()?>">Afficher l'actualitée</a>
       			</div>
     		  </div>
 
     		  <div class="actualiteZ2">  </div>
 
-    		  <img class="actualiteZ1" src="../Ressources/Actualite/<?=$actualite->getImage()?>" alt="imageDeFonds" >
+    		  <img class="actualiteZ1" src="../Ressources/<?=$actualite->getImage()?>" alt="imageDeFonds" >
 
         </section>
         <?php }?>

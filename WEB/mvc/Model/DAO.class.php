@@ -6,7 +6,7 @@ require_once("../Model/Utilisateur.class.php");
 require_once("../Model/CompteRendu.class.php");
 require_once("../Model/Message.class.php");
 require_once("../Model/Lieu.class.php");
-require_once("../Model/Event.class.php");
+require_once("../Model/Evenement.class.php");
 require_once("../Model/Sujet.class.php");
 require_once("../Model/AssuranceAdh.class.php");
 require_once("../Model/Certificat.class.php");

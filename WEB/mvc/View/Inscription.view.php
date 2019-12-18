@@ -68,9 +68,6 @@
 
     </section>
 
-
-    <br><br><br><br><br>
-
     <script>
     function myMove() {
       var elem = document.getElementById("myAnimation");

@@ -23,11 +23,11 @@
 /*ICI ON VA CREER UNE FONCTION QUI NOUS PERMET DE RECUPERER L'ACTUALITE
 GRACE A UNE DAOCLASS*/
 
-$a1 = array("act1_2.jpg","act1_3.jpg","act1_4.pdf");
-$a2 = array("act2_2.jpg","act2_3.jpg");
+$a1 = array("Actualite/act1_2.jpg","Actualite/act1_3.jpg","Actualite/act1_4.pdf");
+$a2 = array("Actualite/act2_2.jpg","Actualite/act2_3.jpg");
 require_once("../Model/Actualite.class.php");
 
-$actualite = new Actualite(1,"Compte Rendu de la réunion du 10/12/2019","act2_1.jpg","11/12/2019",
+$actualite = new Actualite(1,"Compte Rendu de la réunion du 10/12/2019","Actualite/act2_1.jpg","11/12/2019",
                     1,"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -36,7 +36,7 @@ $actualite = new Actualite(1,"Compte Rendu de la réunion du 10/12/2019","act2_1
                       esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
                       occaecat cupidatat non proident, sunt in culpa qui officia
                       deserunt mollit anim id est laborum.",$a1);
-$ac2 = new Actualite(2,"Podium des jeune à Chamonix","act2_1.jpg","25/10/2019",
+$ac2 = new Actualite(2,"Podium des jeune à Chamonix","Actualite/act2_1.jpg","25/10/2019",
                    1,"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                    sed do eiusmod tempor incididunt ut labore et dolore magna
                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
