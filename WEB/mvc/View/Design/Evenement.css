@@ -1,0 +1,32 @@
+section{
+  width: 60%;
+  margin: auto;
+  background:rgba(0,0,0,0.8);
+  box-shadow: 0 0 10px rgba(0,0,0,0.13);
+  padding: 30px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  color:#c5ecfd;
+}
+section img{
+  max-width: 100%;
+
+}
+.fichiers{
+  display: flex;
+  flex-wrap: wrap;
+}
+.fichiers .fichier{
+display: block;
+margin: 10px;
+
+}
+
+.fichiers .fichier img{
+  height: 200px;
+
+}
+.fichiers .fichier p{
+text-align: center;
+}

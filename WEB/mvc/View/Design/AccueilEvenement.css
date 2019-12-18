@@ -1,0 +1,143 @@
+/*------------------------------------------------------------------------------
+                              Actuzlité
+------------------------------------------------------------------------------*/
+.listeEvenement{
+
+  width: 60%;
+  margin: auto;
+  background:rgba(0,0,0,0.8);
+  box-shadow: 0 0 10px rgba(0,0,0,0.13);
+  padding: 30px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  color:#c5ecfd;
+
+}
+.listeEvenement h1{
+margin-bottom: 20px;
+font-size: 2.5em;
+}
+
+.evenement{
+  width: 720px;
+  height: 480px;
+	margin: auto;
+	margin-bottom: 20px;
+  position: relative;
+	border-radius: 8px;
+}
+
+.evenement .evenementZ3{
+  width: 720px;
+  height: 480px;
+	font-size: 2em;
+  position: absolute;
+  z-index: 3;
+	border-radius: 3px;
+	bottom: 5px;
+}
+
+.evenement .evenementZ3 .txt{
+	position: absolute;
+	bottom: 8px;
+}
+
+.txt{
+  width: 75%;
+}
+
+
+.evenement .evenementZ2{
+  width: 720px;
+  height: 480px;
+	border-radius: 3px;
+
+background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 73%);
+ position: absolute;
+ z-index: 2;
+
+}
+
+.evenement .evenementZ2o{
+  width: 720px;
+  height: 480px;
+	border-radius: 3px;
+background: linear-gradient(0deg, rgba(255,162,30,1) 39%, rgba(0,0,0,0) 60%);
+ position: absolute;
+ z-index: 2;
+
+}
+.evenement .evenementZ1{
+  max-height: 480px;
+	max-width: 720px;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1;
+
+}
+input[type=submit]{
+	border-color: #c5ecfd;
+	border-width: 1px;
+	padding: 2px;
+	color : #c5ecfd;
+	background: transparent;
+	width: 20%;
+}
+/****************************************************************************************************************
+*****************************************************************************************************************
+*****************************************************************************************************************/
+
+@media screen and (max-width: 1367px){
+
+  .evenement{
+    width: 100%;
+    height: 480px;
+  	margin: auto;
+  	margin-bottom: 20px;
+    position: relative;
+  	border-radius: 8px;
+  }
+
+  .evenement .evenementZ3{
+    width: 100%;
+    height: 480px;
+  	font-size: 2em;
+    position: absolute;
+    z-index: 3;
+  	border-radius: 3px;
+  	bottom: 5px;
+  }
+
+  .evenement .evenementZ3 .txt{
+  	position: absolute;
+  	bottom: 8px;
+  }
+
+  .txt{
+    width: 75%;
+  }
+
+
+  .evenement .evenementZ2{
+    width: 100%;
+    height: 480px;
+  	border-radius: 3px;
+
+  background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 73%);
+   position: absolute;
+   z-index: 2;
+
+  }
+
+  .evenement .evenementZ1{
+    max-height: 100%;
+  	max-width: 100%;
+  	top: 50%; left: 50%;
+  	transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 1;
+
+  }
+}

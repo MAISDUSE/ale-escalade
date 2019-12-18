@@ -23,7 +23,7 @@ require_once("../Model/Actualite.class.php");
         $ErreurPhotoDefault=true;
     }
     }
-    /*$date = getDate() à coder*/
+    $date =  date('j-m-Y');
     /*$idUser = getIdUser à coder*/
 
     $descrition = $_POST['description'];
@@ -37,37 +37,8 @@ require_once("../Model/Actualite.class.php");
           $ErreurFormat = true;
         }
       }
-      $actualite = new Actualite(1,$titre,$imageFond,"11/12/2019",1,$descrition,$nomFichier);
+      $actualite = new Actualite(1,$titre,$imageFond,$date,1,$descrition,$nomFichier);
     }
-
-    if(isset($_POST['previsualiser'])){
-      $boolPrevusaliser = true;
-
-        /*$idActualite = getProchainId() à coder*/
-        $titre = $_POST['titre'];
-        $imageFond = "Actualite/default.jpg";
-        if(isset($_FILES['imageFond'])){
-          if(in_array($_FILES['imageFond']['type'], $formatImage)){
-              $imageFond = $_FILES['imageFond']['tmp_name'];
-          }else{
-            $ErreurPhotoDefault=true;
-        }
-        }
-        /*$date = getDate() à coder*/
-        /*$idUser = getIdUser à coder*/
-        $descrition = $_POST['description'];
-        $nbFichier = count($_FILES['mesFichiers']['tmp_name']);
-        $nomFichier = array();
-          for ($i=0; $i < $nbFichier ; $i++) {
-            if (in_array($_FILES['imageFond']['type'], $formatImage) || in_array($_FILES['imageFond']['type'], $formatText)) {
-              array_push($nomFichier,$_FILES['imageFond']['tmp_name']);
-            }else{
-              $ErreurFormat = true;
-            }
-          }
-          $actualite = new Actualite(1,$titre,$imageFond,"11/12/2019",1,$descrition,$nomFichier);
-
-        }
 
 
 
@@ -75,20 +46,9 @@ require_once("../Model/Actualite.class.php");
       $view = new View("Actualite");
       $view->actualite  = $actualite;
       $view->afficher();
-    }else if(isset($_POST['previsualiser'])){
-      $view = new View("CreerActualite");
-      $view->ErreurPhotoDefault = $ErreurPhotoDefault;
-      $view->ErreurFormat= $ErreurFormat;
-      $view->prevusaliser= $boolPrevusaliser ;
-      $view->actualite  = $actualite;
 
-      $view->afficher();
     }else{
       $view = new View("CreerActualite");
-      $view->ErreurPhotoDefault = $ErreurPhotoDefault;
-      $view->ErreurFormat= $ErreurFormat;
-      $view->prevusaliser= $boolPrevusaliser ;
-      $view->actualite  = $actualite;
       $view->afficher();
     }
 
