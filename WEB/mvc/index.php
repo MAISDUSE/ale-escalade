@@ -1,4 +1,4 @@
 <?php
-  header('Controler/Main.ctrl.php');
+  header('Location: /Controler/Accueil.ctrl.php');
 
  ?>
