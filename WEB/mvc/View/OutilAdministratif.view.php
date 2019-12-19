@@ -3,31 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>Site web de l'Ale-Escalade</title>
-
+    <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
     <link rel="stylesheet" href="../View/Design/OutilAdministratif.css">
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
-    <div class="elements">
-
-      <article class="">
-        <h2>Inscriptions en attente</h2>
-
-      </article>
-
-      <article class="addArticle">
-        <h2>Nouvel article</h2>
+    <div class="outils">
+        <h2>Outils :</h2>
         <form action="../Controler/OutilAdministratif.ctrl.php" method="post" enctype="multipart/form-data">
-          <textarea id="contenu" name="contenu" rows="8" cols="80" placeholder="Entrez le contenu de votre article" required></textarea>
-          <br>
-          <label for="fichier">Fichiers à joindre : </label>
-          <input multiple type="file" name="fichier">
-          <input type="submit" name="Confirmer" value="Publier" >
+          <input type="submit" name="ajouterActualite" value="Ajouter une actualité" ><br>
+          <input type="submit" name="gererActualite" value="Gerer les actualités"><br>
+          <input type="submit" name="voirInscription" value="Voir les inscription en attente"><br>
+          <input type="submit" name="gererInsciption" value="Gérer les inscritions en attente"><br>
+          <input type="submit" name="gererAdherent" value="Gérer les adherents"><br>
+          <input type="submit" name="gereCours" value="Gérer les cours"><br>
+          <input type="submit" name="" value=""><br>
         </form>
-      </article>
-
-
-
     </div>
     <?php include "Design/Footer.view.php"; ?>
   </body>

@@ -1,15 +1,20 @@
 <?php
-if( isset($_FILES['fichier'])){
-  $file_tmp_loc = $_FILES['fichier']['tmp_name'];
-  $file_new_loc =  "../Ressources/Upload/Test";
-  if(move_uploaded_file($file_tmp_loc,$file_new_loc)){
-    echo "<img src=\"$file_new_loc\" alt=\"Une image\">";
-  }else{
-    echo "Upload raté";
-  }
+require_once("../Model/Utilisateur.class.php");
+require_once("../Model/DAO.class.php");
+require_once("../Framework/View.class.php");
 
-
+if (isset($_POST['ajouterActualite'])) {
+  $view = new View("CreerActualite");
+  $view->afficher();
+}else{
+  $view = new View("OutilAdministratif");
+  $view->afficher();
 }
+
+
+
+
+
 
 
 
