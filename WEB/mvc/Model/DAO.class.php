@@ -18,15 +18,22 @@ require_once("../Model/Utilisateur.class.php");
 
 //Début du DAO
 class DAO{
-  private $db;
+  private $link;
+  private $addresse = "localhost";
+  private $user = "hugo";
+  private $mdp = "motdepasse";
+  private $base = "ale_bd";
 
   private $database = "";
   function __construct(){
-    try {
-      $this->db = new PDO($this->database);
-    } catch (PDOException $e) {
-      die("Erreur de connexion : ".$e->getMessage());
-    }
+    $link = mysqli_connect($adresse,$user,$mdp,$base) ;
+    
+    if(!$link){
+        echo "Erreur : Impossible de se connecter à MySQL" . PHP_EOL;
+        echo "Errno de débogage : " . mysqli_connect_errno() . PHP_EOL;
+        echo "Erreur de débogage" . mysqli_connect_error() . PHP_EOL;
+        exit;
+
 
   }
 }
