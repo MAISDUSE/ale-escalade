@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS AssuranceAdh(
 
 CREATE TABLE IF NOT EXISTS Certificat(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  NumLic INT,
+  NumLic SMALLINT UNSIGNED,
   Type ENUM ('L','C','PSS','NP'),
   NomMedecin VARCHAR(40),
   DateSaisie Date,
@@ -147,9 +147,9 @@ CREATE TABLE IF NOT EXISTS Cours(
 CREATE TABLE IF NOT EXISTS Commentaire(
   NumAuteur SMALLINT UNSIGNED,
   IDSujet SMALLINT UNSIGNED,
-  Date DATE,
+  DateCreation DATE,
   Contenu TEXT(1000),
-  PRIMARY KEY (NumAuteur, IDSujet, Date),
+  PRIMARY KEY (NumAuteur, IDSujet, DateCreation),
   CONSTRAINT `fk_numauteur_utilisateurid`
     FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
     ON DELETE CASCADE
