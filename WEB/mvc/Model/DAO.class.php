@@ -26,9 +26,15 @@ class DAO{
 
   private $database = "";
   function __construct(){
+<<<<<<< HEAD
     $db = mysqli_connect($adresse,$user,$mdp,$base) ;
     
     if(!$db){
+=======
+    $link = new mysqli($adresse,$user,$mdp,$base) ;
+
+    if(!$link){
+>>>>>>> 45f24ce57b42cfe5aae530374eb2d39ce6b55799
         echo "Erreur : Impossible de se connecter à MySQL" . PHP_EOL;
         echo "Errno de débogage : " . mysqli_connect_errno() . PHP_EOL;
         echo "Erreur de débogage" . mysqli_connect_error() . PHP_EOL;
@@ -40,8 +46,10 @@ class DAO{
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+  $this->link->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
+  $requete = mysqli_query($this->link, $req);
+  $this->link->commit();
+  $lancement = mysqli_fetch_object($requete);
   return array($lancement);
 }
 function getUserByCode($id){
@@ -174,6 +182,26 @@ function getAllCommentairesFomSujet($idSujet){
   $req = "SELECT * FROM Commentaire WHERE IDSujet = '$idSujet' ORDER BY Date";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Commentaire');
+  return array($lancement);
+}
+
+//event
+function getAllEvent(){
+  $req = "SELECT * FROM Event ORDER BY date";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+function getEventByDates($debut, $fin){
+  $req = "SELECT * FROM Event WHERE '$debut' < DateDebut and '$fin' < DateFin";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+function getEventOfficial(){
+  $req = "SELECT * FROM Event WHERE Officiel = 'true'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
   return array($lancement);
 }
 
