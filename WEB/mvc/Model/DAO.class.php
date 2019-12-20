@@ -1,19 +1,20 @@
 <?php
 
 //Appel des fichiers classes
-require_once("../Model/Contact.class.php");
-require_once("../Model/Utilisateur.class.php");
-require_once("../Model/CompteRendu.class.php");
-require_once("../Model/Message.class.php");
-require_once("../Model/Lieu.class.php");
-require_once("../Model/Evenement.class.php");
-require_once("../Model/Sujet.class.php");
+require_once("../Model/Actualite.class.php");
 require_once("../Model/AssuranceAdh.class.php");
 require_once("../Model/Certificat.class.php");
-require_once("../Model/Pratique.class.php");
-require_once("../Model/Cours.class.php");
 require_once("../Model/Commentaire.class.php");
+require_once("../Model/CompteRendu.class.php");
+require_once("../Model/Contact.class.php");
+require_once("../Model/Cours.class.php");
+require_once("../Model/Evenement.class.php");
+require_once("../Model/Lieu.class.php");
+require_once("../Model/Message.class.php");
+require_once("../Model/Pratique.class.php");
 require_once("../Model/PratiqueEvent.class.php");
+require_once("../Model/Sujet.class.php");
+require_once("../Model/Utilisateur.class.php");
 
 //Début du DAO
 class DAO{
@@ -65,14 +66,33 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 
 
 //Fonctions Contact
+function getAllContact(){
+  $req = "SELECT * FROM Contact";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Contact');
+  return array($lancement);
+}
 
 //Fonctions CompteRendu
 function getAllCompteRendus(){
-  $req = "SELECT * FROM CompteRendu";
+  $req = "SELECT * FROM CompteRendu ORDER BY DatePub";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
   return array($lancement);
 }
+function searchCompteRenduByName($name){
+  $req = "SELECT * FROM CompteRendu WHERE Titre LIKE '%$name%' ORDER BY DatePub";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
+  return array($lancement);
+}
+function searchCompteRenduByAuthor(Utilisateur $authore){
+  $req = "SELECT * FROM CompteRendu WHERE NumAuteur == '$author->id' ORDER BY DatePub";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
+  return array($lancement);
+}
+
 
 //Fonctions Message
 function getAllMessageFromUser(int $idUtilisateur){
