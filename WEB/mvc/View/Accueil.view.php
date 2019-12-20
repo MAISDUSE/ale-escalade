@@ -18,21 +18,6 @@
 
       			         <div class="txt">
               <!--Ici dans le h3 (titre) on devra limiter le text !!!-->
-<<<<<<< HEAD
-      			  <h3><?=$actualite->getTitre()?></h3>
-      			  <p>Posté le <?=$actualite->getDateCreation()?></p>
-
-      			  <a href="../Controler/Actualite.ctrl.php?id=<?=$actualite->getId()?>">Afficher l'actualité</a>
-      			</div>
-    		  </div>
-
-    		  <div class="actualiteZ2">  </div>
-
-    		  <img class="actualiteZ1" src="../Ressources/<?=$actualite->getImage()?>" alt="imageDeFonds" >
-
-        </section>
-        <?php }?>
-=======
       			           <h3><?=$actualite->getTitre()?></h3>
       			            <p>Posté le <?=$actualite->getDateCreation()?></p>
       			            <a href="../Controler/Actualite.ctrl.php?id=<?=$actualite->getId()?>">Afficher l'actualitée</a>
@@ -42,7 +27,6 @@
     		         <img class="actualiteZ1" src="../Ressources/<?=$actualite->getImage()?>" alt="imageDeFonds" >
                </section>
           <?php }?>
->>>>>>> 1f06efd94b1ea0e58e8339c4fe0572d1a9de4ee3
 
       </section>
 
