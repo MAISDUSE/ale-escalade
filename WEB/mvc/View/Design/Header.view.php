@@ -8,7 +8,7 @@
   </div>
   <div class="overlay"></div>
   <div class="nav">
-    <label for="toggle">&#9776;</label>
+    <label for="toggle" class="hamburger">&#9776;</label>
     <input type="checkbox" id="toggle">
     <div id="menu" class="container">
         <nav>

@@ -38,6 +38,26 @@ function getAllUsers(){
   return array($lancement);
 }
 
+function addUsers(string $nom, string $prenom, string $genre, string $passeport,
+ string $naissance, string $adresse, int $codePostal, string $mail, string $base, Contact $contact)
+ {
+    assert(isset($nom));
+    assert(isset($prenom));
+    assert(isset($genre));
+    assert(isset($passeport));
+    assert(isset($naissance));
+    assert(isset($adresse));
+    assert(isset($codePostal));
+    assert(isset($mail));
+    assert(isset($base));
+    assert(isset($contact));
+
+    $req = "INSERT INTO Utilisateur values($nom, $prenom, $genre, $passeport,
+       $naissance, $adresse, $codePostal, $mail, $base,  $contact->getId())";
+    $requete = exec($req);//exec est utiliser quand on recupère pas de résultat
+}
+
+
 //Fonctions Contact
 
 //Fonctions CompteRendu
@@ -71,6 +91,21 @@ function getAllSujets(){
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Sujet');
   return array($lancement);
 }
+function searchSujetByPartielName($partieNom){
+  $req = "SELECT * FROM Sujet WHERE titre LIKE '%$partieNom%'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Sujet');
+  return array($lancement);
+}
+//A tester
+function searchSujetByAuthor($autor){
+  $req = "SELECT * FROM Sujet S, Utilisateur U
+          WHERE (U.nom = '$autor' OR U.prenom = '$author') and S.idAuteur = U.ID
+          ORDER BY date";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Sujet');
+  return array($lancement);
+}
 
 //Fonctions AssuranceAdh
 function getAssuranceFromUser(int $idUtilisateur){
@@ -90,6 +125,13 @@ function getAllCours(){
   $req = "SELECT * FROM Cours";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Cours');
+  return array($lancement);
+}
+//Actualite
+function getAllActualite(){
+  $req = "SELECT * FROM Actualite ORDER BY date";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Actualite');
   return array($lancement);
 }
 

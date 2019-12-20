@@ -136,7 +136,7 @@ nav ul li a:hover::after{
 	transform: scaleX(1);
 }
 
-label{
+.hamburger{
   margin: 0 0 0 0;
   font-size:40px;
   display: none;
@@ -157,10 +157,13 @@ label{
 		z-index: 5;
 	}
 
-	label{
+	.box a {
+    display: none;
+  }
+	.hamburger{
     display: block;
     cursor: pointer;
-		background-color: rgb(250,250,250,0.5);
+		background-color: rgb(255,120,0,0.8);
 
   }
 	nav{
@@ -171,7 +174,17 @@ label{
 		display: block;
 	}
 
-
+	nav ul li a::before,
+	nav ul li a::after{
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		background-color: black;
+		left: 0;
+		transform: scaleX(0);
+		transition: all .5s;
+	}
   #menu{
       text-align:center;
       width: 110%;
@@ -190,7 +203,7 @@ label{
 
   #toggle:checked + #menu{
     display: block;
-		background-color: rgb(250,250,250,0.5);
+		background-color: rgb(255,120,0,0.8);
   }
 
 }
@@ -292,6 +305,7 @@ label{
 /*****************************************************************************************************************/
 
 /* Main Footer */
+
 footer .main-footer{
 	padding: 20px 0;	background: #252525;
 }

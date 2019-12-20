@@ -1,4 +1,21 @@
 .agenda {
 	text-align: center;
-  margin: 5%;
+}
+
+.conteneur_agenda{
+
+  width: 60%;
+  margin: auto;
+  background:rgba(0,0,0,0.8);
+  box-shadow: 0 0 10px rgba(0,0,0,0.13);
+  padding: 30px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  color:#c5ecfd;
+
+}
+
+p {
+	font-size: 13px;
 }

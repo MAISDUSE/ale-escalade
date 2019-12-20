@@ -39,8 +39,6 @@
                 <option value="RougeGE">Rouge Grands Espaces</option>
                 <option value="Noir">Noir</option>
               </select>
-              <label for="password">Mot de passe : </label>
-              <input type="password" name="password" placeholder="Votre Mot de passe" class="input" required>
               <label for="age">Date de naissance : </label>
               <input type="date" name="age" placeholder="jj/mm/aa" class="input" required>
               <label for="adresse">Adresse : </label>
@@ -49,16 +47,32 @@
               <input type="text" name="codepostal" placeholder="Ex: 75000" class="input" required>
               <label for="mail">Adresse mail :</label>
               <input type="mail" name="mail" placeholder="Email" class="input"  required>
+              <label for="mail">Num. Tél (optionnel) :</label>
+              <input type="tel" name="tel" placeholder="EX : 06 12 23 45 56" class="input"  required>
          </div>
          <div class="message">
-           <label for="base">Assurance</label>
-             <input type="radio" id="base" name="drone" value="base" class="input" checked>
-           <label for="huey">Base</label>
-             <input type="radio" id="base+" name="drone" value="base+" class="input">
-           <label for="dewey">Base+</label>
-             <input type="radio" id="base++" name="drone" value="base++" class="input">
-           <label for="louie">Base++</label>
-             <input type="submit" name="valider" value="Valider" class="input">
+           <div class="assurance">
+             <label for="base">Assurance : </label>
+              <input type="radio" id="base" name="base" value="Base" checked>
+             <label for="homme">Base</label>
+              <input type="radio" id="base+" name="base" value="Base+">
+             <label for="femme">Base+</label>
+              <input type="radio" id="base++" name="base" value="Base++">
+             <label for="femme">Base++</label>
+            </div>
+            <div class="valider">
+               <input type="submit" name="valider" value="Valider" class="input" >
+            </div>
+          </div>
+          <div class="message">
+            <fieldset>
+              <legend>Contact : </legend>
+              <div class="input-fields">
+                <label for="nomContact">Nom du Contact : </label>
+                  <input type="text" name="nomContact" placeholder="Nom du Contact" class="input" required>
+                <label for="prenomContact">Prénom du Contact : </label>
+                  <input type="text" name="prenomContact" placeholder="Prenom du Contact" class="input"  required>
+            </fieldset>
           </div>
           </form>
        </div>

@@ -39,7 +39,6 @@ section{
 }
 
 form{
-  display: flex;
   margin: 0 10px;
 }
 
@@ -59,9 +58,13 @@ h2{
   width: 100%;
 }
 
-.message{
+/*.message{
   margin-top: 22.75%;
   margin-left: 10%
+}*/
+
+.message div{
+  display: flex;
 }
 
 label,p{
