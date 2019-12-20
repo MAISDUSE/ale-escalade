@@ -10,7 +10,7 @@
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
-    <section>
+    <div class ="section">
 
       <div class="wrapper">
 
@@ -84,10 +84,11 @@
         </div>
        </form>
      </div>
+   </div>
 
 
 
-    </section>
+   </div>
 
     <script>
     function myMove() {
