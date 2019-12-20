@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Contacts(
+CREATE TABLE IF NOT EXISTS Contact(
   ID SERIAL PRIMARY KEY,
   Nom TEXT,
   Prenom TEXT,
@@ -23,7 +23,9 @@ CREATE TABLE IF NOT EXISTS Utilisateur(
   CodeUtilisateur TEXT,
   Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
   Contact INT,
-  CONSTRAINT FOREIGN KEY (Contact) REFERENCES Contacts(ID)
+  CONSTRAINT FOREIGN KEY (Contact) REFERENCES Contact(ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS CompteRendu(
