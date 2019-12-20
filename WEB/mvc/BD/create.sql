@@ -34,7 +34,7 @@ CREATE TABLE CompteRendu(
   DatePub DATE,
   Contenu VARCHAR(1000),
   NumAuteur SMALLINT UNSIGNED,
-  CONSTRAINT `fk_numauteur_utilisateurid`
+  CONSTRAINT `fk_numauteur_utilisateurid_compterendu`
     FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
     ON DELETE CASCADE
     ON UPDATE RESTRICT,
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS Commentaire(
   DateCreation DATE,
   Contenu TEXT(1000),
   PRIMARY KEY (NumAuteur, IDSujet, DateCreation),
-  CONSTRAINT `fk_numauteur_utilisateurid`
+  CONSTRAINT `fk_numauteur_utilisateurid_commentaire`
     FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
     ON DELETE CASCADE
     ON UPDATE RESTRICT,
