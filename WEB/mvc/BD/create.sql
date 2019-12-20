@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Utilisateur(
   Genre ENUM('H','F'),
   DateNaissance DATE,
   Adresse TEXT(100),
-  NumTel TEXT(100)(100),
+  NumTel TEXT(100),
   NumFix TEXT(100),
   Mail TEXT(100),
   Role ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole'),
