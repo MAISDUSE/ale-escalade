@@ -7,31 +7,26 @@ CREATE TABLE IF NOT EXISTS Contacts(
   Mail TEXT
 );
 
-CREATE TYPE TypeLic AS ENUM ('J','A','F');
-CREATE TYPE TypeRole AS ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole');
-CREATE TYPE TypePasseport AS ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir');
-CREATE TYPE TypeGenre AS ENUM('H','F');
-
-CREATE TABLE Utilisateur(
+CREATE TABLE IF NOT EXISTS Utilisateur(
   ID SERIAL PRIMARY KEY,
   NumLicence NUMERIC(6) UNIQUE,
-  TypeLicence TypeLic,
+  TypeLicence ENUM ('J','A','F'),
   Nom varchar(100),
   Prenom varchar(100),
-  Genre TypeGenre,
+  Genre ENUM('H','F'),
   DateNaissance DATE,
   Adresse TEXT,
   NumTel TEXT,
   NumFix TEXT,
   Mail TEXT,
-  Role TypeRole,
+  Role ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole'),
   CodeUtilisateur TEXT,
-  Passeport TypePasseport,
+  Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
   Contact INT,
-  FOREIGN KEY (Contact) REFERENCES Contacts(ID)
-);
+  CONSTRAINT FOREIGN KEY (Contact) REFERENCES Contacts(ID)
+) ENGINE = InnoDB;
 
-CREATE TABLE CompteRendu(
+CREATE TABLE IF NOT EXISTS CompteRendu(
   Titre varchar(50),
   DatePub DATE,
   Contenu TEXT,
@@ -40,7 +35,7 @@ CREATE TABLE CompteRendu(
   PRIMARY KEY (Titre, DatePub)
 );
 
-CREATE TABLE Message(
+CREATE TABLE IF NOT EXISTS Message(
   NumExp INT,
   NumDest INT,
   DateEnv TIMESTAMP,
@@ -50,14 +45,13 @@ CREATE TABLE Message(
   FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
 );
 
-CREATE TYPE TypeCateg AS ENUM ('Interieur', 'Exterieur');
-CREATE TABLE Lieu(
+CREATE TABLE IF NOT EXISTS Lieu(
   Nom TEXT PRIMARY KEY,
   Adresse TEXT,
-  Categorie TypeCateg
+  Categorie ENUM ('Interieur', 'Exterieur')
 );
 
-CREATE TABLE Event(
+CREATE TABLE IF NOT EXISTS Event(
   ID SERIAL PRIMARY KEY,
   Nom TEXT,
   DateDebut TIMESTAMP,
@@ -70,7 +64,7 @@ CREATE TABLE Event(
   FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
 );
 
-CREATE TABLE Sujet(
+CREATE TABLE IF NOT EXISTS Sujet(
   ID SERIAL PRIMARY KEY,
   Titre VARCHAR(50),
   DatePub DATE,
@@ -81,39 +75,35 @@ CREATE TABLE Sujet(
   FOREIGN KEY (IDEvent) REFERENCES Event(ID)
 );
 
-CREATE TYPE TypeAssure AS ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++');
-CREATE TABLE AssuranceAdh(
+CREATE TABLE IF NOT EXISTS AssuranceAdh(
   NumAssurer INT PRIMARY KEY,
-  Type TypeAssure,
+  Type ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++'),
   OptionSki BOOLEAN,
   OptionSLHL BOOLEAN,
   OptionTrail BOOLEAN,
   OptionVTT BOOLEAN
 );
 
-CREATE TYPE TypeCertificat AS ENUM ('L','C','PSS','NP');
-CREATE TABLE Certificat(
+CREATE TABLE IF NOT EXISTS Certificat(
   ID SERIAL PRIMARY KEY,
   NumLic INT,
-  Type TypeCertificat,
+  Type ENUM ('L','C','PSS','NP'),
   NomMedecin Text,
   DateSaisie Date,
   Alpi BOOLEAN,
   FOREIGN KEY (NumLic) REFERENCES Utilisateur(ID)
 );
 
-CREATE TYPE TypePratique AS ENUM ('Difficulte', 'Bloc', 'Vitesse');
-CREATE TABLE Pratique (
-  Type TypePratique PRIMARY KEY
+CREATE TABLE IF NOT EXISTS Pratique (
+  Type ENUM ('Difficulte', 'Bloc', 'Vitesse') PRIMARY KEY
 );
 
-CREATE TYPE TypeJour AS ENUM('L','M','Me','J','V','S','D');
-CREATE TABLE Cours(
+CREATE TABLE IF NOT EXISTS Cours(
   ID SERIAL PRIMARY KEY,
   Nom TEXT,
   HeureDebut TIME,
   HeureFin TIME CHECK (HeureFin > HeureDebut),
-  Jour TypeJour,
+  Jour ENUM('L','M','Me','J','V','S','D'),
   NbPlace INT,
   NomLieu TEXT,
   NumEntraineur INT,
@@ -121,7 +111,7 @@ CREATE TABLE Cours(
   FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
 );
 
-CREATE TABLE Commentaire(
+CREATE TABLE IF NOT EXISTS Commentaire(
   NumAuteur INT,
   IDSujet INT,
   Date DATE,
@@ -131,11 +121,11 @@ CREATE TABLE Commentaire(
   FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
 );
 
-CREATE TABLE PratiqueEvent(
+CREATE TABLE IF NOT EXISTS PratiqueEvent(
   ID SERIAL,
   IDEvent INT default null,
   IDCours INT default null,
-  Type TypePratique REFERENCES Pratique(Type),
+  Type ENUM ('Difficulte', 'Bloc', 'Vitesse') REFERENCES Pratique(Type),
   PRIMARY KEY (ID,Type),
   CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
 );
