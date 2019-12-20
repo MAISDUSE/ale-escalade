@@ -36,7 +36,7 @@ class DAO{
   }else{
     echo "Oui";
 }
-
+}
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
