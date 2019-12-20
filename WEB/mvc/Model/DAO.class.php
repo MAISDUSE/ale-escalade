@@ -26,8 +26,8 @@ class DAO{
 
   private $database = "";
   function __construct(){
-    $link = mysqli_connect($adresse,$user,$mdp,$base) ;
-    
+    $link = new mysqli($adresse,$user,$mdp,$base) ;
+
     if(!$link){
         echo "Erreur : Impossible de se connecter à MySQL" . PHP_EOL;
         echo "Errno de débogage : " . mysqli_connect_errno() . PHP_EOL;
@@ -41,8 +41,10 @@ class DAO{
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+  $this->link->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
+  $requete = mysqli_query($this->link, $req);
+  $this->link->commit();
+  $lancement = mysqli_fetch_object($requete);
   return array($lancement);
 }
 function getUserByCode($id){
