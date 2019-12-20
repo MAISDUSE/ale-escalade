@@ -125,7 +125,7 @@ CREATE TABLE PratiqueEvent(
   ID SERIAL,
   IDEvent INT default null,
   IDCours INT default null,
-  Type TypePratique REFERENCES Pratique(Type),
+  Type REFERENCES Pratique(Type),
   PRIMARY KEY (ID,Type),
   CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
 );
