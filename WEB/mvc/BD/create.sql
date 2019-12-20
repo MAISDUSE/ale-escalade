@@ -34,7 +34,10 @@ CREATE TABLE IF NOT EXISTS CompteRendu(
   DatePub DATE,
   Contenu TEXT(100),
   NumAuteur INT,
-  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
+  CONSTRAINT `fk_numauteur_utilisateurid`
+    FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
   PRIMARY KEY (Titre, DatePub)
 ) ENGINE = InnoDB;
 
@@ -44,8 +47,14 @@ CREATE TABLE IF NOT EXISTS Message(
   DateEnv TIMESTAMP,
   Contenu TEXT(100),
   PRIMARY KEY (NumExp, NumDest, DateEnv),
-  FOREIGN KEY (NumExp) REFERENCES Utilisateur(ID),
-  FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
+  CONSTRAINT `fk_numexp_utilisateurid`
+    FOREIGN KEY (NumExp) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_numdest_utilisateurid`
+    FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Lieu(
@@ -63,8 +72,14 @@ CREATE TABLE IF NOT EXISTS Event(
   Officiel BOOLEAN,
   NumCrea INT,
   NomLieu TEXT(100),
-  FOREIGN KEY (NumCrea) REFERENCES Utilisateur(ID),
-  FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
+  CONSTRAINT `fk_numcrea_utilisateurid`
+    FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_nomlieu_utilisateurid`
+    FOREIGN KEY (NomLieu) REFERENCES Lieu (Nom)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Sujet(
@@ -74,8 +89,14 @@ CREATE TABLE IF NOT EXISTS Sujet(
   Contenu TEXT(100),
   IDAuteur INT,
   IDEvent INT default null,
-  FOREIGN KEY (IDAuteur) REFERENCES Utilisateur(ID),
-  FOREIGN KEY (IDEvent) REFERENCES Event(ID)
+  CONSTRAINT `fk_idauteur_utilisateurid`
+    FOREIGN KEY (IDAuteur) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_idevent_eventid`
+    FOREIGN KEY (IDEvent) REFERENCES Event (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS AssuranceAdh(
@@ -94,7 +115,10 @@ CREATE TABLE IF NOT EXISTS Certificat(
   NomMedecin TEXT(100),
   DateSaisie Date,
   Alpi BOOLEAN,
-  FOREIGN KEY (NumLic) REFERENCES Utilisateur(ID)
+  CONSTRAINT `fk_numlic_utilisateurid`
+    FOREIGN KEY (NumLic) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Pratique (
@@ -110,8 +134,14 @@ CREATE TABLE IF NOT EXISTS Cours(
   NbPlace INT,
   NomLieu TEXT(100),
   NumEntraineur INT,
-  FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom),
-  FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
+  CONSTRAINT `fk_nomlieu_lieunom`
+    FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_numentraineur_utilisateurid`
+    FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Commentaire(
@@ -120,8 +150,14 @@ CREATE TABLE IF NOT EXISTS Commentaire(
   Date DATE,
   Contenu TEXT(100),
   PRIMARY KEY (NumAuteur, IDSujet, Date),
-  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
-  FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
+  CONSTRAINT `fk_numauteur_utilisateurid`
+    FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_idsujet_sujetid`
+    FOREIGN KEY (IDSujet) REFERENCES Sujet (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS PratiqueEvent(
