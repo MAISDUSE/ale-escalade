@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Contacts(
   Adresse TEXT,
   NumTel TEXT,
   Mail TEXT
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Utilisateur(
   ID SERIAL PRIMARY KEY,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS CompteRendu(
   NumAuteur INT,
   FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
   PRIMARY KEY (Titre, DatePub)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Message(
   NumExp INT,
@@ -43,13 +43,13 @@ CREATE TABLE IF NOT EXISTS Message(
   PRIMARY KEY (NumExp, NumDest, DateEnv),
   FOREIGN KEY (NumExp) REFERENCES Utilisateur(ID),
   FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Lieu(
   Nom TEXT PRIMARY KEY,
   Adresse TEXT,
   Categorie ENUM ('Interieur', 'Exterieur')
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Event(
   ID SERIAL PRIMARY KEY,
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS Event(
   NomLieu TEXT,
   FOREIGN KEY (NumCrea) REFERENCES Utilisateur(ID),
   FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Sujet(
   ID SERIAL PRIMARY KEY,
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS Sujet(
   IDEvent INT default null,
   FOREIGN KEY (IDAuteur) REFERENCES Utilisateur(ID),
   FOREIGN KEY (IDEvent) REFERENCES Event(ID)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS AssuranceAdh(
   NumAssurer INT PRIMARY KEY,
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS AssuranceAdh(
   OptionSLHL BOOLEAN,
   OptionTrail BOOLEAN,
   OptionVTT BOOLEAN
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Certificat(
   ID SERIAL PRIMARY KEY,
@@ -92,11 +92,11 @@ CREATE TABLE IF NOT EXISTS Certificat(
   DateSaisie Date,
   Alpi BOOLEAN,
   FOREIGN KEY (NumLic) REFERENCES Utilisateur(ID)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Pratique (
   Type ENUM ('Difficulte', 'Bloc', 'Vitesse') PRIMARY KEY
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Cours(
   ID SERIAL PRIMARY KEY,
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS Cours(
   NumEntraineur INT,
   FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom),
   FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Commentaire(
   NumAuteur INT,
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS Commentaire(
   PRIMARY KEY (NumAuteur, IDSujet, Date),
   FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
   FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS PratiqueEvent(
   ID SERIAL,
@@ -128,4 +128,4 @@ CREATE TABLE IF NOT EXISTS PratiqueEvent(
   Type ENUM ('Difficulte', 'Bloc', 'Vitesse') REFERENCES Pratique(Type),
   PRIMARY KEY (ID,Type),
   CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
-);
+) ENGINE = InnoDB;
