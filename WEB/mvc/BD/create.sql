@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS Utilisateur(
   CodeUtilisateur TEXT,
   Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
   Contact INT,
+  CONSTRAINT `fk_contact_contactid`
   FOREIGN KEY (Contact) REFERENCES Contacts (ID)
 );
 
