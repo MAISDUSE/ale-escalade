@@ -16,6 +16,8 @@ require_once("../Model/Evenement.class.php");
     /*$idEvent = getProchainId() à coder*/
     $titre = $_POST['titre'];
     $imageFond = "Actualite/default.jpg";
+
+
     if(isset($_FILES['imageFond'])){
       if(in_array($_FILES['imageFond']['type'], $formatImage)){
           move_uploaded_file($_FILES['imageFond']['tmp_name'], "../Ressources/test2/".$_FILES['imageFond']['name']);
@@ -24,6 +26,7 @@ require_once("../Model/Evenement.class.php");
         $ErreurPhotoDefault=true;
       }
     }
+    
     $dateCreation =  date('j/m/Y');
 
 

@@ -18,15 +18,22 @@ require_once("../Model/Utilisateur.class.php");
 
 //Début du DAO
 class DAO{
-  private $db;
+  private $link;
+  private $addresse = "localhost";
+  private $user = "hugo";
+  private $mdp = "motdepasse";
+  private $base = "ale_bd";
 
   private $database = "";
   function __construct(){
-    try {
-      $this->db = new PDO($this->database);
-    } catch (PDOException $e) {
-      die("Erreur de connexion : ".$e->getMessage());
-    }
+    $link = new mysqli($adresse,$user,$mdp,$base) ;
+
+    if(!$link){
+        echo "Erreur : Impossible de se connecter à MySQL" . PHP_EOL;
+        echo "Errno de débogage : " . mysqli_connect_errno() . PHP_EOL;
+        echo "Erreur de débogage" . mysqli_connect_error() . PHP_EOL;
+        exit;
+
 
   }
 }
@@ -34,8 +41,10 @@ class DAO{
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+  $this->link->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
+  $requete = mysqli_query($this->link, $req);
+  $this->link->commit();
+  $lancement = mysqli_fetch_object($requete);
   return array($lancement);
 }
 function getUserByCode($id){
@@ -168,6 +177,26 @@ function getAllCommentairesFomSujet($idSujet){
   $req = "SELECT * FROM Commentaire WHERE IDSujet = '$idSujet' ORDER BY Date";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Commentaire');
+  return array($lancement);
+}
+
+//event
+function getAllEvent(){
+  $req = "SELECT * FROM Event ORDER BY date";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+function getEventByDates($debut, $fin){
+  $req = "SELECT * FROM Event WHERE '$debut' < DateDebut and '$fin' < DateFin";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+function getEventOfficial(){
+  $req = "SELECT * FROM Event WHERE Officiel = 'true'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
   return array($lancement);
 }
 
