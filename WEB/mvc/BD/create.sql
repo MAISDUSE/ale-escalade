@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS Utilisateur(
   CodeUtilisateur TEXT,
   Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
   Contact INT,
-  CONSTRAINT FOREIGN KEY (Contact) REFERENCES Contact(ID)
+  CONSTRAINT `fk_contact_contactid`
+    FOREIGN KEY (Contact) REFERENCES Contact (ID)
     ON DELETE CASCADE
     ON UPDATE RESTRICT
 ) ENGINE = InnoDB;
