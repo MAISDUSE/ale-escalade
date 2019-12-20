@@ -1,24 +1,23 @@
-CREATE TABLE Contact(
+CREATE TABLE IF NOT EXISTS Contact(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Nom VARCHAR(40),
-  Prenom VARCHAR(40),
-  Adresse VARCHAR(50),
-  NumTel VARCHAR(10),
-  Mail VARCHAR(30)
+  Nom VARCHAR(100),
+  Prenom VARCHAR(100),
+  Adresse VARCHAR(255),
+  NumTel VARCHAR(15),
+  Mail VARCHAR(100)
 ) ENGINE = InnoDB;
 
-CREATE TABLE Utilisateur(
+CREATE TABLE IF NOT EXISTS Utilisateur(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NumLicence NUMERIC(6) UNIQUE,
   TypeLicence ENUM ('J','A','F'),
-  Nom VARCHAR(40),
-  Prenom VARCHAR(40),
+  Nom VARCHAR(100),
+  Prenom VARCHAR(100),
   Genre ENUM('H','F'),
   DateNaissance DATE,
-  Adresse VARCHAR(50),
-  NumTel VARCHAR(10),
-  NumFix VARCHAR(10),
-  Mail VARCHAR(30),
+  Adresse VARCHAR(255),
+  NumTel VARCHAR(15),
+  Mail VARCHAR(100),
   Role ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole'),
   CodeUtilisateur VARCHAR(20),
   Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
@@ -29,8 +28,8 @@ CREATE TABLE Utilisateur(
     ON UPDATE RESTRICT
   ) ENGINE = InnoDB;
 
-CREATE TABLE CompteRendu(
-  Titre VARCHAR(50),
+CREATE TABLE IF NOT EXISTS CompteRendu(
+  Titre VARCHAR(100),
   DatePub DATE,
   Contenu VARCHAR(1000),
   NumAuteur SMALLINT UNSIGNED,
@@ -58,20 +57,20 @@ CREATE TABLE IF NOT EXISTS Message(
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Lieu(
-  Nom VARCHAR(50) PRIMARY KEY,
-  Adresse VARCHAR(50),
+  Nom VARCHAR(100) PRIMARY KEY,
+  Adresse VARCHAR(255),
   Categorie ENUM ('Interieur', 'Exterieur')
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Event(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Nom VARCHAR(40),
+  Nom VARCHAR(100),
   DateDebut TIMESTAMP,
   DateFin TIMESTAMP CHECK (DateFin > DateDebut),
   Description TEXT(1000),
   Officiel BOOLEAN,
   NumCrea SMALLINT UNSIGNED,
-  NomLieu VARCHAR(50),
+  NomLieu VARCHAR(100),
   CONSTRAINT `fk_numcrea_utilisateurid`
     FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID)
     ON DELETE CASCADE
@@ -84,7 +83,7 @@ CREATE TABLE IF NOT EXISTS Event(
 
 CREATE TABLE IF NOT EXISTS Sujet(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Titre VARCHAR(50),
+  Titre VARCHAR(100),
   DatePub DATE,
   Contenu TEXT(1000),
   IDAuteur SMALLINT UNSIGNED,
@@ -112,7 +111,7 @@ CREATE TABLE IF NOT EXISTS Certificat(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NumLic SMALLINT UNSIGNED,
   Type ENUM ('L','C','PSS','NP'),
-  NomMedecin VARCHAR(40),
+  NomMedecin VARCHAR(100),
   DateSaisie Date,
   Alpi BOOLEAN,
   CONSTRAINT `fk_numlic_utilisateurid`
@@ -127,12 +126,12 @@ CREATE TABLE IF NOT EXISTS Pratique (
 
 CREATE TABLE IF NOT EXISTS Cours(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Nom VARCHAR(50),
+  Nom VARCHAR(100),
   HeureDebut TIME,
   HeureFin TIME CHECK (HeureFin > HeureDebut),
   Jour ENUM('L','M','Me','J','V','S','D'),
   NbPlace INT,
-  NomLieu VARCHAR(50),
+  NomLieu VARCHAR(100),
   NumEntraineur SMALLINT UNSIGNED,
   CONSTRAINT `fk_nomlieu_lieunom`
     FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
@@ -167,4 +166,22 @@ CREATE TABLE IF NOT EXISTS PratiqueEvent(
   Type ENUM ('Difficulte', 'Bloc', 'Vitesse') REFERENCES Pratique(Type),
   PRIMARY KEY (ID,Type),
   CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Nom VARCHAR(100),
+  Prenom VARCHAR(100),
+  Genre ENUM('H','F'),
+  TypeAssurance ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++'),
+  DateNaissance DATE,
+  Adresse VARCHAR(100),
+  NumTel VARCHAR(15),
+  Mail VARCHAR(100),
+  Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
+  NomContact VARCHAR(100),
+  PrenomContact VARCHAR(100),
+  NumTelContact VARCHAR(15),
+  AdresseContact VARCHAR(100),
+  MailContact VARCHAR(100)
 ) ENGINE = InnoDB;
