@@ -171,6 +171,26 @@ function getAllCommentairesFomSujet($idSujet){
   return array($lancement);
 }
 
+//event
+function getAllEvent(){
+  $req = "SELECT * FROM Event ORDER BY date";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+function getEventByDates($debut, $fin){
+  $req = "SELECT * FROM Event WHERE '$debut' < DateDebut and '$fin' < DateFin";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+function getEventOfficial(){
+  $req = "SELECT * FROM Event WHERE Officiel = 'true'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+
 //Fonctions PratiqueEvent
 
 //Autre
