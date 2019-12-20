@@ -10,7 +10,7 @@
   <body>
     <?php include "Design/Header.view.php"; ?>
       <section class="listeActualite">
-        <h1>Actualitées :</h1>
+        <h1>Actualités :</h1>
 
             <?php foreach ($actualites as $actualite){ ?>
               <section class="actualite">
@@ -21,7 +21,7 @@
       			  <h3><?=$actualite->getTitre()?></h3>
       			  <p>Posté le <?=$actualite->getDateCreation()?></p>
 
-      			  <a href="../Controler/Actualite.ctrl.php?id=<?=$actualite->getId()?>">Afficher l'actualitée</a>
+      			  <a href="../Controler/Actualite.ctrl.php?id=<?=$actualite->getId()?>">Afficher l'actualité</a>
       			</div>
     		  </div>
 

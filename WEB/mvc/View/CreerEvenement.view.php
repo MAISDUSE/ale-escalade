@@ -6,18 +6,9 @@
 
     <link rel="stylesheet" href="../View/Design/CreerActualite.css">
     <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
-    <!--
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="../../../ckeditor/ckeditor.js"></script>
 
-  <script>
-  tinymce.init({
-    selector: 'textarea',  // change this value according to your HTML
-    menubar: false,
-    toolbar: 'undo redo | fontsizeselect | bold italic underline',
 
-    });
-
-  </script>-->
   </head>
   <body>
 
@@ -58,7 +49,9 @@
     </div>
 
     <?php include "Design/Footer.view.php"; ?>
-
+    <script>
+      CKEDITOR.replace("description");
+    </script>
 
   </body>
 
