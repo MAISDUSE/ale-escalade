@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS Utilisateur(
   Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
   Contact INT,
   CONSTRAINT FOREIGN KEY (Contact) REFERENCES Contacts(ID)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS CompteRendu(
   Titre varchar(50),
