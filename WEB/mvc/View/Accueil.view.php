@@ -31,7 +31,7 @@
 
         </section>
         <?php }?>
-
+      </section>
     <?php include "Design/Footer.view.php"; ?>
   </body>
 
