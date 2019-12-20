@@ -1,38 +1,38 @@
-CREATE TABLE IF NOT EXISTS Contact(
-  ID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Nom TEXT(100),
-  Prenom TEXT(100),
-  Adresse TEXT(100),
-  NumTel TEXT(100),
-  Mail TEXT(100)
+CREATE TABLE Contact(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Nom VARCHAR(40),
+  Prenom VARCHAR(40),
+  Adresse VARCHAR(50),
+  NumTel VARCHAR(10),
+  Mail VARCHAR(30)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS Utilisateur(
+CREATE TABLE Utilisateur(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NumLicence NUMERIC(6) UNIQUE,
   TypeLicence ENUM ('J','A','F'),
-  Nom TEXT(100),
-  Prenom TEXT(100),
+  Nom VARCHAR(40),
+  Prenom VARCHAR(40),
   Genre ENUM('H','F'),
   DateNaissance DATE,
-  Adresse TEXT(100),
-  NumTel TEXT(100),
-  NumFix TEXT(100),
-  Mail TEXT(100),
+  Adresse VARCHAR(50),
+  NumTel VARCHAR(10),
+  NumFix VARCHAR(10),
+  Mail VARCHAR(30),
   Role ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole'),
-  CodeUtilisateur TEXT(100),
+  CodeUtilisateur VARCHAR(20),
   Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
   Contact SMALLINT UNSIGNED,
   CONSTRAINT `fk_contact_contactid`
     FOREIGN KEY (Contact) REFERENCES Contact (ID)
     ON DELETE CASCADE
     ON UPDATE RESTRICT
-) ENGINE = InnoDB;
+  ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS CompteRendu(
-  Titre varchar(50),
+CREATE TABLE CompteRendu(
+  Titre VARCHAR(50),
   DatePub DATE,
-  Contenu TEXT(100),
+  Contenu TEXT(1000),
   NumAuteur SMALLINT UNSIGNED,
   CONSTRAINT `fk_numauteur_utilisateurid`
     FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Message(
   NumExp SMALLINT UNSIGNED,
   NumDest SMALLINT UNSIGNED,
   DateEnv TIMESTAMP,
-  Contenu TEXT(100),
+  Contenu VARCHAR(1000),
   PRIMARY KEY (NumExp, NumDest, DateEnv),
   CONSTRAINT `fk_numexp_utilisateurid`
     FOREIGN KEY (NumExp) REFERENCES Utilisateur (ID)
