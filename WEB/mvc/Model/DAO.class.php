@@ -37,6 +37,12 @@ function getAllUsers(){
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
   return array($lancement);
 }
+function getUserByCode($id){
+  $req = "SELECT * FROM Utilisateur where id = '$id'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+  return array($lancement);
+}
 
 function addUsers(string $nom, string $prenom, string $genre, string $passeport,
  string $naissance, string $adresse, int $codePostal, string $mail, string $base, Contact $contact)
@@ -147,7 +153,7 @@ function getAllCommentairesFomSujet($idSujet){
 
 //Fonctions PratiqueEvent
 
-
+//Autre
 
 
  ?>
