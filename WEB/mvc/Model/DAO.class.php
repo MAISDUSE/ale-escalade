@@ -27,7 +27,7 @@ class DAO{
   private $database = "";
   function __construct(){
     $this->db = mysqli_connect($adresse,$user,$mdp,$base) ;
-    
+
     if(!$this->db){
         echo "Erreur : Impossible de se connecter à MySQL" . PHP_EOL;
         echo "Errno de débogage : " . mysqli_connect_errno() . PHP_EOL;
@@ -203,5 +203,5 @@ function getEventOfficial(){
 
 //Autre
 
-
+}
  ?>
