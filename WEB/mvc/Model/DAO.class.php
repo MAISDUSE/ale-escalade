@@ -1,19 +1,20 @@
 <?php
 
 //Appel des fichiers classes
-require_once("../Model/Contact.class.php");
-require_once("../Model/Utilisateur.class.php");
-require_once("../Model/CompteRendu.class.php");
-require_once("../Model/Message.class.php");
-require_once("../Model/Lieu.class.php");
-require_once("../Model/Evenement.class.php");
-require_once("../Model/Sujet.class.php");
+require_once("../Model/Actualite.class.php");
 require_once("../Model/AssuranceAdh.class.php");
 require_once("../Model/Certificat.class.php");
-require_once("../Model/Pratique.class.php");
-require_once("../Model/Cours.class.php");
 require_once("../Model/Commentaire.class.php");
+require_once("../Model/CompteRendu.class.php");
+require_once("../Model/Contact.class.php");
+require_once("../Model/Cours.class.php");
+require_once("../Model/Evenement.class.php");
+require_once("../Model/Lieu.class.php");
+require_once("../Model/Message.class.php");
+require_once("../Model/Pratique.class.php");
 require_once("../Model/PratiqueEvent.class.php");
+require_once("../Model/Sujet.class.php");
+require_once("../Model/Utilisateur.class.php");
 
 //Début du DAO
 class DAO{
@@ -33,6 +34,12 @@ class DAO{
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+  return array($lancement);
+}
+function getUserByCode($id){
+  $req = "SELECT * FROM Utilisateur where id = '$id'";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
   return array($lancement);
@@ -59,14 +66,33 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 
 
 //Fonctions Contact
+function getAllContact(){
+  $req = "SELECT * FROM Contact";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Contact');
+  return array($lancement);
+}
 
 //Fonctions CompteRendu
 function getAllCompteRendus(){
-  $req = "SELECT * FROM CompteRendu";
+  $req = "SELECT * FROM CompteRendu ORDER BY DatePub";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
   return array($lancement);
 }
+function searchCompteRenduByName($name){
+  $req = "SELECT * FROM CompteRendu WHERE Titre LIKE '%$name%' ORDER BY DatePub";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
+  return array($lancement);
+}
+function searchCompteRenduByAuthor(Utilisateur $authore){
+  $req = "SELECT * FROM CompteRendu WHERE NumAuteur == '$author->id' ORDER BY DatePub";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
+  return array($lancement);
+}
+
 
 //Fonctions Message
 function getAllMessageFromUser(int $idUtilisateur){
@@ -87,6 +113,21 @@ function getAllLieux(){
 //Fonctions Sujet
 function getAllSujets(){
   $req = "SELECT * FROM Sujet";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Sujet');
+  return array($lancement);
+}
+function searchSujetByPartielName($partieNom){
+  $req = "SELECT * FROM Sujet WHERE titre LIKE '%$partieNom%'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Sujet');
+  return array($lancement);
+}
+//A tester
+function searchSujetByAuthor($autor){
+  $req = "SELECT * FROM Sujet S, Utilisateur U
+          WHERE (U.nom = '$autor' OR U.prenom = '$author') and S.idAuteur = U.ID
+          ORDER BY date";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Sujet');
   return array($lancement);
@@ -112,6 +153,13 @@ function getAllCours(){
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Cours');
   return array($lancement);
 }
+//Actualite
+function getAllActualite(){
+  $req = "SELECT * FROM Actualite ORDER BY date";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Actualite');
+  return array($lancement);
+}
 
 //Fonctions Commentaire
 
@@ -125,7 +173,7 @@ function getAllCommentairesFomSujet($idSujet){
 
 //Fonctions PratiqueEvent
 
-
+//Autre
 
 
  ?>
