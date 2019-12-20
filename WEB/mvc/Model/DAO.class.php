@@ -38,6 +38,26 @@ function getAllUsers(){
   return array($lancement);
 }
 
+function addUsers(string $nom, string $prenom, string $genre, string $passeport,
+ string $naissance, string $adresse, int $codePostal, string $mail, string $base, Contact $contact)
+ {
+    assert(isset($nom));
+    assert(isset($prenom));
+    assert(isset($genre));
+    assert(isset($passeport));
+    assert(isset($naissance));
+    assert(isset($adresse));
+    assert(isset($codePostal));
+    assert(isset($mail));
+    assert(isset($base));
+    assert(isset($contact));
+
+    $req = "INSERT INTO Utilisateur values($nom, $prenom, $genre, $passeport,
+       $naissance, $adresse, $codePostal, $mail, $base,  $contact->getId())";
+    $requete = exec($req);//exec est utiliser quand on recupère pas de résultat
+}
+
+
 //Fonctions Contact
 
 //Fonctions CompteRendu
