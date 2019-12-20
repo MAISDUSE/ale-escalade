@@ -1,51 +1,52 @@
 /*------------------------------------------------------------------------------
                               Actuzlité
 ------------------------------------------------------------------------------*/
-/*@media screen and (min-width: 1368pt) {*/
+body{
+  color:white;
+}
+/*------------------------------------------------------------------------------
+                              Actuzlité
+------------------------------------------------------------------------------*/
 .listeActualite{
 
   width: 60%;
   margin: auto;
   background:rgba(0,0,0,0.8);
-  box-shadow: 0 0 10pt rgba(0,0,0,0.13);
-  padding: 30pt;
+  box-shadow: 0 0 10px rgba(0,0,0,0.13);
+  padding: 30px;
   margin-top: 5%;
   margin-bottom: 5%;
-  border-radius: 5pt;
+  border-radius: 5px;
   color:#c5ecfd;
 
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a71b36929b25efc7a21f6b88bbaa61cc98418a2a
 .listeActualite h1{
-margin-bottom: 20pt;
+margin-bottom: 20px;
 font-size: 2.5em;
 }
 .actualite{
-  width: 720pt;
-  height: 480pt;
+  width: 720px;
+  height: 480px;
 	margin: auto;
-	margin-bottom: 20pt;
+	margin-bottom: 20px;
   position: relative;
-	border-radius: 8pt;
+	border-radius: 8px;
 }
 
 .actualite .actualiteZ3{
-  width: 720pt;
-  height: 480pt;
+  width: 720px;
+  height: 480px;
 	font-size: 2em;
   position: absolute;
   z-index: 3;
-	border-radius: 3pt;
-	bottom: 5pt;
+	border-radius: 3px;
+	bottom: 5px;
 }
 
 .actualite .actualiteZ3 .txt{
 	position: absolute;
-	bottom: 8pt;
+	bottom: 8px;
 }
 
 .txt{
@@ -54,9 +55,9 @@ font-size: 2.5em;
 
 
 .actualite .actualiteZ2{
-  width: 720pt;
-  height: 480pt;
-	border-radius: 3pt;
+  width: 720px;
+  height: 480px;
+	border-radius: 3px;
 
 background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 73%);
  position: absolute;
@@ -65,30 +66,29 @@ background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0
 }
 
 .actualite .actualiteZ1{
-  max-height: 480pt;
-	max-width: 720pt;
+  max-height: 480px;
+	max-width: 720px;
 	top: 50%; left: 50%;
 	transform: translate(-50%, -50%);
   position: absolute;
   z-index: 1;
 
- }
-/*}*/
+}
 /****************************************************************************************************************
 *****************************************************************************************************************
 *****************************************************************************************************************/
 
-@media screen and (max-width: 1367pt) {
+@media screen and (max-width: 1367px) {
 
   .listeActualite{
     width: 100%;
-    margin: 0pt;
+    margin: auto;
     background:rgba(0,0,0,0.8);
-    box-shadow: 0 0 10pt rgba(0,0,0,0.13);
-    padding: 30pt;
+    box-shadow: 0 0 10px rgba(0,0,0,0.13);
+    padding: 30px;
     margin-top: 5%;
     margin-bottom: 5%;
-    border-radius: 5pt;
+    border-radius: 5px;
     color:#c5ecfd;
 
 
@@ -96,35 +96,33 @@ background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0
 
 
   .listeActualite h1{
-  margin-bottom: 20pt;
+  margin-bottom: 20px;
   font-size: 2.5em;
   }
-
   .actualite{
+
     max-width: 100%;
-    min-width: auto;
-    height: 200pt;
+    min-height: auto;
   	margin: auto;
-  	margin-bottom: 20pt;
+  	margin-bottom: 20px;
     position: relative;
-  	border-radius: 8pt;
+  	border-radius: 8px;
   }
 
   .actualite .actualiteZ3{
 
     max-width: 100%;
     min-height: auto;
-    height: 200pt;
   	font-size: 2em;
     position: absolute;
     z-index: 3;
-  	border-radius: 3pt;
-  	bottom: 5pt;
+  	border-radius: 3px;
+  	bottom: 5px;
   }
 
   .actualite .actualiteZ3 .txt{
   	position: absolute;
-  	bottom: 8pt;
+  	bottom: 8px;
   }
 
   .txt{
@@ -135,10 +133,9 @@ background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0
 
   .actualite .actualiteZ2{
 
-    width: 100%;
-    height: 100%;
-    max-height: 200pt;
-  	border-radius: 3pt;
+    max-width: 100%;
+    min-height: auto;
+  	border-radius: 3px;
 
   background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 73%);
    position: absolute;
@@ -149,13 +146,11 @@ background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0
   .actualite .actualiteZ1{
     max-width: 100%;
     min-height: auto;
-    height: 200pt;
   	top: 50%; left: 50%;
   	transform: translate(-50%, -50%);
     position: absolute;
     z-index: 1;
 
   }
-
 
 }
