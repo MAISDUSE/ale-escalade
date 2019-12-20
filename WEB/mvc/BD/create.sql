@@ -32,7 +32,7 @@ CREATE TABLE Utilisateur(
 CREATE TABLE CompteRendu(
   Titre VARCHAR(50),
   DatePub DATE,
-  Contenu TEXT(1000),
+  Contenu VARCHAR(1000),
   NumAuteur SMALLINT UNSIGNED,
   CONSTRAINT `fk_numauteur_utilisateurid`
     FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
@@ -58,20 +58,20 @@ CREATE TABLE IF NOT EXISTS Message(
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Lieu(
-  Nom TEXT(100) PRIMARY KEY,
-  Adresse TEXT(100),
+  Nom VARCHAR(50) PRIMARY KEY,
+  Adresse VARCHAR(50),
   Categorie ENUM ('Interieur', 'Exterieur')
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Event(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Nom TEXT(100),
+  Nom VARCHAR(40),
   DateDebut TIMESTAMP,
   DateFin TIMESTAMP CHECK (DateFin > DateDebut),
-  Description TEXT(100),
+  Description TEXT(1000),
   Officiel BOOLEAN,
   NumCrea SMALLINT UNSIGNED,
-  NomLieu TEXT(100),
+  NomLieu VARCHAR(50),
   CONSTRAINT `fk_numcrea_utilisateurid`
     FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID)
     ON DELETE CASCADE
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS Sujet(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   Titre VARCHAR(50),
   DatePub DATE,
-  Contenu TEXT(100),
+  Contenu TEXT(1000),
   IDAuteur SMALLINT UNSIGNED,
   IDEvent SMALLINT UNSIGNED default null,
   CONSTRAINT `fk_idauteur_utilisateurid`
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS Certificat(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NumLic INT,
   Type ENUM ('L','C','PSS','NP'),
-  NomMedecin TEXT(100),
+  NomMedecin VARCHAR(40),
   DateSaisie Date,
   Alpi BOOLEAN,
   CONSTRAINT `fk_numlic_utilisateurid`
@@ -127,12 +127,12 @@ CREATE TABLE IF NOT EXISTS Pratique (
 
 CREATE TABLE IF NOT EXISTS Cours(
   ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  Nom TEXT(100),
+  Nom VARCHAR(50),
   HeureDebut TIME,
   HeureFin TIME CHECK (HeureFin > HeureDebut),
   Jour ENUM('L','M','Me','J','V','S','D'),
   NbPlace INT,
-  NomLieu TEXT(100),
+  NomLieu VARCHAR(50),
   NumEntraineur SMALLINT UNSIGNED,
   CONSTRAINT `fk_nomlieu_lieunom`
     FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS Commentaire(
   NumAuteur SMALLINT UNSIGNED,
   IDSujet SMALLINT UNSIGNED,
   Date DATE,
-  Contenu TEXT(100),
+  Contenu TEXT(1000),
   PRIMARY KEY (NumAuteur, IDSujet, Date),
   CONSTRAINT `fk_numauteur_utilisateurid`
     FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
