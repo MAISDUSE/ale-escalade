@@ -22,9 +22,9 @@ CREATE TABLE Utilisateur(
   Role ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole'),
   CodeUtilisateur VARCHAR(20),
   Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
-  Contact SMALLINT,
+  Contact SMALLINT UNSIGNED,
   CONSTRAINT `fk_contact_contactid`
     FOREIGN KEY (Contact) REFERENCES Contact (ID)
     ON DELETE CASCADE
     ON UPDATE RESTRICT
-) ENGINE = InnoDB;
+  ) ENGINE = InnoDB;
