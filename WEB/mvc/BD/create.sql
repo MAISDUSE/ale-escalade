@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS Contacts(
   Mail TEXT
 );
 
-CREATE TABLE Utilisateur(
+CREATE TABLE IF NOT EXISTS Utilisateur(
   ID SERIAL PRIMARY KEY,
   NumLicence NUMERIC(6) UNIQUE,
   TypeLicence ENUM ('J','A','F'),
@@ -26,7 +26,7 @@ CREATE TABLE Utilisateur(
   FOREIGN KEY (Contact) REFERENCES Contacts(ID)
 );
 
-CREATE TABLE CompteRendu(
+CREATE TABLE IF NOT EXISTS CompteRendu(
   Titre varchar(50),
   DatePub DATE,
   Contenu TEXT,
@@ -35,7 +35,7 @@ CREATE TABLE CompteRendu(
   PRIMARY KEY (Titre, DatePub)
 );
 
-CREATE TABLE Message(
+CREATE TABLE IF NOT EXISTS Message(
   NumExp INT,
   NumDest INT,
   DateEnv TIMESTAMP,
@@ -45,13 +45,13 @@ CREATE TABLE Message(
   FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
 );
 
-CREATE TABLE Lieu(
+CREATE TABLE IF NOT EXISTS Lieu(
   Nom TEXT PRIMARY KEY,
   Adresse TEXT,
   Categorie ENUM ('Interieur', 'Exterieur')
 );
 
-CREATE TABLE Event(
+CREATE TABLE IF NOT EXISTS Event(
   ID SERIAL PRIMARY KEY,
   Nom TEXT,
   DateDebut TIMESTAMP,
@@ -64,7 +64,7 @@ CREATE TABLE Event(
   FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
 );
 
-CREATE TABLE Sujet(
+CREATE TABLE IF NOT EXISTS Sujet(
   ID SERIAL PRIMARY KEY,
   Titre VARCHAR(50),
   DatePub DATE,
@@ -75,7 +75,7 @@ CREATE TABLE Sujet(
   FOREIGN KEY (IDEvent) REFERENCES Event(ID)
 );
 
-CREATE TABLE AssuranceAdh(
+CREATE TABLE IF NOT EXISTS AssuranceAdh(
   NumAssurer INT PRIMARY KEY,
   Type ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++'),
   OptionSki BOOLEAN,
@@ -84,7 +84,7 @@ CREATE TABLE AssuranceAdh(
   OptionVTT BOOLEAN
 );
 
-CREATE TABLE Certificat(
+CREATE TABLE IF NOT EXISTS Certificat(
   ID SERIAL PRIMARY KEY,
   NumLic INT,
   Type ENUM ('L','C','PSS','NP'),
@@ -94,11 +94,11 @@ CREATE TABLE Certificat(
   FOREIGN KEY (NumLic) REFERENCES Utilisateur(ID)
 );
 
-CREATE TABLE Pratique (
+CREATE TABLE IF NOT EXISTS Pratique (
   Type ENUM ('Difficulte', 'Bloc', 'Vitesse') PRIMARY KEY
 );
 
-CREATE TABLE Cours(
+CREATE TABLE IF NOT EXISTS Cours(
   ID SERIAL PRIMARY KEY,
   Nom TEXT,
   HeureDebut TIME,
@@ -111,7 +111,7 @@ CREATE TABLE Cours(
   FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
 );
 
-CREATE TABLE Commentaire(
+CREATE TABLE IF NOT EXISTS Commentaire(
   NumAuteur INT,
   IDSujet INT,
   Date DATE,
@@ -121,7 +121,7 @@ CREATE TABLE Commentaire(
   FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
 );
 
-CREATE TABLE PratiqueEvent(
+CREATE TABLE IF NOT EXISTS PratiqueEvent(
   ID SERIAL,
   IDEvent INT default null,
   IDCours INT default null,
