@@ -26,15 +26,9 @@ class DAO{
 
   private $database = "";
   function __construct(){
-<<<<<<< HEAD
-    $db = mysqli_connect($adresse,$user,$mdp,$base) ;
+    $this->db = mysqli_connect($adresse,$user,$mdp,$base) ;
     
-    if(!$db){
-=======
-    $link = new mysqli($adresse,$user,$mdp,$base) ;
-
-    if(!$link){
->>>>>>> 45f24ce57b42cfe5aae530374eb2d39ce6b55799
+    if(!$this->db){
         echo "Erreur : Impossible de se connecter à MySQL" . PHP_EOL;
         echo "Errno de débogage : " . mysqli_connect_errno() . PHP_EOL;
         echo "Erreur de débogage" . mysqli_connect_error() . PHP_EOL;
