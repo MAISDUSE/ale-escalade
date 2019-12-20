@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Utilisateur(
   CodeUtilisateur TEXT,
   Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
   Contact INT,
-  FOREIGN KEY (Contact) REFERENCES Contacts(ID)
+  FOREIGN KEY (Contact) REFERENCES Contacts (ID)
 );
 
 CREATE TABLE IF NOT EXISTS CompteRendu(
