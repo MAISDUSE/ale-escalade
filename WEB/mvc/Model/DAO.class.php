@@ -33,10 +33,10 @@ class DAO{
         echo "Errno de débogage : " . mysqli_connect_errno() . PHP_EOL;
         echo "Erreur de débogage" . mysqli_connect_error() . PHP_EOL;
         exit;
-  }else{
-    echo "Oui";
-}
-}
+    }else{
+      echo "Oui";
+    }
+  }
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
