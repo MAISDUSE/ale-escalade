@@ -13,16 +13,20 @@
       <div class="wrapper">
         <div class="contact-form">
           <form class="post" action="index.html" method="post">
-          <div class="input-fields">
-            <input type="text" class="input" placeholder="Nom">
-            <input type="text" class="input" placeholder="Prenom">
-            <input type="text" class="input" placeholder="Email">
-            <input type="text" class="input" placeholder="Sujet">
-          </div>
-          <div class="message">
-            <textarea placeholder="Votre message"></textarea>
-            <input type="submit" name="Valider" value="Valider" class="input" >
-          </div>
+            <div class="Informations">
+              <div class="input-fields">
+                <input type="text" class="input" placeholder="Nom">
+                <input type="text" class="input" placeholder="Prenom">
+                <input type="text" class="input" placeholder="Email">
+                <input type="text" class="input" placeholder="Sujet">
+              </div>
+              <div class="message">
+                <textarea placeholder="Votre message"></textarea>
+              </div>
+            </div>
+            <div class="valider">
+              <input type="submit" name="Valider" value="Envoyer" class="input">
+            </div>
           </form>
         </div>
       </div>
