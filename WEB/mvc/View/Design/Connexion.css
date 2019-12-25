@@ -1,3 +1,8 @@
+html{
+  height: 100%;
+  width: 100%;
+}
+
 body{
 	min-height: 100%;
 }
@@ -5,7 +10,7 @@ body{
   display: flex;
   justify-content: center;
   margin: 50pt auto;
-  height: 100%;
+  height: auto;
   width: 100%;
 
 }
@@ -124,9 +129,12 @@ h2{
 	margin-bottom: 10px;
 }
 
+input{
+  font-family: "Roboto Cn",sans-serif;
+}
+
 .valider{
   text-align: center;
-
 }
 
 .valider input{
@@ -148,6 +156,8 @@ h2{
 }
 
 
+
+
 textarea{
 	background: transparent;
   border:0;
@@ -157,14 +167,18 @@ textarea{
 }
 
 
-
-
 @media screen and (max-width: 1024px){
 
   .section{
-      width:auto;
-      height: auto;
-    }
+    width:auto;
+    height: auto;
+   }
 
+   footer{
+     width: auto;
+     height: auto;
+     position: absolute;
+     bottom: 0;
+   }
 
 }
