@@ -3,10 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>Site web de l'Ale-Escalade</title>
+
+    <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
+    <link rel="stylesheet" href="../View/Design/Connexion.css">
+
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
-    <?php include "Design/Footer.view.php"; ?>
+    <div class ="section">
+        <div class="wrapper">
+          <h2>Connexion </h2>
+            <form class="" action="../Controler/Connexion.ctrl.php" method="post">
+              <div class="input-fields">
+               <label for="nom">Nom d'Utilisateur : </label>
+               <input type="text" name="nom" placeholder="Votre Nom" class="input" required>
+               <label for="passwd">Mot de passe : </label>
+               <input type="password" name="passwd" placeholder="Votre Mot de passe" class="input" required>
+
+               <div class="valider">
+                <input type="submit" name="valider" value="Connexion" class="input btnValider" id=Valider>
+               </div>
+             </div>
+            </form>
+          </div>
+        </div>
+        <?php include "Design/Footer.view.php"; ?>
   </body>
 
 </html>
