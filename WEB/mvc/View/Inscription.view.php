@@ -16,7 +16,7 @@
 
         <div class="contact-form">
           <h2>Inscription </h2>
-            <form class="" action="index.html" method="post">
+            <form name="inscription" class="" action="index.html" method="post">
               <div class="input-fields">
               <label for="nom">Nom : </label>
               <input type="text" name="nom" placeholder="Votre Nom" class="input" required>
