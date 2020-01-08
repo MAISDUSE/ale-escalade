@@ -15,7 +15,6 @@ class Utilisateur{            //Dans la base de données
   private  $dateNaissance;    //dateNaissance
   private  $adresse;          //Adresse
   private  $numTel;           //NumTel
-  private  $numFix;           //NumFix
   private  $adresseMail;      //E-Mail
   private  $role;             //Role
   private  $codeUtilisateur;  //CodeUtilisateur
@@ -25,7 +24,7 @@ class Utilisateur{            //Dans la base de données
 
   function __construct(int $id, string $licence, string $typeLicence,
     string $nom, string $prenom, string $genre, string $dateNaissance,
-    string $adresse, string $numTel, string $numFix, string $adresseMail,
+    string $adresse, string $numTel, string $adresseMail,
     string $role, string $codeUtilisateur, string $passeport, Contact $contact = null){
 
       /*if(isset($id)){
@@ -44,7 +43,6 @@ class Utilisateur{            //Dans la base de données
       $this->dateNaissance=$dateNaissance;
       $this->adresse=$adresse;
       $this->numTel=$numTel;
-      $this->numFix=$numFix;
       $this->adresseMail=$adresseMail;
       if($role=="Bureau" || $role=="Entraineur" || $role=="Administrateur" || $role=="Adherent" || $role=="Mineur" || $role=="Benevole"){
         $this->role=$role;
@@ -103,10 +101,6 @@ class Utilisateur{            //Dans la base de données
 
   function getNumTel(){
     return $this->numTel;
-  }
-
-  function getNumTelFix(){
-    return $this->numTelFix;
   }
 
   function getAdresseMail(){

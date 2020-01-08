@@ -1,141 +1,189 @@
-CREATE TABLE IF NOT EXISTS Contacts(
-  ID SERIAL PRIMARY KEY,
-  Nom TEXT,
-  Prenom TEXT,
-  Adresse TEXT,
-  NumTel TEXT,
-  Mail TEXT
-);
+BEGIN;
+CREATE TABLE IF NOT EXISTS Contact(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Nom VARCHAR(100),
+  Prenom VARCHAR(100),
+  Adresse VARCHAR(255),
+  NumTel VARCHAR(15),
+  Mail VARCHAR(100)
+) ENGINE = InnoDB;
 
-CREATE TYPE TypeLic AS ENUM ('J','A','F');
-CREATE TYPE TypeRole AS ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole');
-CREATE TYPE TypePasseport AS ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir');
-CREATE TYPE TypeGenre AS ENUM('H','F');
-
-CREATE TABLE Utilisateur(
-  ID SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Utilisateur(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   NumLicence NUMERIC(6) UNIQUE,
-  TypeLicence TypeLic,
-  Nom varchar(100),
-  Prenom varchar(100),
-  Genre TypeGenre,
+  TypeLicence ENUM ('J','A','F'),
+  Nom VARCHAR(100),
+  Prenom VARCHAR(100),
+  Genre ENUM('H','F'),
   DateNaissance DATE,
-  Adresse TEXT,
-  NumTel TEXT,
-  NumFix TEXT,
-  Mail TEXT,
-  Role TypeRole,
-  CodeUtilisateur TEXT,
-  Passeport TypePasseport,
-  Contact INT,
-  FOREIGN KEY (Contact) REFERENCES Contacts(ID)
-);
+  Adresse VARCHAR(255),
+  NumTel VARCHAR(15),
+  Mail VARCHAR(100),
+  Role ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole'),
+  CodeUtilisateur VARCHAR(20),
+  Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
+  Contact SMALLINT UNSIGNED,
+  CONSTRAINT `fk_contact_contactid`
+    FOREIGN KEY (Contact) REFERENCES Contact (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
+  ) ENGINE = InnoDB;
 
-CREATE TABLE CompteRendu(
-  Titre varchar(50),
+CREATE TABLE IF NOT EXISTS CompteRendu(
+  Titre VARCHAR(100),
   DatePub DATE,
-  Contenu TEXT,
-  NumAuteur INT,
-  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
+  Contenu VARCHAR(1000),
+  NumAuteur SMALLINT UNSIGNED,
+  CONSTRAINT `fk_numauteur_utilisateurid_compterendu`
+    FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
   PRIMARY KEY (Titre, DatePub)
-);
+) ENGINE = InnoDB;
 
-CREATE TABLE Message(
-  NumExp INT,
-  NumDest INT,
+CREATE TABLE IF NOT EXISTS Message(
+  NumExp SMALLINT UNSIGNED,
+  NumDest SMALLINT UNSIGNED,
   DateEnv TIMESTAMP,
-  Contenu TEXT,
+  Contenu VARCHAR(1000),
   PRIMARY KEY (NumExp, NumDest, DateEnv),
-  FOREIGN KEY (NumExp) REFERENCES Utilisateur(ID),
-  FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
-);
+  CONSTRAINT `fk_numexp_utilisateurid`
+    FOREIGN KEY (NumExp) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_numdest_utilisateurid`
+    FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
+) ENGINE = InnoDB;
 
-CREATE TYPE TypeCateg AS ENUM ('Interieur', 'Exterieur');
-CREATE TABLE Lieu(
-  Nom TEXT PRIMARY KEY,
-  Adresse TEXT,
-  Categorie TypeCateg
-);
+CREATE TABLE IF NOT EXISTS Lieu(
+  Nom VARCHAR(100) PRIMARY KEY,
+  Adresse VARCHAR(255),
+  Categorie ENUM ('Interieur', 'Exterieur')
+) ENGINE = InnoDB;
 
-CREATE TABLE Event(
-  ID SERIAL PRIMARY KEY,
-  Nom TEXT,
+CREATE TABLE IF NOT EXISTS Event(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Nom VARCHAR(100),
   DateDebut TIMESTAMP,
   DateFin TIMESTAMP CHECK (DateFin > DateDebut),
-  Description TEXT,
+  Description TEXT(1000),
   Officiel BOOLEAN,
-  NumCrea INT,
-  NomLieu TEXT,
-  FOREIGN KEY (NumCrea) REFERENCES Utilisateur(ID),
-  FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
-);
+  NumCrea SMALLINT UNSIGNED,
+  NomLieu VARCHAR(100),
+  CONSTRAINT `fk_numcrea_utilisateurid`
+    FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_nomlieu_utilisateurid`
+    FOREIGN KEY (NomLieu) REFERENCES Lieu (Nom)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
+) ENGINE = InnoDB;
 
-CREATE TABLE Sujet(
-  ID SERIAL PRIMARY KEY,
-  Titre VARCHAR(50),
+CREATE TABLE IF NOT EXISTS Sujet(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Titre VARCHAR(100),
   DatePub DATE,
-  Contenu TEXT,
-  IDAuteur INT,
-  IDEvent INT default null,
-  FOREIGN KEY (IDAuteur) REFERENCES Utilisateur(ID),
-  FOREIGN KEY (IDEvent) REFERENCES Event(ID)
-);
+  Contenu TEXT(1000),
+  IDAuteur SMALLINT UNSIGNED,
+  IDEvent SMALLINT UNSIGNED default null,
+  CONSTRAINT `fk_idauteur_utilisateurid`
+    FOREIGN KEY (IDAuteur) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_idevent_eventid`
+    FOREIGN KEY (IDEvent) REFERENCES Event (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
+) ENGINE = InnoDB;
 
-CREATE TYPE TypeAssure AS ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++');
-CREATE TABLE AssuranceAdh(
+CREATE TABLE IF NOT EXISTS AssuranceAdh(
   NumAssurer INT PRIMARY KEY,
-  Type TypeAssure,
+  Type ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++'),
   OptionSki BOOLEAN,
   OptionSLHL BOOLEAN,
   OptionTrail BOOLEAN,
   OptionVTT BOOLEAN
-);
+) ENGINE = InnoDB;
 
-CREATE TYPE TypeCertificat AS ENUM ('L','C','PSS','NP');
-CREATE TABLE Certificat(
-  ID SERIAL PRIMARY KEY,
-  NumLic INT,
-  Type TypeCertificat,
-  NomMedecin Text,
+CREATE TABLE IF NOT EXISTS Certificat(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  NumLic SMALLINT UNSIGNED,
+  Type ENUM ('L','C','PSS','NP'),
+  NomMedecin VARCHAR(100),
   DateSaisie Date,
   Alpi BOOLEAN,
-  FOREIGN KEY (NumLic) REFERENCES Utilisateur(ID)
-);
+  CONSTRAINT `fk_numlic_utilisateurid`
+    FOREIGN KEY (NumLic) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
+) ENGINE = InnoDB;
 
-CREATE TYPE TypePratique AS ENUM ('Difficulte', 'Bloc', 'Vitesse');
-CREATE TABLE Pratique (
-  Type TypePratique PRIMARY KEY
-);
+CREATE TABLE IF NOT EXISTS Pratique (
+  Type ENUM ('Difficulte', 'Bloc', 'Vitesse') PRIMARY KEY
+) ENGINE = InnoDB;
 
-CREATE TYPE TypeJour AS ENUM('L','M','Me','J','V','S','D');
-CREATE TABLE Cours(
-  ID SERIAL PRIMARY KEY,
-  Nom TEXT,
+CREATE TABLE IF NOT EXISTS Cours(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Nom VARCHAR(100),
   HeureDebut TIME,
   HeureFin TIME CHECK (HeureFin > HeureDebut),
-  Jour TypeJour,
+  Jour ENUM('L','M','Me','J','V','S','D'),
   NbPlace INT,
-  NomLieu TEXT,
-  NumEntraineur INT,
-  FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom),
-  FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
-);
+  NomLieu VARCHAR(100),
+  NumEntraineur SMALLINT UNSIGNED,
+  CONSTRAINT `fk_nomlieu_lieunom`
+    FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_numentraineur_utilisateurid`
+    FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
+) ENGINE = InnoDB;
 
-CREATE TABLE Commentaire(
-  NumAuteur INT,
-  IDSujet INT,
-  Date DATE,
-  Contenu TEXT,
-  PRIMARY KEY (NumAuteur, IDSujet, Date),
-  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur(ID),
-  FOREIGN KEY (IDSujet) REFERENCES Sujet(ID)
-);
+CREATE TABLE IF NOT EXISTS Commentaire(
+  NumAuteur SMALLINT UNSIGNED,
+  IDSujet SMALLINT UNSIGNED,
+  DateCreation DATE,
+  Contenu TEXT(1000),
+  PRIMARY KEY (NumAuteur, IDSujet, DateCreation),
+  CONSTRAINT `fk_numauteur_utilisateurid_commentaire`
+    FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT,
+  CONSTRAINT `fk_idsujet_sujetid`
+    FOREIGN KEY (IDSujet) REFERENCES Sujet (ID)
+    ON DELETE CASCADE
+    ON UPDATE RESTRICT
+) ENGINE = InnoDB;
 
-CREATE TABLE PratiqueEvent(
-  ID SERIAL,
-  IDEvent INT default null,
-  IDCours INT default null,
-  Type TypePratique REFERENCES Pratique(Type),
+CREATE TABLE IF NOT EXISTS PratiqueEvent(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  IDEvent SMALLINT UNSIGNED default null,
+  IDCours SMALLINT UNSIGNED default null,
+  Type ENUM ('Difficulte', 'Bloc', 'Vitesse') REFERENCES Pratique(Type),
   PRIMARY KEY (ID,Type),
   CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
-);
+) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
+  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  Nom VARCHAR(100),
+  Prenom VARCHAR(100),
+  Genre ENUM('H','F'),
+  TypeAssurance ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++'),
+  DateNaissance DATE,
+  Adresse VARCHAR(100),
+  NumTel VARCHAR(15),
+  Mail VARCHAR(100),
+  Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
+  NomContact VARCHAR(100),
+  PrenomContact VARCHAR(100),
+  NumTelContact VARCHAR(15),
+  AdresseContact VARCHAR(100),
+  MailContact VARCHAR(100)
+) ENGINE = InnoDB;
+COMMIT;

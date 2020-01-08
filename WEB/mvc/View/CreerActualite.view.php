@@ -6,17 +6,7 @@
 
     <link rel="stylesheet" href="../View/Design/CreerActualite.css">
     <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
-    <!--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
-  <script>
-  tinymce.init({
-    selector: 'textarea',  // change this value according to your HTML
-    menubar: false,
-    toolbar: 'undo redo | fontsizeselect | bold italic underline',
-
-    });
-
-  </script>-->
+    <script src="../../../ckeditor/ckeditor.js"></script>
   </head>
   <body>
 
@@ -33,7 +23,8 @@
               <input multiple type="file" name="imageFond">
               <br>
               <label for="description">Description :</label>
-              <textarea id="description" name="description" rows="8" cols="80" placeholder="Entrez la description de votre actulité" required></textarea>
+              <textarea id="description" name="description" rows="8" cols="80" required>Entrez votre article</textarea>
+
               <br>
               <label for="fichiers">Fichiers à joindre :</label>
               <input id="fichiers" type="file" name="mesFichiers[]" multiple>
@@ -45,7 +36,9 @@
 
     <?php include "Design/Footer.view.php"; ?>
 
-
+    <script>
+      CKEDITOR.replace("description");
+    </script>
   </body>
 
 </html>

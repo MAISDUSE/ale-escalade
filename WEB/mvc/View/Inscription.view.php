@@ -10,14 +10,18 @@
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
-    <section>
-
+    <div class ="section">
       <div class="wrapper">
 
         <div class="contact-form">
           <h2>Inscription </h2>
+<<<<<<< HEAD
             <form name="inscription" class="" action="index.html" method="post">
               <div class="input-fields">
+=======
+            <form class="" action="index.html" method="post">
+             <div class="input-fields">
+>>>>>>> 8ba92ce25d935d2c02b53c6aa41df59b6e6011ee
               <label for="nom">Nom : </label>
               <input type="text" name="nom" placeholder="Votre Nom" class="input" required>
               <label for="prenom">Prénom : </label>
@@ -27,7 +31,6 @@
               <label for="homme">Homme</label>
               <input type="radio" id="femme" name="sexe" value="Femme">
               <label for="femme">Femme</label>
-              <br>
               <label for="passeport">Passeport : </label>
               <select class="input" name="passeport">
                 <option value="Blanc" selected>Blanc</option>
@@ -39,51 +42,52 @@
                 <option value="RougeGE">Rouge Grands Espaces</option>
                 <option value="Noir">Noir</option>
               </select>
-              <label for="password">Mot de passe : </label>
-              <input type="password" name="password" placeholder="Votre Mot de passe" class="input" required>
               <label for="age">Date de naissance : </label>
               <input type="date" name="age" placeholder="jj/mm/aa" class="input" required>
               <label for="adresse">Adresse : </label>
-              <input type="text" name="adresse" placeholder="Adresse" class="input"  required>
+              <input type="text" name="adresse" placeholder="EX : 12 Rue 8 Mai 1945" class="input"  required>
               <label for="codepostal">Code Postal : </label>
               <input type="text" name="codepostal" placeholder="Ex: 75000" class="input" required>
               <label for="mail">Adresse mail :</label>
               <input type="mail" name="mail" placeholder="Email" class="input"  required>
-         </div>
-         <div class="message">
-           <label for="base">Assurance</label>
-             <input type="radio" id="base" name="drone" value="base" class="input" checked>
-           <label for="huey">Base</label>
-             <input type="radio" id="base+" name="drone" value="base+" class="input">
-           <label for="dewey">Base+</label>
-             <input type="radio" id="base++" name="drone" value="base++" class="input">
-           <label for="louie">Base++</label>
-             <input type="submit" name="valider" value="Valider" class="input">
+              <label for="tel">Num. Tél :</label>
+              <input type="tel" name="tel" placeholder="EX : 06 12 23 45 56" class="input"  required>
+             </div>
+             <div class="message">
+               <div class="assurance">
+                 <label for="base">Assurance : </label>
+                 <input type="radio" id="base" name="base" value="Base" checked>
+                 <label for="homme">Base</label>
+                 <input type="radio" id="base+" name="base" value="Base+">
+                 <label for="femme">Base+</label>
+                 <input type="radio" id="base++" name="base" value="Base++">
+                 <label for="femme">Base++</label>
+               </div>
+             </div>
+             <div class="contact">
+               <fieldset>
+                 <legend>Contact (Obligatoire)</legend>
+                 <div class="input-fields">
+                   <label for="nomContact">Nom du Contact : </label>
+                   <input type="text" name="nomContact" placeholder="Nom du Contact" class="input" required>
+                   <label for="prenomContact">Prénom du Contact : </label>
+                   <input type="text" name="prenomContact" placeholder="Prenom du Contact" class="input"  required>
+                   <label for="mailContact">Adresse mail du Contact :</label>
+                   <input type="mail" name="mailContact" placeholder="Email" class="input"  required>
+                   <label for="telContact">Num. Tél Contact:</label>
+                  <input type="tel" name="telContact" placeholder="EX : 06 12 23 45 56" class="input"  required>
+                  <label for="adresseContact">Adresse:</label>
+                  <input type="text" name="adresseContact" placeholder="EX : 12 Rue 8 Mai 1945" class="input"  required>
+                  </div>
+                </fieldset>
+                </div>
+                <div class="valider">
+                  <input type="submit" name="valider" value="Valider" class="input" >
+                </div>
+              </form>
+            </div>
           </div>
-          </form>
-       </div>
-     </div>
-
-
-
-    </section>
-
-    <script>
-    function myMove() {
-      var elem = document.getElementById("myAnimation");
-      var pos = 0;
-      var id = setInterval(frame, 10);
-      function frame() {
-        if (pos == 180) {
-          clearInterval(id);
-        } else {
-          pos++;
-          elem.style.top = pos + 'px';
-
-        }
-      }
-    }
-    </script>
+        </div>
     <?php include "Design/Footer.view.php"; ?>
   </body>
 </html>

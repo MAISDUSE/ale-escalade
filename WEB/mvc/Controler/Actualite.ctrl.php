@@ -52,6 +52,12 @@ $view = new View("Accueil");
 
   $view = new View("Actualite");
   $view->actualite = $actualite;
+  /*Si l'utilisateur existe il faut afficher ses infos perso sur la nav bar
+
+  $view->page = $nomUtilisateur
+  $view->page = $passeportUtilisateur
+  
+  */
   $view->afficher();
 
  ?>
