@@ -19,23 +19,16 @@ require_once("../Model/Utilisateur.class.php");
 //Début du DAO
 class DAO{
   private $db;
-  private $adresse = "localhost";
-  private $user = "hugo";
-  private $mdp = "motdepasse";
-  private $base = "ale_bd";
+  private $chemin = "../BD/data.db";
 
-  private $database = "";
   function __construct(){
-    $this->db = mysqli_connect($adresse,$user,$mdp,$base) ;
-
-    if(!$this->db){
-        echo "Erreur : Impossible de se connecter à MySQL" . PHP_EOL;
-        echo "Errno de débogage : " . mysqli_connect_errno() . PHP_EOL;
-        echo "Erreur de débogage" . mysqli_connect_error() . PHP_EOL;
-        exit;
-    }else{
-      echo "Oui";
+    try{
+      $db = new PDO('sqlite3:' . $chemin);
+    }catch(PDOException $e){
+      echo "Impossible d'accéder à la base de données";
+      die();
     }
+
   }
 //Fonctions Utilisateur
 function getAllUsers(){
