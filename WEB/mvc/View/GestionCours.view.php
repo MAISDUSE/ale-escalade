@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>ALE Escalade - Gestion Cours</title>
+    <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
     <script type="text/javascript">
       function ConfirmerSuppression(){
         if(confirm("Voulez vous vraiment supprimer ce cours ?")){
@@ -36,10 +37,10 @@
             <td><?$unCours->getHeureDebut()?> - <?$unCours->getHeureFin()?></td>
             <td>
               <form action="../Controler/GestionCours.ctrl.php" method="post" enctype="multipart/form-data" name='formulaire'>
-                <input type="submit" name="viewActualite" value="Voir Plus"><br>
-                <input type="submit" name="modifActualite" value="Modifier" ><br>
-                <input type="submit" name="supprActualite" value="Supprimer" onclick='ConfirmerSuppression()'><br>
-                <input type="hidden" name="idActualite" value="<?$actualite->getId()?>">
+                <input type="submit" name="viewCours" value="Voir Plus"><br>
+                <input type="submit" name="modifCours" value="Modifier" ><br>
+                <input type="submit" name="supprCours" value="Supprimer" onclick='ConfirmerSuppression()'><br>
+                <input type="hidden" name="idCours" value="<?$uncours->getId()?>">
               </form>
             </td>
           </tr>

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>ALE Escalade - Gestion Actualités</title>
+    <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
     <script type="text/javascript">
       function ConfirmerSuppression(){
         if(confirm("Voulez vous vraiment supprimer cette actualité ?")){

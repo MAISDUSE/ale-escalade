@@ -8,7 +8,7 @@ if(isset($_POST['viewAuteur'])){
   $db = new DAO;
 
   $view = new View("Adherent");
-  $view->adherent = $db->getUserByCode($_POST['idAuteur']);
+  $view->adherent = $db->getAdherentByCode($_POST['idAuteur']);
   $view->afficher();
 } else if (isset($_POST['viewActualite'])){
   //Affichage de l'actualité

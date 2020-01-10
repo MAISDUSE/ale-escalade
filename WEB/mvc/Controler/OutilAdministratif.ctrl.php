@@ -11,13 +11,13 @@ if (isset($_POST['ajouterActualite'])) {
   //Gérer les adhérents
   $view = new View("GestionAdherents");
   $db = new DAO;
-  $view->adherents = $db->getAllUsers();
+  $view->adherents = $db->getAllAdherent();
   $view->afficher();
 } else if (isset($_POST['gererInscription'])) {
   //Gérer les inscriptions
   $view = new View("GestionInscriptions");
   $db = new DAO;
-  $view->inscriptions = $db->getAllInscriptions()
+  $view->inscriptions = $db->getAllInscriptions();
 
   $view->afficher();
 } else if (isset($_POST['gererActualite'])) {
