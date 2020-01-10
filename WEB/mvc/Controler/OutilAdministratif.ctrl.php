@@ -9,7 +9,7 @@ if (isset($_POST['ajouterActualite'])) {
 } else if (isset($_POST['GererAdherent'])) {
   $view = new View("GestionAdherents");
   $db = new DAO;
-  $view->adherents = DAO->getAllUsers();
+  $view->adherents = $db->getAllUsers();
   $view->afficher();
 } else if (isset($_POST['GererInscription'])) {
   $view = new View("GestionInscriptions");
