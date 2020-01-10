@@ -49,7 +49,7 @@ function getUserByCode($id){
 
 
 function addEvenement( string $nom, string $img, string $dateCreation,
- string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel))
+ string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel)
 {
   echo "INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
     \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
@@ -80,10 +80,9 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 }
 
 function verifUser($addrMail, $mdp){
-<<<<<<< HEAD
   $req = "SELECT * FROM Utilisateur WHERE adresseMail = '$addrMail' ";
-  $recup = $this->db->query($req)->fetchAll();
-  $verifMdp = $recup[0][6];
+  $recup = $this->db->query($req);
+  $verifMdp = $recup[0][7];
   if($recup == NULL){
     $messageErreur = "Le compte n'a pas été trouvé";
     $retour = new Retour(TRUE, $messageErreur);
@@ -96,9 +95,8 @@ function verifUser($addrMail, $mdp){
     }
   }
   return $retour;
-=======
 
->>>>>>> 2a59b315b2274b2f4269a50f4e725c8ea1af3d50
+
 }
 
 

@@ -9,26 +9,44 @@ require_once("../Framework/View.class.php");
     ICI METTRE CODE POUR TESTER L'EXISTENCE DU COMPTE
 */
 
-$mail = $_POST['mail'];
-$mdp = $_POST['passwd'];
 
-$db = new DAO;
-$resultat = $db->verifUser($mail, $mdp);
 
-if(!$resultat->erreur){
-  session_start();
+if(isset($_POST['mail']) && isset($_POST['passwd'])){
 
-  $_SESSION['user'] = new Utilisateur()
+  $mail = $_POST['mail'];
+  $mdp = $_POST['passwd'];
+  var_dump($mail);
+  var_dump($mdp);
+
+
+  $db = new DAO;
+  $resultat = $db->verifUser($mail, $mdp);
+
+  if(!$resultat->erreur){
+    session_start();
+
+    $_SESSION['user'] = new Utilisateur($resultat[1],$resultat[2],$resultat[3]
+                                      ,$resultat[4],$resultat[5],$resultat[6]);
+
+    var_dump($_SESSION['user']);
+    session_write_close();
+
+
+
+  }else{
+    var_dump($resultat);
+  }
+
+}else{
+  $view = new View("Connexion");
+  $view->afficher();
 }
 
 
 
-
-$view = new View("Connexion");
 //$view->page = $page;
 //$view->page = $nomUtilisateur
 //$view->page = $passeportUtilisateur
 
-$view->afficher();
 
 ?>
