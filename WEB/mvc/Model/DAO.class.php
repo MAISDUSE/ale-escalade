@@ -24,7 +24,7 @@ class DAO{
 
   function __construct(){
     try{
-      $db = new PDO('sqlite3:' . $chemin);
+      $db = new PDO('sqlite:' . $this->chemin);
     }catch(PDOException $e){
       echo "Impossible d'accéder à la base de données";
       die();
@@ -47,13 +47,16 @@ function getUserByCode($id){
   return array($lancement);
 }
 
-function addEvenement( string $nom, string $img, string $dateCreation,
- string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel)
-{
 
-  $req ="INSERT INTO Utilisateur(nom, prenom, email, password) VALUES(\"$nom\",\"$img\",\"$dateCreation\",
+function addEvenement( string $nom, string $img, string $dateCreation,
+ string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel))
+{
+  echo "INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
     \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
-  $db->query($req);
+  $req ="INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
+    \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
+
+  //$this->db->query($req);
 
 }
 
@@ -77,15 +80,30 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 }
 
 function verifUser($addrMail, $mdp){
-  $req = "SELECT MDP FROM Utilisateur WHERE adresseMail = '$addrMail' ";
+<<<<<<< HEAD
+  $req = "SELECT * FROM Utilisateur WHERE adresseMail = '$addrMail' ";
   $recup = $this->db->query($req)->fetchAll();
+  $verifMdp = $recup[0][6];
   if($recup == NULL){
-
+    $messageErreur = "Le compte n'a pas été trouvé";
+    $retour = new Retour(TRUE, $messageErreur);
+  }else{
+    if($verifMdp == $mdp){
+      $retour = new Retour($recup[0]);
+    }else{
+      $messageErreur = "Le mot de passe est incorrect";
+      $retour = new Retour(TRUE, $messageErreur);
+    }
   }
+  return $retour;
+=======
+
+>>>>>>> 2a59b315b2274b2f4269a50f4e725c8ea1af3d50
 }
 
 
 //Fonctions Contact
+
 function getAllContact(){
   $req = "SELECT * FROM Contact";
   $requete = $this->db->query($req);

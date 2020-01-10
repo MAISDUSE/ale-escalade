@@ -4,6 +4,10 @@ header("Content-Type: text/csv");
 
 header("Content-disposition: filename=adherents_CSV.csv");
 
+require_once("../../Model/DAO.class.php");
+
+$bd_ahderents = new DAO();
+
 // ATTENTION : Il faut l'adapter au csv de la FFME
 //    |
 //    v
