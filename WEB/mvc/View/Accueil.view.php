@@ -27,7 +27,6 @@
     		         <img class="actualiteZ1" src="../Ressources/<?=$actualite->getImage()?>" alt="imageDeFonds" >
                </section>
           <?php }?>
-
       </section>
     <?php include "Design/Footer.view.php"; ?>
   </body>

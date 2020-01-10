@@ -82,11 +82,10 @@ background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0
 
   .listeActualite{
     width: 100%;
-    margin: 0pt;
+    margin: 50pt 0pt;
     background:rgba(0,0,0,0.8);
     box-shadow: 0 0 10pt rgba(0,0,0,0.13);
     padding: 30pt;
-    margin-top: 5%;
     margin-bottom: 5%;
     border-radius: 5pt;
     color:#c5ecfd;

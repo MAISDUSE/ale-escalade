@@ -47,10 +47,8 @@ function getUserByCode($id){
   return array($lancement);
 }
 
-<<<<<<< HEAD
-=======
 function addEvenement( string $nom, string $img, string $dateCreation,
- string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel))
+ string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel)
 {
 
   $req ="INSERT INTO Utilisateur(nom, prenom, email, password) VALUES(\"$nom\",\"$img\",\"$dateCreation\",
@@ -58,7 +56,7 @@ function addEvenement( string $nom, string $img, string $dateCreation,
   $db->query($req);
 
 }
->>>>>>> 0e669e323b2e1e69208ec7ec6223e9d08c7adb38
+
 function addUsers(string $nom, string $prenom, string $genre, string $passeport,
  string $naissance, string $adresse, int $codePostal, string $mail, string $base, Contact $contact)
  {

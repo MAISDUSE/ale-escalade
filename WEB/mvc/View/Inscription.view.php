@@ -15,13 +15,12 @@
 
         <div class="contact-form">
           <h2>Inscription </h2>
-<<<<<<< HEAD
             <form name="inscription" class="" action="index.html" method="post">
               <div class="input-fields">
-=======
+
             <form class="" action="index.html" method="post">
              <div class="input-fields">
->>>>>>> 8ba92ce25d935d2c02b53c6aa41df59b6e6011ee
+
               <label for="nom">Nom : </label>
               <input type="text" name="nom" placeholder="Votre Nom" class="input" required>
               <label for="prenom">Prénom : </label>
@@ -88,6 +87,7 @@
             </div>
           </div>
         </div>
+      </div>
     <?php include "Design/Footer.view.php"; ?>
   </body>
 </html>
