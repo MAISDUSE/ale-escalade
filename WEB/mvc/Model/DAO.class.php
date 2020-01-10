@@ -47,8 +47,9 @@ function getUserByCode($id){
   return array($lancement);
 }
 
+
 function addEvenement( string $nom, string $img, string $dateCreation,
- string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel)
+ string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel))
 {
 
   $req ="INSERT INTO Utilisateur(nom, prenom, email, password) VALUES(\"$nom\",\"$img\",\"$dateCreation\",
@@ -77,11 +78,21 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 }
 
 function verifUser($addrMail, $mdp){
-  $req = "SELECT MDP FROM Utilisateur WHERE adresseMail = '$addrMail' ";
+  $req = "SELECT * FROM Utilisateur WHERE adresseMail = '$addrMail' ";
   $recup = $this->db->query($req)->fetchAll();
+  $verifMdp = $recup[0][6];
   if($recup == NULL){
-
+    $messageErreur = "Le compte n'a pas été trouvé";
+    $retour = new Retour(TRUE, $messageErreur);
+  }else{
+    if($verifMdp == $mdp){
+      $retour = new Retour($recup[0]);
+    }else{
+      $messageErreur = "Le mot de passe est incorrect";
+      $retour = new Retour(TRUE, $messageErreur);
+    }
   }
+  return $retour;
 }
 
 

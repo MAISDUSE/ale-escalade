@@ -13,6 +13,13 @@ $mail = $_POST['mail'];
 $mdp = $_POST['passwd'];
 
 $db = new DAO;
+$resultat = $db->verifUser($mail, $mdp);
+
+if(!$resultat->erreur){
+  session_start();
+
+  $_SESSION['user'] = new Utilisateur()
+}
 
 
 
