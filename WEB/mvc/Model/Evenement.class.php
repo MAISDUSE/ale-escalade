@@ -106,12 +106,11 @@ require_once("../Model/DAO.class.php");
   }
 
   function addToBD(){
-    try {
-    $db = new PDO("sqlite:../model/data/data.db");
-    }catch (PDOException $e) {
-      die("erreur de connexion : ".$e->getMessage());
-    }
-    $db.addEvenement(  $nom,  $img,  $dateCreation,  $dateDebut,  $dateFin,  $description,  $numCrea, $nomLieu,  $officiel);
+
+    $db = new DAO();
+
+    $db->addEvenement(  $this->nom,  $this->img,  $this->dateCreation,  $this->dateDebut,
+      $this->dateFin,  $this->description,  $this->numCrea, $this->nomLieu,  $this->officiel);
   }
 }
  ?>
