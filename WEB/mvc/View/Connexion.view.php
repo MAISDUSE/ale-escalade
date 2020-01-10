@@ -13,7 +13,13 @@
     <div class ="section">
         <div class="wrapper">
           <h2>Connexion </h2>
+
             <form action="../Controler/Connexion.ctrl.php" method="post">
+              <?php if(isset($_SESSION['erreur'])) : ?>
+                <p class="MessgErreur"><?=$_SESSION['erreur']?></p>
+              <?php
+                  unset($_SESSION['erreur']);
+                  endif; ?>
               <div class="input-fields">
                <label for="mail">Mail : </label>
                <input type="email" name="mail" placeholder="Votre Nom" class="input" required>

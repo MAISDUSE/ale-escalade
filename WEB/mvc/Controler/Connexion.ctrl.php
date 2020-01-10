@@ -12,29 +12,27 @@ require_once("../Framework/View.class.php");
 
 
 if(isset($_POST['mail']) && isset($_POST['passwd'])){
+  if(isset($_SESSION['erreur'])){
+    $view = new View("Connexion");
+    $view->afficher();
+  }
 
   $mail = $_POST['mail'];
   $mdp = $_POST['passwd'];
-  var_dump($mail);
-  var_dump($mdp);
-
-
   $db = new DAO;
-  $resultat = $db->verifUser($mail, $mdp);
+  $retour = $db->verifUser($mail, $mdp);
+  session_start();
+  if(!$retour->isErreur()){
 
-  if(!$resultat->erreur){
-    session_start();
-
-    $_SESSION['user'] = new Utilisateur($resultat[1],$resultat[2],$resultat[3]
-                                      ,$resultat[4],$resultat[5],$resultat[6]);
-
-    var_dump($_SESSION['user']);
+    $_SESSION['user'] = new Utilisateur($resultat['AdhID'],$resultat['adresseMail'],
+                                      $resultat['Admin'], $resultat['Prenom'],$resultat['Nom'],
+                                      $resultat['Mdp']);
+    echo "Vous êtes connecté";
     session_write_close();
-
-
-
   }else{
-    var_dump($resultat);
+    $_SESSION['erreur'] = $retour->getRes();
+    $view = new View("Connexion");
+    $view->afficher();
   }
 
 }else{

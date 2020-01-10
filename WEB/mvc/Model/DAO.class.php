@@ -80,30 +80,23 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 }
 
 function verifUser($addrMail, $mdp){
-<<<<<<< HEAD
-=======
 
->>>>>>> 2c01fe190dcd8425d218086bc10a0dba8bd6f0bf
   $req = "SELECT * FROM Utilisateur WHERE adresseMail = '$addrMail' ";
-  $recup = $this->db->query($req);
-  $verifMdp = $recup[0][7];
+  $recup = $this->db->query($req)->fetchAll();
+  $verifMdp = $recup[0]['Mdp'];
   if($recup == NULL){
-    $messageErreur = "Le compte n'a pas été trouvé";
-    $retour = new Retour(TRUE, $messageErreur);
+    $messageErreur = "Le mot de passe ou l'adresse mail est incorrecte";
+    $retour = new Retour(NULL,TRUE, $messageErreur);
   }else{
     if($verifMdp == $mdp){
       $retour = new Retour($recup[0]);
     }else{
-      $messageErreur = "Le mot de passe est incorrect";
-      $retour = new Retour(TRUE, $messageErreur);
+      $messageErreur = "Le mot de passe ou l'adresse mail est incorrecte";
+      $retour = new Retour(NULL,TRUE, $messageErreur);
     }
   }
   return $retour;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c01fe190dcd8425d218086bc10a0dba8bd6f0bf
 }
 
 
