@@ -50,7 +50,7 @@ function getUserByCode($id){
 
 
 function addEvenement( string $nom, string $img, string $dateCreation,
- string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel))
+ string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel)
 {
   echo "INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
     \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
@@ -81,7 +81,7 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 }
 
 function verifUser($addrMail, $mdp){
-<<<<<<< HEAD
+
   $req = "SELECT * FROM Utilisateur WHERE adresseMail = '$addrMail' ";
   $recup = $this->db->query($req)->fetchAll();
   $verifMdp = $recup[0][6];
@@ -97,9 +97,7 @@ function verifUser($addrMail, $mdp){
     }
   }
   return $retour;
-=======
 
->>>>>>> 2a59b315b2274b2f4269a50f4e725c8ea1af3d50
 }
 
 
@@ -108,11 +106,14 @@ function verifUser($addrMail, $mdp){
 function getAllContact(){
   $req = "SELECT * FROM Contact";
   $requete = $this->db->query($req);
-  var_dump($requete);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Contact');
-  var_dump($lancement);
-  return array($lancement);
-
+  //var_dump($requete);
+  $lancement = $requete->fetchAll();
+  //var_dump($lancement[0]);
+  $retour = array();
+  foreach ($lancement as $v) {
+    array_push($retour,new Contact($v[0],$v[1],$v[2],$v[3],$v[4],$v[5]));
+  }
+  return $retour;
 }
 
 //Fonctions CompteRendu
