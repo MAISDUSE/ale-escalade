@@ -24,14 +24,14 @@
           <tr>
             <td><?$actualite->getTitre()?></td>
             <td>
-              <form class="" action="index.html" method="post">
+              <form class="../Controler/GestionActualites.ctrl.php" method="post" enctype="multipart/form-data">
                 <input type="submit" name="viewAuteur" value="<?$actualite->getNomCrea()?>">
                 <input type="hidden" name="idAuteur" value="<?$actualite->getNumCrea()?>">
               </form>
             </td>
             <td><?$actualite->getDateCreation()?></td>
             <td>
-              <form action="../Controler/GestionAdherents.ctrl.php" method="post" enctype="multipart/form-data" name='formulaire'>
+              <form action="../Controler/GestionActualites.ctrl.php" method="post" enctype="multipart/form-data" name='formulaire'>
                 <input type="submit" name="viewActualite" value="Voir Plus"><br>
                 <input type="submit" name="modifActualite" value="Modifier" ><br>
                 <input type="submit" name="supprActualite" value="Supprimer" onclick='ConfirmerSuppression()'><br>
