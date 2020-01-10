@@ -15,8 +15,8 @@
           <h2>Connexion </h2>
             <form class="" action="../Controler/Connexion.ctrl.php" method="post">
               <div class="input-fields">
-               <label for="nom">Nom d'Utilisateur : </label>
-               <input type="text" name="nom" placeholder="Votre Nom" class="input" required>
+               <label for="mail">Mail : </label>
+               <input type="email" name="mail" placeholder="Votre Nom" class="input" required>
                <label for="passwd">Mot de passe : </label>
                <input type="password" name="passwd" placeholder="Votre Mot de passe" class="input" required>
 
