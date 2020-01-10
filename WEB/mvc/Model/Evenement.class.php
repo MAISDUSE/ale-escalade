@@ -111,6 +111,7 @@ require_once("../Model/DAO.class.php");
 
     $db->addEvenement(  $this->nom,  $this->img,  $this->dateCreation,  $this->dateDebut,
       $this->dateFin,  $this->description,  $this->numCrea, $this->nomLieu,  $this->officiel);
+    echo "C4EST BION";  
   }
 }
  ?>

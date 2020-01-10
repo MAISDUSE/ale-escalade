@@ -47,6 +47,8 @@ require_once("../Model/Evenement.class.php");
 
       $evenement = new Evenement(1,$titre,$imageFond,$dateCreation,$dateDebut,$dateFin,$descrition,1,$lieu,$officiel);
       $evenement->addToBD();
+
+
       printf("AJOUTER A LA DB TEST");
     }
 

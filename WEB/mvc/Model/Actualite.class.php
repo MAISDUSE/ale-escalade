@@ -11,7 +11,7 @@ require_once("../Model/Actualite.class.php");
     private $fichiers;       //image
 
     function __construct(int $id, string $titre, string $image, string $dateCreation,
-                        int $numCrea, string $description, array $fichiers){
+                        int $numCrea, string $description, string $fichiers){
       $this->id=$id;
       $this->titre = $titre;
       $this->image = $image;
@@ -19,6 +19,7 @@ require_once("../Model/Actualite.class.php");
       $this->numCrea = $numCrea;
       $this->description = $description;
       $this->fichiers = $fichiers;
+
 
       assert(isset($this->id));
       assert(isset($this->titre));

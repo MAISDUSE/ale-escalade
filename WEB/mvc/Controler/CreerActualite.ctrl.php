@@ -1,4 +1,7 @@
 <?php
+function getNbActualite(){
+  return 1;
+}
 require_once("../Model/Utilisateur.class.php");
 require_once("../Model/DAO.class.php");
 require_once("../Framework/View.class.php");
@@ -28,15 +31,24 @@ require_once("../Model/Actualite.class.php");
 
     $descrition = $_POST['description'];
     $nbFichier = count($_FILES['mesFichiers']['tmp_name']);
-    $nomFichier = array();
+    $nbFichierVal = 0;
+    $nomFichier = "";
       for ($i=0; $i < $nbFichier ; $i++) {
         if (in_array($_FILES['imageFond']['type'], $formatImage) || in_array($_FILES['imageFond']['type'], $formatText)) {
-          move_uploaded_file($_FILES['mesFichiers']['tmp_name'][$i], "../Ressources/test2/".$_FILES['mesFichiers']['name'][$i]);
-          array_push($nomFichier,"test2/".$_FILES['mesFichiers']['name'][$i]);
+          move_uploaded_file($_FILES['mesFichiers']['tmp_name'][$i], "../Ressources/Actualite/act".getNbActualite()."_".$_FILES['mesFichiers']['name'][$i]);
+
+          if($nbFichierVal<0){
+            $nomFichier ="Actualite/act".getNbActualite()."_".$_FILES['mesFichiers']['name'][$i];
+
+          }else{
+            $nomFichier .="|Actualiteact".getNbActualite()."_".$_FILES['mesFichiers']['name'][$i];
+          }
+          $nbFichierVal++;
         }else{
           $ErreurFormat = true;
         }
       }
+      echo $nomFichier2;
       $actualite = new Actualite(1,$titre,$imageFond,$date,1,$descrition,$nomFichier);
     }
 
