@@ -23,7 +23,7 @@ class DAO{
 
   function __construct(){
     try{
-      $db = new PDO('sqlite3:' . $chemin);
+      $db = new PDO('sqlite:' . $chemin);
     }catch(PDOException $e){
       echo "Impossible d'accéder à la base de données";
       die();
