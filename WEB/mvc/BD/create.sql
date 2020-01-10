@@ -95,12 +95,13 @@ CREATE TABLE IF NOT EXISTS Sujet(
 
 CREATE TABLE IF NOT EXISTS AssuranceAdh(
   NumAssurer INTEGER PRIMARY KEY AUTOINCREMENT,
-  Type VARCHAR(20) CHECK (Type = 'Responsable Civile' OR Type = 'Base' OR Type = 'Base+'
-    OR Type = 'Base++'),
+  Type VARCHAR(5) CHECK (Type = 'RC' OR Type = 'B' OR Type = 'B+'
+    OR Type = 'B++'),
   OptionSki BOOLEAN,
   OptionSLHL BOOLEAN,
   OptionTrail BOOLEAN,
-  OptionVTT BOOLEAN
+  OptionVTT BOOLEAN,
+  OptionTypeAssurance VARCHAR(3) CHECK (OptionTypeAssurance = 'IJ1' OR OptionTypeAssurance = 'IJ2' OR OptionTypeAssurance = 'IJ3' OR OptionTypeAssurance = 'NON') DEFAULT 'NON'
 );
 
 CREATE TABLE IF NOT EXISTS Certificat(
@@ -108,8 +109,9 @@ CREATE TABLE IF NOT EXISTS Certificat(
   NumLic SMALLINT UNSIGNED,
   Type VARCHAR(3) CHECK (Type = 'L' OR Type='C' OR Type='PSS' OR Type = 'NP'),
   NomMedecin VARCHAR(100),
-  DateSaisie Date,
+  DateFin Date,
   Alpi BOOLEAN,
+  NomMedecinAlpi VARCHAR(100) DEFAULT '',
   FOREIGN KEY (NumLic) REFERENCES Utilisateur (ID)
 );
 
@@ -150,8 +152,8 @@ CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
   Nom VARCHAR(100),
   Prenom VARCHAR(100),
   Genre CHAR CHECK (Genre = 'H' OR Genre = 'F'),
-  TypeAssurance VARCHAR(20) CHECK (TypeAssurance = 'Responsable Civile' OR TypeAssurance = 'Base'
-    OR TypeAssurance = 'Base+' OR TypeAssurance = 'Base++'),
+  TypeAssurance VARCHAR(20) CHECK (TypeAssurance = 'RC' OR TypeAssurance = 'B'
+    OR TypeAssurance = 'B+' OR TypeAssurance = 'B++'),
   DateNaissance DATE,
   Adresse VARCHAR(100),
   NumTel VARCHAR(15),
