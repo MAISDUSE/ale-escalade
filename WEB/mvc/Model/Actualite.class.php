@@ -51,7 +51,13 @@ require_once("../Model/Actualite.class.php");
 
   function getNomCrea(){
     /*Ici on return le nom et prenom d'un créateur grace a la bd*/
-    return "test ".$this->numCrea;
+    $auteur = $this->getAuteur();
+    return $auteur->getNom()." ".$auteur->getPrenom();
+  }
+
+  function getAuteur(){
+    $db = new DAO;
+    return $db->getUserByCode($this->numCrea);
   }
 
   function getDescription(){
