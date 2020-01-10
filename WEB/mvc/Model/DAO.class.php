@@ -23,13 +23,14 @@ class DAO{
   private $chemin = "../BD/data.db";
 
   function __construct(){
-    try{
-      $db = new PDO('sqlite:' . $this->chemin);
-    }catch(PDOException $e){
-      echo "Impossible d'accéder à la base de données";
-      die();
+    try {
+      $this->db = new PDO("sqlite:".$this->chemin);
+      if (!$this->db) {
+        die ("Database error: cannot open '".$this->database."'\n");
+      }
+    } catch (PDOException $e) {
+      die("PDO Error :".$e->getMessage()." '".$this->database."'\n");
     }
-
   }
 //Fonctions Utilisateur
 function getAllUsers(){
@@ -51,12 +52,11 @@ function getUserByCode($id){
 function addEvenement( string $nom, string $img, string $dateCreation,
  string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel)
 {
-  echo "INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
-    \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
+
   $req ="INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
     \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
 
-  //$this->db->query($req);
+  $this->db->query($req);
 
 }
 
@@ -80,6 +80,10 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 }
 
 function verifUser($addrMail, $mdp){
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2c01fe190dcd8425d218086bc10a0dba8bd6f0bf
   $req = "SELECT * FROM Utilisateur WHERE adresseMail = '$addrMail' ";
   $recup = $this->db->query($req);
   $verifMdp = $recup[0][7];
@@ -96,7 +100,10 @@ function verifUser($addrMail, $mdp){
   }
   return $retour;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c01fe190dcd8425d218086bc10a0dba8bd6f0bf
 }
 
 
@@ -105,8 +112,11 @@ function verifUser($addrMail, $mdp){
 function getAllContact(){
   $req = "SELECT * FROM Contact";
   $requete = $this->db->query($req);
+  var_dump($requete);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Contact');
+  var_dump($lancement);
   return array($lancement);
+
 }
 
 //Fonctions CompteRendu
