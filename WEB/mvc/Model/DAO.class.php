@@ -230,13 +230,14 @@ function getActualiteByID($id){
   $l = $requete->fetchAll();
   return new Actualite($l[0], $l[1], $l[2], $l[3], $l[4], $l[5], $l[6]);
 }
+/*
 function getNomPrenomAuteur($id){
   $req = "SELECT nom, prenom FROM Utilisateur U, Actualite A WHERE A.id = '$id'
           and A.numAuteur = U.id";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll();
   return $lancement;
-}
+}*/
 
 //Fonctions Commentaire
 
