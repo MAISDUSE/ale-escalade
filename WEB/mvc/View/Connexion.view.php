@@ -13,7 +13,7 @@
     <div class ="section">
         <div class="wrapper">
           <h2>Connexion </h2>
-            <form class="" action="../Controler/Connexion.ctrl.php" method="post">
+            <form action="../Controler/Connexion.ctrl.php" method="post">
               <div class="input-fields">
                <label for="mail">Mail : </label>
                <input type="email" name="mail" placeholder="Votre Nom" class="input" required>
