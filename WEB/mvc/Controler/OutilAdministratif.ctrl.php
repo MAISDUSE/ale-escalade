@@ -14,7 +14,7 @@ if (isset($_POST['ajouterActualite'])) {
 } else if (isset($_POST['GererInscription'])) {
   $view = new View("GestionInscriptions");
   $db = new DAO;
-  //$view->InscriptionsEnAttente A completer
+  $view->inscriptions = $db->getAllInscriptions()
 
   $view->afficher();
 } else {

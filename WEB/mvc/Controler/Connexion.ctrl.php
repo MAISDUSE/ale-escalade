@@ -9,26 +9,42 @@ require_once("../Framework/View.class.php");
     ICI METTRE CODE POUR TESTER L'EXISTENCE DU COMPTE
 */
 
-$mail = $_POST['mail'];
-$mdp = $_POST['passwd'];
 
-$db = new DAO;
-$resultat = $db->verifUser($mail, $mdp);
 
-if(!$resultat->erreur){
+if(isset($_POST['mail']) && isset($_POST['passwd'])){
+  if(isset($_SESSION['erreur'])){
+    $view = new View("Connexion");
+    $view->afficher();
+  }
+
+  $mail = $_POST['mail'];
+  $mdp = $_POST['passwd'];
+  $db = new DAO;
+  $retour = $db->verifUser($mail, $mdp);
   session_start();
+  if(!$retour->isErreur()){
 
-  $_SESSION['user'] = new Utilisateur()
+    $_SESSION['user'] = new Utilisateur($resultat['AdhID'],$resultat['adresseMail'],
+                                      $resultat['Admin'], $resultat['Prenom'],$resultat['Nom'],
+                                      $resultat['Mdp']);
+    echo "Vous êtes connecté";
+    session_write_close();
+  }else{
+    $_SESSION['erreur'] = $retour->getRes();
+    $view = new View("Connexion");
+    $view->afficher();
+  }
+
+}else{
+  $view = new View("Connexion");
+  $view->afficher();
 }
 
 
 
-
-$view = new View("Connexion");
 //$view->page = $page;
 //$view->page = $nomUtilisateur
 //$view->page = $passeportUtilisateur
 
-$view->afficher();
 
 ?>

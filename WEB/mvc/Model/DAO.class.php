@@ -80,16 +80,16 @@ function verifUser($addrMail, $mdp){
 
   $req = "SELECT * FROM Utilisateur WHERE adresseMail = '$addrMail' ";
   $recup = $this->db->query($req)->fetchAll();
-  $verifMdp = $recup[0][6];
+  $verifMdp = $recup[0]['Mdp'];
   if($recup == NULL){
-    $messageErreur = "Le compte n'a pas été trouvé";
-    $retour = new Retour(TRUE, $messageErreur);
+    $messageErreur = "Le mot de passe ou l'adresse mail est incorrecte";
+    $retour = new Retour(NULL,TRUE, $messageErreur);
   }else{
     if($verifMdp == $mdp){
       $retour = new Retour($recup[0]);
     }else{
-      $messageErreur = "Le mot de passe est incorrect";
-      $retour = new Retour(TRUE, $messageErreur);
+      $messageErreur = "Le mot de passe ou l'adresse mail est incorrecte";
+      $retour = new Retour(NULL,TRUE, $messageErreur);
     }
   }
   return $retour;
