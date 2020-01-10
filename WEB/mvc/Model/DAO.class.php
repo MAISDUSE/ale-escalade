@@ -23,13 +23,14 @@ class DAO{
   private $chemin = "../BD/data.db";
 
   function __construct(){
-    try{
-      $db = new PDO('sqlite:' . $this->chemin);
-    }catch(PDOException $e){
-      echo "Impossible d'accéder à la base de données";
-      die();
+    try {
+      $this->db = new PDO("sqlite:".$this->chemin);
+      if (!$this->db) {
+        die ("Database error: cannot open '".$this->database."'\n");
+      }
+    } catch (PDOException $e) {
+      die("PDO Error :".$e->getMessage()." '".$this->database."'\n");
     }
-
   }
 //Fonctions Utilisateur
 function getAllUsers(){
@@ -88,8 +89,11 @@ function verifUser($addrMail, $mdp){
 function getAllContact(){
   $req = "SELECT * FROM Contact";
   $requete = $this->db->query($req);
+  var_dump($requete);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Contact');
+  var_dump($lancement);
   return array($lancement);
+
 }
 
 //Fonctions CompteRendu
