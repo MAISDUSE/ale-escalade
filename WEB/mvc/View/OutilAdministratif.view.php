@@ -13,8 +13,7 @@
       <form action="../Controler/OutilAdministratif.ctrl.php" method="post" enctype="multipart/form-data">
         <input type="submit" name="ajouterActualite" value="Ajouter une actualité" ><br>
         <input type="submit" name="gererActualite" value="Gerer les actualités"><br>
-        <input type="submit" name="voirInscription" value="Voir les inscription en attente"><br>
-        <input type="submit" name="gererInsciption" value="Gérer les inscritions en attente"><br>
+        <input type="submit" name="gererInscription" value="Gérer les inscriptions en attente"><br>
         <input type="submit" name="gererAdherent" value="Gérer les adherents"><br>
         <input type="submit" name="gereCours" value="Gérer les cours"><br>
       </form>

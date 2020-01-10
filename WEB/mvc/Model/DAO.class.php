@@ -23,13 +23,14 @@ class DAO{
   private $chemin = "../BD/data.db";
 
   function __construct(){
-    try{
-      $db = new PDO('sqlite:' . $this->chemin);
-    }catch(PDOException $e){
-      echo "Impossible d'accéder à la base de données";
-      die();
+    try {
+      $this->db = new PDO("sqlite:".$this->chemin);
+      if (!$this->db) {
+        die ("Database error: cannot open '".$this->database."'\n");
+      }
+    } catch (PDOException $e) {
+      die("PDO Error :".$e->getMessage()." '".$this->database."'\n");
     }
-
   }
 //Fonctions Utilisateur
 function getAllUsers(){
@@ -47,15 +48,15 @@ function getUserByCode($id){
   return array($lancement);
 }
 
+
 function addEvenement( string $nom, string $img, string $dateCreation,
  string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel)
 {
-  echo "INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
-    \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
+
   $req ="INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
     \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
 
-  //$this->db->query($req);
+  $this->db->query($req);
 
 }
 
@@ -80,15 +81,35 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 
 function verifUser($addrMail, $mdp){
 
+  $req = "SELECT * FROM Utilisateur WHERE adresseMail = '$addrMail' ";
+  $recup = $this->db->query($req)->fetchAll();
+  $verifMdp = $recup[0][6];
+  if($recup == NULL){
+    $messageErreur = "Le compte n'a pas été trouvé";
+    $retour = new Retour(TRUE, $messageErreur);
+  }else{
+    if($verifMdp == $mdp){
+      $retour = new Retour($recup[0]);
+    }else{
+      $messageErreur = "Le mot de passe est incorrect";
+      $retour = new Retour(TRUE, $messageErreur);
+    }
+  }
+  return $retour;
+
 }
 
 
 //Fonctions Contact
+
 function getAllContact(){
   $req = "SELECT * FROM Contact";
   $requete = $this->db->query($req);
+  var_dump($requete);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Contact');
+  var_dump($lancement);
   return array($lancement);
+
 }
 
 //Fonctions CompteRendu
