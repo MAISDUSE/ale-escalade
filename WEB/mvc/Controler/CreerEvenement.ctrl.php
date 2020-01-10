@@ -26,7 +26,7 @@ require_once("../Model/Evenement.class.php");
         $ErreurPhotoDefault=true;
       }
     }
-    
+
     $dateCreation =  date('j/m/Y');
 
 
@@ -48,7 +48,8 @@ require_once("../Model/Evenement.class.php");
 
     }
 
-      $evenement = new Evenement(1,$titre,$imageFond,$dateCreation,$dateDebut,$dateFin,$descrition,1,$lieu,$officiel);
+      $evenement = new Evenement($titre,$imageFond,$dateCreation,$dateDebut,$dateFin,$descrition,1,$lieu,$officiel);
+      $evenement.addToBD();
     }
 
 
