@@ -6,7 +6,7 @@ require_once("../Framework/View.class.php");
 if (isset($_POST['ajouterActualite'])) {
   $view = new View("CreerActualite");
   $view->afficher();
-}else{
+} else {
   $view = new View("OutilAdministratif");
   $view->afficher();
 }

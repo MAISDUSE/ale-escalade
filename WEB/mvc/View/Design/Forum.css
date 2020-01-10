@@ -62,3 +62,19 @@ margin-bottom: 20px;
 
 
 }
+
+@media screen and (max-width: 1024px){
+
+  html{
+    height: 100%;
+  }
+  body{
+      min-height: 100%;
+    }
+
+    footer{
+      position: absolute;
+      bottom: 0;
+    }
+
+}

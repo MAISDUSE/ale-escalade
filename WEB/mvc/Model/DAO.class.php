@@ -15,6 +15,7 @@ require_once("../Model/Pratique.class.php");
 require_once("../Model/PratiqueEvent.class.php");
 require_once("../Model/Sujet.class.php");
 require_once("../Model/Utilisateur.class.php");
+require_once("../Framework/Retour.class.php");
 
 //Début du DAO
 class DAO{
@@ -57,6 +58,7 @@ function addEvenement( string $nom, string $img, string $dateCreation,
   //$this->db->query($req);
 
 }
+
 function addUsers(string $nom, string $prenom, string $genre, string $passeport,
  string $naissance, string $adresse, int $codePostal, string $mail, string $base, Contact $contact)
  {
