@@ -34,7 +34,7 @@
                 <input type="submit" name="viewUser" value="Voir Plus"><br>
                 <input type="submit" name="modifUser" value="Modifier" ><br>
                 <input type="submit" name="supprUser" value="Supprimer" onclick='ConfirmerSuppression()'><br>
-                <input type="hidden" name="idUser" value=<?$user->getId()?>>
+                <input type="hidden" name="idUser" value="<?$user->getId()?>">
               </form>
             </td>
           </tr>

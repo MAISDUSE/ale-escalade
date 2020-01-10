@@ -64,4 +64,10 @@ class Cours{
   function getNumEntraineur(){
     return $this->numEntraineur;
   }
+
+  function getNomEntraineur(){
+    $db = new DAO;
+    $entraineur = $db->getUserByCode($this->numEntraineur);
+    return $entraineur->getNom()." ".$entraineur->getPrenom();
+  }
 } ?>
