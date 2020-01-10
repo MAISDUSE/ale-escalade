@@ -54,7 +54,6 @@ function addEvenement( string $nom, string $img, string $dateCreation,
   $req ="INSERT INTO Utilisateur(nom, prenom, email, password) VALUES(\"$nom\",\"$img\",\"$dateCreation\",
     \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
   $db->query($req);
-
 }
 
 function addUsers(string $nom, string $prenom, string $genre, string $passeport,
@@ -86,6 +85,7 @@ function verifUser($addrMail, $mdp){
 
 
 //Fonctions Contact
+
 function getAllContact(){
   $req = "SELECT * FROM Contact";
   $requete = $this->db->query($req);
