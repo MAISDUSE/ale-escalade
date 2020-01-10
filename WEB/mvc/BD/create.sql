@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS Contact(
   Mail VARCHAR(100)
 );
 
-CREATE TABLE IF NOT EXISTS Utilisateur(
+CREATE TABLE IF NOT EXISTS Adherent(
   ID INTEGER PRIMARY KEY AUTOINCREMENT,
   NumLicence NUMERIC(6) UNIQUE,
   TypeLicence CHAR CHECK (TypeLicence = 'J' OR TypeLicence = 'A' OR TypeLicence = 'F'),
@@ -27,6 +27,16 @@ CREATE TABLE IF NOT EXISTS Utilisateur(
     OR Passeport = 'RougePerf' OR Passeport = 'RougeExt' OR Passeport = 'Noir'),
   Contact SMALLINT UNSIGNED,
   FOREIGN KEY (Contact) REFERENCES Contact (ID)
+  );
+
+  CREATE TABLE IF NOT EXISTS Utilisateur(
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    AdhID INTEGER,
+    adresseMail TEXT UNIQUE,
+    Prenom TEXT,
+    Nom TEXT,
+    Mdp TEXT,
+    FOREIGN KEY (AdhID) REFERENCES Adherent(ID)
   );
 
 CREATE TABLE IF NOT EXISTS Actualite(
@@ -65,6 +75,7 @@ CREATE TABLE IF NOT EXISTS Event(
   DateFin DATE,
   Description TEXT(1000),
   Officiel BOOLEAN,
+  AddrMailCreat TEXT,
   NumCrea SMALLINT UNSIGNED,
   NomLieu VARCHAR(100),
   FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID),
@@ -155,4 +166,7 @@ CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
   AdresseContact VARCHAR(100),
   MailContact VARCHAR(100)
 );
+
+
+INSERT INTO Utilisateur(adresseMail, Prenom, Nom, MDP) VALUES('hugo.iteprat@etu.univ-grenoble-alpes.fr', 'Hugo', 'Iteprat', 'ceciestuntresbonmdp');
 COMMIT;

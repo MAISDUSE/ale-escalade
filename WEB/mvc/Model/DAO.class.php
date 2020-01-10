@@ -74,6 +74,10 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
     $requete = exec($req);//exec est utiliser quand on recupère pas de résultat
 }
 
+function verifUser($addrMail, $mdp){
+  
+}
+
 
 //Fonctions Contact
 function getAllContact(){
