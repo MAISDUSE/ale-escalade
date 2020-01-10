@@ -1,45 +1,42 @@
 BEGIN;
 CREATE TABLE IF NOT EXISTS Contact(
-  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
   Nom VARCHAR(100),
   Prenom VARCHAR(100),
   Adresse VARCHAR(255),
   NumTel VARCHAR(15),
   Mail VARCHAR(100)
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE IF NOT EXISTS Utilisateur(
-  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
   NumLicence NUMERIC(6) UNIQUE,
-  TypeLicence ENUM ('J','A','F'),
+  TypeLicence CHAR CHECK (TypeLicence = 'J' OR TypeLicence = 'A' OR TypeLicence = 'F'),
   Nom VARCHAR(100),
   Prenom VARCHAR(100),
-  Genre ENUM('H','F'),
+  Genre CHAR CHECK (Genre = 'H' OR Genre = 'F'),
   DateNaissance DATE,
   Adresse VARCHAR(255),
   NumTel VARCHAR(15),
   Mail VARCHAR(100),
-  Role ENUM ('Bureau', 'Entraineur', 'Administrateur', 'Adherent', 'Mineur', 'Benevole'),
+  Role VARCHAR(15) CHECK (Role = 'Bureau' OR Role = 'Entraineur' OR Role = 'Administrateur'
+    OR Role = 'Adherent' OR Role = 'Mineur' OR Role = 'Benevole'),
   CodeUtilisateur VARCHAR(20),
-  Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
+  Passeport VARCHAR(10) CHECK (Passeport = 'Blanc' OR Passeport = 'Jaune'
+    OR Passeport = 'Orange' OR Passeport = 'Vert' OR Passeport = 'Bleu'
+    OR Passeport = 'RougePerf' OR Passeport = 'RougeExt' OR Passeport = 'Noir'),
   Contact SMALLINT UNSIGNED,
-  CONSTRAINT `fk_contact_contactid`
-    FOREIGN KEY (Contact) REFERENCES Contact (ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT
-  ) ENGINE = InnoDB;
+  FOREIGN KEY (Contact) REFERENCES Contact (ID)
+  );
 
 CREATE TABLE IF NOT EXISTS CompteRendu(
   Titre VARCHAR(100),
   DatePub DATE,
   Contenu VARCHAR(1000),
   NumAuteur SMALLINT UNSIGNED,
-  CONSTRAINT `fk_numauteur_utilisateurid_compterendu`
-    FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT,
+  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID),
   PRIMARY KEY (Titre, DatePub)
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE IF NOT EXISTS Message(
   NumExp SMALLINT UNSIGNED,
@@ -47,24 +44,18 @@ CREATE TABLE IF NOT EXISTS Message(
   DateEnv TIMESTAMP,
   Contenu VARCHAR(1000),
   PRIMARY KEY (NumExp, NumDest, DateEnv),
-  CONSTRAINT `fk_numexp_utilisateurid`
-    FOREIGN KEY (NumExp) REFERENCES Utilisateur (ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT,
-  CONSTRAINT `fk_numdest_utilisateurid`
-    FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT
-) ENGINE = InnoDB;
+  FOREIGN KEY (NumExp) REFERENCES Utilisateur(ID),
+  FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
+);
 
 CREATE TABLE IF NOT EXISTS Lieu(
   Nom VARCHAR(100) PRIMARY KEY,
   Adresse VARCHAR(255),
-  Categorie ENUM ('Interieur', 'Exterieur')
-) ENGINE = InnoDB;
+  Categorie VARCHAR(10) CHECK (Categorie = 'Interieur' OR Categorie = 'Exterieur')
+);
 
 CREATE TABLE IF NOT EXISTS Event(
-  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
   Nom VARCHAR(100),
   DateDebut TIMESTAMP,
   DateFin TIMESTAMP CHECK (DateFin > DateDebut),
@@ -72,77 +63,55 @@ CREATE TABLE IF NOT EXISTS Event(
   Officiel BOOLEAN,
   NumCrea SMALLINT UNSIGNED,
   NomLieu VARCHAR(100),
-  CONSTRAINT `fk_numcrea_utilisateurid`
-    FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT,
-  CONSTRAINT `fk_nomlieu_utilisateurid`
-    FOREIGN KEY (NomLieu) REFERENCES Lieu (Nom)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT
-) ENGINE = InnoDB;
+  FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID),
+  FOREIGN KEY (NomLieu) REFERENCES Lieu (Nom)
+
+);
 
 CREATE TABLE IF NOT EXISTS Sujet(
-  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
   Titre VARCHAR(100),
   DatePub DATE,
   Contenu TEXT(1000),
   IDAuteur SMALLINT UNSIGNED,
   IDEvent SMALLINT UNSIGNED default null,
-  CONSTRAINT `fk_idauteur_utilisateurid`
-    FOREIGN KEY (IDAuteur) REFERENCES Utilisateur (ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT,
-  CONSTRAINT `fk_idevent_eventid`
-    FOREIGN KEY (IDEvent) REFERENCES Event (ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT
-) ENGINE = InnoDB;
+  FOREIGN KEY (IDAuteur) REFERENCES Utilisateur (ID),
+  FOREIGN KEY (IDEvent) REFERENCES Event (ID)
+);
 
 CREATE TABLE IF NOT EXISTS AssuranceAdh(
-  NumAssurer INT PRIMARY KEY,
-  Type ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++'),
+  NumAssurer INTEGER PRIMARY KEY AUTOINCREMENT,
+  Type VARCHAR(20) CHECK (Type = 'Responsable Civile' OR Type = 'Base' OR Type = 'Base+'
+    OR Type = 'Base++'),
   OptionSki BOOLEAN,
   OptionSLHL BOOLEAN,
   OptionTrail BOOLEAN,
   OptionVTT BOOLEAN
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE IF NOT EXISTS Certificat(
-  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
   NumLic SMALLINT UNSIGNED,
-  Type ENUM ('L','C','PSS','NP'),
+  Type VARCHAR(3) CHECK (Type = 'L' OR Type='C' OR Type='PSS' OR Type = 'NP'),
   NomMedecin VARCHAR(100),
   DateSaisie Date,
   Alpi BOOLEAN,
-  CONSTRAINT `fk_numlic_utilisateurid`
-    FOREIGN KEY (NumLic) REFERENCES Utilisateur (ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT
-) ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS Pratique (
-  Type ENUM ('Difficulte', 'Bloc', 'Vitesse') PRIMARY KEY
-) ENGINE = InnoDB;
+  FOREIGN KEY (NumLic) REFERENCES Utilisateur (ID)
+);
 
 CREATE TABLE IF NOT EXISTS Cours(
-  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   Nom VARCHAR(100),
   HeureDebut TIME,
   HeureFin TIME CHECK (HeureFin > HeureDebut),
-  Jour ENUM('L','M','Me','J','V','S','D'),
+  Jour VARCHAR(2) CHECK (Jour = 'L' OR Jour = 'Ma' OR Jour ='Me' OR Jour = 'J'
+    OR Jour='V' OR Jour = 'S' OR Jour = 'D' ),
   NbPlace INT,
   NomLieu VARCHAR(100),
   NumEntraineur SMALLINT UNSIGNED,
-  CONSTRAINT `fk_nomlieu_lieunom`
-    FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT,
-  CONSTRAINT `fk_numentraineur_utilisateurid`
-    FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT
-) ENGINE = InnoDB;
+  FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom),
+  FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
+);
 
 CREATE TABLE IF NOT EXISTS Commentaire(
   NumAuteur SMALLINT UNSIGNED,
@@ -150,40 +119,36 @@ CREATE TABLE IF NOT EXISTS Commentaire(
   DateCreation DATE,
   Contenu TEXT(1000),
   PRIMARY KEY (NumAuteur, IDSujet, DateCreation),
-  CONSTRAINT `fk_numauteur_utilisateurid_commentaire`
-    FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT,
-  CONSTRAINT `fk_idsujet_sujetid`
-    FOREIGN KEY (IDSujet) REFERENCES Sujet (ID)
-    ON DELETE CASCADE
-    ON UPDATE RESTRICT
-) ENGINE = InnoDB;
+  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID),
+  FOREIGN KEY (IDSujet) REFERENCES Sujet (ID)
+);
 
 CREATE TABLE IF NOT EXISTS PratiqueEvent(
-  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
   IDEvent SMALLINT UNSIGNED default null,
   IDCours SMALLINT UNSIGNED default null,
-  Type ENUM ('Difficulte', 'Bloc', 'Vitesse') REFERENCES Pratique(Type),
-  PRIMARY KEY (ID,Type),
+  Type VARCHAR(10) CHECK (Type = 'Difficulte' OR Type = 'Bloc' OR Type = 'Vitesse'),
   CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
-) ENGINE = InnoDB;
+);
 
 CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
-  ID SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  ID INTEGER PRIMARY KEY AUTOINCREMENT,
   Nom VARCHAR(100),
   Prenom VARCHAR(100),
-  Genre ENUM('H','F'),
-  TypeAssurance ENUM ('Responsable Civile', 'Base', 'Base+', 'Base++'),
+  Genre CHAR CHECK (Genre = 'H' OR Genre = 'F'),
+  TypeAssurance VARCHAR(20) CHECK (TypeAssurance = 'Responsable Civile' OR TypeAssurance = 'Base'
+    OR TypeAssurance = 'Base+' OR TypeAssurance = 'Base++'),
   DateNaissance DATE,
   Adresse VARCHAR(100),
   NumTel VARCHAR(15),
   Mail VARCHAR(100),
-  Passeport ENUM('Blanc', 'Jaune', 'Orange', 'Vert', 'Bleu', 'RougePerf', 'RougeExt','Noir'),
+  Passeport VARCHAR(10) CHECK (Passeport = 'Blanc' OR Passeport = 'Jaune'
+    OR Passeport = 'Orange' OR Passeport = 'Vert' OR Passeport = 'Bleu'
+    OR Passeport = 'RougePerf' OR Passeport = 'RougeExt' OR Passeport = 'Noir'),
   NomContact VARCHAR(100),
   PrenomContact VARCHAR(100),
   NumTelContact VARCHAR(15),
   AdresseContact VARCHAR(100),
   MailContact VARCHAR(100)
-) ENGINE = InnoDB;
+);
 COMMIT;

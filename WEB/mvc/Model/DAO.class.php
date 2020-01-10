@@ -19,23 +19,24 @@ require_once("../Model/Utilisateur.class.php");
 //Début du DAO
 class DAO{
   private $db;
+  private $chemin = "../BD/data.db";
 
-  private $database = "";
   function __construct(){
-    try {
-      $this->db = new PDO($this->database);
-    } catch (PDOException $e) {
-      die("Erreur de connexion : ".$e->getMessage());
+    try{
+      $db = new PDO('sqlite3:' . $chemin);
+    }catch(PDOException $e){
+      echo "Impossible d'accéder à la base de données";
+      die();
     }
 
   }
-}
-
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
+  $this->link->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
+  $requete = mysqli_query($this->link, $req);
+  $this->link->commit();
+  $lancement = mysqli_fetch_object($requete);
   return array($lancement);
 }
 function getUserByCode($id){
@@ -171,9 +172,29 @@ function getAllCommentairesFomSujet($idSujet){
   return array($lancement);
 }
 
+//event
+function getAllEvent(){
+  $req = "SELECT * FROM Event ORDER BY date";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+function getEventByDates($debut, $fin){
+  $req = "SELECT * FROM Event WHERE '$debut' < DateDebut and '$fin' < DateFin";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+function getEventOfficial(){
+  $req = "SELECT * FROM Event WHERE Officiel = 'true'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
+  return array($lancement);
+}
+
 //Fonctions PratiqueEvent
 
 //Autre
 
-
+}
  ?>
