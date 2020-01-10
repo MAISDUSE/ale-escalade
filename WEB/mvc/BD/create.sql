@@ -71,15 +71,14 @@ CREATE TABLE IF NOT EXISTS Event(
   ID INTEGER PRIMARY KEY AUTOINCREMENT,
   Nom VARCHAR(100),
   Image TEXT,
-  DatePub DATE
+  DatePub DATE,
   DateDebut DATE,
   DateFin DATE,
   Description TEXT(1000),
   Officiel BOOLEAN,
   NumCrea SMALLINT UNSIGNED,
   NomLieu VARCHAR(100),
-  FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID),
-  FOREIGN KEY (NomLieu) REFERENCES Lieu (Nom)
+  FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID)
 
 );
 

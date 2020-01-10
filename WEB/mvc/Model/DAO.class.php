@@ -52,12 +52,11 @@ function getUserByCode($id){
 function addEvenement( string $nom, string $img, string $dateCreation,
  string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel)
 {
-  echo "INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
-    \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
+
   $req ="INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
     \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
 
-  //$this->db->query($req);
+  $this->db->query($req);
 
 }
 
