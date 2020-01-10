@@ -19,7 +19,7 @@
       </form>
       <br>
       <br>
-      <a href="../Model/export.csv.php">
+      <a href="../Model/Export.csv.php">
         <button type="button" name="export">Exporter le CSV ...</button>
       </a>
     </div>

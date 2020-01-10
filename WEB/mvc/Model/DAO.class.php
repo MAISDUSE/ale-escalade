@@ -35,10 +35,7 @@ class DAO{
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
-  $this->link->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
-  $requete = mysqli_query($this->link, $req);
-  $this->link->commit();
-  $lancement = mysqli_fetch_object($requete);
+
   return array($lancement);
 }
 function getUserByCode($id){
@@ -105,11 +102,23 @@ function verifUser($addrMail, $mdp){
 function getAllContact(){
   $req = "SELECT * FROM Contact";
   $requete = $this->db->query($req);
-  var_dump($requete);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Contact');
-  var_dump($lancement);
-  return array($lancement);
+  //var_dump($requete);
+  $lancement = $requete->fetchAll();
+  //var_dump($lancement[0]);
+  $retour = array();
+  foreach ($lancement as $v) {
+    array_push($retour,new Contact($v[0],$v[1],$v[2],$v[3],$v[4],$v[5]));
+  }
+  return $retour;
+}
 
+function getContactByID($id){
+  $req = "SELECT * FROM Contact WHERE id = '$id'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll()[0];
+  //Verifier que la liste ne soit pas vide
+  //var_dump($lancement);
+  return new Contact($lancement[0], $lancement[1], $lancement[2], $lancement[3], $lancement[4], $lancement[5]);
 }
 
 //Fonctions CompteRendu

@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>ALE Escalade - Gestion Adhérents</title>
+    <script type="text/javascript">
+      function ConfirmerSuppression(){
+        if(confirm("Voulez vous vraiment supprimer cet adhérent ?")){
+          formulaire.submit();
+        }
+      }
+    </script>
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
@@ -23,10 +30,11 @@
             <td><?$user->getNumTel()?></td>
             <td><?$user->getRole()?></td>
             <td>
-              <form action="../Controler/GestionAdherents.ctrl.php" method="post" enctype="multipart/form-data">
+              <form action="../Controler/GestionAdherents.ctrl.php" method="post" enctype="multipart/form-data" name='formulaire'>
                 <input type="submit" name="viewUser" value="Voir Plus"><br>
                 <input type="submit" name="modifUser" value="Modifier" ><br>
-                <input type="submit" name="supprUser" value="Supprimer"><br>
+                <input type="submit" name="supprUser" value="Supprimer" onclick='ConfirmerSuppression()'><br>
+                <input type="hidden" name="idUser" value=<?$user->getId()?>>
               </form>
             </td>
           </tr>
