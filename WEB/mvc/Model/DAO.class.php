@@ -24,7 +24,7 @@ class DAO{
 
   function __construct(){
     try{
-      $db = new PDO('sqlite3:' . $chemin);
+      $db = new PDO('sqlite:' . $this->chemin);
     }catch(PDOException $e){
       echo "Impossible d'accéder à la base de données";
       die();
@@ -50,10 +50,13 @@ function getUserByCode($id){
 function addEvenement( string $nom, string $img, string $dateCreation,
  string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel)
 {
-
-  $req ="INSERT INTO Utilisateur(nom, prenom, email, password) VALUES(\"$nom\",\"$img\",\"$dateCreation\",
+  echo "INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
     \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
-  $db->query($req);
+  $req ="INSERT INTO Event VALUES(\"$nom\",\"$img\",\"$dateCreation\",
+    \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
+
+  //$this->db->query($req);
+
 }
 
 function addUsers(string $nom, string $prenom, string $genre, string $passeport,
@@ -76,11 +79,7 @@ function addUsers(string $nom, string $prenom, string $genre, string $passeport,
 }
 
 function verifUser($addrMail, $mdp){
-  $req = "SELECT MDP FROM Utilisateur WHERE adresseMail = '$addrMail' ";
-  $recup = $this->db->query($req)->fetchAll();
-  if($recup == NULL){
 
-  }
 }
 
 
