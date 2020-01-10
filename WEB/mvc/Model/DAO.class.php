@@ -45,13 +45,13 @@ function getUserByCode($id){
   $lancement = $requete->fetchAll();
   $retour = array();
   //utilisation de foreach car problème du au PDO::FETCH_CLASS
-  foreach ($lancement as $v)
+  foreach ($lancement as $v){
     //Utilisateur int $id, string $licence, string $typeLicence,
     //string $nom, string $prenom, string $genre, string $dateNaissance,
     //string $adresse, string $numTel, string $adresseMail,
     //string $role, string $codeUtilisateur, string $passeport, Contact $contact = null
-    array_push($retour, new Utilisateur($v[1], $v[2], $v[3], $v[4], $v[5], $v[6]
-                        $v[7], $v[8], $v[9], $v[10], $v[11], $v[12], getContactByID($v[13])))
+    array_push($retour, new Utilisateur($v[1], $v[2], $v[3], $v[4], $v[5], $v[6],
+                        $v[7], $v[8], $v[9], $v[10], $v[11], $v[12], getContactByID($v[13])));
   }
   return $retour;
 }
@@ -63,7 +63,7 @@ function getUserByCode($id){
     $lancement = $requete->fetchAll();
     $retour = array();
     foreach ($variable as $v) {
-      array_push($retour, new InscriptionEnAttente($v[0], $v[1], $v[2], $v[3], $v[4]
+      array_push($retour, new InscriptionEnAttente($v[0], $v[1], $v[2], $v[3], $v[4],
                   $v[5], $v[6], $v[7], $v[8], $v[9], $v[10], $v[11], $v[12],
                   $v[13], $v[14]));
     }
@@ -266,12 +266,12 @@ function getEventOfficial(){
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
   return array($lancement);
- } 
+ }
   function addEvenement( string $nom, string $img, string $dateCreation,
                          string $dateDebut, string $dateFin, string $description,
                          int $numCrea,string $nomLieu, bool $officiel){
 
-    $req ="INSERT INTO Event(Nom,Image,DatePub,DateDebut,DateFin,Description,Officiel,NumCrea,NomLieu) VALUES(:nom,:image,:datePub,:dateDeb,:dateFin,:description,:numCrea,:officiel,:lieu)";      
+    $req ="INSERT INTO Event(Nom,Image,DatePub,DateDebut,DateFin,Description,Officiel,NumCrea,NomLieu) VALUES(:nom,:image,:datePub,:dateDeb,:dateFin,:description,:numCrea,:officiel,:lieu)";
       $requete = $this->db->prepare($req);
       $requete->execute(array(
                         'nom'=> $nom,
@@ -283,7 +283,7 @@ function getEventOfficial(){
                         'numCrea' => $numCrea,
                         'officiel' => $officiel,
                         'lieu'=> $nomLieu));
-    
+
     }
 
 

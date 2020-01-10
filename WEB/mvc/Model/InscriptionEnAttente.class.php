@@ -30,7 +30,7 @@ class InscriptionEnAttente{
     if($genre == "H" || $genre == "F"){
       $this->genre = $genre;
     }
-    if($typeAssurance == "RC" $typeAssurance == "B"
+    if($typeAssurance == "RC" || $typeAssurance == "B"
       || $typeAssurance == "B+" || $typeAssurance == "B++"){
         $this->typeAssurance = $typeAssurance;
       }

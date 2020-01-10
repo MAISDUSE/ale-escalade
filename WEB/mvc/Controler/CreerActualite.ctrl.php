@@ -48,7 +48,7 @@ require_once("../Model/Actualite.class.php");
           $ErreurFormat = true;
         }
       }
-      echo $nomFichier2;
+      echo $nomFichier;
       $actualite = new Actualite(1,$titre,$imageFond,$date,1,$descrition,$nomFichier);
     }
 
