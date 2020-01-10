@@ -46,6 +46,16 @@ function getUserByCode($id){
   return array($lancement);
 }
 
+function addEvenement(int $id, string $nom, string $img, string $dateCreation,
+ string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel))
+{
+  try {
+  $db = new PDO("sqlite:../model/data/data.db");
+  }catch (PDOException $e) {
+    die("erreur de connexion : ".$e->getMessage());
+  }
+  
+}
 function addUsers(string $nom, string $prenom, string $genre, string $passeport,
  string $naissance, string $adresse, int $codePostal, string $mail, string $base, Contact $contact)
  {
