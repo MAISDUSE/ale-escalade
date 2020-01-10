@@ -26,10 +26,10 @@
               <label for="prenom">Prénom : </label>
               <input type="text" name="prenom" placeholder="Votre Prenom" class="input"  required>
               <label for="sexe">Sexe : </label>
-              <input type="radio" id="homme" name="sexe" value="Homme" checked>
-              <label for="homme">H</label>
-              <input type="radio" id="femme" name="sexe" value="Femme">
-              <label for="femme">F</label>
+              <input type="radio" id="homme" name="sexe" value="H" checked>
+              <label for="homme">Homme</label>
+              <input type="radio" id="femme" name="sexe" value="F">
+              <label for="femme">Femme</label>
               <label for="passeport">Passeport : </label>
               <select class="input" name="passeport">
                 <option value="Blanc" selected>Blanc</option>

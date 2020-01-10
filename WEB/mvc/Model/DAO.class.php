@@ -290,11 +290,27 @@ function getEventOfficial(){
 
 function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adresse, $codepostal, $adressemail, $passeport, $numtel
                         , $NomContact, $PrenomContact, $NumTelContact, $AdresseContact, $MailContact){
-  $req = "INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance)
-          Adresse, NumTel, Mail, Passeport, NomContact, PrenomContact, NumTelContact
-          AdresseContact, MailContact Values('$nom', '$prenom', '$sexe', '$assurance', '$datedenaissance',
-                                    '$adresse', '$codepostal', '$adressemail','$passeport', '$numtel'
-                                  , '$NomContact', '$PrenomContact', '$NumTelContact', '$AdresseContact', '$MailContact')";
+
+  $request = $this->db->prepare('INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance,Adresse, NumTel, Mail, Passeport, NomContact, PrenomContact, NumTelContact,  AdresseContact, MailContact) VALUES(:nom, :prenom, :sexe, :assurance, :datedenaissance,:adresse, :adressemail,:passeport, :numtel,:NomContact, :PrenomContact, :NumTelContact, :AdresseContact, :MailContact)');
+
+  $request->execute(array(
+    "nom"=> $nom,
+    "prenom" => $prenom,
+    "sexe" => $sexe,
+    "assurance" => $assurance,
+    "datedenaissance" => $datedenaissance,
+    "adresse" => $adresse,
+    "adressemail" => $adressemail,
+    "passeport" => $passeport,
+    "numtel" => $numtel,
+    "NomContact"=> $NomContact,
+    "PrenomContact" => $PrenomContact,
+    "NumTelContact" => $NumTelContact,
+    "AdresseContact" => $AdresseContact,
+    "MailContact" => $MailContact
+  ));
+
+
 }
 
 //Fonctions PratiqueEvent
