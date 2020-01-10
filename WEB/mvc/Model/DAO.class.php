@@ -9,6 +9,7 @@ require_once("../Model/CompteRendu.class.php");
 require_once("../Model/Contact.class.php");
 require_once("../Model/Cours.class.php");
 require_once("../Model/Evenement.class.php");
+require_once("../Model/InscriptionEnAttente.class.php");
 require_once("../Model/Lieu.class.php");
 require_once("../Model/Message.class.php");
 require_once("../Model/Pratique.class.php");
@@ -41,9 +42,33 @@ function getAllUsers(){
 function getUserByCode($id){
   $req = "SELECT * FROM Utilisateur where id = '$id'";
   $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
-  return array($lancement);
+  $lancement = $requete->fetchAll();
+  $retour = array();
+  //utilisation de foreach car problème du au PDO::FETCH_CLASS
+  foreach ($lancement as $v)
+    //Utilisateur int $id, string $licence, string $typeLicence,
+    //string $nom, string $prenom, string $genre, string $dateNaissance,
+    //string $adresse, string $numTel, string $adresseMail,
+    //string $role, string $codeUtilisateur, string $passeport, Contact $contact = null
+    array_push($retour, new Utilisateur($v[1], $v[2], $v[3], $v[4], $v[5], $v[6]
+                        $v[7], $v[8], $v[9], $v[10], $v[11], $v[12], getContactByID($v[13])))
+  }
+  return $retour;
 }
+
+  // Récupère toute les inscriptions en attentes
+  function getAllInscriptions(){
+    $req = "SELECT * FROM InscriptionEnAttente";
+    $requete = $this->db->query($req);
+    $lancement = $requete->fetchAll();
+    $retour = array();
+    foreach ($variable as $v) {
+      array_push($retour, new InscriptionEnAttente($v[0], $v[1], $v[2], $v[3], $v[4]
+                  $v[5], $v[6], $v[7], $v[8], $v[9], $v[10], $v[11], $v[12],
+                  $v[13], $v[14]));
+    }
+    return $retour;
+  }
 
 
 function addEvenement( string $nom, string $img, string $dateCreation,
@@ -207,6 +232,19 @@ function getAllActualite(){
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Actualite');
   return array($lancement);
+}
+function getActualiteByID($id){
+  $req = "SELECT * FROM Actualite WHERE id = '$id'";
+  $requete = $this->db->query($req);
+  $l = $requete->fetchAll();
+  return new Actualite($l[0], $l[1], $l[2], $l[3], $l[4], $l[5], $l[6]);
+}
+function getNomPrenomAuteur($id){
+  $req = "SELECT nom, prenom FROM Utilisateur U, Actualite A WHERE A.id = '$id'
+          and A.numAuteur = U.id";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll();
+  return $lancement;
 }
 
 //Fonctions Commentaire
