@@ -23,7 +23,7 @@ class DAO{
 
   function __construct(){
     try{
-      $db = new PDO('sqlite:' . $chemin);
+      $db = new PDO('sqlite3:' . $chemin);
     }catch(PDOException $e){
       echo "Impossible d'accéder à la base de données";
       die();
@@ -46,15 +46,14 @@ function getUserByCode($id){
   return array($lancement);
 }
 
-function addEvenement(int $id, string $nom, string $img, string $dateCreation,
+function addEvenement( string $nom, string $img, string $dateCreation,
  string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel))
 {
-  try {
-  $db = new PDO("sqlite:../model/data/data.db");
-  }catch (PDOException $e) {
-    die("erreur de connexion : ".$e->getMessage());
-  }
-  
+
+  $req ="INSERT INTO Utilisateur(nom, prenom, email, password) VALUES(\"$nom\",\"$img\",\"$dateCreation\",
+    \"$dateDebut\",\"$dateFin\",\"$description\",\"$numCrea\",\"$officiel\",\"$nomLieu\")";
+  $db->query($req);
+
 }
 function addUsers(string $nom, string $prenom, string $genre, string $passeport,
  string $naissance, string $adresse, int $codePostal, string $mail, string $base, Contact $contact)
