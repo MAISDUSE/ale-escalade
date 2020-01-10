@@ -18,19 +18,16 @@
 
       			         <div class="txt">
               <!--Ici dans le h3 (titre) on devra limiter le text !!!-->
-      			  <h3><?=$actualite->getTitre()?></h3>
-      			  <p>Posté le <?=$actualite->getDateCreation()?></p>
+      			           <h3><?=$actualite->getTitre()?></h3>
+      			            <p>Posté le <?=$actualite->getDateCreation()?></p>
+      			            <a href="../Controler/Actualite.ctrl.php?id=<?=$actualite->getId()?>">Afficher l'actualitée</a>
+      			         </div>
+    		         </div>
+    		         <div class="actualiteZ2">  </div>
+    		         <img class="actualiteZ1" src="../Ressources/<?=$actualite->getImage()?>" alt="imageDeFonds" >
+               </section>
+          <?php }?>
 
-      			  <a href="../Controler/Actualite.ctrl.php?id=<?=$actualite->getId()?>">Afficher l'actualité</a>
-      			</div>
-    		  </div>
-
-    		  <div class="actualiteZ2">  </div>
-
-    		  <img class="actualiteZ1" src="../Ressources/<?=$actualite->getImage()?>" alt="imageDeFonds" >
-
-        </section>
-        <?php }?>
       </section>
     <?php include "Design/Footer.view.php"; ?>
   </body>

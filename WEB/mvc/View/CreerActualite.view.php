@@ -23,7 +23,7 @@
               <input multiple type="file" name="imageFond">
               <br>
               <label for="description">Description :</label>
-              <textarea id="description" name="description" rows="8" cols="80" required>Entrez votre article</textarea>
+              <textarea id="description" name="description" rows="8" cols="80" placeholder="Entrez votre article" required></textarea>
 
               <br>
               <label for="fichiers">Fichiers à joindre :</label>
