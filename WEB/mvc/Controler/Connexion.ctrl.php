@@ -27,8 +27,11 @@ if(isset($_POST['mail']) && isset($_POST['passwd'])){
     $_SESSION['user'] = new Utilisateur($resultat['AdhID'],$resultat['adresseMail'],
                                       $resultat['Admin'], $resultat['Prenom'],$resultat['Nom'],
                                       $resultat['Mdp']);
-    echo "Vous êtes connecté";
     session_write_close();
+    $view = new View('../Controler/Accueil.ctrl.php');
+    $view->afficher();
+
+
   }else{
     $_SESSION['erreur'] = $retour->getRes();
     $view = new View("Connexion");

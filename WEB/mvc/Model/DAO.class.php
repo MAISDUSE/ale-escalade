@@ -277,6 +277,15 @@ function getEventOfficial(){
   return array($lancement);
 }
 
+function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adresse, $codepostal, $adressemail, $passeport, $numtel
+                        , $NomContact, $PrenomContact, $NumTelContact, $AdresseContact, $MailContact){
+  $req = "INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance)
+          Adresse, NumTel, Mail, Passeport, NomContact, PrenomContact, NumTelContact
+          AdresseContact, MailContact Values('$nom', '$prenom', '$sexe', '$assurance', '$datedenaissance',
+                                    '$adresse', '$codepostal', '$adressemail','$passeport', '$numtel'
+                                  , '$NomContact', '$PrenomContact', '$NumTelContact', '$AdresseContact', '$MailContact')";
+}
+
 //Fonctions PratiqueEvent
 
 //Autre
