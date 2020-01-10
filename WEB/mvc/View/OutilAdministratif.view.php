@@ -14,12 +14,12 @@
         <input type="submit" name="ajouterActualite" value="Ajouter une actualité" ><br>
         <input type="submit" name="gererActualite" value="Gerer les actualités"><br>
         <input type="submit" name="gererInscription" value="Gérer les inscriptions en attente"><br>
-        <input type="submit" name="gererAdherent" value="Gérer les adherents"><br>
-        <input type="submit" name="gereCours" value="Gérer les cours"><br>
+        <input type="submit" name="gererAdherent" value="Gérer les adhérents"><br>
+        <input type="submit" name="gererCours" value="Gérer les cours"><br>
       </form>
       <br>
       <br>
-      <a href="../Model/export.csv.php">
+      <a href="../Model/Export.csv.php">
         <button type="button" name="export">Exporter le CSV ...</button>
       </a>
     </div>

@@ -9,6 +9,7 @@ require_once("../Model/CompteRendu.class.php");
 require_once("../Model/Contact.class.php");
 require_once("../Model/Cours.class.php");
 require_once("../Model/Evenement.class.php");
+require_once("../Model/InscriptionEnAttente.class.php");
 require_once("../Model/Lieu.class.php");
 require_once("../Model/Message.class.php");
 require_once("../Model/Pratique.class.php");
@@ -35,18 +36,39 @@ class DAO{
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
-  $this->link->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
-  $requete = mysqli_query($this->link, $req);
-  $this->link->commit();
-  $lancement = mysqli_fetch_object($requete);
+
   return array($lancement);
 }
 function getUserByCode($id){
   $req = "SELECT * FROM Utilisateur where id = '$id'";
   $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Utilisateur');
-  return array($lancement);
+  $lancement = $requete->fetchAll();
+  $retour = array();
+  //utilisation de foreach car problème du au PDO::FETCH_CLASS
+  foreach ($lancement as $v)
+    //Utilisateur int $id, string $licence, string $typeLicence,
+    //string $nom, string $prenom, string $genre, string $dateNaissance,
+    //string $adresse, string $numTel, string $adresseMail,
+    //string $role, string $codeUtilisateur, string $passeport, Contact $contact = null
+    array_push($retour, new Utilisateur($v[1], $v[2], $v[3], $v[4], $v[5], $v[6]
+                        $v[7], $v[8], $v[9], $v[10], $v[11], $v[12], getContactByID($v[13])))
+  }
+  return $retour;
 }
+
+  // Récupère toute les inscriptions en attentes
+  function getAllInscriptions(){
+    $req = "SELECT * FROM InscriptionEnAttente";
+    $requete = $this->db->query($req);
+    $lancement = $requete->fetchAll();
+    $retour = array();
+    foreach ($variable as $v) {
+      array_push($retour, new InscriptionEnAttente($v[0], $v[1], $v[2], $v[3], $v[4]
+                  $v[5], $v[6], $v[7], $v[8], $v[9], $v[10], $v[11], $v[12],
+                  $v[13], $v[14]));
+    }
+    return $retour;
+  }
 
 
 
@@ -74,16 +96,16 @@ function verifUser($addrMail, $mdp){
 
   $req = "SELECT * FROM Utilisateur WHERE adresseMail = '$addrMail' ";
   $recup = $this->db->query($req)->fetchAll();
-  $verifMdp = $recup[0][6];
+  $verifMdp = $recup[0]['Mdp'];
   if($recup == NULL){
-    $messageErreur = "Le compte n'a pas été trouvé";
-    $retour = new Retour(TRUE, $messageErreur);
+    $messageErreur = "Le mot de passe ou l'adresse mail est incorrecte";
+    $retour = new Retour(NULL,TRUE, $messageErreur);
   }else{
     if($verifMdp == $mdp){
       $retour = new Retour($recup[0]);
     }else{
-      $messageErreur = "Le mot de passe est incorrect";
-      $retour = new Retour(TRUE, $messageErreur);
+      $messageErreur = "Le mot de passe ou l'adresse mail est incorrecte";
+      $retour = new Retour(NULL,TRUE, $messageErreur);
     }
   }
   return $retour;
@@ -96,11 +118,23 @@ function verifUser($addrMail, $mdp){
 function getAllContact(){
   $req = "SELECT * FROM Contact";
   $requete = $this->db->query($req);
-  var_dump($requete);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Contact');
-  var_dump($lancement);
-  return array($lancement);
+  //var_dump($requete);
+  $lancement = $requete->fetchAll();
+  //var_dump($lancement[0]);
+  $retour = array();
+  foreach ($lancement as $v) {
+    array_push($retour,new Contact($v[0],$v[1],$v[2],$v[3],$v[4],$v[5]));
+  }
+  return $retour;
+}
 
+function getContactByID($id){
+  $req = "SELECT * FROM Contact WHERE id = '$id'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll()[0];
+  //Verifier que la liste ne soit pas vide
+  //var_dump($lancement);
+  return new Contact($lancement[0], $lancement[1], $lancement[2], $lancement[3], $lancement[4], $lancement[5]);
 }
 
 //Fonctions CompteRendu
@@ -190,6 +224,19 @@ function getAllActualite(){
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Actualite');
   return array($lancement);
 }
+function getActualiteByID($id){
+  $req = "SELECT * FROM Actualite WHERE id = '$id'";
+  $requete = $this->db->query($req);
+  $l = $requete->fetchAll();
+  return new Actualite($l[0], $l[1], $l[2], $l[3], $l[4], $l[5], $l[6]);
+}
+function getNomPrenomAuteur($id){
+  $req = "SELECT nom, prenom FROM Utilisateur U, Actualite A WHERE A.id = '$id'
+          and A.numAuteur = U.id";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll();
+  return $lancement;
+}
 
 //Fonctions Commentaire
 
@@ -239,6 +286,15 @@ function getEventOfficial(){
     
     }
 
+
+function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adresse, $codepostal, $adressemail, $passeport, $numtel
+                        , $NomContact, $PrenomContact, $NumTelContact, $AdresseContact, $MailContact){
+  $req = "INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance)
+          Adresse, NumTel, Mail, Passeport, NomContact, PrenomContact, NumTelContact
+          AdresseContact, MailContact Values('$nom', '$prenom', '$sexe', '$assurance', '$datedenaissance',
+                                    '$adresse', '$codepostal', '$adressemail','$passeport', '$numtel'
+                                  , '$NomContact', '$PrenomContact', '$NumTelContact', '$AdresseContact', '$MailContact')";
+}
 
 //Fonctions PratiqueEvent
 

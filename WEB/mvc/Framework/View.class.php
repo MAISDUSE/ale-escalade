@@ -14,7 +14,7 @@
         $p = "../View/".$p;
       }
 
-      if(!strpos($p,"view.php")){
+      if(!strpos($p,"view.php") && !strpos($p,"ctrl.php")){
         $p = $p . ".view.php";
       }
       foreach ($this as $key => $value) {

@@ -2,10 +2,16 @@
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>ALE Escalade - Gestion Adhérents</title>
+    <title>ALE Escalade - Gestion Inscriptions</title>
     <script type="text/javascript">
-      function ConfirmerSuppression(){
-        if(confirm("Voulez vous vraiment supprimer cet adhérent ?")){
+      function ConfirmerRefus(){
+        if(confirm("Voulez vous vraiment refuser cette inscription ?")){
+          formulaire.submit();
+        }
+      }
+
+      function ConfirmerAcceptation(){
+        if(confirm("Voulez vous vraiment refuser cette inscription ?")){
           formulaire.submit();
         }
       }
@@ -19,7 +25,6 @@
           <th>Prénom</th>
           <th>Date de naissance</th>
           <th>N° Téléphone</th>
-          <th>Role</th>
           <th>Action</th>
         </tr>
         <?php foreach ($users as $user) {?>
@@ -30,11 +35,10 @@
             <td><?$user->getNumTel()?></td>
             <td><?$user->getRole()?></td>
             <td>
-              <form action="../Controler/GestionAdherents.ctrl.php" method="post" enctype="multipart/form-data" name='formulaire'>
-                <input type="submit" name="viewUser" value="Voir Plus"><br>
-                <input type="submit" name="modifUser" value="Modifier" ><br>
-                <input type="submit" name="supprUser" value="Supprimer" onclick='ConfirmerSuppression()'><br>
-                <input type="hidden" name="idUser" value="<?$user->getId()?>">
+              <form action="../Controler/GestionAdherents.ctrl.php" method="post" enctype="multipart/form-data" name="formulaire">
+                <input type="submit" name="accepter" value="Accepter" onclick="ConfirmerAcceptation()"><br>
+                <input type="submit" name="refuser" value="Refuser" onclick="ConfirmerRefus()"><br>
+                <input type="hidden" name="idInscription" value=<?$user->getId()?>>
               </form>
             </td>
           </tr>
