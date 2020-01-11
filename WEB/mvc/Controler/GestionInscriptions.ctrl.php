@@ -14,6 +14,7 @@ if(isset($_POST['accepter'])){
   $view->inscriptions = $db->getAllInscriptions();
   $view->afficher();
 } else if(isset($_POST['refuser'])){
+  var_dump($_POST['idInscription']);
   //Refus de l'inscription, on la supprime puis refresh de la page
   $db = new DAO;
   $db->deleteInscriptionById($_POST['idInscription']);
