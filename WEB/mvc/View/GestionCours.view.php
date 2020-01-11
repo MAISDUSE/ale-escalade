@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>ALE Escalade - Gestion Cours</title>
     <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
+    <link rel="stylesheet" href="../View/Design/GestionInscriptions.css">
     <script type="text/javascript">
       function ConfirmerSuppression(){
         if(confirm("Voulez vous vraiment supprimer ce cours ?")){
@@ -14,7 +15,7 @@
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
-      <table>
+      <table class="blueTable">
         <tr>
           <th>Nom</th>
           <th>Entraineur</th>
@@ -25,22 +26,22 @@
         </tr>
         <?php foreach ($cours as $uncours) {?>
           <tr>
-            <td><?$unCours->getNom()?></td>
+            <td><?=$unCours->getNom()?></td>
             <td>
               <form class="../Controler/GestionCours.ctrl.php" method="post" enctype="multipart/form-data">
-                <input type="submit" name="viewAuteur" value="<?$uncours->getNomEntraineur()?>">
-                <input type="hidden" name="idAuteur" value="<?$uncours->getNumEntraineur()?>">
+                <input type="submit" name="viewAuteur" value="<?=$uncours->getNomEntraineur()?>">
+                <input type="hidden" name="idAuteur" value="<?=$uncours->getNumEntraineur()?>">
               </form>
             </td>
-            <td><?$unCours->getNbPlace()?></td>
-            <td><?$unCours->getJour()?></td>
-            <td><?$unCours->getHeureDebut()?> - <?$unCours->getHeureFin()?></td>
+            <td><?=$unCours->getNbPlace()?></td>
+            <td><?=$unCours->getJour()?></td>
+            <td><?=$unCours->getHeureDebut()?> - <?$unCours->getHeureFin()?></td>
             <td>
               <form action="../Controler/GestionCours.ctrl.php" method="post" enctype="multipart/form-data" name='formulaire'>
                 <input type="submit" name="viewCours" value="Voir Plus"><br>
                 <input type="submit" name="modifCours" value="Modifier" ><br>
                 <input type="submit" name="supprCours" value="Supprimer" onclick='ConfirmerSuppression()'><br>
-                <input type="hidden" name="idCours" value="<?$uncours->getId()?>">
+                <input type="hidden" name="idCours" value="<?=$uncours->getId()?>">
               </form>
             </td>
           </tr>

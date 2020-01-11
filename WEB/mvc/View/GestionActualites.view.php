@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>ALE Escalade - Gestion Actualités</title>
     <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
+    <link rel="stylesheet" href="../View/Design/GestionInscriptions.css">
     <script type="text/javascript">
       function ConfirmerSuppression(){
         if(confirm("Voulez vous vraiment supprimer cette actualité ?")){
@@ -14,7 +15,7 @@
   </head>
   <body>
     <?php include "Design/Header.view.php"; ?>
-      <table>
+      <table class="blueTable">
         <tr>
           <th>Titre</th>
           <th>Auteur</th>
@@ -42,6 +43,5 @@
           </tr>
         <?php } ?>
       </table>
-    <?php include "Design/Footer.view.php"; ?>
   </body>
 </html>

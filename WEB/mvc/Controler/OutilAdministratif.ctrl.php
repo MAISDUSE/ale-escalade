@@ -11,7 +11,7 @@ if (isset($_POST['ajouterActualite'])) {
   //Gérer les adhérents
   $view = new View("GestionAdherents");
   $db = new DAO;
-  $view->adherents = $db->getAllAdherent();
+  $view->adherents = $db->getAllAdherents();
   $view->afficher();
 } else if (isset($_POST['gererInscription'])) {
   //Gérer les inscriptions

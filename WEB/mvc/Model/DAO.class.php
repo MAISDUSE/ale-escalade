@@ -36,8 +36,26 @@ class DAO{
 //Fonctions Utilisateur
 function getAllUsers(){
   $req = "SELECT * FROM Utilisateur";
-
-  return array($lancement);
+  $reponse = $this->db->query($req);
+  $lancement = $reponse->fetchAll();
+  $retour = array();
+  foreach ($lancement as $v){
+    array_push($retour, new Utilisateur($v[0], $v[1], $v[2], $v[3], $v[4], $v[5],
+                      $v[6]),$v[7],$v[8],$v[9],$v[10],$v[11],$v[12],$v[13]);
+    }
+  return $retour;
+}
+//Fonction Adherents
+function getAllAdherents(){
+  $req = "SELECT * FROM Adherent";
+  $reponse = $this->db->query($req);
+  $lancement = $reponse->fetchAll();
+  $retour = array();
+  foreach ($lancement as $v){
+    array_push($retour, new Adherent($v[0], $v[1], $v[2], $v[3], $v[4], $v[5],
+                      $v[6]));
+    }
+  return $retour;
 }
 function getUserByCode($id){
   $req = "SELECT * FROM Utilisateur where id = '$id'";
@@ -54,6 +72,12 @@ function getUserByCode($id){
                         $v[7], $v[8], $v[9], $v[10], $v[11], $v[12], getContactByID($v[13])));
   }
   return $retour;
+}
+
+function getNomPrenomAuteur($id){
+  $req = $this->db->query("SELECT Nom,Prenom from Utilisateur where id='$id'");
+  $identite = $req->fetchAll();
+  return $identite[0];
 }
 
   // Récupère toute les inscriptions en attentes
@@ -374,11 +398,7 @@ function deleteInscriptionById($idInscrit){
 
 }
 
-function getNomPrenomAuteur($id){
-  $req = $this->db->query("SELECT Nom,Prenom from Utilisateur where id='$id'");
-  $identite = $req->fetchAll();
-  return $identite[0];
-}
+
 
 
 }
