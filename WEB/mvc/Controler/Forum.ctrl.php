@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+//import liste de tous les sujets trié dans l'ordre
+require_once("../Model/DAO.class.php");
+require_once("../Model/Sujet.class.php");
+require_once("../Framework/View.class.php");
+
 if(!isset($_SESSION['db'])){
   $_SESSION['db'] = new DAO;
 }
@@ -14,10 +19,6 @@ if(!isset($page)){
   $page = 1;
 }*/
 
-//import liste de tous les sujets trié dans l'ordre
-require_once("../Model/DAO.class.php");
-require_once("../Model/Sujet.class.php");
-require_once("../Framework/View.class.php");
 
 
 $sujets = getAllSujets(); //  recup tous les $sujets

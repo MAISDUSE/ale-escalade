@@ -27,7 +27,7 @@
                <input type="password" name="passwd" placeholder="Votre Mot de passe" class="input" required>
 
                <div class="valider">
-                <input type="submit" name="valider" value="resultat" class="input btnValider" id=Valider>
+                <input type="submit" name="valider" value="Connexion" class="input btnValider" id=Valider>
                </div>
              </div>
             </form>
