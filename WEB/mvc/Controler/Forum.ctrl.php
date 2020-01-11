@@ -40,6 +40,7 @@ $miseEnAmont2 = substr($sujet2->getContenu(),0,20) . "...";
 $all = array (array($sujet1,$miseEnAmont1), array($sujet2,$miseEnAmont2));
 //mettremethode extrait from BDD
 
+//ici
 //var_dump($all);
 
 
