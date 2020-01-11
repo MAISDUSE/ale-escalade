@@ -23,7 +23,7 @@ if(isset($_POST['mail']) && isset($_POST['passwd'])){
   $retour = $db->verifUser($mail, $mdp);
   session_start();
   if(!$retour->isErreur()){
-
+    $resultat = $retour->getRes();
     $_SESSION['user'] = new Utilisateur($resultat['AdhID'],$resultat['adresseMail'],
                                       $resultat['Admin'], $resultat['Prenom'],$resultat['Nom'],
                                       $resultat['Mdp']);
