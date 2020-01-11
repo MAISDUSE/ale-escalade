@@ -22,12 +22,12 @@
                   endif; ?>
               <div class="input-fields">
                <label for="mail">Mail : </label>
-               <input type="email" name="mail" placeholder="Votre Nom" class="input" required>
+               <input type="email" name="mail" placeholder="Votre Mail" class="input" required>
                <label for="passwd">Mot de passe : </label>
                <input type="password" name="passwd" placeholder="Votre Mot de passe" class="input" required>
 
                <div class="valider">
-                <input type="submit" name="valider" value="Connexion" class="input btnValider" id=Valider>
+                <input type="submit" name="valider" value="resultat" class="input btnValider" id=Valider>
                </div>
              </div>
             </form>
