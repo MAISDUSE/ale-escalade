@@ -13,10 +13,16 @@
     <div class ="section">
         <div class="wrapper">
           <h2>Connexion </h2>
-            <form class="" action="../Controler/Connexion.ctrl.php" method="post">
+
+            <form action="../Controler/Connexion.ctrl.php" method="post">
+              <?php if(isset($_SESSION['erreur'])) : ?>
+                <p class="MessgErreur"><?=$_SESSION['erreur']?></p>
+              <?php
+                  unset($_SESSION['erreur']);
+                  endif; ?>
               <div class="input-fields">
-               <label for="nom">Nom d'Utilisateur : </label>
-               <input type="text" name="nom" placeholder="Votre Nom" class="input" required>
+               <label for="mail">Mail : </label>
+               <input type="email" name="mail" placeholder="Votre Mail" class="input" required>
                <label for="passwd">Mot de passe : </label>
                <input type="password" name="passwd" placeholder="Votre Mot de passe" class="input" required>
 

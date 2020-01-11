@@ -1,6 +1,7 @@
 <?php
 
 require_once("../Model/Utilisateur.class.php");
+require_once("../Model/DAO.class.php");
   class Evenement{      //Base De Données
     private $id;        //Id
     private $nom;       //Nom
@@ -104,5 +105,13 @@ require_once("../Model/Utilisateur.class.php");
     $this->officiel = $officiel;
   }
 
+  function addToBD(){
+
+    $db = new DAO();
+
+    $db->addEvenement(  $this->nom,  $this->img,  $this->dateCreation,  $this->dateDebut,
+      $this->dateFin,  $this->description,  $this->numCrea, $this->nomLieu,  $this->officiel);
+    echo "C4EST BION";  
+  }
 }
  ?>

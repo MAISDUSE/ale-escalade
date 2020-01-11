@@ -26,16 +26,13 @@ require_once("../Model/Evenement.class.php");
         $ErreurPhotoDefault=true;
       }
     }
-    
+
     $dateCreation =  date('j/m/Y');
 
 
     $dateDebut = date('j/m/Y',strtotime($_POST['dateDebut']));
 
-    var_dump($dateDebut);
-
     $dateFin = date('j/m/Y',strtotime($_POST['dateFin']));
-    var_dump($dateFin);
     $descrition = $_POST['description'];
 
     /*$idUser = getIdUser à coder*/
@@ -49,6 +46,10 @@ require_once("../Model/Evenement.class.php");
     }
 
       $evenement = new Evenement(1,$titre,$imageFond,$dateCreation,$dateDebut,$dateFin,$descrition,1,$lieu,$officiel);
+      $evenement->addToBD();
+
+
+      printf("AJOUTER A LA DB TEST");
     }
 
 

@@ -15,16 +15,20 @@
 
         <div class="contact-form">
           <h2>Inscription </h2>
+            <form name="inscription" class="" action="../Controler/Inscription.ctrl.php" method="post">
+              <div class="input-fields">
+
             <form class="" action="index.html" method="post">
              <div class="input-fields">
+
               <label for="nom">Nom : </label>
               <input type="text" name="nom" placeholder="Votre Nom" class="input" required>
               <label for="prenom">Prénom : </label>
               <input type="text" name="prenom" placeholder="Votre Prenom" class="input"  required>
               <label for="sexe">Sexe : </label>
-              <input type="radio" id="homme" name="sexe" value="Homme" checked>
+              <input type="radio" id="homme" name="sexe" value="H" checked>
               <label for="homme">Homme</label>
-              <input type="radio" id="femme" name="sexe" value="Femme">
+              <input type="radio" id="femme" name="sexe" value="F">
               <label for="femme">Femme</label>
               <label for="passeport">Passeport : </label>
               <select class="input" name="passeport">
@@ -34,7 +38,7 @@
                 <option value="Vert">Vert</option>
                 <option value="Bleu">Bleu</option>
                 <option value="RougePer">Rouge Performance</option>
-                <option value="RougeGE">Rouge Grands Espaces</option>
+                <option value="RougeExt">Rouge Grands Espaces</option>
                 <option value="Noir">Noir</option>
               </select>
               <label for="age">Date de naissance : </label>
@@ -51,11 +55,13 @@
              <div class="message">
                <div class="assurance">
                  <label for="base">Assurance : </label>
-                 <input type="radio" id="base" name="base" value="Base" checked>
+                 <input type="radio" id="rc" name="base" value="RC" checked>
+                 <label for="homme">RC</label>
+                 <input type="radio" id="base" name="base" value="B" checked>
                  <label for="homme">Base</label>
-                 <input type="radio" id="base+" name="base" value="Base+">
+                 <input type="radio" id="base+" name="base" value="B+">
                  <label for="femme">Base+</label>
-                 <input type="radio" id="base++" name="base" value="Base++">
+                 <input type="radio" id="base++" name="base" value="B++">
                  <label for="femme">Base++</label>
                </div>
              </div>
@@ -83,6 +89,7 @@
             </div>
           </div>
         </div>
+      </div>
     <?php include "Design/Footer.view.php"; ?>
   </body>
 </html>

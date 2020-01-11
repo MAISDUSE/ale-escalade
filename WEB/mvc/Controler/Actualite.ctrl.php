@@ -35,7 +35,7 @@ $actualite = new Actualite(1,"Compte Rendu de la réunion du 10/12/2019","Actual
                       Duis aute irure dolor in reprehenderit in voluptate velit
                       esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
                       occaecat cupidatat non proident, sunt in culpa qui officia
-                      deserunt mollit anim id est laborum.",$a1);
+                      deserunt mollit anim id est laborum.","z zdzdz");
 $ac2 = new Actualite(2,"Podium des jeune à Chamonix","Actualite/act2_1.jpg","25/10/2019",
                    1,"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                    sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -44,7 +44,7 @@ $ac2 = new Actualite(2,"Podium des jeune à Chamonix","Actualite/act2_1.jpg","25
                    Duis aute irure dolor in reprehenderit in voluptate velit
                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
                    occaecat cupidatat non proident, sunt in culpa qui officia
-                   deserunt mollit anim id est laborum.",$a2);
+                   deserunt mollit anim id est laborum.","zdzdez");
 
 
 $view = new View("Accueil");
@@ -56,7 +56,7 @@ $view = new View("Accueil");
 
   $view->page = $nomUtilisateur
   $view->page = $passeportUtilisateur
-  
+
   */
   $view->afficher();
 
