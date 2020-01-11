@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS Adherent(
   Passeport VARCHAR(10) CHECK (Passeport = 'Blanc' OR Passeport = 'Jaune'
     OR Passeport = 'Orange' OR Passeport = 'Vert' OR Passeport = 'Bleu'
     OR Passeport = 'RougePerf' OR Passeport = 'RougeExt' OR Passeport = 'Noir'),
-  Contact SMALLINT UNSIGNED,
+  Contact INTEGER UNSIGNED,
   FOREIGN KEY (Contact) REFERENCES Contact (ID)
   );
 
@@ -44,16 +44,16 @@ CREATE TABLE IF NOT EXISTS Actualite(
   Titre VARCHAR(100),
   DatePub DATE,
   Image TEXT,
-  NbFichiers SMALLINT,
+  NbFichiers INTEGER,
   Contenu VARCHAR(1000),
-  NumAuteur SMALLINT UNSIGNED,
+  NumAuteur INTEGER UNSIGNED,
   FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID),
   PRIMARY KEY (Titre, DatePub)
 );
 
 CREATE TABLE IF NOT EXISTS Message(
-  NumExp SMALLINT UNSIGNED,
-  NumDest SMALLINT UNSIGNED,
+  NumExp INTEGER UNSIGNED,
+  NumDest INTEGER UNSIGNED,
   DateEnv DATE,
   Contenu VARCHAR(1000),
   PRIMARY KEY (NumExp, NumDest, DateEnv),
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS Event(
   DateFin DATE,
   Description TEXT(1000),
   Officiel BOOLEAN,
-  NumCrea SMALLINT UNSIGNED,
+  NumCrea INTEGER UNSIGNED,
   NomLieu VARCHAR(100),
   FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID)
 
@@ -87,8 +87,8 @@ CREATE TABLE IF NOT EXISTS Sujet(
   Titre VARCHAR(100),
   DatePub DATE,
   Contenu TEXT(1000),
-  IDAuteur SMALLINT UNSIGNED,
-  IDEvent SMALLINT UNSIGNED default null,
+  IDAuteur INTEGER UNSIGNED,
+  IDEvent INTEGER UNSIGNED default null,
   FOREIGN KEY (IDAuteur) REFERENCES Utilisateur (ID),
   FOREIGN KEY (IDEvent) REFERENCES Event (ID)
 );
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS AssuranceAdh(
 
 CREATE TABLE IF NOT EXISTS Certificat(
   ID INTEGER PRIMARY KEY AUTOINCREMENT,
-  NumLic SMALLINT UNSIGNED,
+  NumLic INTEGER UNSIGNED,
   Type VARCHAR(3) CHECK (Type = 'L' OR Type='C' OR Type='PSS' OR Type = 'NP'),
   NomMedecin VARCHAR(100),
   DateFin Date,
@@ -124,25 +124,25 @@ CREATE TABLE IF NOT EXISTS Cours(
     OR Jour='V' OR Jour = 'S' OR Jour = 'D' ),
   NbPlace INT,
   NomLieu VARCHAR(100),
-  NumEntraineur SMALLINT UNSIGNED,
+  NumEntraineur INTEGER UNSIGNED,
   FOREIGN KEY (NomLieu) REFERENCES Lieu(Nom),
   FOREIGN KEY (NumEntraineur) REFERENCES Utilisateur(ID)
 );
 
 CREATE TABLE IF NOT EXISTS Commentaire(
-  NumAuteur SMALLINT UNSIGNED,
-  IDSujet SMALLINT UNSIGNED,
+  NumAuteur INTEGER UNSIGNED,
+  IDSujet INTEGER UNSIGNED,
   DateCreation DATE,
   Contenu TEXT(1000),
-  PRIMARY KEY (NumAuteur, IDSujet, DateCreation),
+  PRIMARY KEY (NumAuteur, IDSujet, DateCreation, Contenu),
   FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID),
   FOREIGN KEY (IDSujet) REFERENCES Sujet (ID)
 );
 
 CREATE TABLE IF NOT EXISTS PratiqueEvent(
   ID INTEGER PRIMARY KEY AUTOINCREMENT,
-  IDEvent SMALLINT UNSIGNED default null,
-  IDCours SMALLINT UNSIGNED default null,
+  IDEvent INTEGER UNSIGNED default null,
+  IDCours INTEGER UNSIGNED default null,
   Type VARCHAR(10) CHECK (Type = 'Difficulte' OR Type = 'Bloc' OR Type = 'Vitesse'),
   CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
 );

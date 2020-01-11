@@ -13,8 +13,17 @@
 
 
     $db = new DAO;
-    $commentaires = $db->getAllCommentairesFomSujet($_GET['sujet']);
-    $sujet1 = $db->getSujetByID($_GET['sujet']);
+
+    if(!isset($_GET['sujet']) and isset($pageSujet)){
+      $sujet1 = $db->getSujetByID($pageSujet);
+      $commentaires = $db->getAllCommentairesFomSujet($pageSujet);
+    }else{
+      $sujet1 = $db->getSujetByID($_GET['sujet']);
+      $commentaires = $db->getAllCommentairesFomSujet($_GET['sujet']);
+    }
+
+
+
 
     $view = new View("SujetForum");
     $view->sujet1 = $sujet1;
