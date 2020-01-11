@@ -3,33 +3,32 @@
   <?php
   require_once("../Model/Sujet.class.php");
   require_once("../Model/Commentaire.class.php");
+  require_once("../Model/Utilisateur.class.php");
   require_once("../Model/DAO.class.php");
   require_once("../Framework/View.class.php");
+  require_once("../Framework/Retour.class.php");
+  session_start();
+
+  if(isset($_SESSION['user'])){
 
 
-  //methode pour recup le Sujet a partir de son id passé en get
-  $sujet1 = new Sujet(1,"Test",date("d/m/Y"),"Un petit s'est fait gommer il y aurait pas de message bande de fils ",15);
-///////////////////////////////////////////////////////
+    $db = new DAO;
+    $commentaires = $db->getAllCommentairesFomSujet($_GET['sujet']);
+    $sujet1 = $db->getSujetByID($_GET['sujet']);
 
-  //recup tout les commentairers depuis id trié par date, plus recent d'abord
-  // $liste = getCommentaires($Sujet1->getId());
+    $view = new View("SujetForum");
+    $view->sujet1 = $sujet1;
+    $view->liste = $commentaires;
+    $view->db = $db;
+    $view->afficher();
 
-  //test 1 comentaire random
-  $comm= new Commentaire(666,1,date(DATE_RSS),"Ah mais ok dac");
-  $liste = array($comm,$comm );
 
-///////////////////////////////////////////////////////////////
-  //recup le commentaire du form
-  if (isset($_POST['envoyer'])){
-    //AJOUT DANS BDD
-    //EX
-  $comm2 = new commentaire(777,1,date(DATE_RSS),$_POST['contenu']);
-  array_push($liste,$comm2);
+
+  }else{
+    $retour = new Retour(NULL, TRUE, "Il faut être connecté pour accéder au Forum");
+    $_SESSION['erreur'] = $retour;
+    $view = new View('../Controler/Accueil.ctrl.php');
+    $view->afficher();
   }
-
-  $view = new View("SujetForum");
-  $view->sujet1 = $sujet1;
-  $view->liste = $liste;
-  $view->Afficher();
 
   ?>

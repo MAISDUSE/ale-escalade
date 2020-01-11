@@ -112,6 +112,12 @@ function verifUser($addrMail, $mdp){
 
 }
 
+function getSujetByID($ID){
+  $req = $this->db->query("SELECT * FROM Sujet WHERE ID = '$ID'")->fetchAll()[0];
+  return new Sujet($req['ID'],$req['Titre'], $req['Contenu'], date("Y/m/d", strtotime($req['DatePub']))
+                    , $req['IDAuteur'], $req['IDEvent']);
+}
+
 
 //Fonctions Contact
 
@@ -243,10 +249,15 @@ function getNomPrenomAuteur($id){
 
 function getAllCommentairesFomSujet($idSujet){
   //$id est l'id d'un sujet
-  $req = "SELECT * FROM Commentaire WHERE IDSujet = '$idSujet' ORDER BY Date";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Commentaire');
-  return array($lancement);
+  $ID = intval($idSujet);
+  $req = "SELECT * FROM Commentaire WHERE IDSujet = '$ID' ORDER BY DateCreation";
+  $res = $this->db->query($req)->fetchAll();
+  $commentaires = array();
+  foreach($res as $value){
+    $comm  = new Commentaire($value['NumAuteur'],$value['IDSujet'],date("d/m/y",strtotime($value['DateCreation'])),$value['Contenu']);
+    array_push($commentaires, $comm);
+  }
+  return $commentaires;
 }
 
 //event
@@ -330,6 +341,12 @@ function addSujet($titre,$date,$contenu,$IDAuteur,$IDEvent){
     ":IDAuteur" => intval($IDAuteur),
     ":IDEvent" => $IDEvent
   ));
+}
+
+function getUserByID($ID){
+  $req = $this->db->query("SELECT * FROM Utilisateur WHERE ID = '$ID'")->fetchAll()[0];
+  return new Utilisateur($req['ID'],$req['AdhID'],$req['adresseMail'],
+                    $req['Admin'], $req['Prenom'], $req['Nom'], $req['Mdp']);
 }
 
 //Fonctions PratiqueEvent

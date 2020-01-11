@@ -5,43 +5,27 @@ session_start();
 require_once("../Model/DAO.class.php");
 require_once("../Model/Sujet.class.php");
 require_once("../Framework/View.class.php");
+require_once("../Framework/Retour.class.php");
 
-$db = new DAO;
+if(isset($_SESSION['user'])){
+  $db = new DAO;
 
-$sujetsDB = $db->getAllSujets();
+  $sujetsDB = $db->getAllSujets();
 
-$sujets = array();
+  $sujets = array();
 
-foreach ($sujetsDB as $sujet) {
-  $suj = new Sujet($sujet['ID'], $sujet['Titre'], date("d/m/Y",$sujet['DatePub']), $sujet['Contenu'], $sujet['IDAuteur'], $sujet['IDEvent']);
-  array_push($sujets, $suj);
+  foreach ($sujetsDB as $sujet) {
+    $suj = new Sujet($sujet['ID'], $sujet['Titre'], date("d/m/Y",strtotime($sujet['DatePub'])), $sujet['Contenu'], $sujet['IDAuteur'], $sujet['IDEvent']);
+    array_push($sujets, $suj);
 
+  }
+
+  $view = new View("Forum");
+  $view->listeSujet = $sujets;
+  $view->afficher();
+}else{
+  $_SESSION['erreur'] = new Retour(NULL,TRUE,"Vous devez être connecté pour accéder au forum");
+  $view = new View("../Controler/Accueil.ctrl.php");
+  $view->afficher();
 }
-
-
-
-
-
-
-/*
-//test temporaire a la place requete sql
-$sujet1 = new Sujet(1,"Test",date("d/m/Y"),"Un petit s'est fait gommer il y aurait pas de message bande de fils ",15);
-$miseEnAmont1 = substr($sujet1->getContenu(),0,20) . "...";
-
-$sujet2 = new Sujet(2,"Test",date("d/m/Y"),"Un petit s'est fait gommer il y aurait pas de message bande de fils ",15);
-$miseEnAmont2 = substr($sujet2->getContenu(),0,20) . "...";
-*/
-
-
-
-//mettremethode extrait from BDD
-
-//ici
-
-
-
-$view = new View("Forum");
-$view->listeSujet = $sujets;
-$view->afficher();
-
  ?>

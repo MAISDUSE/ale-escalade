@@ -27,7 +27,7 @@
   <a href="../Controler/SujetForum.ctrl.php?sujet=<?=$value->getId()?>">
     <aside>
       <h4><?=$value->getTitre()?></h4>
-      <p class="desc"><?=$value->getContenu()?></p>
+        <p class="desc"><?=substr($value->getContenu(),0,20)."..."?></p>
     </aside>
 
     <p class="date">Posté le <?=$value->getdatePub()?></p>

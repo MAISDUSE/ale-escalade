@@ -15,21 +15,24 @@
     <div class="sujet">
       <h2><?=$sujet1->getTitre()?></h2>
       <p class="date">Posté le : <?=$sujet1->getdatePub()?></p>
-      <p class="description">Créateur : <?=$sujet1->getIdAuteur()?></p>
+      <p class="description">Créateur : <?php $createur = $db->getUserByID($sujet1->getIdAuteur());
+                                                printf($createur->getPrenom() . " " . $createur->getNom());?></p>
       <p class="description">Contenu : <?=$sujet1->getContenu()?></p>
 
     </div>
     <br>
 
-      <?php foreach ($liste as $value) {
-        ?>
-    <div class="commentaires">
-        <p>Date : <?=$value->getDate()?></p>
-        <p>Auteur : <?=$value->getNumAuteur()?></p>
-        <p class="contenu">Contenu : <?=$value->getContenu()?></p>
-        <br>
-    </div>
-        <?php  } ?>
+      <?php foreach ($liste as $value) :
+        $user = $db->getUserByID($value->getNumAuteur());
+        $prenom = $user->getPrenom();
+        $nom = $user->getNom();?>
+        <div class="commentaires">
+          <p>Date : <?=$value->getDateCreation()?></p>
+          <p>Auteur : <?=$prenom . ' ' . $nom?></p>
+          <p class="contenu">Contenu : <?=$value->getContenu()?></p>
+          <br>
+        </div>
+      <?php  endforeach; ?>
 
 
 
