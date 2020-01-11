@@ -349,6 +349,18 @@ function getUserByID($ID){
                     $req['Admin'], $req['Prenom'], $req['Nom'], $req['Mdp']);
 }
 
+function addCommentaire($numAuteur, $IDSujet, $DateCreation, $Contenu){
+  $request = $this->db->prepare('INSERT INTO Commentaire
+                                VALUES (:numAuteur, :IDSujet, :DateCreation, :Contenu )');
+
+
+  $request->execute(array(
+    ":numAuteur" => intval($numAuteur),
+    ":IDSujet" => intval($IDSujet),
+    ":DateCreation" => $DateCreation,
+    ":Contenu" => $Contenu
+  ));
+}
 //Fonctions PratiqueEvent
 
 //Autre

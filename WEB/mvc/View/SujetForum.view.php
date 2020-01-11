@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="../View/Design/SujetForum.css">
   <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
+  <script src="../Framework/ckeditor/ckeditor.js"></script>
 
   <title>Forum ALE Escalade</title>
 </head>
@@ -38,15 +39,19 @@
 
     <!-- zone poste un commentaire !-->
       <br>
-      <form class="" action="SujetForum.ctrl.php" method="post">
+      <form class="" action="../Controler/AddCommentaire.ctrl.php" method="post">
+        <label for="numsujet"></label>
+        <input type="number" name="sujet" value="<?=$sujet1->getId()?>" readonly>
         <label for="Comment">Veuillez Commenter</label>
-
         <textarea name="contenu" rows="8" cols="80" placeholder="Commenter" required></textarea><br>
         <input type="submit" name="envoyer" value="Envoyer">
       </form>
     </div>
 
     <?php include "Design/Footer.view.php"; ?>
+    <script>
+      CKEDITOR.replace("contenu");
+    </script>
 
   </body>
   </html>
