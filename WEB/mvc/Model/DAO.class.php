@@ -293,8 +293,8 @@ function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adr
 
  $req = $this->db->prepare("INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance,Adresse, NumTel, Mail,
                                  Passeport, NomContact, PrenomContact, NumTelContact,  AdresseContact, MailContact)
-                                 VALUES(:nom, :prenom, :sexe, :assurance, :datedenaissance,:adresse, :adressemail,:passeport,
-                                        :numtel,:NomContact, :PrenomContact, :NumTelContact, :AdresseContact, :MailContact)");
+                                 VALUES(:nom, :prenom, :sexe, :assurance, :datedenaissance,:adresse,:numtel, :adressemail,:passeport
+                                        ,:NomContact, :PrenomContact, :NumTelContact, :AdresseContact, :MailContact)");
 
 
   $req->execute(array(
@@ -313,6 +313,7 @@ function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adr
     'AdresseContact' => $AdresseContact,
     'MailContact' => $MailContact
   ));
+
 
 }
 
