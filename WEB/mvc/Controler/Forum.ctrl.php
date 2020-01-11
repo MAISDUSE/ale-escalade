@@ -21,7 +21,7 @@ if(!isset($page)){
 
 
 
-$sujets = getAllSujets(); //  recup tous les $sujets
+//$sujets = getAllSujets(); //  recup tous les $sujets
 //ensuite on applique une miseEnAmont substr($sujet1->getContenu(),0,20) . "...";
 //à chaqun des sujet avatn de l'ajouter dans un array list avec sujet, miseEnAmont à chque Fonctions
 
