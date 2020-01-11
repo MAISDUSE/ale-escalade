@@ -374,6 +374,12 @@ function deleteInscriptionById($idInscrit){
 
 }
 
+function getNomPrenomAuteur($id){
+  $req = $this->db->query("SELECT Nom,Prenom from Utilisateur where id='$id'");
+  $identite = $req->fetchAll();
+  return $identite[0];
+}
+
 
 }
  ?>
