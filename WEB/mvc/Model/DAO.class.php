@@ -313,6 +313,18 @@ function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adr
 
 }
 
+function addSujet($titre,$date,$contenu,$IDAuteur,$IDEvent){
+  $request = $this->db->prepare('INSERT INTO Sujet(Titre, DatePub, Contenu, IDAuteur)
+                                VALUES (:titre, :datepub, :contenu, :IDAuteur, :IDEvent )');
+  $request->execute(array(
+    "titre" => $titre,
+    "datepub" => $date,
+    "contenu" => $contenu,
+    "IDAuteur" => $IDAuteur,
+    "IDEvent" => $IDEvent
+  ));
+}
+
 //Fonctions PratiqueEvent
 
 //Autre
