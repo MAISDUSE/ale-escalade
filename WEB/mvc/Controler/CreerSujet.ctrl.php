@@ -24,7 +24,7 @@
       $db->addSujet($titre,$date,$contenu,$IDAuteur,$IDEvent);
       $complet = new Retour(NULL, TRUE, "Sujet créée");
       $_SESSION['reussite'] = $complet;
-      $view = new View("Forum");
+      $view = new View("../Controler/Forum.ctrl.php");
       $view->afficher();
 
 

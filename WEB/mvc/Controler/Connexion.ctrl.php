@@ -8,9 +8,7 @@ require_once("../Framework/View.class.php");
 /*
     ICI METTRE CODE POUR TESTER L'EXISTENCE DU COMPTE
 */
-
-
-
+session_start();
 if(isset($_POST['mail']) && isset($_POST['passwd'])){
   if(isset($_SESSION['erreur'])){
     $view = new View("Connexion");
@@ -21,33 +19,36 @@ if(isset($_POST['mail']) && isset($_POST['passwd'])){
   $mdp = $_POST['passwd'];
   $db = new DAO;
   $retour = $db->verifUser($mail, $mdp);
-  session_start();
+
   if(!$retour->isErreur()){
     $resultat = $retour->getRes();
     $_SESSION['user'] = new Utilisateur($resultat['ID'], $resultat['adhID'],$resultat['adresseMail'],
                                       $resultat['Admin'], $resultat['Prenom'],$resultat['Nom'],
                                       $resultat['Mdp']);
+
+
+    $_SESSION['reussite'] = new Retour(NULL, TRUE , "Vous êtes connecté");
     session_write_close();
     $view = new View('../Controler/Accueil.ctrl.php');
     $view->afficher();
 
 
   }else{
-    $_SESSION['erreur'] = $retour->getRes();
+    $_SESSION['erreur'] = new Retour(NULL, TRUE, "Mot de passe ou e-mail incorrect");
+    session_write_close();
     $view = new View("Connexion");
     $view->afficher();
   }
 
 }else{
+  session_write_close();
   $view = new View("Connexion");
   $view->afficher();
 }
 
 
 
-//$view->page = $page;
-//$view->page = $nomUtilisateur
-//$view->page = $passeportUtilisateur
+
 
 
 ?>

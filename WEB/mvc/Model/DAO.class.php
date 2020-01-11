@@ -178,7 +178,7 @@ function getAllLieux(){
 function getAllSujets(){
   $req = "SELECT * FROM Sujet";
   $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Sujet');
+  $lancement = $requete->fetchAll();
   return array($lancement);
 }
 function searchSujetByPartielName($partieNom){

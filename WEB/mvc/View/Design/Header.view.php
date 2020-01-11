@@ -1,4 +1,7 @@
+<?php session_start();
+  require_once("../Framework/Retour.class.php");
 
+?>
 
 
 
@@ -31,15 +34,24 @@
     </div>
 
     <?php
-      session_start();
       if(isset($_SESSION['reussite'])) : ?>
         <p class="reussite"><?=$_SESSION['reussite']->getRes()?></p>
     <?php
         unset($_SESSION['reussite']);
-        session_write_close();
       endif; ?>
+
+      <?php
+        if(isset($_SESSION['erreur'])) : ?>
+          <p class="erreur"><?=$_SESSION['erreur']->getRes()?></p>
+      <?php
+          unset($_SESSION['erreur']);
+        endif; ?>
+
+
   </div>
 
 
 
 </header>
+
+<?php session_write_close(); ?>

@@ -1,3 +1,5 @@
+<?php require_once("../Model/Sujet.class.php"); ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
