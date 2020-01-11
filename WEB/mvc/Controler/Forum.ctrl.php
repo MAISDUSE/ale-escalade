@@ -5,7 +5,7 @@ session_start();
 require_once("../Model/DAO.class.php");
 require_once("../Model/Sujet.class.php");
 require_once("../Framework/View.class.php");
-
+/*
 if(!isset($_SESSION['db'])){
   $_SESSION['db'] = new DAO;
 }
@@ -13,7 +13,7 @@ if(!isset($_SESSION['db'])){
 if(isset($_SESSION['user'])){
   $user = $_SESSION['user'];
 }
-/*
+
 if(!isset($page)){
   $page = $_GET['page'];
   $page = 1;
