@@ -20,17 +20,17 @@
 
 
 <?php foreach ($listeSujet as $value){
-  $tmp = $value[0]->getTitre();
+  $tmp = $value->getTitre();
   ?>
 
 
-  <a href="../Controler/SujetForum.ctrl.php?sujet=<?=$value[0]->getId()?>">
+  <a href="../Controler/SujetForum.ctrl.php?sujet=<?=$value->getId()?>">
     <aside>
-      <h4><?=$value[0]->getTitre()?></h4>
-      <p class="desc"><?=$value[1]?></p>
+      <h4><?=$value->getTitre()?></h4>
+      <p class="desc"><?=$value->getContenu()?></p>
     </aside>
 
-    <p class="date">Posté le <?=$value[0]->getdatePub()?></p>
+    <p class="date">Posté le <?=$value->getdatePub()?></p>
 
   </a>
 

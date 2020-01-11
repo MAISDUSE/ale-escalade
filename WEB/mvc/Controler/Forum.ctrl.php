@@ -14,8 +14,11 @@ $sujets = array();
 
 foreach ($sujetsDB as $sujet) {
   $suj = new Sujet($sujet['ID'], $sujet['Titre'], date("d/m/Y",$sujet['DatePub']), $sujet['Contenu'], $sujet['IDAuteur'], $sujet['IDEvent']);
-  $sujets = array($suj, substr($suj->getContenu(),0,20) . "...");
+  array_push($sujets, $suj);
+
 }
+
+
 
 
 
@@ -29,16 +32,16 @@ $sujet2 = new Sujet(2,"Test",date("d/m/Y"),"Un petit s'est fait gommer il y aura
 $miseEnAmont2 = substr($sujet2->getContenu(),0,20) . "...";
 */
 
-$all = $sujets;
+
+
 //mettremethode extrait from BDD
 
 //ici
-//var_dump($all);
 
 
 
 $view = new View("Forum");
-$view->listeSujet = $all;
+$view->listeSujet = $sujets;
 $view->afficher();
 
  ?>
