@@ -70,7 +70,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <p>Copyright ALE-ESCALADE © 2019. All rights reserved.</p>
+            <p>Réalisé par les élèves du département informatique de l'IUT2 de Grenoble.</p>
           </div>
         </div>
       </div>

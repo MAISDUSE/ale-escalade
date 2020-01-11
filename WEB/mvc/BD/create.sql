@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS Adherent(
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     AdhID INTEGER,
     adresseMail TEXT UNIQUE,
-    Admin BOOLEAN,
+    Admin VARCHAR(5) CHECK (Admin = "TRUE" OR Admin = "FALSE"),
     Prenom TEXT,
     Nom TEXT,
     Mdp TEXT,
@@ -169,5 +169,5 @@ CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
 );
 
 
-INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, MDP) VALUES('hugo.iteprat@etu.univ-grenoble-alpes.fr', 'TRUE', 'Hugo', 'Iteprat', 'ceciestuntresbonmdp');
+INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('hugo.iteprat@etu.univ-grenoble-alpes.fr', 'TRUE', 'Hugo', 'Iteprat', 'ceciestuntresbonmdp');
 COMMIT;

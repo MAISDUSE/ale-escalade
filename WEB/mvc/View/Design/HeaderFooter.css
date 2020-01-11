@@ -408,7 +408,6 @@ transition: all 250ms ease-in-out 0s;
 	margin-bottom: 15px;
 }
 
-/****** RESPONSIVE *******/
 
 @media screen and (max-width: 1024px){
 	header{
@@ -471,5 +470,16 @@ transition: all 250ms ease-in-out 0s;
 	footer{
 		font-size: 10px;
 	}
+}
+
+.reussite{
+	background-color: lightgreen;
+  border: 4px solid green;
+  border-radius: 5px;
+  color: black;
+  font-size: 15px;
+  margin: 5px 0px 5px 0px;
+  padding: 5px 0px 5px 0px;
+	text-align: center;
 
 }

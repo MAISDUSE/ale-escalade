@@ -1,0 +1,53 @@
+.CreerSujet{
+  width: 60%;
+  margin: auto;
+  background:rgba(0,0,0,0.8);
+  box-shadow: 0 0 10px rgba(0,0,0,0.13);
+  padding: 30px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 5px;
+  color:#c5ecfd;
+}
+h2{
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+form label{
+  display: block;
+  font-size: 2em;
+  margin-top: 10px;
+}
+form input{
+  margin: 10px 0;
+  background: transparent;
+  border:0;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  color : #c5ecfd;
+  width: 100%;
+}
+
+form textarea{
+  margin: 10px 0;
+  background: transparent;
+  border:0;
+  border-bottom: 2px solid #c5ecfd;
+  padding: 10px;
+  color : #c5ecfd;
+}
+
+form input[type=submit]{
+  display: inline-block;
+	border-color: #c5ecfd;
+	border-width: 1px;
+	padding: 2px;
+	color : #c5ecfd;
+	background: transparent;
+	width: 20%;
+}
+
+form input[type=submit]:hover{
+  background-color: white;
+  color: black;
+}

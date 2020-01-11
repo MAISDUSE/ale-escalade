@@ -2,6 +2,8 @@
 
   class Utilisateur
   {
+
+    private $ID;
     private $adhID;
     private $adresseMail;
     private $admin;
@@ -10,14 +12,19 @@
     private $mdp;
 
 
-    function __construct($adhId, $AdresseMail, $Admin, $Prenom, $Nom, $Mdp)
+    function __construct($ID,$adhID, $AdresseMail, $Admin, $Prenom, $Nom, $Mdp)
     {
+      $this->ID = $ID;
       $this->adhID = $adhId;
       $this->adresseMail = $AdresseMail;
       $this->admin = $Admin;
       $this->prenom = $Prenom;
       $this->nom = $Nom;
       $this->mdp = $Mdp;
+    }
+
+    function getID(){
+      return $this->ID;
     }
 
     function getAdhID(){

@@ -12,26 +12,32 @@
       $titre = $_POST['titre'];
       $date = date("Y-m-d");
       $contenu = $_POST['contenu'];
-      $IDAuteur = $user->getAdhID();
+      $IDAuteur = $user->getID();
 
-      if(isset($_POST['IDEvent']))){
+      if(isset($_POST['IDEvent'])){
         $IdEvent = $_POST['IDEvent'];
       }else{
         $IdEvent = NULL;
       }
 
       $db = new DAO;
-      $res = $db->addSujet($titre,$date,$contenu,$IDAuteur,$IDEvent);
-
+      $db->addSujet($titre,$date,$contenu,$IDAuteur,$IDEvent);
+      $complet = new Retour(NULL, TRUE, "Sujet créée");
+      $_SESSION['reussite'] = $complet;
+      $view = new View("Forum");
+      $view->afficher();
 
 
     }else{
       $view = new View("CreerSujet");
+      $view->afficher();
     }
 
   }else{
     $erreur = new Retour(NULL, TRUE, "Il faut être connecté pour pouvoir utiliser le forum");
     $_SESSION['erreur'] = $erreur;
+    $view = new View("../Controler/Accueil.ctrl.php");
+    $view->afficher();
   }
 
   session_write_close();
