@@ -22,12 +22,22 @@
                 <?php else : ?>
                 <li><a href="../Controler/Deconnexion.ctrl.php">Déconnexion</a></li>
                 <?php endif; ?>
+
                 <li><a href="../Controler/Forum.ctrl.php">Forum</a></li>
                 <li><a href="../Controler/Contact.ctrl.php">Contact</a></li>
 
             </ul>
         </nav>
     </div>
+
+    <?php
+      session_start();
+      if(isset($_SESSION['reussite'])) : ?>
+        <p class="reussite"><?=$_SESSION['reussite']->getRes()?></p>
+    <?php
+        unset($_SESSION['reussite']);
+        session_write_close();
+      endif; ?>
   </div>
 
 

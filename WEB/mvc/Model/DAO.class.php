@@ -314,14 +314,17 @@ function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adr
 }
 
 function addSujet($titre,$date,$contenu,$IDAuteur,$IDEvent){
-  $request = $this->db->prepare('INSERT INTO Sujet(Titre, DatePub, Contenu, IDAuteur)
+  $request = $this->db->prepare('INSERT INTO Sujet(Titre, DatePub, Contenu, IDAuteur, IDEvent)
                                 VALUES (:titre, :datepub, :contenu, :IDAuteur, :IDEvent )');
+
+  //$request->bindParam('')
+
   $request->execute(array(
-    "titre" => $titre,
-    "datepub" => $date,
-    "contenu" => $contenu,
-    "IDAuteur" => $IDAuteur,
-    "IDEvent" => $IDEvent
+    ":titre" => $titre,
+    ":datepub" => $date,
+    ":contenu" => $contenu,
+    ":IDAuteur" => intval($IDAuteur),
+    ":IDEvent" => $IDEvent
   ));
 }
 
