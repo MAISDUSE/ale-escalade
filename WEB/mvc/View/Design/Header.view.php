@@ -19,11 +19,12 @@
             <ul>
                 <li><a href="../Controler/Accueil.ctrl.php">Accueil</a></li>
                 <li><a href="../Controler/Planning.ctrl.php">Planning</a></li>
-                <li><a href="../Controler/Inscription.ctrl.php">Inscription</a></li>
                 <?php if(!isset($_SESSION['user'])) :?>
                   <li><a href="../Controler/Connexion.ctrl.php">Connexion</a></li>
+                  <li><a href="../Controler/Inscription.ctrl.php">Inscription</a></li>
                 <?php else : ?>
                 <li><a href="../Controler/Deconnexion.ctrl.php">Déconnexion</a></li>
+                <li><a href="../Controler/OutilAdministratif.ctrl.php">Outils Admin</a></li>
                 <?php endif; ?>
 
                 <li><a href="../Controler/Forum.ctrl.php">Forum</a></li>
