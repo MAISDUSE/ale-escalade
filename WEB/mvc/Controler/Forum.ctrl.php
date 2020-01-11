@@ -1,11 +1,32 @@
 <?php
+session_start();
 
+if(!isset($_SESSION['db'])){
+  $_SESSION['db'] = new DAO;
+}
+
+if(isset($_SESSION['user'])){
+  $user = $_SESSION['user'];
+}
+/*
+if(!isset($page)){
+  $page = $_GET['page'];
+  $page = 1;
+}*/
 
 //import liste de tous les sujets trié dans l'ordre
-
-//test temporaire
+require_once("../Model/DAO.class.php");
 require_once("../Model/Sujet.class.php");
 require_once("../Framework/View.class.php");
+
+
+$sujets = getAllSujets(); //  recup tous les $sujets
+//ensuite on applique une miseEnAmont substr($sujet1->getContenu(),0,20) . "...";
+//à chaqun des sujet avatn de l'ajouter dans un array list avec sujet, miseEnAmont à chque Fonctions
+
+
+
+
 
 
 //test temporaire a la place requete sql
