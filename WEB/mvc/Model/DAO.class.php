@@ -291,7 +291,7 @@ function getEventOfficial(){
 function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adresse, $codepostal, $adressemail, $passeport, $numtel
                         , $NomContact, $PrenomContact, $NumTelContact, $AdresseContact, $MailContact){
 
-/*  $req = $this->db->prepare("INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance,Adresse, NumTel, Mail,
+ $req = $this->db->prepare("INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance,Adresse, NumTel, Mail,
                                  Passeport, NomContact, PrenomContact, NumTelContact,  AdresseContact, MailContact)
                                  VALUES(:nom, :prenom, :sexe, :assurance, :datedenaissance,:adresse, :adressemail,:passeport,
                                         :numtel,:NomContact, :PrenomContact, :NumTelContact, :AdresseContact, :MailContact)");
@@ -312,19 +312,6 @@ function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adr
     'NumTelContact' => $NumTelContact,
     'AdresseContact' => $AdresseContact,
     'MailContact' => $MailContact
-  ));*/
-  $req = $this->db->prepare("INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, DateNaissance,Adresse, NumTel, Mail, Passeport)
-                                   VALUES(:nom, :prenom, :sexe, :datedenaissance,:adresse,:numtel, :adressemail, :passeport)");
-
-  $req->execute(array(
-  'nom'=> $nom,
-  'prenom' => $prenom,
-  'sexe' => $sexe,
-  'datedenaissance' => $datedenaissance,
-  'adresse' => $adresse,
-  'numtel' => $numtel,
-  'adressemail'=> $adressemail,
-  'passeport' => $passeport
   ));
 
 }
