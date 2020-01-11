@@ -27,7 +27,7 @@
                 <?php endif; ?>
 
                 <li><a href="../Controler/Forum.ctrl.php">Forum</a></li>
-                <li><a href="../Controler/Contact.ctrl.php">Contact</a></li>
+                <li><a href="../Controler/Contact.ctrl.php">Contactez-Nous</a></li>
 
             </ul>
         </nav>

@@ -152,15 +152,15 @@ CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
   Nom VARCHAR(100),
   Prenom VARCHAR(100),
   Genre CHAR CHECK (Genre = 'H' OR Genre = 'F'),
-  TypeAssurance VARCHAR(20) CHECK (TypeAssurance = 'RC' OR TypeAssurance = 'B'
-    OR TypeAssurance = 'B+' OR TypeAssurance = 'B++'),
+  TypeAssurance TEXT(20) CHECK (TypeAssurance = "RC" OR TypeAssurance = "B"
+    OR TypeAssurance = "B+" OR TypeAssurance = "B++"),
   DateNaissance DATE,
   Adresse VARCHAR(100),
   NumTel VARCHAR(15),
   Mail VARCHAR(100),
-  Passeport VARCHAR(10) CHECK (Passeport = 'Blanc' OR Passeport = 'Jaune'
-    OR Passeport = 'Orange' OR Passeport = 'Vert' OR Passeport = 'Bleu'
-    OR Passeport = 'RougePerf' OR Passeport = 'RougeExt' OR Passeport = 'Noir'),
+  Passeport TEXT(10) CHECK (Passeport = "Blanc" OR Passeport = "Jaune"
+    OR Passeport = "Orange" OR Passeport = "Vert" OR Passeport = "Bleu"
+    OR Passeport = "RougePerf" OR Passeport = "RougeExt" OR Passeport = "Noir"),
   NomContact VARCHAR(100),
   PrenomContact VARCHAR(100),
   NumTelContact VARCHAR(15),

@@ -27,10 +27,10 @@ class DAO{
     try {
       $this->db = new PDO("sqlite:".$this->chemin);
       if (!$this->db) {
-        die ("Database error: cannot open '".$this->database."'\n");
+        die ("Database error: cannot open '".$this->db."'\n");
       }
     } catch (PDOException $e) {
-      die("PDO Error :".$e->getMessage()." '".$this->database."'\n");
+      die("PDO Error :".$e->getMessage()." '".$this->db."'\n");
     }
   }
 //Fonctions Utilisateur
@@ -291,23 +291,27 @@ function getEventOfficial(){
 function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adresse, $codepostal, $adressemail, $passeport, $numtel
                         , $NomContact, $PrenomContact, $NumTelContact, $AdresseContact, $MailContact){
 
-  $request = $this->db->prepare('INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance,Adresse, NumTel, Mail, Passeport, NomContact, PrenomContact, NumTelContact,  AdresseContact, MailContact) VALUES(:nom, :prenom, :sexe, :assurance, :datedenaissance,:adresse, :adressemail,:passeport, :numtel,:NomContact, :PrenomContact, :NumTelContact, :AdresseContact, :MailContact)');
+ $req = $this->db->prepare("INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance,Adresse, NumTel, Mail,
+                                 Passeport, NomContact, PrenomContact, NumTelContact,  AdresseContact, MailContact)
+                                 VALUES(:nom, :prenom, :sexe, :assurance, :datedenaissance,:adresse,:numtel, :adressemail,:passeport
+                                        ,:NomContact, :PrenomContact, :NumTelContact, :AdresseContact, :MailContact)");
 
-  $request->execute(array(
-    "nom"=> $nom,
-    "prenom" => $prenom,
-    "sexe" => $sexe,
-    "assurance" => $assurance,
-    "datedenaissance" => $datedenaissance,
-    "adresse" => $adresse,
-    "adressemail" => $adressemail,
-    "passeport" => $passeport,
-    "numtel" => $numtel,
-    "NomContact"=> $NomContact,
-    "PrenomContact" => $PrenomContact,
-    "NumTelContact" => $NumTelContact,
-    "AdresseContact" => $AdresseContact,
-    "MailContact" => $MailContact
+
+  $req->execute(array(
+    'nom'=> $nom,
+    'prenom' => $prenom,
+    'sexe' => $sexe,
+    'assurance' => $assurance,
+    'datedenaissance' => $datedenaissance,
+    'adresse' => $adresse,
+    'adressemail' => $adressemail,
+    'passeport' => $passeport,
+    'numtel' => $numtel,
+    'NomContact'=> $NomContact,
+    'PrenomContact' => $PrenomContact,
+    'NumTelContact' => $NumTelContact,
+    'AdresseContact' => $AdresseContact,
+    'MailContact' => $MailContact
   ));
 
 

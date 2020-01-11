@@ -32,14 +32,14 @@
               <label for="femme">Femme</label>
               <label for="passeport">Passeport : </label>
               <select class="input" name="passeport">
-                <option value="Blanc" selected>Blanc</option>
-                <option value="Jaune">Jaune</option>
-                <option value="Orange">Orange</option>
-                <option value="Vert">Vert</option>
-                <option value="Bleu">Bleu</option>
-                <option value="RougePer">Rouge Performance</option>
-                <option value="RougeExt">Rouge Grands Espaces</option>
-                <option value="Noir">Noir</option>
+                <option value="Blanc" class="passeportClass" selected>Blanc</option>
+                <option value="Jaune" class="passeportClass">Jaune</option>
+                <option value="Orange" class="passeportClass">Orange</option>
+                <option value="Vert" class="passeportClass">Vert</option>
+                <option value="Bleu" class="passeportClass">Bleu</option>
+                <option value="RougePer" class="passeportClass">Rouge Performance</option>
+                <option value="RougeExt" class="passeportClass">Rouge Grands Espaces</option>
+                <option value="Noir" class="passeportClass">Noir</option>
               </select>
               <label for="age">Date de naissance : </label>
               <input type="date" name="age" placeholder="jj/mm/aa" class="input" required>
@@ -55,12 +55,14 @@
              <div class="message">
                <div class="assurance">
                  <label for="base">Assurance : </label>
-                 <input type="radio" id="base" name="base" value="B" checked>
-                 <label for="homme">Base</label>
+                 <input type="radio" id="rc" name="base" value="RC" checked>
+                 <label for="base" >RC</label>
+                 <input type="radio" id="base" name="base" value="B">
+                 <label for="base" >Base</label>
                  <input type="radio" id="base+" name="base" value="B+">
-                 <label for="femme">Base+</label>
+                 <label for="base" >Base+</label>
                  <input type="radio" id="base++" name="base" value="B++">
-                 <label for="femme">Base++</label>
+                 <label for="base" >Base++</label>
                </div>
              </div>
              <div class="contact">
