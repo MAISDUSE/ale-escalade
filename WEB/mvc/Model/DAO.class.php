@@ -179,7 +179,7 @@ function getAllSujets(){
   $req = "SELECT * FROM Sujet";
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll();
-  return array($lancement);
+  return $lancement;
 }
 function searchSujetByPartielName($partieNom){
   $req = "SELECT * FROM Sujet WHERE titre LIKE '%$partieNom%'";
