@@ -3,6 +3,7 @@ require_once("../Model/Actualite.class.php");
 require_once("../Model/DAO.class.php");
 require_once("../Framework/View.class.php");
 
+if(isset($_SESSION['user']) && $_SESSION['user']->isAdmin() == "TRUE"){
 if(isset($_POST['viewAuteur'])){
   //Affichage du profil de l'auteur
   $db = new DAO;
@@ -38,5 +39,10 @@ if(isset($_POST['viewAuteur'])){
 
   $view = new View("GestionActualites");
   $view->actualites = $db->getAllActualite();
+  $view->afficher();
+}
+} else {
+  $_SESSION['erreur'] = new Retour(NULL, TRUE, "Il faut être connecté et être administrateur pour accéder à cette page");
+  $view = new View("../Controler/Accueil.ctrl.php");
   $view->afficher();
 }?>
