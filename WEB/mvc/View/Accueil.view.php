@@ -23,7 +23,7 @@
   			    </div>
     	    </div>
     	    <div class="actualiteZ2">  </div>
-  		    <img class="actualiteZ1" src="../Ressources/<?=$actualite->getImage()?>" alt="imageDeFond" >
+  		    <img class="actualiteZ1" src="../Ressources/<?=$actualite->getImage()?>" alt="imageDeFonds" >
         </section>
       <?php }?>
     </section>
