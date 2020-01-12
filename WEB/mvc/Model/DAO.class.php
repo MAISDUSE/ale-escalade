@@ -321,15 +321,11 @@ function getEventOfficial(){
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
   return array($lancement);
  }
-<<<<<<< HEAD
   function addEvenement( $nom, $img, $dateCreation,
                        $dateDebut, $dateFin, $description,$officiel,
                        $numCrea, $nomLieu){
-=======
-function addEvenement( string $nom, string $img, string $dateCreation,
-                         string $dateDebut, string $dateFin, string $description,
-                         int $numCrea,string $nomLieu, bool $officiel){
->>>>>>> a7efe4881f766733cc778c116a22282b266e3675
+
+
 
     $req ="INSERT INTO Event(Nom,Image,DatePub,DateDebut,DateFin,Description,Officiel,NumCrea,NomLieu)
     VALUES(:nom,:image,:datePub,:dateDeb,:dateFin,:description,:officiel,:numCrea,:lieu)";

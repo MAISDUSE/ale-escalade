@@ -1,4 +1,9 @@
-<?php require_once("../Model/Sujet.class.php"); ?>
+<?php
+require_once("../Model/Sujet.class.php");
+require_once('../Model/Utilisateur.class.php');
+session_start();
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -19,15 +24,15 @@
       </div>
 
 
-<?php foreach ($listeSujet as $value){
-  $tmp = $value->getTitre();
-  ?>
+      <?php foreach ($listeSujet as $value){
+          $tmp = $value->getTitre();
+      ?>
 
 
   <a href="../Controler/SujetForum.ctrl.php?sujet=<?=$value->getId()?>">
     <aside>
       <h4><?=$value->getTitre()?></h4>
-        <p class="desc"><?=substr($value->getContenu(),0,20)."..."?></p>
+      <p class="desc"><?=substr($value->getContenu(),0,20)."..."?></p>
     </aside>
 
     <p class="date">Posté le <?=$value->getdatePub()?></p>

@@ -171,4 +171,6 @@ CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
 
 
 INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('hugo.iteprat@etu.univ-grenoble-alpes.fr', 'TRUE', 'Hugo', 'Iteprat', 'ceciestuntresbonmdp');
+INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('adherent@yahoo.fr', 'FALSE', 'Jean', 'Neymar', 'azerty');
+
 COMMIT;
