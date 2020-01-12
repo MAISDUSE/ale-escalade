@@ -30,6 +30,7 @@
               <label for="homme">Homme</label>
               <input type="radio" id="femme" name="sexe" value="F">
               <label for="femme">Femme</label>
+              <br>
               <label for="age">Date de naissance : </label>
               <input type="date" name="age" placeholder="jj/mm/aa" class="input" required><br>
               <label for="adresse">Adresse : </label>
