@@ -41,14 +41,15 @@ CREATE TABLE IF NOT EXISTS Adherent(
   );
 
 CREATE TABLE IF NOT EXISTS Actualite(
+  Id INTEGER PRIMARY KEY AUTOINCREMENT,
   Titre VARCHAR(100),
-  DatePub DATE,
   Image TEXT,
-  NbFichiers INTEGER,
-  Contenu VARCHAR(1000),
-  NumAuteur INTEGER UNSIGNED,
-  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID),
-  PRIMARY KEY (Titre, DatePub)
+  DatePub DATE,
+  Description TEXT,
+  Fichiers TEXT,
+  NumCrea INTEGER UNSIGNED,
+  FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID)
+
 );
 
 CREATE TABLE IF NOT EXISTS Message(
