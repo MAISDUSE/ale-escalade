@@ -1,6 +1,7 @@
 <?php
-  session_start();
+  require_once("../Model/Utilisateur.class.php");
   require_once("../Framework/Retour.class.php");
+  session_start();
 ?>
 
 

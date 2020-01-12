@@ -1,10 +1,3 @@
-<?php
-require_once("../Model/Sujet.class.php");
-require_once('../Model/Utilisateur.class.php');
-session_start();
-
-?>
-
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
