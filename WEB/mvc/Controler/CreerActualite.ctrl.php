@@ -7,6 +7,7 @@ require_once("../Model/DAO.class.php");
 require_once("../Framework/View.class.php");
 require_once("../Model/Actualite.class.php");
 
+if(isset($_SESSION['user']) && ($_SESSION['user']->isAdmin() == "TRUE")){
   $formatImage = array("image/jpeg","image/jpg","image/png");
   $formatText = array(".pdf",".txt",".doc",".docx",".csv",".odt");
 
@@ -24,9 +25,9 @@ require_once("../Model/Actualite.class.php");
           $imageFond = "test2/".$_FILES['imageFond']['name'];
       }else{
         $ErreurPhotoDefault=true;
+      }
     }
-    }
-    $date =  date('j-m-Y');
+    $date =  date('Y-m-d');
     /*$idUser = getIdUser à coder*/
 
     $descrition = $_POST['description'];
@@ -63,7 +64,11 @@ require_once("../Model/Actualite.class.php");
       $view = new View("CreerActualite");
       $view->afficher();
     }
-
+}else{
+  $_SESSION['erreur'] = new Retour(NULL, TRUE, "Il faut être connecté et être administrateur pour accéder à cette page");
+  $view = new View("../Controler/Accueil.ctrl.php");
+  $view->afficher();
+}
 
 
  ?>

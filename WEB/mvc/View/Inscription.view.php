@@ -42,7 +42,7 @@
                 <option value="Noir" class="passeportClass">Noir</option>
               </select>
               <label for="age">Date de naissance : </label>
-              <input type="date" name="age" placeholder="jj/mm/aa" class="input" required>
+              <input type="date" name="age" placeholder="jj/mm/aa" class="input" required><br>
               <label for="adresse">Adresse : </label>
               <input type="text" name="adresse" placeholder="EX : 12 Rue 8 Mai 1945" class="input"  required>
               <label for="codepostal">Code Postal : </label>

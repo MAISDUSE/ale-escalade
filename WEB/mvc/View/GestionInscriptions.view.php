@@ -13,7 +13,7 @@
       }
 
       function ConfirmerAcceptation(){
-        if(confirm("Voulez vous vraiment refuser cette inscription ?")){
+        if(confirm("Voulez vous vraiment accepter cette inscription ?")){
           formulaire.submit();
         }
       }

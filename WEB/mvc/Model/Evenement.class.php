@@ -15,12 +15,12 @@ require_once("../Model/DAO.class.php");
 
     private $description;//Je crois qu'il faut une aussi description
     //A ajouter dans la BD
-
+    private $officiel;  //Officiel
     private $numCrea;   //NumCrea
     private $nomLieu;   //NomLieu
-    private $officiel;  //Officiel
 
-    function __construct(int $id, string $nom, string $img, string $dateCreation, string $dateDebut, string $dateFin, string $description, int $numCrea,string $nomLieu, bool $officiel){
+
+    function __construct($id, $nom, $img, $dateCreation, $dateDebut, $dateFin, $description, $officiel, $numCrea, $nomLieu){
       $this->id=$id;
       $this->nom = $nom;
 
@@ -78,10 +78,10 @@ require_once("../Model/DAO.class.php");
   }
 
   function getDuree(){
-    $date1 =   DateTime::createFromFormat('d/m/Y',$this->dateFin);
-    $date2 =   DateTime::createFromFormat('d/m/Y',$this->dateDebut);
+    $date1 = date('d/m/Y',strtotime($this->dateFin));
+    $date2 = date('d/m/Y',strtotime($this->dateDebut));
     $interval = date_diff($date1,$date2);
-    $nbJour =(int)  $interval->format("%a");
+    $nbJour = abs($date1 - $date2);
     return $nbJour+1;
   }
 
@@ -111,7 +111,7 @@ require_once("../Model/DAO.class.php");
 
     $db->addEvenement(  $this->nom,  $this->img,  $this->dateCreation,  $this->dateDebut,
       $this->dateFin,  $this->description,  $this->numCrea, $this->nomLieu,  $this->officiel);
-    echo "C4EST BION";  
+    echo "C4EST BION";
   }
 }
  ?>

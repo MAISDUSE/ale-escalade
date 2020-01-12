@@ -287,9 +287,15 @@ function getAllCommentairesFomSujet($idSujet){
 //event
 function getAllEvent(){
   $req = "SELECT * FROM Event ORDER BY DateDebut";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
-  return array($lancement);
+  $requete = $this->db->query($req)->fetchAll();
+  $evenements = array();
+  foreach ($requete as $value) {
+    $event = new Evenement($value['ID'],$value['Nom'], $value['Image'], $value['DatePub']
+                          , $value['DateDebut'], $value['DateFin'], $value['Description']
+                          , $value['Officiel'], $value['NumCrea'], $value['NomLieu'] );
+    array_push($evenements, $event);
+  }
+  return $evenements;
 }
 function getEventByDates($debut, $fin){
   $req = "SELECT * FROM Event WHERE '$debut' < DateDebut and '$fin' < DateFin";

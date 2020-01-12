@@ -17,7 +17,9 @@
         <nav>
             <h1 class="brand"><a href="../Controler/Accueil.ctrl.php"><img src="../Ressources/Ale_black.png" alt="Logo Ale"></a></h1>
             <ul>
-                <li><a href="../Controler/Accueil.ctrl.php">Accueil</a></li>
+                <?php if(!isset($_SESSION['user'])) :?>
+                  <li><a href="../Controler/Accueil.ctrl.php">Accueil</a></li>
+                <?php endif; ?>
                 <li><a href="../Controler/Planning.ctrl.php">Planning</a></li>
                 <li><a href="../Controler/Forum.ctrl.php">Forum</a></li>
                 <?php if(!isset($_SESSION['user'])) :?>
@@ -25,6 +27,7 @@
                   <li><a href="../Controler/Inscription.ctrl.php">Inscription</a></li>
                 <?php else : ?>
                   <li><a href="../Controler/OutilAdministratif.ctrl.php">Outils Admin</a></li>
+                  <li><a href="../Controler/ListeEvenement.ctrl.php">événements</a></li>
                   <li><a href="../Controler/Deconnexion.ctrl.php">Déconnexion</a></li>
                 <?php endif; ?>
 

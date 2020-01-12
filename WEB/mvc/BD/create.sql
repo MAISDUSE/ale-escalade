@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS Event(
   DateDebut DATE,
   DateFin DATE,
   Description TEXT(1000),
-  Officiel BOOLEAN,
+  Officiel VARCHAR(5) CHECK (Officiel = "TRUE" OR Officiel = "FALSE"),
   NumCrea INTEGER UNSIGNED,
   NomLieu VARCHAR(100),
   FOREIGN KEY (NumCrea) REFERENCES Utilisateur (ID)
