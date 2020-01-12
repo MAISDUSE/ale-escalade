@@ -80,7 +80,7 @@ class Adherent{            //Dans la base de données
   }
 
   function getTypeLicence(){
-    return $this->$typeLicence;
+    return $this->typeLicence;
   }
 
   function getNom(){

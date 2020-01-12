@@ -1,6 +1,7 @@
-<?php session_start();
+<?php
+  require_once("../Model/Utilisateur.class.php");
   require_once("../Framework/Retour.class.php");
-
+  session_start();
 ?>
 
 
@@ -15,24 +16,28 @@
     <input type="checkbox" id="toggle">
     <div id="menu" class="container">
         <nav>
-            <h1 class="brand"><a href="../Controler/Accueil.ctrl.php"><img src="../Ressources/Ale_black.png" alt="Logo Ale"></a></h1>
+            <h1 class="brand"><a href="../Controler/Accueil.ctrl.php"><img src="../Ressources/Ale_black.png" alt="Logo ALE-Escalade"></a></h1>
             <ul>
-                <?php if(!isset($_SESSION['user'])) :?>
-                  <li><a href="../Controler/Accueil.ctrl.php">Accueil</a></li>
-                <?php endif; ?>
-                <li><a href="../Controler/Planning.ctrl.php">Planning</a></li>
-                <li><a href="../Controler/Forum.ctrl.php">Forum</a></li>
-                <?php if(!isset($_SESSION['user'])) :?>
-                  <li><a href="../Controler/Connexion.ctrl.php">Connexion</a></li>
-                  <li><a href="../Controler/Inscription.ctrl.php">Inscription</a></li>
-                <?php else : ?>
+              <?php if(!isset($_SESSION['user']) || (isset($_SESSION['user']) && $_SESSION['user']->isAdmin() != "TRUE")) :?>
+                <li><a href="../Controler/Accueil.ctrl.php">Accueil</a></li>
+              <?php endif; ?>
+              <li><a href="../Controler/Planning.ctrl.php">Planning</a></li>
+              <li><a href="../Controler/Forum.ctrl.php">Forum</a></li>
+              <?php if(!isset($_SESSION['user'])) :?>
+                <li><a href="../Controler/Connexion.ctrl.php">Connexion</a></li>
+                <li><a href="../Controler/Inscription.ctrl.php">Inscription</a></li>
+              <?php else : ?>
+                <li><a href="../Controler/ListeEvenement.ctrl.php">événements</a></li>
+                <li><a href="../Controler/Deconnexion.ctrl.php">Déconnexion</a></li>
+                <li><a href="../Controler/Adherent.ctrl.php">Mes Informations</a></li>
+
+                <?php if ($_SESSION['user']->isAdmin() == "TRUE") :?>
                   <li><a href="../Controler/OutilAdministratif.ctrl.php">Outils Admin</a></li>
-                  <li><a href="../Controler/ListeEvenement.ctrl.php">événements</a></li>
-                  <li><a href="../Controler/Deconnexion.ctrl.php">Déconnexion</a></li>
                 <?php endif; ?>
-
+              <?php endif; ?>
+              <?php if(!isset($_SESSION['user'])) :?>
                 <li><a href="../Controler/Contact.ctrl.php">Contactez-Nous</a></li>
-
+              <?php endif; ?>
             </ul>
         </nav>
     </div>

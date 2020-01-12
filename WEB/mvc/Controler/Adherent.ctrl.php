@@ -19,9 +19,25 @@ if(isset($_SESSION['user']) && $_SESSION['user']->isAdmin() == "TRUE"){
     $db = new DAO;
 
     $view = new View("Adherent");
-    $view->adherents = $db->getAdherentByCode($_POST['idAdh']);
+    if(isset($_POST['idAdh'])){
+      $view->adherent = $db->getAdherentByCode($_POST['idAdh']);
+    } else {
+      $view->adherent = $db->getAdherentByCode($_SESSION['user']->getAdhID());
+    }
+
     $view->afficher();
   }
+} else if (isset($_SESSION['user'])) {
+    //Affichage normal de la page
+    $db = new DAO;
+
+    $view = new View("Adherent");
+    if(isset($_POST['idAdh'])){
+      $view->adherent = $db->getAdherentByCode($_POST['idAdh']);
+    } else {
+      $view->adherent = $db->getAdherentByCode($_SESSION['user']->getAdhID());
+    }
+    $view->afficher();
 } else {
   $_SESSION['erreur'] = new Retour(NULL, TRUE, "Il faut être connecté et être administrateur pour accéder à cette page");
   $view = new View("../Controler/Accueil.ctrl.php");

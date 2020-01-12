@@ -1,11 +1,12 @@
 <?php
-session_start();
-
 //import liste de tous les sujets trié dans l'ordre
 require_once("../Model/DAO.class.php");
 require_once("../Model/Sujet.class.php");
+require_once("../Model/Utilisateur.class.php");
 require_once("../Framework/View.class.php");
 require_once("../Framework/Retour.class.php");
+
+session_start();
 
 if(isset($_SESSION['user'])){
   $db = new DAO;

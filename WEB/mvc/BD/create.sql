@@ -40,16 +40,16 @@ CREATE TABLE IF NOT EXISTS Adherent(
     FOREIGN KEY (AdhID) REFERENCES Adherent(ID)
   );
 
-CREATE TABLE IF NOT EXISTS Actualite(
-  Titre VARCHAR(100),
-  DatePub DATE,
-  Image TEXT,
-  NbFichiers INTEGER,
-  Contenu VARCHAR(1000),
-  NumAuteur INTEGER UNSIGNED,
-  FOREIGN KEY (NumAuteur) REFERENCES Utilisateur (ID),
-  PRIMARY KEY (Titre, DatePub)
-);
+  CREATE TABLE IF NOT EXISTS Actualite(
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Titre VARCHAR(100),
+    DatePub DATE,
+    Image TEXT,
+    Description TEXT,
+    Fichiers TEXT,
+    NumCrea INTEGER UNSIGNED,
+    FOREIGN KEY (NumCrea) REFERENCES Utilisateur(ID)
+  );
 
 CREATE TABLE IF NOT EXISTS Message(
   NumExp INTEGER UNSIGNED,
@@ -168,9 +168,16 @@ CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
   MailContact VARCHAR(100)
 );
 
+INSERT INTO Contact(Nom, Prenom, Adresse, NumTel, Mail) VALUES ("NomContact1", "PrenomContact1", "AdresseContact1", "0606606060", "mailContact@gmail.com");
+
+INSERT INTO Adherent(NumLicence, TypeLicence, Nom, Prenom, Genre, DateNaissance, Adresse, NumTel, Mail, Role, Passeport, CodeUtilisateur, Contact)
+  VALUES (123456, "A", "Admin", "Admin", "H", "11/05/1998", "Adresse de l'admin", "0679861520", "admin@gmail.com", "Administrateur", "RougePerf", "2", "1");
+
+INSERT INTO Adherent(NumLicence, TypeLicence, Nom, Prenom, Genre, DateNaissance, Adresse, NumTel, Mail, Role, Passeport, CodeUtilisateur, Contact)
+  VALUES (654321, "A", "Neymar", "Jean", "H", "21/10/1970", "Adresse", "0679521401", "adherent@gmail.com", "Adherent", "RougePerf", "3", "1");
 /*
 INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('hugo.iteprat@etu.univ-grenoble-alpes.fr', 'TRUE', 'Hugo', 'Iteprat', 'ceciestuntresbonmdp');
-INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('adherent@yahoo.fr', 'FALSE', 'Jean', 'Neymar', 'azerty');
-INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('admin@gmail.com', 'TRUE', 'admin', 'admin', 'admin');
+INSERT INTO Utilisateur(adhID, adresseMail, Admin, Prenom, Nom, Mdp) VALUES("2", 'adherent@yahoo.fr', 'FALSE', 'Jean', 'Neymar', 'azerty');
+INSERT INTO Utilisateur(adhID, adresseMail, Admin, Prenom, Nom, Mdp) VALUES("1", 'admin@gmail.com', 'TRUE', 'admin', 'admin', 'admin');
 */
 COMMIT;
