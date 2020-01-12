@@ -43,7 +43,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']->isAdmin() == "TRUE"){
     $db = new DAO;
     $view = new View("GestionEvenements");
 
-    $view->evenements = $db->getAllEvenements();
+    $view->evenements = $db->getAllEvent();
     $view->afficher();
   } else {
     //Affichage normal de la page

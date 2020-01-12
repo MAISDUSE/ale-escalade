@@ -197,7 +197,7 @@ function verifUser($addrMail, $mdp){
 
 function getSujetByID($ID){
   $req = $this->db->query("SELECT * FROM Sujet WHERE ID = '$ID'")->fetchAll()[0];
-  return new Sujet($req['ID'],$req['Titre'], $req['Contenu'], date("Y/m/d", strtotime($req['DatePub']))
+  return new Sujet($req['ID'],$req['Titre'], date("Y/m/d", strtotime($req['DatePub'])), $req['Contenu']
                     , $req['IDAuteur'], $req['IDEvent']);
 }
 
@@ -439,10 +439,11 @@ function addEvenement( string $nom, string $img, string $dateCreation,
 
 function genAdmin(){
   $mdp = password_hash ("admin" ,PASSWORD_DEFAULT);
-  $req ="INSERT INTO Utilisateur(adresseMail,Admin,Prenom,Nom,Mdp)
-  VALUES(:adresseMail,:Admin,:Prenom,:Nom,:Mdp)";
+  $req ="INSERT INTO Utilisateur(AdhID,adresseMail,Admin,Prenom,Nom,Mdp)
+  VALUES(:AdhID, :adresseMail,:Admin,:Prenom,:Nom,:Mdp)";
     $requete = $this->db->prepare($req);
     $requete->execute(array(
+                      ':AdhID' => 1,
                       ':adresseMail'=> "admin@admin.fr",
                       ':Admin' => "TRUE",
                       ':Prenom' => "Admin",

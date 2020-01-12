@@ -10,7 +10,7 @@
     <?php include "Design/Header.view.php"; ?>
     <section>
       <form action="../Controler/GestionAdherents.ctrl.php" method="post" enctype="multipart/form-data">
-        <input type="submit" name="modifUser" value="Modifier l'adhérent">
+        <input type="submit" name="modifUser" value="Modifier les informations">
         <input type="hidden" name="idUser" value="<?=$adherent->getID()?>">
       </form>
       <div class="col1">

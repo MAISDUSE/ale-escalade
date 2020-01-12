@@ -61,12 +61,6 @@ CREATE TABLE IF NOT EXISTS Message(
   FOREIGN KEY (NumDest) REFERENCES Utilisateur(ID)
 );
 
-CREATE TABLE IF NOT EXISTS Lieu(
-  Nom VARCHAR(100) PRIMARY KEY,
-  Adresse VARCHAR(255),
-  Categorie VARCHAR(10) CHECK (Categorie = 'Interieur' OR Categorie = 'Exterieur')
-);
-
 CREATE TABLE IF NOT EXISTS Event(
   ID INTEGER PRIMARY KEY AUTOINCREMENT,
   Nom VARCHAR(100),
@@ -144,7 +138,9 @@ CREATE TABLE IF NOT EXISTS PratiqueEvent(
   IDEvent INTEGER UNSIGNED default null,
   IDCours INTEGER UNSIGNED default null,
   Type VARCHAR(10) CHECK (Type = 'Difficulte' OR Type = 'Bloc' OR Type = 'Vitesse'),
-  CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null))
+  CHECK ((IDEvent <> null and IDCours = null) OR (IDEvent = null AND IDCours <> null)),
+  FOREIGN KEY (IDEvent) REFERENCES Event(ID),
+  FOREIGN KEY (IDCours) REFERENCES Cours(ID)
 );
 
 CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
