@@ -1,13 +1,6 @@
 <?php
 if(isset($_SESSION['user']) && $_SESSION['user']->isAdmin() == "TRUE"){
-  if(isset($_POST['viewCours'])){
-    //Vue du cours
-    $db = new DAO;
-
-    $view = new View("Cours");
-    $view->cours = $db->getCoursByCode($_POST['idCours']);
-    $view->afficher();
-  } else if (isset($_POST['modifCours'])){
+  if (isset($_POST['modifCours'])){
     //Vue de la page de modification du cours
     $db = new DAO;
 
