@@ -38,6 +38,13 @@ if(isset($_SESSION['user']) && $_SESSION['user']->isAdmin() == "TRUE"){
 
     $view->cours = $db->getAllCours();
     $view->afficher();
+  } else if (isset($_POST['gererEvenements'])){
+    //Gérer les cours
+    $db = new DAO;
+    $view = new View("GestionEvenements");
+
+    $view->cours = $db->getAllEvenements();
+    $view->afficher();
   } else {
     //Affichage normal de la page
     $view = new View("OutilAdministratif");

@@ -2,16 +2,16 @@
 
 class InscriptionEnAttente{
 
-  private $id;
-  private $nom;
-  private $prenom;
-  private $genre;
-  private $typeAssurance;
-  private $dateNaissance;
-  private $adresse;
-  private $numTel;
-  private $mail;
-  private $passeport;
+  private $id; // 0
+  private $nom; // 1
+  private $prenom; // 2
+  private $genre; // 3
+  private $typeAssurance; // 4
+  private $dateNaissance; // 5
+  private $adresse; // 6
+  private $numTel; // 7
+  private $mail; // 9
+  private $passeport; // 10
   //Rubrique contact
   private $nomContact;
   private $prenomContact;

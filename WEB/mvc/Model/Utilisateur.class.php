@@ -15,7 +15,7 @@
     function __construct($ID,$adhID, $AdresseMail, $Admin, $Prenom, $Nom, $Mdp)
     {
       $this->ID = $ID;
-      $this->adhID = $adhId;
+      $this->adhID = $adhID;
       $this->adresseMail = $AdresseMail;
       $this->admin = $Admin;
       $this->prenom = $Prenom;
