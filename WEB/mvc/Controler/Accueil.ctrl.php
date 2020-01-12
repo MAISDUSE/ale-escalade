@@ -21,7 +21,6 @@
   }*/
   $db = new DAO();
 
-<<<<<<< HEAD
 
 
   $a1 = array("Actualite/act1_2.jpg","Actualite/act1_3.jpg");
@@ -47,9 +46,6 @@
                      deserunt mollit anim id est laborum.","azazas");
   $actualites = array($ac1,$ac2);
 
-=======
-  $actualites = $db->getAllActualite();
->>>>>>> a9c9533c4e73d02775aedd9fed9c9083e6b58ecb
   $view = new View("Accueil");
   //$view->page = $page;
   $view->actualites = $actualites;
