@@ -46,6 +46,15 @@ function getAllUsers(){
     }
   return $retour;
 }
+
+function getUserByCode($id){
+  $req = "SELECT * FROM Utilisateur where id = '$id'";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll();
+
+  return new Utilisateur($lancement[1], $lancement[2], $lancement[3], $lancement[4], $lancement[5], $lancement[6],
+                      $lancement[7], $lancement[8], $lancement[9], $lancement[10], $lancement[11], $lancement[12], $this->getContactByID($lancement[13]));
+}
 //Fonction Adherents
 function getAllAdherents(){
   $req = "SELECT * FROM Adherent";
@@ -58,21 +67,14 @@ function getAllAdherents(){
     }
   return $retour;
 }
-function getUserByCode($id){
-  $req = "SELECT * FROM Utilisateur where id = '$id'";
+
+function getAdherentByCode($id){
+  $req = "SELECT * FROM Adherent where id = '$id'";
   $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll();
-  $retour = array();
-  //utilisation de foreach car problème du au PDO::FETCH_CLASS
-  foreach ($lancement as $v){
-    //Utilisateur int $id, string $licence, string $typeLicence,
-    //string $nom, string $prenom, string $genre, string $dateNaissance,
-    //string $adresse, string $numTel, string $adresseMail,
-    //string $role, string $codeUtilisateur, string $passeport, Contact $contact = null
-    array_push($retour, new Utilisateur($v[1], $v[2], $v[3], $v[4], $v[5], $v[6],
-                        $v[7], $v[8], $v[9], $v[10], $v[11], $v[12], getContactByID($v[13])));
-  }
-  return $retour;
+  $lancement = $requete->fetchAll()[0];
+
+  return new Adherent($lancement[0], $lancement[1], $lancement[2], $lancement[3], $lancement[4], $lancement[5], $lancement[6],
+                      $lancement[7], $lancement[8], $lancement[9], $lancement[10], $lancement[11], $lancement[12], $this->getContactByID($lancement[13]));
 }
 
 function getNomPrenomAuteur($id){
