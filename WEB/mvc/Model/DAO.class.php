@@ -332,47 +332,40 @@ function getAllActualite(){
 
   $retour = array();
   foreach ($lancement as $v) {
-    array_push($retour, new Actualite($v[0], $v[1], $v[2], $v[3],
-    $v[4], $v[5], $v[6]));
+    array_push($retour, new Actualite(intval($v[0]), $v[1], $v[3], $v[2],
+    intval($v[6]), $v[4], $v[5]));
   }
+
   return $retour;
 }
 
 function getActualiteByID($id){
   $req = "SELECT * FROM Actualite WHERE id = '$id'";
   $requete = $this->db->query($req);
-  $l = $requete->fetchAll();
-  return new Actualite($l[0], $l[1], $l[2], $l[3], $l[4], $l[5], $l[6]);
+  $v = $requete->fetchAll()[0];
+  return new Actualite(intval($v[0]), $v[1], $v[3], $v[2],
+  intval($v[6]), $v[4], $v[5]);
 }
 
-function getNbActualite(){
-  $req = "SELECT count(Id) FROM Actualite";
-  $requete = $this->db->query($req);
-  $l = $requete->fetchAll();
-  return $l[0];
+function getNextNumActualite(){
+  $req = $this->db->query("SELECT max(ID) FROM Actualite")->fetchAll()[0]['max(ID)'] + 1 ;
+  return $req;
+
 }
 function addActualite( string $titre, string $img, string $dateCreation,string $description,
                          int $numCrea, string $fichiers){
 
-    $req ="INSERT INTO Actualite(Titre,Image,DatePub,Description,Fichiers,NumCrea) VALUES(:titre,:image,:datePub,:description,:Fichiers,:numCrea)";
+    $req ="INSERT INTO Actualite(Titre,DatePub,Image,Description,Fichiers,NumCrea) VALUES(:titre,:datePub,:image,:description,:Fichiers,:numCrea)";
       $requete = $this->db->prepare($req);
       $requete->execute(array(
                         'titre'=> $titre,
-                        'image' => $img,
                         'datePub' => $dateCreation,
+                        'image' => $img,
                         'description' => $description,
                         'Fichiers' => $fichiers,
                         'numCrea' => $numCrea));
 
     }
-/*
-function getNomPrenomAuteur($id){
-  $req = "SELECT nom, prenom FROM Utilisateur U, Actualite A WHERE A.id = '$id'
-          and A.numAuteur = U.id";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll();
-  return $lancement;
-}*/
 
 //Fonctions Commentaire
 

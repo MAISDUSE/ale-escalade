@@ -20,8 +20,8 @@ require_once("../Model/Actualite.class.php");
     $titre = $_POST['titre'];
     $imageFond = "Actualite/default.jpg";
     if(isset($_FILES['imageFond'])){
-          move_uploaded_file($_FILES['imageFond']['tmp_name'], "../Ressources/Actualite/img".($db->getNbActualite()[0]+1)."_".$_FILES['imageFond']['name']);
-          $imageFond = "Actualite/img".($db->getNbActualite()[0]+1)."_".$_FILES['imageFond']['name'];
+          move_uploaded_file($_FILES['imageFond']['tmp_name'], "../Ressources/Actualite/img".($db->getNextNumActualite())."_".$_FILES['imageFond']['name']);
+          $imageFond = "Actualite/img".($db->getNextNumActualite())."_".$_FILES['imageFond']['name'];
 
     }
     $date =  date('Y-m-d');
@@ -29,20 +29,16 @@ require_once("../Model/Actualite.class.php");
 
     $description = $_POST['description'];
     $nbFichier = count($_FILES['mesFichiers']['tmp_name']);
-    $nbFichierVal = 0;
-    $nomFichier = "";
+    var_dump($_FILES['mesFichiers']);
+    $nomFichier = $imageFond;
+    if(! empty($_FILES['mesFichiers'][0])){
       for ($i=0; $i < $nbFichier ; $i++) {
-          move_uploaded_file($_FILES['mesFichiers']['tmp_name'][$i], "../Ressources/Actualite/act".($db->getNbActualite()[0]+1)."_".$_FILES['mesFichiers']['name'][$i]);
+          move_uploaded_file($_FILES['mesFichiers']['tmp_name'][$i], "../Ressources/Actualite/act".($db->getNextNumActualite())."_".$_FILES['mesFichiers']['name'][$i]);
 
-          if($nbFichierVal<=0){
-            $nomFichier ="Actualite/act".($db->getNbActualite()[0]+1)."_".$_FILES['mesFichiers']['name'][$i];
+          $nomFichier .="|Actualite/act".($db->getNextNumActualite())."_".$_FILES['mesFichiers']['name'][$i];
 
-          }else{
-            $nomFichier .="|Actualite/act".($db->getNbActualite()[0]+1)."_".$_FILES['mesFichiers']['name'][$i];
-          }
-          $nbFichierVal++;
-          echo "|Actualite/act".($db->getNbActualite()[0]+1).$_FILES['mesFichiers']['name'][$i];
       }
+    }
       $actualite = new Actualite(1,$titre,$imageFond,$date,1,$description,$nomFichier);
       $db->addActualite( $titre, $imageFond, $date,$description, 1, $nomFichier);
     }
@@ -50,7 +46,7 @@ require_once("../Model/Actualite.class.php");
 
 
     if(isset($_POST['poster'])){
-      var_dump($actualite);
+
       $view = new View("Actualite");
       $view->actualite  = $actualite;
       $view->afficher();
