@@ -1,3 +1,9 @@
+<?php
+  require_once("../Model/Utilisateur.class.php");
+  session_start();
+  $admin = $_SESSION['user']->isAdmin();
+ ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -15,7 +21,7 @@
     <?php include "Design/Header.view.php"; ?>
 
       <div class="CreerActualite">
-        <h2>Ajouter une actualité :</h2>
+        <h2>Ajouter un Evenement :</h2>
           <form class="" action="../Controler/CreerEvenement.ctrl.php" method="post" enctype="multipart/form-data">
             <div class="input-fields">
               <label for="titre">Titre :</label>
@@ -34,10 +40,12 @@
               <input type="text" name="lieu" placeholder="Lieu" required>
               <br>
               <label for="description">Description :</label>
-              <textarea id="description" name="description" rows="8" cols="80" placeholder="Entrez la description de votre actulité" required></textarea>
+              <textarea id="description" name="description" rows="8" cols="80" placeholder="Entrez la description de votre événement" required></textarea>
               <br>
-              <?php if ($admin==true){
-                echo " <label for=\"officiel\">Pris en charge :</label>";
+              <?php
+
+              if ($admin=="TRUE"){
+                echo " <label for=\"officiel\">Coché si c'est officiel :</label>";
                 echo "<input type=\"checkbox\" name=\"officiel\" value=\"1\">";
                 echo "<br>";
               }

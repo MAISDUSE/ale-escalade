@@ -226,16 +226,31 @@ function getAssuranceFromUser(int $idUtilisateur){
 function getAllCours(){
   $req = "SELECT * FROM Cours";
   $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Cours');
+  $lancement = $requete->fetchAll();
+  $retour = array();
+
+  foreach ($lancement as $v) {
+    array_push($retour, new Actualite($v[0], $v[1], $v[2], $v[3],
+    $v[4], $v[5], $v[6], $v[7], $v[8]));
+  }
+
   return array($lancement);
 }
+
 //Actualite
 function getAllActualite(){
-  $req = "SELECT * FROM Actualite ORDER BY date";
+  $req = "SELECT * FROM Actualite ORDER BY datePub";
   $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Actualite');
-  return array($lancement);
+  $lancement = $requete->fetchAll();
+
+  $retour = array();
+  foreach ($lancement as $v) {
+    array_push($retour, new Actualite($v[0], $v[1], $v[2], $v[3],
+    $v[4], $v[5], $v[6]));
+  }
+  return $retour;
 }
+
 function getActualiteByID($id){
   $req = "SELECT * FROM Actualite WHERE id = '$id'";
   $requete = $this->db->query($req);
@@ -312,24 +327,26 @@ function getEventOfficial(){
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
   return array($lancement);
  }
+
 function addEvenement( string $nom, string $img, string $dateCreation,
                          string $dateDebut, string $dateFin, string $description,
                          int $numCrea,string $nomLieu, bool $officiel){
 
-    $req ="INSERT INTO Event(Nom,Image,DatePub,DateDebut,DateFin,Description,Officiel,NumCrea,NomLieu) VALUES(:nom,:image,:datePub,:dateDeb,:dateFin,:description,:numCrea,:officiel,:lieu)";
+    $req ="INSERT INTO Event(Nom,Image,DatePub,DateDebut,DateFin,Description,Officiel,NumCrea,NomLieu)
+    VALUES(:nom,:image,:datePub,:dateDeb,:dateFin,:description,:officiel,:numCrea,:lieu)";
       $requete = $this->db->prepare($req);
       $requete->execute(array(
-                        'nom'=> $nom,
-                        'image' => $img,
-                        'datePub' => $dateCreation,
-                        'dateDeb' => $dateDebut,
-                        'dateFin' => $dateFin,
-                        'description' => $description,
-                        'numCrea' => $numCrea,
-                        'officiel' => $officiel,
-                        'lieu'=> $nomLieu));
+                        ':nom'=> $nom,
+                        ':image' => $img,
+                        ':datePub' => $dateCreation,
+                        ':dateDeb' => $dateDebut,
+                        ':dateFin' => $dateFin,
+                        ':description' => $description,
+                        ':officiel' => $officiel,
+                        ':numCrea' => $numCrea,
+                        ':lieu'=> $nomLieu));
 
-    }
+}
 
 
 function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adresse, $codepostal, $adressemail, $passeport, $numtel
@@ -381,6 +398,21 @@ function getUserByID($ID){
   return new Utilisateur($req['ID'],$req['AdhID'],$req['adresseMail'],
                     $req['Admin'], $req['Prenom'], $req['Nom'], $req['Mdp']);
 }
+
+function getEventByID($ID){
+  $req = $this->db->query("SELECT * FROM Event WHERE ID = '$ID'")->fetchAll()[0];
+  return new Evenement($req['ID'],$req['Nom'],$req['Image'],
+                    $req['DatePub'], $req['DateDebut'], $req['DateFin'],
+                    $req['Description'], $req['Officiel'], $req['NumCrea'],
+                    $req['NomLieu']);
+}
+
+function getNextNumEvent(){
+  $req = $this->db->query("SELECT max(ID) FROM Event")->fetchAll()[0]['max(ID)'] + 1 ;
+  return $req;
+
+}
+
 
 function addCommentaire($numAuteur, $IDSujet, $DateCreation, $Contenu){
   $request = $this->db->prepare('INSERT INTO Commentaire

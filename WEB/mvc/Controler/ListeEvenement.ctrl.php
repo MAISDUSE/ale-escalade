@@ -11,8 +11,8 @@
     $db = new DAO;
     $evenements = $db->getAllEvent();
 
-    $view = new View("ListeEvenement");
-    $view->events = $evenements;
+    $view = new View("AccueilEvenement");
+    $view->evenements = $evenements;
     $view->afficher();
 
 

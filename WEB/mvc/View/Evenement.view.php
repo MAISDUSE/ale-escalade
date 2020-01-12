@@ -1,3 +1,14 @@
+<?php
+  require_once("../Model/Evenement.class.php");
+  require_once("../Model/Utilisateur.class.php");
+  require_once("../Model/DAO.class.php");
+
+  $db = new DAO;
+  $evenement = $db->getEventByID($_GET['id']);
+  $userCreateur = $db->getUserByID($evenement->getNumCrea());
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -12,9 +23,9 @@
 
     <section>
       <h1><?=$evenement->getNom()?></h1>
-      <h2>Posté le <?=$evenement->getDateCreation()?></h2>
-      <h2>Posté par <?=$evenement->getNumCrea()?> </h2>
-      <h2>Date de début : <?=$evenement->getDateDebut()?></h2>
+      <h2>Posté le <?=date("d/m/Y",strtotime($evenement->getDateCreation()))?></h2>
+      <h2>Posté par <?=$userCreateur->getPrenom() . " " . $userCreateur->getNom() ?> </h2>
+      <h2>Date de début : <?=date("d/m/Y",strtotime($evenement->getDateDebut()))?></h2>
       <h2>Durée : <?php print($evenement->getDuree());if($evenement->getDuree()>1){print(" jours");}else{print(" jour");}?></h2>
       <h2>Lieu : <?=$evenement->getNomLieu()?></h2>
        <img  src="../Ressources/<?=$evenement->getImage()?>" alt="imageDeFond" >
