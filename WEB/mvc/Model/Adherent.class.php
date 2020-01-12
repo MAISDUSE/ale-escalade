@@ -7,18 +7,18 @@ require_once("../Model/Enum/Passeport.enum.php");
 
 class Adherent{            //Dans la base de données
   private  $id;               //id
-  private  $licence;          //Licence
-  private  $typeLicence;      //TypeLicence
-  private  $nom;              //Nom
-  private  $prenom;           //Prenom
-  private  $genre;            //Genre
-  private  $dateNaissance;    //dateNaissance
-  private  $adresse;          //Adresse
-  private  $numTel;           //NumTel
-  private  $adresseMail;      //E-Mail
-  private  $role;             //Role
-  private  $codeUtilisateur;  //CodeUtilisateur
-  private  $passeport;        //Passeport
+  private  $licence;          //Licence 1
+  private  $typeLicence;      //TypeLicence 2
+  private  $nom;              //Nom 3
+  private  $prenom;           //Prenom 4
+  private  $genre;            //Genre 5
+  private  $dateNaissance;    //dateNaissance 6
+  private  $adresse;          //Adresse 7
+  private  $numTel;           //NumTel 8
+  private  $adresseMail;      //E-Mail 9
+  private  $role;             //Role 10
+  private  $codeUtilisateur;  //CodeUtilisateur 11
+  private  $passeport;        //Passeport 12
   private  $contact;          //Contact
 
 
