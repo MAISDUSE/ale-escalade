@@ -43,7 +43,7 @@
               <input type="tel" name="tel" placeholder="EX : 06 12 23 45 56" class="input"  required>
               <label for="passeport">Passeports escalade FFME : </label>
               <select class="input" name="passeport">
-                <option value="Blanc" class="passeportClass" selected>Aucuns</option>
+                <option value="Blanc" class="passeportClass" selected>Aucun</option>
                 <option value="Blanc" class="passeportClass" >Blanc</option>
                 <option value="Jaune" class="passeportClass">Jaune</option>
                 <option value="Orange" class="passeportClass">Orange</option>

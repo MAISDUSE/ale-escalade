@@ -14,7 +14,7 @@ if(isset($_POST['age'])){
                       ,$_POST['tel'], $_POST['nomContact'], $_POST['prenomContact']
                       ,$_POST['telContact'], $_POST['adresseContact'], $_POST['mailContact']);
 
-  $retour = new Retour(NULL, TRUE, "Inscription réussit. Vous recevrez un mail à "
+  $retour = new Retour(NULL, TRUE, "Inscription réussie. Vous recevrez un mail à "
                         . $_POST['mail'] . " lorsqu'elle sera validée ou refusée");
 
   session_start();
