@@ -184,7 +184,7 @@ function verifUser($addrMail, $mdp){
     $messageErreur = "Le mot de passe ou l'adresse mail est incorrecte";
     $retour = new Retour(NULL,TRUE, $messageErreur);
   }else{
-    if($verifMdp == $mdp){
+    if(password_verify($mdp,$verifMdp)){
       $retour = new Retour($recup[0]);
     }else{
       $messageErreur = "Le mot de passe ou l'adresse mail est incorrecte";
@@ -370,14 +370,7 @@ function addActualite( string $titre, string $img, string $dateCreation,string $
                         'numCrea' => $numCrea));
 
     }
-/*
-function getNomPrenomAuteur($id){
-  $req = "SELECT nom, prenom FROM Utilisateur U, Actualite A WHERE A.id = '$id'
-          and A.numAuteur = U.id";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll();
-  return $lancement;
-}*/
+
 
 //Fonctions Commentaire
 
@@ -423,7 +416,7 @@ function getEventOfficial(){
 
 function addEvenement( string $nom, string $img, string $dateCreation,
                          string $dateDebut, string $dateFin, string $description,
-                         int $numCrea,string $nomLieu, bool $officiel){
+                         int $numCrea,string $nomLieu, string $officiel){
 
 
 
@@ -441,6 +434,20 @@ function addEvenement( string $nom, string $img, string $dateCreation,
                         ':numCrea' => $numCrea,
                         ':lieu'=> $nomLieu));
 
+}
+
+function genAdmin(){
+  $mdp = password_hash ("admin" ,PASSWORD_DEFAULT);
+  $req ="INSERT INTO Utilisateur(adresseMail,Admin,Prenom,Nom,Mdp)
+  VALUES(:adresseMail,:Admin,:Prenom,:Nom,:Mdp)";
+    $requete = $this->db->prepare($req);
+    $requete->execute(array(
+                      ':adresseMail'=> "admin@admin.fr",
+                      ':Admin' => "TRUE",
+                      ':Prenom' => "Admin",
+                      ':Nom' => "Admin",
+                      ':Mdp' => $mdp
+                      ));
 }
 
 

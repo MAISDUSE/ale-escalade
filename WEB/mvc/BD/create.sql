@@ -168,9 +168,9 @@ CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
   MailContact VARCHAR(100)
 );
 
-
+/*
 INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('hugo.iteprat@etu.univ-grenoble-alpes.fr', 'TRUE', 'Hugo', 'Iteprat', 'ceciestuntresbonmdp');
 INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('adherent@yahoo.fr', 'FALSE', 'Jean', 'Neymar', 'azerty');
 INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('admin@gmail.com', 'TRUE', 'admin', 'admin', 'admin');
-
+*/
 COMMIT;
