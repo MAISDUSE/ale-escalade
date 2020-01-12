@@ -167,25 +167,7 @@ function getContactByID($id){
   return new Contact($lancement[0], $lancement[1], $lancement[2], $lancement[3], $lancement[4], $lancement[5]);
 }
 
-//Fonctions CompteRendu
-function getAllCompteRendus(){
-  $req = "SELECT * FROM CompteRendu ORDER BY DatePub";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
-  return array($lancement);
-}
-function searchCompteRenduByName($name){
-  $req = "SELECT * FROM CompteRendu WHERE Titre LIKE '%$name%' ORDER BY DatePub";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
-  return array($lancement);
-}
-function searchCompteRenduByAuthor(Utilisateur $authore){
-  $req = "SELECT * FROM CompteRendu WHERE NumAuteur == '$author->id' ORDER BY DatePub";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
-  return array($lancement);
-}
+
 
 
 //Fonctions Message
@@ -275,6 +257,20 @@ function getActualiteByID($id){
   $l = $requete->fetchAll();
   return new Actualite($l[0], $l[1], $l[2], $l[3], $l[4], $l[5], $l[6]);
 }
+function addActualite( string $titre, string $img, string $dateCreation,string $description,
+                         int $numCrea, string $fichiers){
+
+    $req ="INSERT INTO Actualite(Titre,Image,DatePub,Description,Fichiers,NumCrea) VALUES(:titre,:image,:datePub,:description,:Fichiers,:numCrea)";
+      $requete = $this->db->prepare($req);
+      $requete->execute(array(
+                        'titre'=> $titre,
+                        'image' => $img,
+                        'datePub' => $dateCreation,
+                        'description' => $description,
+                        'Fichiers' => $fichiers,
+                        'numCrea' => $numCrea));
+
+    }
 /*
 function getNomPrenomAuteur($id){
   $req = "SELECT nom, prenom FROM Utilisateur U, Actualite A WHERE A.id = '$id'
@@ -324,7 +320,7 @@ function getEventOfficial(){
   $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'Evenement');
   return array($lancement);
  }
-  function addEvenement( string $nom, string $img, string $dateCreation,
+function addEvenement( string $nom, string $img, string $dateCreation,
                          string $dateDebut, string $dateFin, string $description,
                          int $numCrea,string $nomLieu, bool $officiel){
 
