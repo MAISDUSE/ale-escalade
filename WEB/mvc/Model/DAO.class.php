@@ -47,13 +47,43 @@ function getAllUsers(){
   return $retour;
 }
 
-function getUserByCode($id){
-  $req = "SELECT * FROM Utilisateur where id = '$id'";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll();
+function addUserFromInscription($idInscrit){
+  $req =  "SELECT * FROM InscriptionEnAttente where ID = '$idInscrit'";
 
-  return new Utilisateur($lancement[1], $lancement[2], $lancement[3], $lancement[4], $lancement[5], $lancement[6],
-                      $lancement[7], $lancement[8], $lancement[9], $lancement[10], $lancement[11], $lancement[12], $this->getContactByID($lancement[13]));
+  $reponse = $this->db->query($req);
+  $lancement = $reponse->fetchAll();
+  $this->addContact($lancement[0][10],$lancement[0][11],$lancement[0][13],$lancement[0][12],
+                    $lancement[0][14]);
+  $retour = array();
+  foreach($lancement as $v){
+    $reqContact = "SELECT ID FROM Contact where Nom = '$v[10]' and Prenom = '$v[11]' limit 1";
+    $reponseContact = $this->db->query($reqContact);
+    $lancementContact = $reponseContact->fetchAll();
+    $idContact = $lancementContact[0]["ID"];
+    $this->addAdherent($v[1],$v[2],$v[3],$v[5],$v[6],$v[7],$v[8],'123456',$v[9],$idContact);
+
+    $reqAdherent = "SELECT ID FROM Adherent where Nom = '$v[1]' and Prenom = '$v[2]'";
+    $reponseAdherent = $this->db->query($reqAdherent);
+    $lancementAdherent = $reponseAdherent->fetchAll();
+
+    $idAdherent = $lancementAdherent[0]["ID"];
+    $user1 = new Utilisateur($v[0], $idAdherent, $v[8], "FALSE", $v[2], $v[1],
+                      '123456');
+
+  }
+
+  $req2 = "INSERT INTO Utilisateur(AdhID,adresseMail,Admin,Prenom,Nom,Mdp)
+          VALUES(:AdhId,:adresseMail,:Admin,:Prenom,:Nom,:Mdp)";
+  $reponse2 = $this->db->prepare($req2);
+  $reponse2->execute(array(
+    "AdhId" => $user1->getAdhID(),
+    "adresseMail" => $user1->getAdresseMail(),
+    "Admin" => $user1->isAdmin(),
+    "Prenom" => $user1->getPrenom(),
+    "Nom" => $user1->getNom(),
+    "Mdp" => $user1->getMdp()
+  ));
+
 }
 //Fonction Adherents
 function getAllAdherents(){
@@ -81,6 +111,27 @@ function getNomPrenomAuteur($id){
   $req = $this->db->query("SELECT Nom,Prenom from Utilisateur where id='$id'");
   $identite = $req->fetchAll();
   return $identite[0];
+}
+
+function addAdherent($nom,$prenom,$genre,$dateNaissance,$adresse,$numTel,$adresseMail,$codeUtilisateur,$passeport,$contact){
+  $req = "INSERT INTO Adherent(Nom,Prenom,Genre,DateNaissance,Adresse,NumTel,Mail,CodeUtilisateur,Passeport,Contact)
+          VALUES (:Nom,:Prenom,:Genre,:DateNaissance,:Adresse,:NumTel,:Mail,:CodeUtilisateur,:Passeport,:Contact)";
+
+  $reponse = $this->db->prepare($req);
+
+  $reponse->execute(array(
+    "Nom" => $nom,
+    "Prenom" => $prenom,
+    "Genre"  => $genre,
+    "DateNaissance" => $dateNaissance,
+    "Adresse" => $adresse,
+    "NumTel" => $numTel,
+    "Mail" => $adresseMail,
+    "CodeUtilisateur" => $codeUtilisateur,
+    "Passeport" => $passeport,
+    "Contact" => $contact
+  ));
+
 }
 
   // Récupère toute les inscriptions en attentes
@@ -170,7 +221,40 @@ function getContactByID($id){
   return new Contact($lancement[0], $lancement[1], $lancement[2], $lancement[3], $lancement[4], $lancement[5]);
 }
 
+function addContact($Nom,$Prenom,$Adresse,$NumTel,$Mail){
 
+  $req = "INSERT INTO Contact(Nom,Prenom,Adresse,NumTel,Mail) VALUES(:Nom,:Prenom,:Adresse,:NumTel,:Mail)";
+  $lancement = $this->db->prepare($req);
+
+  $lancement->execute(array(
+    "Nom" => $Nom,
+    "Prenom" => $Prenom,
+    "Adresse" => $Adresse,
+    "NumTel" => $NumTel,
+    "Mail"   => $Mail
+  ));
+
+}
+
+//Fonctions CompteRendu
+function getAllCompteRendus(){
+  $req = "SELECT * FROM CompteRendu ORDER BY DatePub";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
+  return array($lancement);
+}
+function searchCompteRenduByName($name){
+  $req = "SELECT * FROM CompteRendu WHERE Titre LIKE '%$name%' ORDER BY DatePub";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
+  return array($lancement);
+}
+function searchCompteRenduByAuthor(Utilisateur $authore){
+  $req = "SELECT * FROM CompteRendu WHERE NumAuteur == '$author->id' ORDER BY DatePub";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll(PDO::FETCH_CLASS, 'CompteRendu');
+  return array($lancement);
+}
 
 
 //Fonctions Message
@@ -352,7 +436,7 @@ function addEvenement( string $nom, string $img, string $dateCreation,
 }
 
 
-function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adresse, $codepostal, $adressemail, $passeport, $numtel
+function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adresse, $adressemail, $passeport, $numtel
                         , $NomContact, $PrenomContact, $NumTelContact, $AdresseContact, $MailContact){
 
  $req = $this->db->prepare("INSERT INTO InscriptionEnAttente(Nom, Prenom, Genre, TypeAssurance, DateNaissance,Adresse, NumTel, Mail,
@@ -441,9 +525,6 @@ function deleteInscriptionById($idInscrit){
   ));
 
 }
-
-
-
 
 }
  ?>

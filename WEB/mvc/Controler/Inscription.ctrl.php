@@ -10,7 +10,7 @@ if(isset($_POST['age'])){
   $date = date("Y-m-d", strtotime($_POST['age']));
   $db = new DAO;
   $db->addInscription($_POST['nom'], $_POST['prenom'], $_POST['sexe'], $_POST['base']
-                      ,$date, $_POST['adresse'], $_POST['mail'], $_POST['codepostal'], $_POST['passeport']
+                      ,$date, $_POST['adresse'], $_POST['mail'], $_POST['passeport']
                       ,$_POST['tel'], $_POST['nomContact'], $_POST['prenomContact']
                       ,$_POST['telContact'], $_POST['adresseContact'], $_POST['mailContact']);
 
