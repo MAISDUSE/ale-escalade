@@ -41,7 +41,7 @@
       <br>
       <form class="" action="../Controler/AddCommentaire.ctrl.php" method="post">
         <label for="numsujet"></label>
-        <input type="number" name="sujet" value="<?=$sujet1->getId()?>" readonly>
+        <input type="number" name="sujet" value="<?=$sujet1->getId()?>" hidden required readonly>
         <label for="Comment">Veuillez Commenter</label>
         <textarea name="contenu" rows="8" cols="80" placeholder="Commenter" required></textarea><br>
         <input type="submit" name="envoyer" value="Envoyer">
