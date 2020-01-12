@@ -30,17 +30,6 @@
               <label for="homme">Homme</label>
               <input type="radio" id="femme" name="sexe" value="F">
               <label for="femme">Femme</label>
-              <label for="passeport">Passeport : </label>
-              <select class="input" name="passeport">
-                <option value="Blanc" class="passeportClass" selected>Blanc</option>
-                <option value="Jaune" class="passeportClass">Jaune</option>
-                <option value="Orange" class="passeportClass">Orange</option>
-                <option value="Vert" class="passeportClass">Vert</option>
-                <option value="Bleu" class="passeportClass">Bleu</option>
-                <option value="RougePer" class="passeportClass">Rouge Performance</option>
-                <option value="RougeExt" class="passeportClass">Rouge Grands Espaces</option>
-                <option value="Noir" class="passeportClass">Noir</option>
-              </select>
               <label for="age">Date de naissance : </label>
               <input type="date" name="age" placeholder="jj/mm/aa" class="input" required><br>
               <label for="adresse">Adresse : </label>
@@ -51,6 +40,18 @@
               <input type="mail" name="mail" placeholder="Email" class="input"  required>
               <label for="tel">Num. Tél :</label>
               <input type="tel" name="tel" placeholder="EX : 06 12 23 45 56" class="input"  required>
+              <label for="passeport">Passeports escalade FFME : </label>
+              <select class="input" name="passeport">
+                <option value="Blanc" class="passeportClass" selected>Aucuns</option>
+                <option value="Blanc" class="passeportClass" >Blanc</option>
+                <option value="Jaune" class="passeportClass">Jaune</option>
+                <option value="Orange" class="passeportClass">Orange</option>
+                <option value="Vert" class="passeportClass">Vert</option>
+                <option value="Bleu" class="passeportClass">Bleu</option>
+                <option value="RougePer" class="passeportClass">Rouge Performance</option>
+                <option value="RougeExt" class="passeportClass">Rouge Grands Espaces</option>
+                <option value="Noir" class="passeportClass">Noir</option>
+              </select>
              </div>
              <div class="message">
                <div class="assurance">
