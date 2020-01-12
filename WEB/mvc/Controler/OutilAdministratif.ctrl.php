@@ -26,7 +26,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']->isAdmin() == "TRUE"){
     $view->afficher();
   } else if (isset($_POST['gererActualite'])) {
     //Gérer les actualités
-    $view = new View("GetsionActualites");
+    $view = new View("GestionActualites");
     $db = new DAO;
 
     $view->actualites = $db->getAllActualite();
