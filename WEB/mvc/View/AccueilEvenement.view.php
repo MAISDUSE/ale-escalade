@@ -20,9 +20,9 @@
           			<div class="txt">
                   <!--Ici dans le h3 (titre) on devra limiter le text !!!-->
           			  <h3><?=$evenement->getNom()?></h3>
-          			  <p>Posté le <?=$evenement->getDateCreation()?></p>
-                  <p>Prévu le <?=$evenement->getDateDebut()?></p>
-                  <p><?php if($evenement->getOfficiel()){ echo "Evenement pris en charge par le club";}else{echo "Evenement non pris en charge par le club";} ?></p>
+          			  <p>Posté le <?=date("d/m/Y",strtotime($evenement->getDateCreation()))?></p>
+                  <p>Prévu le <?=date("d/m/Y",strtotime($evenement->getDateDebut()))?></p>
+                  <p><?php if($evenement->getOfficiel() == "TRUE"){ echo "Evenement pris en charge par le club";}else{echo "Evenement non pris en charge par le club";} ?></p>
           			  <a href="../Controler/Evenement.ctrl.php?id=<?=$evenement->getId()?>">Afficher l'evenement</a>
           			</div>
         		  </div>

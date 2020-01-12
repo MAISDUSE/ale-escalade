@@ -18,7 +18,7 @@ require_once("../Model/Actualite.class.php");
       $this->dateCreation = $dateCreation;
       $this->numCrea = $numCrea;
       $this->description = $description;
-      $this->fichiers = $fichiers;
+      $this->fichiers = $this->fichiersToArray($fichiers);
 
 
       assert(isset($this->id));
@@ -66,5 +66,8 @@ require_once("../Model/Actualite.class.php");
     return $this->fichiers;
   }
 
+function fichiersToArray($fichiers){
+    return explode('|',$fichiers);
+  }
 }
  ?>

@@ -22,7 +22,7 @@
 
       $db = new DAO;
       $db->addSujet($titre,$date,$contenu,$IDAuteur,$IDEvent);
-      $complet = new Retour(NULL, TRUE, "Sujet créée");
+      $complet = new Retour(NULL, TRUE, "Sujet créé");
       $_SESSION['reussite'] = $complet;
       $view = new View("../Controler/Forum.ctrl.php");
       $view->afficher();
