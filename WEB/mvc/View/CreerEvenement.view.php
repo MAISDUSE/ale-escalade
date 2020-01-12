@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="../View/Design/CreerActualite.css">
     <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
-    <script src="../../../ckeditor/ckeditor.js"></script>
+    <script src="../Framework/ckeditor/ckeditor.js"></script>
 
 
   </head>
