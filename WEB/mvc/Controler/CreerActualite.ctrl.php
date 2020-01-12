@@ -3,7 +3,8 @@ require_once("../Model/Utilisateur.class.php");
 require_once("../Model/DAO.class.php");
 require_once("../Framework/View.class.php");
 require_once("../Model/Actualite.class.php");
-
+session_start();
+if(isset($_SESSION['user']) && $_SESSION['user']->isAdmin() == "TRUE"){
   $formatImage = array("image/jpeg","image/jpg","image/png");
   $formatText = array("application/pdf","application/octet-stream","text/plain");
 
@@ -13,7 +14,6 @@ require_once("../Model/Actualite.class.php");
 
   if(isset($_POST['poster'])){
     $db = new DAO();
-    /*$idActualite = getProchainId() à coder*/
     $titre = $_POST['titre'];
     $imageFond = "Actualite/default.jpg";
     if(isset($_FILES['imageFond'])){
@@ -34,8 +34,8 @@ require_once("../Model/Actualite.class.php");
 
         }
       }
-      $actualite = new Actualite(1,$titre,$imageFond,$date,1,$description,$nomFichier);
-      $db->addActualite( $titre, $imageFond, $date,$description, 1, $nomFichier);
+      $actualite = new Actualite($db->getNextNumActualite(),$titre,$imageFond,$date,$_SESSION['user']->getAdhID(),$description,$nomFichier);
+      $db->addActualite( $titre, $imageFond, $date,$description, $_SESSION['user']->getAdhID(), $nomFichier);
     }
 
 
@@ -49,11 +49,11 @@ require_once("../Model/Actualite.class.php");
       $view = new View("CreerActualite");
       $view->afficher();
     }
-//}else{
-//  $_SESSION['erreur'] = new Retour(NULL, TRUE, "Il faut être connecté et être administrateur pour accéder à cette page");
-//  $view = new View("../Controler/Accueil.ctrl.php");
-//  $view->afficher();
-//}
+}else{
+ $_SESSION['erreur'] = new Retour(NULL, TRUE, "Il faut être connecté et être administrateur pour accéder à cette page");
+ $view = new View("../Controler/Accueil.ctrl.php");
+  $view->afficher();
+}
 
 
  ?>

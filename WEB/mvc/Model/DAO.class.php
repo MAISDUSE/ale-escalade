@@ -372,14 +372,6 @@ function addActualite( string $titre, string $img, string $dateCreation,string $
 
     }
 
-/*
-function getNomPrenomAuteur($id){
-  $req = "SELECT nom, prenom FROM Utilisateur U, Actualite A WHERE A.id = '$id'
-          and A.numAuteur = U.id";
-  $requete = $this->db->query($req);
-  $lancement = $requete->fetchAll();
-  return $lancement;
-}*/
 
 //Fonctions Commentaire
 
