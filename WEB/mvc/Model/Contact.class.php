@@ -14,10 +14,7 @@ class Contact {                 //Dans la BD
       $this->prenom=$prenom;
       $this->adresse=$adresse;
       $this->numTel=$numTel;
-      if(isset($adresseMail)){
-        $this->adresseMail=$adresseMail;
-      }
-
+      $this->adresseMail=$adresseMail;
 
       //On vérifie si toutes les données nécéssaires sont rentrées.
       assert(isset($this->id));

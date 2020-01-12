@@ -259,6 +259,12 @@ function getActualiteByID($id){
   return new Actualite($l[0], $l[1], $l[2], $l[3], $l[4], $l[5], $l[6]);
 }
 
+function getNbActualite(){
+  $req = "SELECT count(Id) FROM Actualite";
+  $requete = $this->db->query($req);
+  $l = $requete->fetchAll();
+  return $l[0];
+}
 function addActualite( string $titre, string $img, string $dateCreation,string $description,
                          int $numCrea, string $fichiers){
 
