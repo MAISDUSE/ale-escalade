@@ -242,7 +242,7 @@ function getActualiteByID($id){
   $l = $requete->fetchAll();
   return new Actualite($l[0], $l[1], $l[2], $l[3], $l[4], $l[5], $l[6]);
 }
-function addEvenement( string $titre, string $img, string $dateCreation,string $description,
+function addActualite( string $titre, string $img, string $dateCreation,string $description,
                          int $numCrea, string $fichiers){
 
     $req ="INSERT INTO Actualite(Titre,Image,DatePub,Description,Fichiers,NumCrea) VALUES(:titre,:image,:datePub,:description,:Fichiers,:numCrea)";
