@@ -3,6 +3,8 @@ require_once("../Model/Actualite.class.php");
 require_once("../Model/DAO.class.php");
 require_once("../Framework/View.class.php");
 
+session_start();
+
 if(isset($_SESSION['user']) && $_SESSION['user']->isAdmin() == "TRUE"){
   if(isset($_POST['viewAuteur'])){
     //Affichage du profil de l'auteur
