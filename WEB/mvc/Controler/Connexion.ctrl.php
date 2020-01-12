@@ -27,7 +27,7 @@ if(isset($_POST['mail']) && isset($_POST['passwd'])){
                                       $resultat['Mdp']);
 
 
-    $_SESSION['reussite'] = new Retour(NULL, TRUE , "Vous êtes connecté");
+    $_SESSION['reussite'] = new Retour(NULL, TRUE , "Vous êtes connecté(e)");
     session_write_close();
     $view = new View('../Controler/Accueil.ctrl.php');
     $view->afficher();
