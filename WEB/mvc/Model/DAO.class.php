@@ -92,8 +92,7 @@ function getAllAdherents(){
   $lancement = $reponse->fetchAll();
   $retour = array();
   foreach ($lancement as $v){
-    array_push($retour, new Adherent($v[0], $v[1], $v[2], $v[3], $v[4], $v[5],
-                        $v[6], $v[7], $v[8], $v[9], $v[10], $v[11], $v[12], $this->getContactByID($v[13])));
+    array_push($retour, $this->getAdherentByCode($v[0]));
     }
   return $retour;
 }
@@ -103,8 +102,14 @@ function getAdherentByCode($id){
   $requete = $this->db->query($req);
   $lancement = $requete->fetchAll()[0];
 
-  return new Adherent($lancement[0], $lancement[1], $lancement[2], $lancement[3], $lancement[4], $lancement[5], $lancement[6],
-                      $lancement[7], $lancement[8], $lancement[9], $lancement[10], $lancement[11], $lancement[12], $this->getContactByID($lancement[13]));
+  if(isset($lancement[1]) && isset($lancement[2])){
+    return new Adherent($lancement[0], $lancement[1], $lancement[2], $lancement[3], $lancement[4], $lancement[5], $lancement[6],
+                        $lancement[7], $lancement[8], $lancement[9], "Adherent", $lancement[11], $lancement[12], $this->getContactByID($lancement[13]));
+  } else {
+    return new Adherent($lancement[0], "NULL", "NULL", $lancement[3], $lancement[4], $lancement[5], $lancement[6],
+                        $lancement[7], $lancement[8], $lancement[9], "Adherent", $lancement[11], $lancement[12], $this->getContactByID($lancement[13]));
+  }
+
 }
 
 function getNomPrenomAuteur($id){
@@ -367,6 +372,15 @@ function addActualite( string $titre, string $img, string $dateCreation,string $
 
     }
 
+/*
+function getNomPrenomAuteur($id){
+  $req = "SELECT nom, prenom FROM Utilisateur U, Actualite A WHERE A.id = '$id'
+          and A.numAuteur = U.id";
+  $requete = $this->db->query($req);
+  $lancement = $requete->fetchAll();
+  return $lancement;
+}*/
+
 //Fonctions Commentaire
 
 function getAllCommentairesFomSujet($idSujet){
@@ -408,9 +422,12 @@ function getEventOfficial(){
   return array($lancement);
  }
 
+
 function addEvenement( string $nom, string $img, string $dateCreation,
                          string $dateDebut, string $dateFin, string $description,
                          int $numCrea,string $nomLieu, bool $officiel){
+
+
 
     $req ="INSERT INTO Event(Nom,Image,DatePub,DateDebut,DateFin,Description,Officiel,NumCrea,NomLieu)
     VALUES(:nom,:image,:datePub,:dateDeb,:dateFin,:description,:officiel,:numCrea,:lieu)";
@@ -512,12 +529,11 @@ function addCommentaire($numAuteur, $IDSujet, $DateCreation, $Contenu){
 
 function deleteInscriptionById($idInscrit){
   $req = $this->db->prepare("DELETE FROM InscriptionEnAttente WHERE ID = :ID");
-
   $req->execute(array(
     ':ID' => $idInscrit
   ));
 
-}
+  }
 
 }
  ?>

@@ -21,6 +21,7 @@
           <th>Nom</th>
           <th>Prénom</th>
           <th>Date de naissance</th>
+          <th>Adresse E-Mail</th>
           <th>N° Téléphone</th>
           <th>Role</th>
           <th>Action</th>
@@ -31,6 +32,7 @@
             <td><?=$user->getNom()?></td>
             <td><?=$user->getPrenom()?></td>
             <td><?=$user->getDateNaissance()?></td>
+            <td><?=$user->getAdresseMail()?></td>
             <td><?=$user->getNumTel()?></td>
             <td><?=$user->getRole()?></td>
             <td>

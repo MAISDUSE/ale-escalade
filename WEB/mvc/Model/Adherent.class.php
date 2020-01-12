@@ -22,7 +22,7 @@ class Adherent{            //Dans la base de données
   private  $contact;          //Contact
 
 
-  function __construct(int $id, string $licence, string $typeLicence,
+  function __construct(int $id, string $licence = "NULL", string $typeLicence = "NULL",
     string $nom, string $prenom, string $genre, string $dateNaissance,
     string $adresse, string $numTel, string $adresseMail,
     string $role, string $codeUtilisateur, string $passeport, Contact $contact = null){
@@ -32,9 +32,13 @@ class Adherent{            //Dans la base de données
       }*/
       $this->id=$id;
       $this->licence=$licence;
+
       if($typeLicence=="J" || $typeLicence=="A" || $typeLicence=="F"){
         $this->typeLicence=$typeLicence;
+      } else {
+        $this->typeLicence="NULL";
       }
+
       $this->nom=$nom;
       $this->prenom=$prenom;
       if($genre=="H" || $genre=="F"){

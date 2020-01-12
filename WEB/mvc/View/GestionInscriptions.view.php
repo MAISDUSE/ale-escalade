@@ -26,6 +26,7 @@
           <th>Nom</th>
           <th>Prénom</th>
           <th>Date de naissance</th>
+          <th>Adresse E-Mail</th>
           <th>N° Téléphone</th>
           <th>Action</th>
         </tr>
@@ -34,6 +35,7 @@
             <td><?=$user->getNom()?></td>
             <td><?=$user->getPrenom()?></td>
             <td><?=$user->getDateNaissance()?></td>
+            <td><?=$user->getAdresseMail()?></td>
             <td><?=$user->getNumTel()?></td>
             <td>
               <form action="../Controler/GestionInscriptions.ctrl.php" method="post" enctype="multipart/form-data" name="formulaire">

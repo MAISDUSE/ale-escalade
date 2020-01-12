@@ -40,16 +40,16 @@ CREATE TABLE IF NOT EXISTS Adherent(
     FOREIGN KEY (AdhID) REFERENCES Adherent(ID)
   );
 
-CREATE TABLE IF NOT EXISTS Actualite(
-  Id INTEGER PRIMARY KEY AUTOINCREMENT,
-  Titre VARCHAR(100),
-  DatePub DATE,
-  Image TEXT,
-  Description TEXT,
-  Fichiers TEXT,
-  NumCrea INTEGER UNSIGNED,
-  FOREIGN KEY (NumCrea) REFERENCES Utilisateur(ID)
-);
+  CREATE TABLE IF NOT EXISTS Actualite(
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Titre VARCHAR(100),
+    DatePub DATE,
+    Image TEXT,
+    Description TEXT,
+    Fichiers TEXT,
+    NumCrea INTEGER UNSIGNED,
+    FOREIGN KEY (NumCrea) REFERENCES Utilisateur(ID)
+  );
 
 CREATE TABLE IF NOT EXISTS Message(
   NumExp INTEGER UNSIGNED,
@@ -170,5 +170,7 @@ CREATE TABLE IF NOT EXISTS InscriptionEnAttente(
 
 
 INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('hugo.iteprat@etu.univ-grenoble-alpes.fr', 'TRUE', 'Hugo', 'Iteprat', 'ceciestuntresbonmdp');
+INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('adherent@yahoo.fr', 'FALSE', 'Jean', 'Neymar', 'azerty');
 INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('admin@gmail.com', 'TRUE', 'admin', 'admin', 'admin');
+
 COMMIT;

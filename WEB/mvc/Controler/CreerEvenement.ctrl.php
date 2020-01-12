@@ -51,7 +51,8 @@ require_once("../Model/Evenement.class.php");
 
 
 
-      $db->addEvenement($titre,$imageFond,$dateCreation,$dateDebut,$dateFin,$description,$officiel,$user->getID(),$lieu);
+
+      $db->addEvenement($titre,$imageFond,$dateCreation,$dateDebut,$dateFin,$description,intval($user->getID()),$lieu,$officiel);
       $_SESSION['reussite'] = new Retour(NULL, TRUE, "Evénement ajouté avec succès");
       $view= new View("../Controler/ListeEvenement.ctrl.php");
       $view->afficher();

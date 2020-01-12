@@ -1,8 +1,13 @@
 <?php
 require_once("../Model/Utilisateur.class.php");
-//require_once("../Model/Inscription.class.php"); A décommenter une fois créée
 require_once("../Model/DAO.class.php");
+require_once("../Model/InscriptionEnAttente.class.php");
 require_once("../Framework/View.class.php");
+
+session_start();
+
+
+
 if(isset($_SESSION['user']) && $_SESSION['user']->isAdmin() == "TRUE"){
   if(isset($_POST['accepter'])){
     //Acceptation de l'inscription, on ajoute l'adhérent et suppression de l'inscription
