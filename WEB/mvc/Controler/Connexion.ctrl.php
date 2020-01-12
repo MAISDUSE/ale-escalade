@@ -22,7 +22,7 @@ if(isset($_POST['mail']) && isset($_POST['passwd'])){
 
   if(!$retour->isErreur()){
     $resultat = $retour->getRes();
-    $_SESSION['user'] = new Utilisateur($resultat['ID'], $resultat['adhID'],$resultat['adresseMail'],
+    $_SESSION['user'] = new Utilisateur($resultat['ID'], $resultat['AdhID'],$resultat['adresseMail'],
                                       $resultat['Admin'], $resultat['Prenom'],$resultat['Nom'],
                                       $resultat['Mdp']);
 
