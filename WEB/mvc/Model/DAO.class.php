@@ -2,6 +2,7 @@
 
 //Appel des fichiers classes
 require_once("../Model/Actualite.class.php");
+require_once("../Model/Adherent.class.php");
 require_once("../Model/AssuranceAdh.class.php");
 require_once("../Model/Certificat.class.php");
 require_once("../Model/Commentaire.class.php");
@@ -53,7 +54,7 @@ function getAllAdherents(){
   $retour = array();
   foreach ($lancement as $v){
     array_push($retour, new Adherent($v[0], $v[1], $v[2], $v[3], $v[4], $v[5],
-                      $v[6]));
+                        $v[6], $v[7], $v[8], $v[9], $v[10], $v[11], $v[12], $this->getContactByID($v[13])));
     }
   return $retour;
 }

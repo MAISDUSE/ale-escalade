@@ -39,7 +39,7 @@
             <td>
               <form action="../Controler/GestionCours.ctrl.php" method="post" enctype="multipart/form-data" name='formulaire'>
                 <input type="submit" name="modifCours" value="Modifier" ><br>
-                <input type="submit" name="supprCours" value="Supprimer" onclick='ConfirmerSuppression()'><br>
+                <input type="submit" name="supprCours" value="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer ce cours ?')"><br>
                 <input type="hidden" name="idCours" value="<?=$uncours->getId()?>">
               </form>
             </td>
