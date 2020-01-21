@@ -3,6 +3,7 @@
 
   $db = new DAO;
   $db->genAdmin();
+  $db->genAdherent();
 
 
 

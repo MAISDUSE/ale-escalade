@@ -452,6 +452,21 @@ function genAdmin(){
                       ));
 }
 
+function genAdherent(){
+  $mdp = password_hash ("azerty" ,PASSWORD_DEFAULT);
+  $req ="INSERT INTO Utilisateur(AdhID,adresseMail,Admin,Prenom,Nom,Mdp)
+  VALUES(:AdhID, :adresseMail,:Admin,:Prenom,:Nom,:Mdp)";
+    $requete = $this->db->prepare($req);
+    $requete->execute(array(
+                    ':AdhID' => 2,
+                    ':adresseMail'=> "adherent@yahoo.fr",
+                    ':Admin' => "FALSE",
+                    ':Prenom' => "Jean",
+                    ':Nom' => "Paul",
+                    ':Mdp' => $mdp
+                    ));
+}
+
 
 function addInscription($nom, $prenom, $sexe, $assurance, $datedenaissance, $adresse, $adressemail, $passeport, $numtel
                         , $NomContact, $PrenomContact, $NumTelContact, $AdresseContact, $MailContact){

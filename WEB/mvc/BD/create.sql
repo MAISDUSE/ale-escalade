@@ -170,10 +170,9 @@ INSERT INTO Adherent(NumLicence, TypeLicence, Nom, Prenom, Genre, DateNaissance,
   VALUES (123456, "A", "Admin", "Admin", "H", "11/05/1998", "Adresse de l'admin", "0679861520", "admin@gmail.com", "Administrateur", "RougePerf", "2", "1");
 
 INSERT INTO Adherent(NumLicence, TypeLicence, Nom, Prenom, Genre, DateNaissance, Adresse, NumTel, Mail, Role, Passeport, CodeUtilisateur, Contact)
-  VALUES (654321, "A", "Neymar", "Jean", "H", "21/10/1970", "Adresse", "0679521401", "adherent@gmail.com", "Adherent", "RougePerf", "3", "1");
+  VALUES (654321, "A", "Paul", "Jean", "H", "21/10/1970", "Adresse", "0679521401", "adherent@yahoo.com", "Adherent", "RougePerf", "3", "1");
+
 /*
-INSERT INTO Utilisateur(adresseMail, Admin, Prenom, Nom, Mdp) VALUES('hugo.iteprat@etu.univ-grenoble-alpes.fr', 'TRUE', 'Hugo', 'Iteprat', 'ceciestuntresbonmdp');
 INSERT INTO Utilisateur(adhID, adresseMail, Admin, Prenom, Nom, Mdp) VALUES("2", 'adherent@yahoo.fr', 'FALSE', 'Jean', 'Neymar', 'azerty');
-INSERT INTO Utilisateur(adhID, adresseMail, Admin, Prenom, Nom, Mdp) VALUES("1", 'admin@gmail.com', 'TRUE', 'admin', 'admin', 'admin');
 */
 COMMIT;

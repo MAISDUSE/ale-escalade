@@ -18,7 +18,7 @@
              <div class="txt">
               <!--Ici dans le h3 (titre) on devra limiter le text !!!-->
     		      <h3><?=$actualite->getTitre()?></h3>
-              <p>Posté le <?=$actualite->getDateCreation()?></p>
+              <p>Posté le <?=date("d/m/Y",strtotime($actualite->getDateCreation()))?></p>
   	          <a href="../Controler/Actualite.ctrl.php?id=<?=$actualite->getId()?>">Afficher l'actualité</a>
   			    </div>
     	    </div>
