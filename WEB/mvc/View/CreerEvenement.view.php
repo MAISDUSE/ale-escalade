@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <title>Site web de l'Ale-Escalade</title>
 
-    <link rel="stylesheet" href="../View/Design/CreerActualite.css">
+    <link rel="stylesheet" href="../View/Design/CreerEvenement.css">
     <link rel="stylesheet" href="../View/Design/HeaderFooter.css">
     <script src="../Framework/ckeditor/ckeditor.js"></script>
 
@@ -20,7 +20,7 @@
 
     <?php include "Design/Header.view.php"; ?>
 
-      <div class="CreerActualite">
+      <div class="CreerEvenement">
         <h2>Ajouter un Evenement :</h2>
           <form class="" action="../Controler/CreerEvenement.ctrl.php" method="post" enctype="multipart/form-data">
             <div class="input-fields">

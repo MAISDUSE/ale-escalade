@@ -21,16 +21,21 @@
   <body>
     <?php include "Design/Header.view.php"; ?>
 
-    <section>
+    <section class="event">
       <h1><?=$evenement->getNom()?></h1>
-      <h2>Posté le <?=date("d/m/Y",strtotime($evenement->getDateCreation()))?></h2>
-      <h2>Posté par <?=$userCreateur->getPrenom() . " " . $userCreateur->getNom() ?> </h2>
-      <h2>Date de début : <?=date("d/m/Y",strtotime($evenement->getDateDebut()))?></h2>
-      <h2>Durée : <?php print($evenement->getDuree());if($evenement->getDuree()>1){print(" jours");}else{print(" jour");}?></h2>
-      <h2>Lieu : <?=$evenement->getNomLieu()?></h2>
-       <img  src="../Ressources/<?=$evenement->getImage()?>" alt="imageDeFond" >
-      <p><?=$evenement->getDescription()?></p>
-
+      <div class="imageSortie">
+        <img  src="../Ressources/<?=$evenement->getImage()?>" alt="imageDeFond" >
+      </div>
+      <article>
+        <div class="entete">
+         <h2>Posté le <?=date("d/m/Y",strtotime($evenement->getDateCreation()))?></h2>
+         <h2>Posté par <?=$userCreateur->getPrenom() . " " . $userCreateur->getNom() ?> </h2>
+         <h2>Date de début : <?=date("d/m/Y",strtotime($evenement->getDateDebut()))?></h2>
+         <h2>Durée : <?php print($evenement->getDuree());if($evenement->getDuree()>1){print(" jours");}else{print(" jour");}?></h2>
+         <h2>Lieu : <?=$evenement->getNomLieu()?></h2>
+        </div>
+        <p><?=$evenement->getDescription()?></p>
+      </article>
     </section>
 
     <?php include "Design/Footer.view.php"; ?>

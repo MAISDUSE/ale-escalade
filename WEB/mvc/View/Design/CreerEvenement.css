@@ -1,4 +1,4 @@
-.CreerActualite{
+.CreerEvenement{
   width: 60%;
   margin: auto;
   background:rgba(0,0,0,0.8);
@@ -44,4 +44,9 @@ form input[type=submit]{
 	color : #c5ecfd;
 	background: transparent;
 	width: 20%;
+}
+
+input.input:hover {
+  color : white;
+  background-color: #d66b0b;
 }

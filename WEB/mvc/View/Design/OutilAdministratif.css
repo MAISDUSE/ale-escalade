@@ -33,3 +33,8 @@ form input[type=submit]{
 	background: transparent;
 	width: 20%;
 }
+
+form input:hover{
+  color : white;
+  background-color: #d66b0b;
+}

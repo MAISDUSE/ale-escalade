@@ -22,7 +22,7 @@
       ?>
 
 
-  <a href="../Controler/SujetForum.ctrl.php?sujet=<?=$value->getId()?>">
+  <a href="../Controler/SujetForum.ctrl.php?sujet=<?=$value->getId()?>" class="sujets">
     <aside>
       <h4><?=$value->getTitre()?></h4>
       <p class="desc"><?=substr($value->getContenu(),0,20)."..."?></p>

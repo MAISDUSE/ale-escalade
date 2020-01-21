@@ -28,5 +28,47 @@ margin: 10px;
 
 }
 .fichiers .fichier p{
-text-align: center;
+  text-align: center;
 }
+
+.event h1{
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 50px;
+}
+
+.event{
+  color: white;
+}
+.event p{
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.event article .entete{
+  width: 22%;
+  border-right: 1px solid white;
+}
+
+.event article{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.imageSortie{
+  text-align: center;
+  
+}
+
+.imageSortie img{
+  margin-bottom: 5%;
+  width : 720pt;
+  height : 480pt;
+
+}
+
+
+
+

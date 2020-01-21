@@ -12,7 +12,9 @@
       <section class="listeEvenement">
         <h1>Les évenements :</h1>
         <form class="creerEvenement" action="../Controler/CreerEvenement.ctrl.php" method="post">
+            <div class="boutonCreer">
               <input type="submit" name="creer" value="Ajouter un évenement">
+            </div>
         </form>
             <?php foreach ($evenements as $evenement){ ?>
               <section class="evenement">
@@ -23,7 +25,7 @@
           			  <p>Posté le <?=date("d/m/Y",strtotime($evenement->getDateCreation()))?></p>
                   <p>Prévu le <?=date("d/m/Y",strtotime($evenement->getDateDebut()))?></p>
                   <p><?php if($evenement->getOfficiel() == "TRUE"){ echo "Evenement pris en charge par le club";}else{echo "Evenement non pris en charge par le club";} ?></p>
-          			  <a href="../Controler/Evenement.ctrl.php?id=<?=$evenement->getId()?>">Afficher l'evenement</a>
+          			  <a href="../Controler/Evenement.ctrl.php?id=<?=$evenement->getId()?>" class="afficheEvent">Afficher l'evenement</a>
           			</div>
         		  </div>
 

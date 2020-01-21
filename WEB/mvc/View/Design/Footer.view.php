@@ -54,7 +54,7 @@
                   <div class="thumb-content"><a href="../Controler/Contact.ctrl.php">Page Contact</a></div>
                 </li>
                 <li>
-                  <div class="thumb-content"><a href="mailto:info@domain.com" title="glorythemes">info@domain.com</a></div>
+                  <div class="thumb-content"><a href="mailto:ALE-ESCALADE@gmail.com" title="glorythemes">Mail</a></div>
                 </li>
                 </ul>
               <ul class="social-footer2">

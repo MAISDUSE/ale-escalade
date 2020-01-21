@@ -15,23 +15,35 @@
 
     <div class="sujet">
       <h2><?=$sujet1->getTitre()?></h2>
-      <p class="date">Posté le : <?=$sujet1->getdatePub()?></p>
-      <p class="description">Créateur : <?php $createur = $db->getUserByID($sujet1->getIdAuteur());
-                                                printf($createur->getPrenom() . " " . $createur->getNom());?></p>
-      <p class="description">Contenu : <?=$sujet1->getContenu()?></p>
 
     </div>
-    <br>
+    
+
+    <div class="commentaires">
+        <div class="flexcomm">
+          <div class="entete">
+            <p>Date : <?=$sujet1->getdatePub()?></p>
+            <p>Créateur : <?php $createur = $db->getUserByID($sujet1->getIdAuteur());
+                                                printf($createur->getPrenom() . " " . $createur->getNom());?></p></p>
+          </div>
+          <div class="contenu"> <?=$sujet1->getContenu()?></div>
+        </div>
+      </div>
+
+      
 
       <?php foreach ($liste as $value) :
         $user = $db->getUserByID($value->getNumAuteur());
         $prenom = $user->getPrenom();
         $nom = $user->getNom();?>
         <div class="commentaires">
-          <p>Date : <?=$value->getDateCreation()?></p>
-          <p>Auteur : <?=$prenom . ' ' . $nom?></p>
-          <p class="contenu">Contenu : <?=$value->getContenu()?></p>
-          <br>
+          <div class="flexcomm">
+            <div class="entete">
+              <p>Date : <?=$value->getDateCreation()?></p>
+              <p>Auteur : <?=$prenom . ' ' . $nom?></p>
+            </div>
+            <div class="contenu"> <?=$value->getContenu()?></div>
+          </div>
         </div>
       <?php  endforeach; ?>
 
@@ -42,7 +54,7 @@
       <form class="" action="../Controler/AddCommentaire.ctrl.php" method="post">
         <label for="numsujet"></label>
         <input type="number" name="sujet" value="<?=$sujet1->getId()?>" hidden required readonly>
-        <label for="Comment">Veuillez Commenter</label>
+        <label for="Comment">Nouveau commentaire :</label>
         <textarea name="contenu" rows="8" cols="80" placeholder="Commenter" required></textarea><br>
         <input type="submit" name="envoyer" value="Envoyer">
       </form>
